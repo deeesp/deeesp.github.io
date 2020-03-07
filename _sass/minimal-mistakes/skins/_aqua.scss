@@ -17,6 +17,9 @@ $text-color                 : $dark-gray !default;
 $border-color               : $lighter-gray !default;
 $footer-background-color    : #0f4c81 !default;
 
+.page__footer {
+  color: #fff !important; // override
+}
 
 $primary-color              : $gray !default;
 $success-color              : #27ae60 !default;
