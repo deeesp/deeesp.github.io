@@ -1,5 +1,6 @@
-title	layout	permalink	author_profile
-Posts by Category
-categories
-/categories/
-true
+---
+title: "Posts by Category"
+layout: categories
+permalink: /categories/
+author_profile: true
+---
