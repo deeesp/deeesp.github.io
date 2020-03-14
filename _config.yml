@@ -19,7 +19,7 @@ locale                   : "en-US"
 title                    : "Jinwoo's Devlog"
 title_separator          : "|"
 subtitle                 : "Signal Processing x Deep Learning" # site tagline that appears below site title in masthead
-name                     : "Jinwoo Oh"
+name                     : "deeesp"
 description              : "신호철 x 딥러닝 공부 블로그"
 url                      : "https://deeesp.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
