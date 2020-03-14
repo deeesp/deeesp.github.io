@@ -12,8 +12,6 @@ main:
    #- title: "Sitemap"
    #  url: /sitemap/
 
-  - title: "Quick-Start Guide"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
   - title: "Posts"
     url: /year-archive/
   - title: "Categories"
