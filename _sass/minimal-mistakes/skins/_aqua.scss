@@ -28,7 +28,7 @@ $danger-color               : #c0392b !default;
 $info-color                 : #800020 !default; //#03a9f4
 
 /* links */
-$link-color                 : $info-color !default;
+$link-color                 : #03a9f4 !default; $info-color
 $link-color-hover           : mix(#000, $link-color, 25%) !default;
 $link-color-visited         : mix(#fff, $link-color, 25%) !default;
 $masthead-link-color        : $primary-color !default;
