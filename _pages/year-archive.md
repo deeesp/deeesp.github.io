@@ -1,5 +1,6 @@
-title	permalink	layout	author_profile
-Posts by Year
-/year-archive/
-posts
-true
+---
+title: "Posts by Year"
+permalink: /year-archive/
+layout: posts
+author_profile: true
+---
