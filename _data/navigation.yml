@@ -14,18 +14,17 @@ main:
 
   - title: "Quick-Start Guide"
     url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-
+  - title: "Posts"
+    url: /year-archive/
+  - title: "Categories"
+    url: /categories/
+  - title: "Tags"
+    url: /tags/
+    
   - title: Test
     children:
       - title: "About"
         url: /2020-03-15-test/
-      - title: "Posts"
-        url: /year-archive/
-      - title: "Categories"
-        url: /categories/
-      - title: "Tags"
-        url: /tags/
-
 
   - title: TIL
     children:     
