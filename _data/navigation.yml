@@ -1,4 +1,5 @@
 # main links
+
 main:
    #- title: "Quick-Start Guide"
    #  url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
@@ -13,27 +14,27 @@ main:
 
   - title: Test
     children:     
-   - title: "Quick-Start Guide"
-     url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-   - title: "About"
-     url: /about/
-   - title: "Posts"
-     url: /year-archive/
-   - title: "Categories"
-     url: /categories/
-   - title: "Tags"
-     url: /tags/
+      - title: "Quick-Start Guide"
+        url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
+      - title: "About"
+        url: /about/
+      - title: "Posts"
+        url: /year-archive/
+      - title: "Categories"
+        url: /categories/
+      - title: "Tags"
+        url: /tags/
 
 
   - title: TIL
     children:     
-   - title: "Deep Learning"
-     url: /deeplearning/
-   - title: "Signal Processing"
-     url: /signal/
-   - title: "Algorithm"
-     url: /algorithm/
-   - title: "English"
-     url: /english/
-   - title: "Music Processing"
-     url: /music/
+      - title: "Deep Learning"
+        url: /deeplearning/
+      - title: "Signal Processing"
+        url: /signal/
+      - title: "Algorithm"
+        url: /algorithm/
+      - title: "English"
+        url: /english/
+      - title: "Music Processing"
+        url: /music/
