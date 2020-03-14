@@ -20,11 +20,11 @@ main:
       - title: "About"
         url: /2020-03-15-test/
       - title: "Posts"
-        url: /posts/year-archive/
+        url: /year-archive/
       - title: "Categories"
-        url: /posts/categories/
+        url: /categories/
       - title: "Tags"
-        url: /posts/tags/
+        url: /tags/
 
 
   - title: TIL
