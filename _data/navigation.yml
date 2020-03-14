@@ -30,7 +30,7 @@ main:
   - title: TIL
     children:     
       - title: "Deep Learning"
-        url: /deeplearning/
+        url: /deep_learning/
       - title: "Signal Processing"
         url: /signal/
       - title: "Algorithm"
