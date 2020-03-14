@@ -1,5 +1,6 @@
-title	permalink	layout	author_profile
-Posts by Tag
-/tags/
-tags
-true
+---
+title: "Posts by Tag"
+permalink: /tags/
+layout: tags
+author_profile: true
+---
