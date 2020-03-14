@@ -18,13 +18,13 @@ main:
   - title: Test
     children:
       - title: "About"
-        url: /about/
+        url: /posts/about/
       - title: "Posts"
-        url: /year-archive/
+        url: /posts/year-archive/
       - title: "Categories"
-        url: /categories/
+        url: /posts/categories/
       - title: "Tags"
-        url: /tags/
+        url: /posts/tags/
 
 
   - title: TIL
