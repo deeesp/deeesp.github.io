@@ -1,12 +1,19 @@
 ---
-title:  "[Data Structure] Hash Table"
+title:  "[Data Structure] Hash Table (해시 테이블)"
 excerpt: "Abstract data structure: Hash table"
 
 categories:
   - Algorithm
 tags:
   - Algorithm
+  - Data Structure
   - Hash Table
+  - Hash Map
+  - 해시 테이블
+  - 해시 맵
+  - 자료구조
+  - 알고리즘
+  
 last_modified_at: 2020-03-15
 
 toc: true
@@ -137,7 +144,86 @@ toc_sticky: true
 ![chainging](https://postfiles.pstatic.net/MjAxOTAyMDdfMjI2/MDAxNTQ5NTI2ODcyMzQx.v6W8WS9sLNfqKavxeVMajzgPCD6F5GmobFO0nOcXLbAg.dc3SDmwsx63okXqoOerutwxO3VZykaHqw_EHhA95fUog.PNG.jwo0816/hashChaining1.png?type=w773)
 
 
-이상 해시 테이블 자료구조에 대해서 알아보았다.
+
+## 6. 해시 테이블 구현
+이상 해시 테이블 자료구조에 대해서 알아보았다. 그럼 이제 Python을 이용하여 구현해보자.
+![](https://postfiles.pstatic.net/MjAxOTAyMDlfMjM5/MDAxNTQ5NjgzMjIwMjYz.A5nbFqjNAOytJg3QhKzAhYD6y97kAThuT8LXCvpZ3nUg.7Idv_x1VBHa3Aq6tzs4bGxjJqYJUdo9IIJ_OJXFeBs8g.PNG.jwo0816/900px-Hash_table_5_0_1_1_1_1_1_LL.svg.png?type=w773)
+
+
+### 구현 체크리스트
+
+1. 해시함수의 효율성 : 얼마나 잘 으깨주냐
+
+ - 비슷한 key에도 독립적으로 으깨지는지 (i.g. France, Francd)
+
+ - 테이블에 골고루 분배해주는지 (balanced distribution)
+
+
+
+2. 충돌방지 chaining algorithm 적용
+
+ - linked list 이용해 chaining
+
+### Python Code
+
+```python
+class HashTable:
+    N = int(input("The length of Hash table"))
+    hash_table = [[] for _ in range(N)]
+
+    def hashing_func(self, key):                # Hash function
+        total = 0
+        for i in range(len(key)):
+            total += ord(key[i]) * (7 ** (i + 1))
+        return len(key) * total
+    # 좋.은. 해시함수를 만들기 위한 작업
+    # i번째 문자를 unicode로 변환 후 7(소수)의 (i+1)제곱한 것을 다 더해줌
+    # key의 길이를 곱해준 후 return
+
+    def insert(self, key, value):               # Hash Table 삽입
+        hash_code = self.hashing_func(key) % len(self.hash_table)
+        bucket = self.hash_table[hash_code]
+        key_exists = 0
+        for i, kv in enumerate(bucket):
+            k, v = kv
+            if key == k:
+                key_exists = 1
+                if value != bucket[i][1]:  # same key, different value
+                    key_exists = 2
+                break
+        if key_exists == 1:
+            bucket[i] = ((key, value))
+        elif key_exists == 0:
+            bucket.append((key, value))
+        else:
+            print("*** 중복 error : same key:", key,
+                  ", different values:", value, bucket[i][1], "***")
+
+    def search_by_key(self, key):               # Hash table 검색
+        hash_code = self.hashing_func(key) % len(self.hash_table)
+        bucket = self.hash_table[hash_code]
+        for i, kv in enumerate(bucket):
+            k, v = kv
+            if key == k:
+                return v
+
+    def delete(self, key):                      # Hash table 삭제
+        hash_code = self.hashing_func(key) % len(self.hash_table)
+        bucket = self.hash_table[hash_code]
+        # print("Hash CODE : ", hash_code)
+        key_exists = False
+        for i, kv in enumerate(bucket):
+            k, v = kv
+            if key == k:
+                key_exists = True
+                break
+        if key_exists:
+            del bucket[i]
+            print('Key {} deleted'.format(key))
+        else:
+            print('Key {} not found'.format(key))
+```
+
 
 
 ### Reference
