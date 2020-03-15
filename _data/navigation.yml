@@ -14,15 +14,13 @@ main:
 
   #- title: "Posts"
   #  url: /year-archive/
+  - title: "About"
+    url: /about/
   - title: "Categories"
     url: /categories/
   - title: "Tags"
     url: /tags/
-    
-  - title: Test
-    children:
-      - title: "About"
-        url: /2020-03-15-test/
+
 
   - title: TIL
     children:     
