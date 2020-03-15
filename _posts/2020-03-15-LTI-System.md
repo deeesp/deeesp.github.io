@@ -6,6 +6,8 @@ categories:
   - Signal_Processing
 tags:
   - 신호및시스템
+  - 신호처리
+  - Signal_Processing
   - Signals_and_Systems
 last_modified_at: 2020-03-15
 
