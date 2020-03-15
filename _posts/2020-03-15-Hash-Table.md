@@ -19,7 +19,7 @@ toc_sticky: true
 - 이 Key와 Value를 Mapping 시키는 과정을 **해싱(Hashing)**이라고 부른다.
 - 빠른 탐색과 삽입, 삭제 속도를 가져 항목간의 관계를 모형화 하는 데에 유용하게 쓰이는 자료구조 중 하나이다.
 
-![Hash Table](https://blog.naver.com/PostView.nhn?blogId=jwo0816&logNo=221457342364&redirect=Dlog&widgetTypeCall=true&topReferer=https%3A%2F%2Fblog.naver.com%2FPostView.nhn%3FblogId%3Djwo0816%26logNo%3D221461523705%26redirect%3DDlog&directAccess=false#)
+![Hash Table](https://postfiles.pstatic.net/MjAxOTAyMDdfNjkg/MDAxNTQ5NTE1Mjc1NzM5._z4KuZw9PCBeOU8ABQ5haOoFDrJ1rHXW3d-TxVtLbMcg._iQa9xeKfhKEjyvivaRIeoo6cTmeJM9ZkgdawnJpuzEg.PNG.jwo0816/hash_table_%EA%B5%AC%EC%A1%B0.png?type=w773)
 
 ### **추상 자료형(ADT - Abstract Data Type)** 이란?
 - 인터페이스와 기능 구현 부분을 분리한 자료형.
