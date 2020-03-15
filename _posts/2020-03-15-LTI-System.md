@@ -3,7 +3,7 @@ title:  "LTI System"
 excerpt: "신호처리의 기초 LTI system"
 
 categories:
-  - Signal Processing
+  - Signal_Processing
 tags:
   - 신호및시스템
   - Signals_and_Systems
