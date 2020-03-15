@@ -57,7 +57,7 @@ LTI시스템 상에서 이전값과 현재값을 연산하기 위해
 
 예를 들어 종(鍾)을 LTI(Liner Time Invariant) 시스템이라고 가정한다면 종을 한번 치면 그 소리가 치는 순간만 나는게 아니라 치는 순간에 소리가 크게 났다가 점점 소리가 감쇄되며 작아진다. 그림으로 나타내면 다음 그림의 첫번째 경우와 같다. 종을 한번 탕 치는 것을 impulse 입력이라 하고 한 번 종을 쳤을 때 나는 소리를 삼각형으로 나타내었다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e8849c15-1c79-49a3-9e9b-ccb0a1f64337/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e8849c15-1c79-49a3-9e9b-ccb0a1f64337/Untitled.png)
+![](https://t1.daumcdn.net/cfile/tistory/11297E0F4CFB6C3721)
 
 그런데 종을 한번 치고 다시 치면 어떨까? 그림의 두번째 경우는 처음 종을 치고 잠시 후 이전보다 약하게 친 경우이다. 이 때는 종소리를 Linear system으로 가정했기 때문에 이전의 입력에 의해 나고 있는 소리에 현재 입력에 의해 나는 소리가 더해져 나타난다. 그리고 이것은 impulse 입력과 종소리의 convolution 과 같은 결과가 나올 것이다.
 
