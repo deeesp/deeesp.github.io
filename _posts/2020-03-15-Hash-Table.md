@@ -235,5 +235,5 @@ class HashTable:
 - [해시-해시테이블-해싱 5분만에 이해하기 - Gunny](https://youtu.be/xls6jEZNA7Y)
   여기까지 정리를 하기 위해 아래 영상을 시청해보자. 초보자 입장에서 간결하게 설명을 잘 해준다. (5분) (YouTube에 사실 영어로된 영상도 어마무시하게 많다.)
 
-- [자료구조 알고리즘] 해쉬테이블(Hash Table)에 대해 알아보고 구현하기](https://youtu.be/Vi0hauJemxA)
+- [[자료구조 알고리즘]해쉬테이블(Hash Table)에 대해 알아보고 구현하기](https://youtu.be/Vi0hauJemxA)
   이분도 정말 기가 막히게 설명해주시는데 목소리가 너무 아름다우시다. 목소리 감상하다 시간갔던 ㅋㅋ (6분 30초)
