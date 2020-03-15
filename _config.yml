@@ -20,7 +20,7 @@ title                    : "Jinwoo's Devlog"
 title_separator          : "|"
 subtitle                 : "Signal Processing x Deep Learning" # site tagline that appears below site title in masthead
 name                     : "deeesp"
-description              : "신호철 x 딥러닝 공부 블로그"
+description              : "딥하게 신호처리 러닝"
 url                      : "https://deeesp.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -109,7 +109,7 @@ analytics:
 author:
   name             : "deeesp"
   avatar           : "/assets/images/avatar.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "신호철 x 딥러닝 공부 [**@MSPL**](https://mspl.gist.ac.kr/)"
+  bio              : "딥하게 신호처리 러닝 [**@MSPL**](https://mspl.gist.ac.kr/)"
   location         : "South Korea"
   email            : 
   links:
