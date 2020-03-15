@@ -45,6 +45,7 @@ toc_sticky: true
 ![array-set-dict](https://postfiles.pstatic.net/MjAxOTAyMDRfMTI1/MDAxNTQ5MjE0MzQ4MzM4.d9XnpeX_qcfE_-0vcfYxKgwY84pv90SMGIW8-Zq4EKsg.sm4pxfA45DbS_e9AIft1r4f1eP1G2DiVxsvy182wsSsg.PNG.jwo0816/CollectionTypes_intro_2x.png?type=w773)
 
 
+
 ## 2. Same thing, different names
 
 처음에 이 자료구조를 공부할 때 다양한 이름으로 불려서 다소 혼동이 있었다.
@@ -71,7 +72,8 @@ toc_sticky: true
 하지만..! 앞에서 말했듯이 이를 본질적으로 이해하기 위해선 직접 구현할 필요가 있다. 그리 복잡하지는 않으니 꼭 한번 구현해보자. (뒤에서..ㅋㅋ) 구현할 때에는 리스트와 배열로 구현한다. 구현해야 하는 이유는 여기 [Link](https://youtu.be/S7vni1hdsZE)에서 포프킴씨께서 잘 설명해주신다.
 
 
-## 3. 그렇다면 왜 해시 테이블이 요긴하게 사용되나?
+
+## 3. 왜 해시 테이블이 요긴하게 사용되나?
 
 - **평균적으로 탐색, 삽입, 삭제에 O(1)의 시간복잡도를 보인다.★★★★★**
 
@@ -93,6 +95,7 @@ toc_sticky: true
 3) Less sensitive to the hash function or load factors.
 
 4) It is mostly used when it is unknown how many and how frequently keys may be inserted or deleted.
+
 
 
 ## 4. 단점은?
@@ -124,6 +127,7 @@ toc_sticky: true
 
 
 
+
 ## 5. 좋은 Hash function 이란?
 
 그렇다면 좋은 Hash Function의 조건은 어떠할까?
@@ -142,6 +146,7 @@ toc_sticky: true
 **[※ C++ program for hashing with chaining](https://www.geeksforgeeks.org/c-program-hashing-chaining/)**
 
 ![chainging](https://postfiles.pstatic.net/MjAxOTAyMDdfMjI2/MDAxNTQ5NTI2ODcyMzQx.v6W8WS9sLNfqKavxeVMajzgPCD6F5GmobFO0nOcXLbAg.dc3SDmwsx63okXqoOerutwxO3VZykaHqw_EHhA95fUog.PNG.jwo0816/hashChaining1.png?type=w773)
+
 
 
 
@@ -226,7 +231,8 @@ class HashTable:
 
 
 
-### Reference
+
+## 7. Reference
 
 - [CS50, Havard University](https://www.youtube.com/watch?v=nvzVHwrrub0)
 
