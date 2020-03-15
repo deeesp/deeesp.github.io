@@ -22,15 +22,15 @@ main:
     url: /tags/
 
 
-  - title: TIL
-    children:     
-      - title: "Deep Learning"
-        url: /deep_learning/
-      - title: "Signal Processing"
-        url: /signal/
-      - title: "Algorithm"
-        url: /algorithm/
-      - title: "English"
-        url: /english/
-      - title: "Music Processing"
-        url: /music/
+#  - title: TIL
+#    children:     
+#      - title: "Deep Learning"
+#        url: /deep_learning/
+#      - title: "Signal Processing"
+#        url: /signal/
+#      - title: "Algorithm"
+#        url: /algorithm/
+#      - title: "English"
+#        url: /english/
+#      - title: "Music Processing"
+#        url: /music/
