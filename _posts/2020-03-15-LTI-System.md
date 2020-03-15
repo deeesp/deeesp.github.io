@@ -1,5 +1,5 @@
 ---
-title:  "LTI System"
+title:  "[Signals and Systems] LTI System"
 excerpt: "신호처리의 기초 LTI system"
 
 categories:
@@ -7,8 +7,8 @@ categories:
 tags:
   - 신호및시스템
   - 신호처리
-  - Signal_Processing
-  - Signals_and_Systems
+  - Signal Processing
+  - Signals and Systems
 last_modified_at: 2020-03-15
 
 toc: true
