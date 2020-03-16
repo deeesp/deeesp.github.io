@@ -21,16 +21,16 @@ main:
   - title: "Tags"
     url: /tags/
 
-
-#  - title: TIL
-#    children:     
-#      - title: "Deep Learning"
-#        url: /deep_learning/
-#      - title: "Signal Processing"
-#        url: /signal/
-#      - title: "Algorithm"
-#        url: /algorithm/
-#      - title: "English"
-#        url: /english/
+docs:
+  - title: TIL
+    children:     
+      - title: "Test"
+        url: /2020-03-15-돌덩이/
+      - title: "Signal Processing"
+        url: /2020-03-15-LTI-System/
+      - title: "Algorithm"
+        url: /_posts/2020-03-15-Hash-Table/
+      - title: "Statistics"
+        url: /_posts/2020-03-15-Random-Variables/
 #      - title: "Music Processing"
 #        url: /music/
