@@ -25,12 +25,12 @@ docs:
   - title: TIL
     children:     
       - title: "Test"
-        url: /2020-03-15-돌덩이/
+        url: /docstests/
       - title: "Signal Processing"
-        url: /2020-03-15-LTI-System/
+        url: /docstests/
       - title: "Algorithm"
-        url: /2020-03-15-Hash-Table/
+        url: /docstests/
       - title: "Statistics"
-        url: /2020-03-15-Random-Variables/
+        url: /docstests/
 #      - title: "Music Processing"
 #        url: /music/
