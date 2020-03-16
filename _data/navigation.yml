@@ -25,12 +25,12 @@ docs:
   - title: TIL
     children:     
       - title: "Test"
-        url: /docstests/
+        url: /docs/docstests/
       - title: "Signal Processing"
-        url: /docstests/
+        url: /docs/docstests/
       - title: "Algorithm"
-        url: /docstests/
+        url: /docs/docstests/
       - title: "Statistics"
-        url: /docstests/
+        url: /docs/docstests/
 #      - title: "Music Processing"
 #        url: /music/
