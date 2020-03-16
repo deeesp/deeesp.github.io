@@ -20,17 +20,3 @@ main:
     url: /categories/
   - title: "Tags"
     url: /tags/
-
-docs:
-  - title: TIL
-    children:     
-      - title: "Test"
-        url: /docs/docstests/
-      - title: "Signal Processing"
-        url: /docs/docstests/
-      - title: "Algorithm"
-        url: /docs/docstests/
-      - title: "Statistics"
-        url: /docs/docstests/
-#      - title: "Music Processing"
-#        url: /music/
