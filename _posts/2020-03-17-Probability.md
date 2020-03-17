@@ -47,7 +47,7 @@ toc_sticky: true
   > Sample Space $S =${$HH,\ HT,\ TH,\ TT$}   
   
   > (2) 정육면체 주사위를 굴리는 Random Experiment에서, 형성하는 Sample Space는 다음과 같다.   
-  > $S$ = {1, 2, 3, 4, 5, 6} (H: 앞면, T: 뒷면)
+  > $S$ = {1, 2, 3, 4, 5, 6}
   > 이 때, 각 원소가 Sample point가 된다.
    
 [^ME]: **Mutually Exclusive(상호 배타적)** : Two sets $A$ and $B$ are mutually exclusive if $A\cap B=0$   
@@ -62,7 +62,7 @@ toc_sticky: true
 - Event $A$가 일어날 확률: $P(A) \geq 0$
 - Event $A$가 일어나지 않을 확률: $P(\bar{A}) = 1-P(A)$
 - Event $A$와 Event $B$가 Mutually Exclusive[^ME]이면, $P(A \cap B) = 0$ 즉, $P(A+B) = P(A) + P(B)$
-- Event들이 집합 혹은 모임(collection) $F$를 형성하고 다음 조건을 만족할 경우 Event Space라고 한다.
+- Event들이 집합 혹은 모임(collection) $F$를 형성하고 다음 조건을 만족할 경우 **Event Space(사건공간)** 라고 한다.
 > (Let Event $A \subset S$)   
 > $S \in F $   
 > if $\ A\in F$, then $\bar{A} \in F $ (M.E.)   
@@ -73,7 +73,7 @@ toc_sticky: true
 [^Quiz]: Answer - True??? False? Sample Space 전체를 커버해야 하지 않나?
    
    
-### 4. Probability Axioms (Gubner)
+### 4. Probability Axioms
 ---
 1. For the empty set $\varnothing$, called impossible event, $P(\varnothing)=0$
 2. For any event $A$, $P(A) \geq 0$
@@ -82,8 +82,8 @@ toc_sticky: true
 
 ### 5. *Sample Space* vs. *Event Space* ?
 ---
-- 즉, Event란 Sample Space의 부분집합이고, 조건에 맞는 Event들의 집합이 Event Space 이다.   
-- Sample Space와 Event Space 둘다 원소의 Mutually Exclusive and Collectively Exhaustive한 집합이다.
+- Event란 Sample Space의 부분집합이고, 이 Events 중 특정 조건에 맞는 Events의 집합이 Event Space 이다.   
+- Sample Space와 Event Space 둘다 각 원소 간 Mutually Exclusive and Collectively Exhaustive한 집합이다.
 - **Granularity** : Sample Space의 원소는 Outcomes만 가지고 있어 *Finest-grain* 한 반면, Event Space는 *Compounded Outcomes* 를 원소로 가지고 있다.  
    
 ### 6. Reference
