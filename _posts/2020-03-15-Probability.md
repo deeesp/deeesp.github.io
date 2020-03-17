@@ -38,7 +38,7 @@ toc_sticky: true
 - 다시 말해, Random Experiment에서 모든 가능한 Outcomes의 *전체집합(Universal Set)* 을 말한다. **$ P(S) = 1 $** 
 - 즉, Sample Space는 모든 가능한 Outcomes가 **Mutually Exclusive(상호 배타적)** [^ME] 이며 **Collectively Exhaustive(전체를 이루는)** [^CE] 집합이다.
 - 이 Sample Space $ S $의 원소를 **Sample(표본) $\zeta$** 이라고 하며, **Probability Sample(확률표본), Random Sample, Sample Point(표본, 표본점)** 이라고도 불린다.
-- **Null Space $ \emptyset $**: 가능한 Outcomes가 없는 공간 $ P( \emptyset ) = 1 $   
+- **Null Space $ \varnothing $**: 가능한 Outcomes가 없는 공간 $ P( \varnothing ) = 1 $   
 - **Typical e.g.** :  **(1)동전 던지기, (2)주사위 던지기**  <img src="https://image.flaticon.com/icons/svg/1715/1715535.svg" width="5%" height="5%" title="cointoss">
 
   > (1) 동전을 두 번 튕기는 Random Experiment에서, 가능한 outcomes는 다음과 같다.   
@@ -47,8 +47,8 @@ toc_sticky: true
   > Sample Space $S =${$HH,\ HT,\ TH,\ TT$}   
   
   > (2) 정육면체 주사위를 굴리는 Random Experiment에서, 형성하는 Sample Space는 다음과 같다.   
-  > $S=\{1,\2,\3,\4,\5,\6\}$ (H: 앞면, T: 뒷면)
-  > 이 때, 각 나올 수 있는 숫자가 Sample point가 된다.
+  > $S$ = {1, 2, 3, 4, 5, 6} (H: 앞면, T: 뒷면)
+  > 이 때, 각 원소가 Sample point가 된다.
    
 [^ME]: **Mutually Exclusive(상호 배타적)** : Two sets $A$ and $B$ are mutually exclusive if $A\cap B=0$   
 [^CE]: **Collectively Exhaustive(전체를 이루는)** A collection of sets $A_1,\ldots , A_n$ is collectively exhaustive if and only if $A_1\cup A_2 \cup \ldots \cup A_n$   
@@ -63,25 +63,23 @@ toc_sticky: true
 - Event $A$가 일어나지 않을 확률: $P(\bar{A}) = 1-P(A)$
 - Event $A$와 Event $B$가 Mutually Exclusive[^ME]이면, $P(A \cap B) = 0$ 즉, $P(A+B) = P(A) + P(B)$
 - Event들이 집합 혹은 모임(collection) $F$를 형성하고 다음 조건을 만족할 경우 Event Space라고 한다.
-> (Let Event $A \subset S$)
-> $S \in F $ 
-> if $\ A\in F$, then $\bar{A} \in F $ (M.E.)
-> if $\ A_i\in F$ for $i \ge 1$, then $\bigcup_{i=1}^{\infty}A_i  \in F $ (C.E.)
-- **Event Space(사건 공간) $F$** 은 $Event Class(사건 클래스)$ 또는 $Field(필드)$라고도 불린다.   
+> (Let Event $A \subset S$)   
+> $S \in F $   
+> if $\ A\in F$, then $\bar{A} \in F $ (M.E.)   
+> if $\ A_i\in F$ for $i \ge 1$, then $\bigcup_{i=1}^{\infty}A_i  \in F $ (C.E.)   
+- **Event Space(사건 공간) $F$** 은 *Event Class(사건 클래스)* 또는 *Field(필드)* 라고도 불린다.   
 <!--- **e.g.**
 > 앞 (1)의 예제에서 
-> 앞면이 0번 나오는 경우 $A_0=${$TT},  -->
-   
+> 앞면이 0번 나오는 경우 $A_0=${$TT},  !--->
 - **Quiz:** Event Space는 Events의 Mutually Exclusive and Collectively Exhaustive한 집합인가?[^Quiz]
 [^Quiz]: Answer: True??? False? Sample Space 전체를 커버해야 하지 않나?
    
    
-   
 ### 4. Probability Axioms (Gubner)
 ---
-1. For the empty set $\empty$, called impossible event, $P(\empty)=0$
+1. For the empty set $\varnothing$, called impossible event, $P(\varnothing)=0$
 2. For any event $A$, $P(A) \geq 0$
-3. For any countable collection $A_1, A_2, \ldots$ of mutually exclusive events, $ P \left\( \bigcup_{i=1}^{\infty}A_n \right\) = \sum_{n=1}^\infty P(A_n)$
+3. For any countable collection $A_1, A_2, \ldots$ of mutually exclusive events, $ P ( \bigcup_{i=1}^{\infty}A_n ) = \sum_{n=1}^{\infty} P(A_n)$
 4. $P(S) = 1$
 
 ### 5. *Sample Space* vs. *Event Space* ?
