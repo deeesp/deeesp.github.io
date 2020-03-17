@@ -38,7 +38,8 @@ toc_sticky: true
 - Null Space $ \emptyset $: 가능한 outcomes이 없는 공간 $ P( \emptyset ) = 1 $ 
 - **typical e.g.**
 
-#![cointoss](https://image.flaticon.com/icons/svg/1715/1715535.svg)
+<!---![cointoss](https://image.flaticon.com/icons/svg/1715/1715535.svg)!--->
+
 <div class="row">
   <div class="col-md-8" markdown="1">
   > 동전을 두 번 튕기는 Random Experiment에서, 가능한 outcomes는 다음과 같다. 
