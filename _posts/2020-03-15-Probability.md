@@ -35,14 +35,14 @@ toc_sticky: true
 - Sample space는 모든 가능한 Outcomes가 [Mutually Exclusive(상호 배타적)](https://en.wikipedia.org/wiki/Mutual_exclusivity)이며 [Collectively Exhaustive(전체를 이루는)](https://en.wikipedia.org/wiki/Collectively_exhaustive_events) 집합이다. $ P(S) = 1 $ 
 - **Null Space $ \emptyset $**: 가능한 outcomes이 없는 공간 $ P( \emptyset ) = 1 $   
 
-Mutually Exclusive(상호 배타적)\[ME]   
-Collectively Exhaustive(전체를 이루는)\[CE]   
+Mutually Exclusive(상호 배타적)\[^ME]   
+Collectively Exhaustive(전체를 이루는)\[^CE]   
 
-- **typical e.g.** :  <동전 던지기>  <img src="https://image.flaticon.com/icons/svg/1715/1715535.svg" width="10%" height="10%" title="cointoss">
+- **typical e.g. 동전 던지기**  <img src="https://image.flaticon.com/icons/svg/1715/1715535.svg" width="10%" height="10%" title="cointoss">
 
 
-\[^ME]: Two sets $A$ and $B$ are mutually exclusive if $A\cap B=0$   
-\[^CE]: A collection of sets $A_1,\ldots , A_n$ is collectively exhaustive if and only if $A_1\cup A_2 \cup \cup \ldots \cup A_n$
+[^ME]: Two sets $A$ and $B$ are mutually exclusive if $A\cap B=0$   
+[^CE]: A collection of sets $A_1,\ldots , A_n$ is collectively exhaustive if and only if $A_1\cup A_2 \cup \cup \ldots \cup A_n$
 
 
   > 동전을 두 번 튕기는 Random Experiment에서, 가능한 outcomes는 다음과 같다.   
