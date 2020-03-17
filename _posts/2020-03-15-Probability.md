@@ -33,10 +33,12 @@ toc_sticky: true
 - 이 Sample Space $ S $의 원소를 **Sample(표본)** 이라고 하며, Probability Sample(확률표본), Random Sample, Sample Point(표본, 표본점) 이라고도 불린다.
 - 하나의 Sample은 뒤에서 나올 Events(사건) 중 **기본사건(Elementary Event)** 을 말한다.
 - Sample space는 모든 가능한 Outcomes가 [Mutually Exclusive(상호 배타적)](https://en.wikipedia.org/wiki/Mutual_exclusivity)이며 [Collectively Exhaustive(전체를 이루는)](https://en.wikipedia.org/wiki/Collectively_exhaustive_events) 집합이다. $ P(S) = 1 $ 
-- **Null Space $ \emptyset $**: 가능한 outcomes이 없는 공간 $ P( \emptyset ) = 1 $
-- **typical e.g.**:  <동전 던지기>  <img src="https://image.flaticon.com/icons/svg/1715/1715535.svg" width="10%" height="10%" title="cointoss">
-Mutually Exclusive(상호 배타적)\[ME]
-Collectively Exhaustive(전체를 이루는)\[CE]
+- **Null Space $ \emptyset $**: 가능한 outcomes이 없는 공간 $ P( \emptyset ) = 1 $   
+
+Mutually Exclusive(상호 배타적)\[ME]   
+Collectively Exhaustive(전체를 이루는)\[CE]   
+
+- **typical e.g.** :  <동전 던지기>  <img src="https://image.flaticon.com/icons/svg/1715/1715535.svg" width="10%" height="10%" title="cointoss">
 
 
 \[^ME]: Two sets $A$ and $B$ are mutually exclusive if $A\cap B=0$   
@@ -44,9 +46,9 @@ Collectively Exhaustive(전체를 이루는)\[CE]
 
 
   > 동전을 두 번 튕기는 Random Experiment에서, 가능한 outcomes는 다음과 같다.   
-  > -> $\left\{ HH,\ HT,\ TH,\ TT \left\}$ (H: 앞면, T: 뒷면)   
+  > -> $\{ HH,\ HT,\ TH,\ TT \} $ (H: 앞면, T: 뒷면)   
   > 이 네 쌍이 Random Experiments의 outcomes이며 각각 Sample point가 되고, 이들의 전체집합이 Sample Space를 형성한다.   
-  > Sample Space $S = \left\{ HH,\ HT,\ TH,\ TT \left\}$   
+  > Sample Space $S = \{ HH,\ HT,\ TH,\ TT \} $   
    
 ### 3. Events (사건)
 - Event(사건)은 Sample space $S$의 부분집합이다.
