@@ -75,7 +75,7 @@ $$ if \ A_i\in F \ for\ it \ge 1,\ then \ \bigcup_{i=1}^{\infty}A_i  \in F $$
    
    
 ### 5. *Sample Space* vs. *Event Space* ?
-
+---
 - 즉, Event란 Sample Space의 부분집합이고, 모든 가능한 Event들의 집합이 Event Space 이다.   
   
    
@@ -83,8 +83,8 @@ $$ if \ A_i\in F \ for\ it \ge 1,\ then \ \bigcup_{i=1}^{\infty}A_i  \in F $$
 ---
 본 포스트는 다음 자료를 기반으로 작성되었습니다.
 - GIST 황의석 교수님의 Random Process 강의
-- Hwei Hsu, Schaum's Outline of Probability, Random Variables, and Random Processes
-- Gubenr, Probability and Random Processes for Electrical and Computer Engineers   
+- Gubner, Probability and Random Processes for Electrical and Computer Engineers   
+- Hwei Hsu, Schaum's Outline of Probability, Random Variables, and Random Processes   
    
    
 ---
