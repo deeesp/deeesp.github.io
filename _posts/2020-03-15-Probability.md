@@ -32,7 +32,7 @@ toc_sticky: true
    
    
    
-### 2. Sample(표본) $\zeta$, Sample Space(표본공간): $\OMEGA$ 또는 $S$
+### 2. Sample(표본) $\zeta$, Sample Space(표본공간): $\Omega$ 또는 $S$
 ---
 - **Sample Space(표본공간) $S$** 는 실험 결과 하나하나를 모은 것을 말하며, 모든 가능한 결과(발생할 수 있는 하나의 현상)들을 포함하는 공간이다.
 - 다시 말해, Random Experiment에서 모든 가능한 Outcomes의 *전체집합(Universal Set)* 을 말한다. **$ P(S) = 1 $** 
@@ -68,11 +68,9 @@ toc_sticky: true
 > if $\ A\in F$, then $\bar{A} \in F $ (M.E.)   
 > if $\ A_i\in F$ for $i \ge 1$, then $\bigcup_{i=1}^{\infty}A_i  \in F $ (C.E.)   
 - **Event Space(사건 공간) $F$** 은 *Event Class(사건 클래스)* 또는 *Field(필드)* 라고도 불린다.   
-<!--- **e.g.**
-> 앞 (1)의 예제에서 
-> 앞면이 0번 나오는 경우 $A_0=${$TT},  !--->
 - **Quiz:** Event Space는 Events의 Mutually Exclusive and Collectively Exhaustive한 집합인가?[^Quiz]
-[^Quiz]: Answer: True??? False? Sample Space 전체를 커버해야 하지 않나?
+
+[^Quiz]: Answer - True??? False? Sample Space 전체를 커버해야 하지 않나?
    
    
 ### 4. Probability Axioms (Gubner)
