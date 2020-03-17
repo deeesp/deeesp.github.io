@@ -32,51 +32,62 @@ toc_sticky: true
    
    
    
-### 2. Sample Space(표본공간): Ω 또는 S
+### 2. Sample(표본) $\zeta$, Sample Space(표본공간): $\OMEGA$ 또는 $S$
 ---
 - **Sample Space(표본공간) $S$** 는 실험 결과 하나하나를 모은 것을 말하며, 모든 가능한 결과(발생할 수 있는 하나의 현상)들을 포함하는 공간이다.
-- 다시 말해, Random Experiment의 모든 가능한 Outcomes의 *전체집합(Universal Set)* 을 말한다. **$ P(S) = 1 $** 
+- 다시 말해, Random Experiment에서 모든 가능한 Outcomes의 *전체집합(Universal Set)* 을 말한다. **$ P(S) = 1 $** 
 - 즉, Sample Space는 모든 가능한 Outcomes가 **Mutually Exclusive(상호 배타적)** [^ME] 이며 **Collectively Exhaustive(전체를 이루는)** [^CE] 집합이다.
-- 이 Sample Space $ S $의 원소를 **Sample(표본)** 이라고 하며, **Probability Sample(확률표본), Random Sample, Sample Point(표본, 표본점)** 이라고도 불린다.
-- 하나의 Sample은 뒤에서 나올 Events(사건) 중 **기본사건(Elementary Event)** 을 말한다.
+- 이 Sample Space $ S $의 원소를 **Sample(표본) $\zeta$** 이라고 하며, **Probability Sample(확률표본), Random Sample, Sample Point(표본, 표본점)** 이라고도 불린다.
 - **Null Space $ \emptyset $**: 가능한 Outcomes가 없는 공간 $ P( \emptyset ) = 1 $   
-- **Typical e.g.    동전 던지기**  <img src="https://image.flaticon.com/icons/svg/1715/1715535.svg" width="5%" height="5%" title="cointoss">
+- **Typical e.g.** :  **(1)동전 던지기, (2)주사위 던지기**  <img src="https://image.flaticon.com/icons/svg/1715/1715535.svg" width="5%" height="5%" title="cointoss">
 
-  > 동전을 두 번 튕기는 Random Experiment에서, 가능한 outcomes는 다음과 같다.   
+  > (1) 동전을 두 번 튕기는 Random Experiment에서, 가능한 outcomes는 다음과 같다.   
   > -> $\{HH,\ HT,\ TH,\ TT\}$ (H: 앞면, T: 뒷면)   
   > 이 네 쌍이 Random Experiments의 outcomes이며 각각 Sample point가 되고, 이들의 전체집합이 Sample Space를 형성한다.   
-  > Sample Space $S = \{HH,\ HT,\ TH,\ TT \}$   
+  > Sample Space $S =${$HH,\ HT,\ TH,\ TT$}   
+  
+  > (2) 정육면체 주사위를 굴리는 Random Experiment에서, 형성하는 Sample Space는 다음과 같다.   
+  > $S=\{1,\2,\3,\4,\5,\6\}$ (H: 앞면, T: 뒷면)
+  > 이 때, 각 나올 수 있는 숫자가 Sample point가 된다.
    
 [^ME]: **Mutually Exclusive(상호 배타적)** : Two sets $A$ and $B$ are mutually exclusive if $A\cap B=0$   
-[^CE]: **Collectively Exhaustive(전체를 이루는)** A collection of sets $A_1,\ldots , A_n$ is collectively exhaustive if and only if $A_1\cup A_2 \cup \cup \ldots \cup A_n$   
+[^CE]: **Collectively Exhaustive(전체를 이루는)** A collection of sets $A_1,\ldots , A_n$ is collectively exhaustive if and only if $A_1\cup A_2 \cup \ldots \cup A_n$   
    
    
-### 3. Events (사건)
+### 3. Events (사건), Event Space(사건 공간): $F$
 ---
-- Event(사건)은 Sample space $S$의 부분집합이다.
-- S에서 하나의 Sample point는 Elementary Event(단순사건, 기본사건)이라고 종종 불린다.
-- Sample Space $S$는 $S$ 자신의 부분집합($ S \subset S $)이며, 특정 Event이다.  
-- Event $A$가 일어날 확률 $P(A) \geq 0$
-- Event $A$가 일어나지 않을 확률 $P(\bar{A}) = 1-P(A)$
-- Event $A$와 Event $B$가 Mutually Exclusive[^ME]이면, $P(A \cap B) = 0$   
+- Sample space $S$의 부분집합은 하나의 **Event(사건)** 이다. 즉, Experiment의 Outcomes의 집합이 Event이다.
+- $S$에서 하나의 Sample point $\zeta$는 **Elementary Event(단순사건, 기본사건)** 이라고 종종 불린다.
+- Sample Space $S$는 $S$ 자신의 부분집합($ S \subset S $)이며, *Certain Event* 또는 *Sure Event* 라고 불린다.
+- Event $A$가 일어날 확률: $P(A) \geq 0$
+- Event $A$가 일어나지 않을 확률: $P(\bar{A}) = 1-P(A)$
+- Event $A$와 Event $B$가 Mutually Exclusive[^ME]이면, $P(A \cap B) = 0$ 즉, $P(A+B) = P(A) + P(B)$
+- Event들이 집합 혹은 모임(collection) $F$를 형성하고 다음 조건을 만족할 경우 Event Space라고 한다.
+> (Let Event $A \subset S$)
+> $S \in F $ 
+> if $\ A\in F$, then $\bar{A} \in F $ (M.E.)
+> if $\ A_i\in F$ for $i \ge 1$, then $\bigcup_{i=1}^{\infty}A_i  \in F $ (C.E.)
+- **Event Space(사건 공간) $F$** 은 $Event Class(사건 클래스)$ 또는 $Field(필드)$라고도 불린다.   
+<!--- **e.g.**
+> 앞 (1)의 예제에서 
+> 앞면이 0번 나오는 경우 $A_0=${$TT},  -->
+   
+- **Quiz:** Event Space는 Events의 Mutually Exclusive and Collectively Exhaustive한 집합인가?[^Quiz]
+[^Quiz]: Answer: True??? False? Sample Space 전체를 커버해야 하지 않나?
    
    
-### 4. Event Space(사건 공간): F
+   
+### 4. Probability Axioms (Gubner)
 ---
-- Event Class(사건 클래스) 또는 Field(필드)라고도 불린다.
-- Sample space S의 부분집합은 하나의 event가 될 수 있다.
-- 이 event들의 집합 혹은 모임(collection)을 형성하고 다음 조건을 만족할 경우 Event Space라고 한다.
+1. For the empty set $\empty$, called impossible event, $P(\empty)=0$
+2. For any event $A$, $P(A) \geq 0$
+3. For any countable collection $A_1, A_2, \ldots$ of mutually exclusive events, $ P \left\( \bigcup_{i=1}^{\infty}A_n \right\) = \sum_{n=1}^\infty P(A_n)$
+4. $P(S) = 1$
 
-$$ S \in F $$
-
-$$ if \ A\in F, \ then \ \bar{A} \in F $$
-
-$$ if \ A_i\in F \ for\ it \ge 1,\ then \ \bigcup_{i=1}^{\infty}A_i  \in F $$   
-   
-   
 ### 5. *Sample Space* vs. *Event Space* ?
 ---
-- 즉, Event란 Sample Space의 부분집합이고, 모든 가능한 Event들의 집합이 Event Space 이다.   
+- 즉, Event란 Sample Space의 부분집합이고, 조건에 맞는 Event들의 집합이 Event Space 이다.   
+- **Granularity** : Sample Space는 Outcomes만 가지고 있어 *Finest-grain* 하고. Event Space는 *Compounded Outcomes*이다.
   
    
 ### 6. Reference
