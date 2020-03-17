@@ -31,6 +31,7 @@ toc_sticky: true
 - **Random Experiment(확률시행, 랜덤시행)**: Outcomes를 예측할 수 없는 *Experiment(시행)* 을 말한다.   
    
    
+   
 ### 2. Sample Space(표본공간): Ω 또는 S
 ---
 - **Sample Space(표본공간) $S$** 는 실험 결과 하나하나를 모은 것을 말하며, 모든 가능한 결과(발생할 수 있는 하나의 현상)들을 원소로 갖는 전체집합이다.
@@ -39,12 +40,12 @@ toc_sticky: true
 - 이 Sample Space $ S $의 원소를 **Sample(표본)** 이라고 하며, **Probability Sample(확률표본), Random Sample, Sample Point(표본, 표본점)** 이라고도 불린다.
 - 하나의 Sample은 뒤에서 나올 Events(사건) 중 **기본사건(Elementary Event)** 을 말한다.
 - **Null Space $ \emptyset $**: 가능한 Outcomes가 없는 공간 $ P( \emptyset ) = 1 $   
-> **Typical e.g.    동전 던지기**  <img src="https://image.flaticon.com/icons/svg/1715/1715535.svg" width="5%" height="5%" title="cointoss">
+- **Typical e.g.    동전 던지기**  <img src="https://image.flaticon.com/icons/svg/1715/1715535.svg" width="5%" height="5%" title="cointoss">
 
   > 동전을 두 번 튕기는 Random Experiment에서, 가능한 outcomes는 다음과 같다.   
-  > -> $\left\{ HH,\ HT,\ TH,\ TT \right\} $ (H: 앞면, T: 뒷면)   
+  > -> $ \{ HH,\ HT,\ TH,\ TT \} $ (H: 앞면, T: 뒷면)   
   > 이 네 쌍이 Random Experiments의 outcomes이며 각각 Sample point가 되고, 이들의 전체집합이 Sample Space를 형성한다.   
-  > Sample Space $S = \left\{ HH,\ HT,\ TH,\ TT \right\} $   
+  > Sample Space $S = \{ HH,\ HT,\ TH,\ TT \} $   
    
 [^ME]: **Mutually Exclusive(상호 배타적)** : Two sets $A$ and $B$ are mutually exclusive if $A\cap B=0$   
 [^CE]: **Collectively Exhaustive(전체를 이루는)** A collection of sets $A_1,\ldots , A_n$ is collectively exhaustive if and only if $A_1\cup A_2 \cup \cup \ldots \cup A_n$   
@@ -73,12 +74,12 @@ $$ if \ A\in F, \ then \ \bar{A} \in F $$
 $$ if \ A_i\in F \ for\ it \ge 1,\ then \ \bigcup_{i=1}^{\infty}A_i  \in F $$   
    
    
-### *Sample Space* vs. *Event Space* ?
+### 5. *Sample Space* vs. *Event Space* ?
 
-- 즉, event란 sample space의 부분집합이고, 모든 가능한 event 들의 집합이 event space 이다.   
+- 즉, Event란 Sample Space의 부분집합이고, 모든 가능한 Event들의 집합이 Event Space 이다.   
   
    
-### Reference
+### 6. Reference
 ---
 본 포스트는 다음 자료를 기반으로 작성되었습니다.
 - GIST 황의석 교수님의 Random Process 강의
