@@ -1,13 +1,17 @@
 ---
-title:  "Probability and Random Variables"
-excerpt: "Random Process의 기반 확률과 확률변수"
+title:  "[Random Process 01] Probability"
+excerpt: "Random Process의 기반 확률에 대한 기본 정의"
 
 categories:
-  - Statistics
+  - Random Process
+  
 tags:
   - Statistics
-  - Random_Process
-  - Random_Variables
+  - Random Process
+  - Random Variables
+  - Probability
+  - 확률과 통계
+  - 랜덤 프로세스
   
 last_modified_at: 2020-03-15
 
