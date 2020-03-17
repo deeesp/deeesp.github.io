@@ -35,7 +35,7 @@ toc_sticky: true
 - 하나의 Sample은 뒤에서 나올 Events(사건) 중 **기본사건(Elementary Event)** 을 말한다.
 - Sample space는 모든 가능한 Outcomes가 [Mutually Exclusive(상호 배타적)](https://en.wikipedia.org/wiki/Mutual_exclusivity)이며 [Collectively Exhaustive(전체를 이루는)](https://en.wikipedia.org/wiki/Collectively_exhaustive_events) 집합이다. $ P(S) = 1 $ 
 - Null Space $ \emptyset $: 가능한 outcomes이 없는 공간 $ P( \emptyset ) = 1 $
-- **typical e.g.** <img src="https://image.flaticon.com/icons/svg/1715/1715535.svg" width="30%" height="30%" title="cointoss"></img>
+- **typical e.g.**    <img src="https://image.flaticon.com/icons/svg/1715/1715535.svg" width="10%" height="10%" title="cointoss">
 
   > 동전을 두 번 튕기는 Random Experiment에서, 가능한 outcomes는 다음과 같다.   
   > { HH, HT, TH, TT } (H: 앞면, T: 뒷면)   
