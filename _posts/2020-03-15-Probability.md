@@ -39,7 +39,7 @@ Mutually Exclusive(상호 배타적)\[ME]
 Collectively Exhaustive(전체를 이루는)\[CE]
 
 
-\[^CE]: Two sets $A$ and $B$ are mutually exclusive if $A\cap B=0$
+\[^ME]: Two sets $A$ and $B$ are mutually exclusive if $A\cap B=0$   
 \[^CE]: A collection of sets $A_1,\ldots , A_n$ is collectively exhaustive if and only if $A_1\cup A_2 \cup \cup \ldots \cup A_n$
 
 
