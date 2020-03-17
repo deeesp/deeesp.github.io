@@ -30,17 +30,27 @@ toc_sticky: true
   
 
 ### 2. Sample Space(표본 공간): Ω 또는 S
-- Sample Space S는 Random Experiment의 모든 가능한 outcomes의 전체집합(Universal Set)을 말한다. 
+- Sample Space $S$는 Random Experiment의 모든 가능한 outcomes의 전체집합(Universal Set)을 말한다. 
 - 즉, 실험 결과 하나하나를 모은 것을 말하며, 모든 가능한 결과(발생할 수 있는 하나의 현상)들을 원소로 갖는 전체집합이다.
 - 이 Sample Space $ S $의 원소를 **Sample(표본)** 이라고 하며, Probability Sample(확률표본), Random Sample, Sample Point(표본, 표본점) 이라고도 불린다.
-- 하나의 Sample은 뒤에서 나올 Events(사건) 중 기본사건(Elementary Event)를 말한다.  
-- Sample space는 모든 가능한 Outcomes가 Mutually Exclusive(상호 배타적)이며 Collectively Exhaustive(전체를 이루는) 집합이다. $ P(S) = 1 $  - Null Space $ \emptyset $: 가능한 outcomes이 없는 공간 $ P( \emptyset ) = 1 $ 
+- 하나의 Sample은 뒤에서 나올 Events(사건) 중 **기본사건(Elementary Event)** 을 말한다.
+- Sample space는 모든 가능한 Outcomes가 Mutually Exclusive(상호 배타적)이며 Collectively Exhaustive(전체를 이루는) 집합이다. $ P(S) = 1 $ 
+- Null Space $ \emptyset $: 가능한 outcomes이 없는 공간 $ P( \emptyset ) = 1 $ 
 - **typical e.g.**
-> 동전을 두번 튕기는 Random Experiment에서, 가능한 outcomes는 다음과 같다. 
-> { HH, HT, TH, TT } (H: 앞면, T: 뒷면)
-> 네가지 쌍이 Random Experiments의 outcomes이며 각각 Sample point가 되고, 이들의 전체집합이 Sample Space를 형성한다.
-> Sample Space $S = {HH,\ HT,\ TH,\ TT}$
- 
+
+#![cointoss](https://image.flaticon.com/icons/svg/1715/1715535.svg)
+<div class="row">
+  <div class="col-md-8" markdown="1">
+  > 동전을 두 번 튕기는 Random Experiment에서, 가능한 outcomes는 다음과 같다. 
+  > { HH, HT, TH, TT } (H: 앞면, T: 뒷면)
+  > 네가지 쌍이 Random Experiments의 outcomes이며 각각 Sample point가 되고, 이들의 전체집합이 Sample Space를 형성한다.
+  > Sample Space $S = {HH,\ HT,\ TH,\ TT}$
+  </div>
+  <div class="col-md-4" markdown="1">
+  <!-- ![Alt Text](../img/folder/blah.jpg) -->
+  <img height="600px" class="center-block" src="https://image.flaticon.com/icons/svg/1715/1715535.svg">
+  </div>
+</div>
 
 ### 3. Events (사건)
 
