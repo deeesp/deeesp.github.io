@@ -200,6 +200,9 @@ lsi: false
 excerpt_separator: "\n\n"
 incremental: false
 
+# latex settings
+remote_theme: mmistakes/minimal-mistakes
+
 
 # Markdown Processing
 kramdown:
