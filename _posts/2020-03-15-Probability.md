@@ -23,16 +23,16 @@ toc_sticky: true
 
 
 ### Experiment(시행)
-- 모든 관찰(Observation)의 과정을 말  
+- 모든 관찰(Observation)의 과정을 말한다.  
 
 
 ### Outcoms(결과)
-- Observation에 대한 results를 Experiment에 대한 Outcomes(결과)라고 불림  
+- Observation에 대한 results를 Experiment에 대한 Outcomes(결과)라고 불린다.  
 
 
 ### Random Experiment(확률시행, 랜덤시행)
 
-- Outcomes를 예측할 수 없는 Experiment  
+- Outcomes를 예측할 수 없는 Experiment을 말한다.  
 
 
 ### Sample (표본)
@@ -51,7 +51,7 @@ toc_sticky: true
 
 ### Events (사건)
 
-- Sample space S의 부분집합
+- Sample space S의 부분집합이다.
 - S에서 하나의 Sample point는 Elementary Event(단순사건, 기본사건)이라고 종종 불린다.
 - Sample Space S는 S 자신의 부분집합($ S \subset S $)이며, 특정 Event이다.  
 
@@ -69,9 +69,9 @@ $$ if \ A\in F, \ then \ \bar{A} \in F $$
 $$ if \ A_i\in F \ for\ it \ge 1,\ then \ \bigcup_{i=1}^{\infty}A_i  \in F $$  
 
 
-### Sample Space  vs  Event Space
+### What's the Difference between **Sample Space** and **Event Space** ?
 
-즉, event란 sample space의 부분집합이고, 모든 가능한 event 들의 집합이 event space 이다.
+즉, event란 sample space의 부분집합이고, 모든 가능한 event 들의 집합이 event space 이다.  
 
 
 ### Rerence
