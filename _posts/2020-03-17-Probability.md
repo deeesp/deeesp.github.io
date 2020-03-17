@@ -32,7 +32,7 @@ toc_sticky: true
    
    
    
-### 2. Sample(표본) $\zeta$, Sample Space(표본공간): $\Omega$ 또는 $S$
+### 2. Sample(표본) $\zeta$, Sample Space(표본공간): Ω 또는 $S$
 ---
 - **Sample Space(표본공간) $S$** 는 실험 결과 하나하나를 모은 것을 말하며, 모든 가능한 결과(발생할 수 있는 하나의 현상)들을 포함하는 공간이다.
 - 다시 말해, Random Experiment에서 모든 가능한 Outcomes의 *전체집합(Universal Set)* 을 말한다. **$ P(S) = 1 $** 
