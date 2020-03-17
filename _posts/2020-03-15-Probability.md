@@ -46,18 +46,21 @@ toc_sticky: true
 
 - Random Experiment의 모든 가능한 outcomes의 집합 (a.k.a.) 전체집합 (Universal Set)
 즉, 실험 결과 하나하나를 모은 것을 말하며, 모든 가능한 결과들을 원소로 하는 전체집합이다.
-- Sample Space S는 모든 가능한 outcomes의 집합이다.  
-
+- Sample Space S는 모든 가능한 outcomes의 집합이다. $ P(S) = 1 $
+- Null Space $ \emptyset $: 가능한 outcomes이 없는 공간 $ P( \emptyset ) = 1 $  
 
 ### Events (사건)
 
 - Sample space S의 부분집합이다.
 - S에서 하나의 Sample point는 Elementary Event(단순사건, 기본사건)이라고 종종 불린다.
 - Sample Space S는 S 자신의 부분집합($ S \subset S $)이며, 특정 Event이다.  
+- 사건 A가 일어날 확률 $P(A) \geq 0$
+- 사건 A가 일어나지 않을 확률 $P(\bar{A}) = 1-P(A)$
+- 사건 A와 사건 B가 Mutually Exclusive(상호 배타적 즉, 독립이 )이면, $P(A \cap B) = 0$
 
 
 ### Event Space(사건 공간): F
-
+---
 - Event Class(사건 클래스) 또는 Field(필드)라고도 불린다.
 - Sample space S의 부분집합은 하나의 event가 될 수 있다.
 - 이 event들의 집합 혹은 모임(collection)을 형성하고 다음 조건을 만족할 경우 Event Space라고 한다.
@@ -69,13 +72,13 @@ $$ if \ A\in F, \ then \ \bar{A} \in F $$
 $$ if \ A_i\in F \ for\ it \ge 1,\ then \ \bigcup_{i=1}^{\infty}A_i  \in F $$  
 
 
-### What's the Difference between **Sample Space** and **Event Space** ?
-
+### What's the Difference between *Sample Space* and *Event Space* ?
+---
 즉, event란 sample space의 부분집합이고, 모든 가능한 event 들의 집합이 event space 이다.  
 
 
-### Rerence
-
+### Reference
+---
 본 포스트는 다음 자료를 기반으로 작성되었습니다.
 - GIST 황의석 교수님의 Random Process 강의
 - Hwei Hsu, Schaum's Outline of Probability, Random Variables, and Random Processes
