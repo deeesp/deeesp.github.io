@@ -40,7 +40,6 @@ toc_sticky: true
 - 이 Sample Space $ S $의 원소를 **Sample(표본) $\zeta$** 이라고 하며, **Probability Sample(확률표본), Random Sample, Sample Point(표본, 표본점)** 이라고도 불린다.
 - **Null Space $ \varnothing $**: 가능한 Outcomes가 없는 공간 $ P( \varnothing ) = 1 $   
 - **Typical e.g.** :  **(1)동전 던지기, (2)주사위 던지기**  <img src="https://image.flaticon.com/icons/svg/1715/1715535.svg" width="5%" height="5%" title="cointoss">
-
   > (1) 동전을 두 번 튕기는 Random Experiment에서, 가능한 outcomes는 다음과 같다.   
   > -> $\{HH,\ HT,\ TH,\ TT\}$ (H: 앞면, T: 뒷면)   
   > 이 네 쌍이 Random Experiments의 outcomes이며 각각 Sample point가 되고, 이들의 전체집합이 Sample Space를 형성한다.   
@@ -48,7 +47,7 @@ toc_sticky: true
   
   > (2) 정육면체 주사위를 굴리는 Random Experiment에서, 형성하는 Sample Space는 다음과 같다.   
   > $S$ = {1, 2, 3, 4, 5, 6}   
-  > 이 때, 각 원소가 Sample point가 된다.
+  > 이 때, 각 원소가 Sample point $\zeta$가 된다.   
    
 [^ME]: **Mutually Exclusive(상호 배타적)** : Two sets $A$ and $B$ are mutually exclusive if $A\cap B=0$   
 [^CE]: **Collectively Exhaustive(전체를 이루는)** A collection of sets $A_1,\ldots , A_n$ is collectively exhaustive if and only if $A_1\cup A_2 \cup \ldots \cup A_n$   
