@@ -1,6 +1,6 @@
 ---
-title:  "[Random Process 01] Probability(확률론) "
-excerpt: "Random Process의 기반 확률에 대한 기본 정의"
+title:  "[Random Process 01] Probability Theory(확률론) "
+excerpt: "Random Process의 기반이 될 확률론에 대한 기본 정의"
 
 categories:
   - Random Process
