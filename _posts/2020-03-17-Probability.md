@@ -47,7 +47,7 @@ toc_sticky: true
   > Sample Space $S =${$HH,\ HT,\ TH,\ TT$}   
   
   > (2) 정육면체 주사위를 굴리는 Random Experiment에서, 형성하는 Sample Space는 다음과 같다.   
-  > $S$ = {1, 2, 3, 4, 5, 6}
+  > $S$ = {1, 2, 3, 4, 5, 6}   
   > 이 때, 각 원소가 Sample point가 된다.
    
 [^ME]: **Mutually Exclusive(상호 배타적)** : Two sets $A$ and $B$ are mutually exclusive if $A\cap B=0$   
