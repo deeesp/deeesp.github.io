@@ -86,7 +86,7 @@ toc_sticky: true
 - Sample Space와 Event Space 둘다 각 원소 간 Mutually Exclusive and Collectively Exhaustive한 집합이다.
 - **Granularity** : Sample Space의 원소는 Outcomes만 가지고 있어 *Finest-grain* 한 반면, Event Space는 *Compounded Outcomes* 를 원소로 가지고 있다.  
    
-### 6. Reference
+### Reference
 ---
 본 포스트는 다음 자료를 기반으로 작성되었습니다.
 - GIST 황의석 교수님의 Random Process 강의
