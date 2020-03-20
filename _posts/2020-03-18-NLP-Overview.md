@@ -26,7 +26,6 @@ toc_sticky: true
 
 ## 1. Natural Language Processing
 
----
 
 ### Natural Language란?
 
@@ -43,9 +42,8 @@ e.g. Understanding(가장 기본), Translation, Question Answering, Paraphrasing
 
 ## 2. Academic position
 
----
 
-![NLP%20Overview/Screen_Shot_2020-03-18_at_2.54.03_PM.png](./NLP%20Overview/Screen_Shot_2020-03-18_at_2.54.03_PM.png)
+![NLP%20Overview/Screen_Shot_2020-03-18_at_2.54.03_PM.png](./NLP Overview/Screen_Shot_2020-03-18_at_2.54.03_PM.png)
 
 - NLP는 다양한 분야가 합쳐진 연구분야이다.
 - AI는 Computer Science와 Statistics를 기반으로 한다.
@@ -53,9 +51,7 @@ e.g. Understanding(가장 기본), Translation, Question Answering, Paraphrasing
 
 ## 3. AI methods applied to NLP
 
----
-
-![NLP%20Overview/Screen_Shot_2020-03-19_at_8.06.33_PM.png](./NLP%20Overview/Screen_Shot_2020-03-19_at_8.06.33_PM.png)
+![NLP%20Overview/Screen_Shot_2020-03-19_at_8.06.33_PM.png](./NLP Overview/Screen_Shot_2020-03-19_at_8.06.33_PM.png)
 
 ### Three Major Approaches
 
@@ -77,7 +73,7 @@ e.g. Understanding(가장 기본), Translation, Question Answering, Paraphrasing
 
 ---
 
-![NLP%20Overview/Untitled.png](./NLP%20Overview/Untitled.png)
+![NLP%20Overview/Untitled.png](./NLP Overview/Untitled.png)
 
 ### Steps
 
@@ -250,7 +246,7 @@ correct analysis 를 어떻게 선택하나? 다 맞아 ㅠ
 
   
 
-![NLP%20Overview/Screen_Shot_2020-03-19_at_8.55.48_PM.png](./NLP%20Overview/Screen_Shot_2020-03-19_at_8.55.48_PM.png)
+![NLP%20Overview/Screen_Shot_2020-03-19_at_8.55.48_PM.png](./NLP Overview/Screen_Shot_2020-03-19_at_8.55.48_PM.png)
 
 ### 3. Variation, Expressivity, Strong Context Dependency
 
@@ -286,3 +282,8 @@ LDC: Linguistics Data Consortium → 데이터 만들고 업로드하고, 여기
 - COLING: More related to Linguistics
 - Knowledge Mining
 - How to extract knowledge
+
+
+## Reference
+---
+- 본 포스트는 GIST 김강일 교수님의 Natural Language Processing 강의를 참조하였습니다.
