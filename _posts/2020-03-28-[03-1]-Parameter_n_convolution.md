@@ -23,7 +23,8 @@ In this section we will visualise the inner workings of a neural network.
 -->
 이번 절에서는 신경망이 어떻게 동작하는지 내부를 시각화 해볼 것이다.
 
-<center><img src="{{site.baseurl}}/images/week03/03-1/Network.png" alt="Network" style="zoom:35%;" /><br>
+<br><center><img src="{{site.baseurl}}/images/week03/03-1/Network.png" alt="Network" style="zoom:35%;" /><br>
+In this section we will visualise the inner workings of a neural network.
 그림. 1 신경망 구조</center><br>  
   
   
@@ -32,7 +33,7 @@ In this section we will visualise the inner workings of a neural network.
 그림 1 은 우리가 보고자 하는 신경망의 구조를 묘사한 것이다. 일반적으로 신경망의 구조를 그릴 때, 입력은 아래나 왼쪽에 나타나고, 출력은 위나 오른쪽에 나타난다. 그림 1을 보면, 분홍색 뉴런은 입력을 나타내고, 파란색 뉴런은 출력을 나타낸다. 이 신경망은 4개 층의 초록색 은닉층<sup>Hidden Layers</sup>을 가지고 있다. 즉, 총 6개(4개의 은닉 층과 1개의 입력 층, 1개의 출력 층) 계층을 가지고 있다. 여기서는, 각 은닉층마다 2개의 뉴런을 가지고 있으므로, 각 층별 가중치 행렬 ($W$)의 차원은 2X2가 된다. 이는 입력 평면을 시각화 하고자 하는 평면으로 변환하기 위함이다.  
   
   
-<center><img src="{{site.baseurl}}/images/week03/03-1/Visual1.png" alt="Network" style="zoom:35%;" /><br>
+<br><center><img src="{{site.baseurl}}/images/week03/03-1/Visual1.png" alt="Network" style="zoom:35%;" /><br>
 그림. 2 접힘 평면<sup>Folding space</sup></center><br>  
   
 <!-- The transformation of each layer is like folding our plane in some specific regions as shown in Figure 2. This folding is very abrupt, this is because all the transformations are performed in the 2D layer. In the experiment, we find that if we have only 2 neurons in each hidden layer, the optimization will take longer; the optimization is easier if we have more neurons in the hidden layers. This leaves us with an important question to consider: Why is it harder to train the network with fewer neurons in the hidden layers? You should consider this question yourself and we will return to it after the visualization of $\texttt{ReLU}$.
@@ -44,7 +45,7 @@ In this section we will visualise the inner workings of a neural network.
 | <img src="{{site.baseurl}}/images/week03/03-1/Visual2a.png" alt="Network" style="zoom:45%;" /> | <img src="{{site.baseurl}}/images/week03/03-1/Visual2b.png" alt="Network" style="zoom:45%;" /> |
 |(a)|(b)|
 </center>
-<center>그림. 3 ReLU 연산</center><br>
+<br><center>그림. 3 ReLU 연산</center><br>
    
    
 <!--
@@ -52,7 +53,7 @@ When we step through the network one hidden layer at a time, we see that with ea
 -->
 신경망의 은닉층을 하나씩 살펴보면, 각 계층마다 어떤 아핀 변환<sup>Affine Transformation</sup>을 수행한 다음, 비선형 ReLU 연산을 하여 음수 값을 모두 제거하는 것을 볼 수 있다. 그림 3(a)와 (b)는 ReLU 연산을 시각화한 것이다. ReLU 연산은 비선형 변환하는 데에 쓰인다. ReLU 연산 후 아핀 변환을 수행하는 과정을 여러번 거친 후, 그림 4에서 볼 수 있듯이 데이터를 선형적으로 분리할 수 있다.  
   
-<center><img src="{{site.baseurl}}/images/week03/03-1/Visual3.png" alt="Network" style="zoom:30%;" /><br>
+<br><center><img src="{{site.baseurl}}/images/week03/03-1/Visual3.png" alt="Network" style="zoom:30%;" /><br>
 그림. 4 출력 시각화</center><br>  
   
   
@@ -79,5 +80,46 @@ These formulas are applied in a matrix form. Note that the dimensions of the ter
 이 공식들은 행렬 형태로 적용된다. Terms의 차원은 일정해야 한다는 것을 꼭 명심해야 한다. $u$,$w$,$\frac{\partial H}{\partial u}^\top$,$\frac{\partial C}{\partial w}^\top$의 차원은 각각 $[N_u \times 1]$,$[N_w \times 1]$,$[N_u \times N_w]$,$[N_w \times 1]$이다. 따라서 역전파 공식의 차원은 consistent 하다.  
   
   
-<center><img src="{{site.baseurl}}/images/week03/03-1/PT.png" alt="Network" style="zoom:35%;" /><br>
+<br><center><img src="{{site.baseurl}}/images/week03/03-1/PT.png" alt="Network" style="zoom:35%;" /><br>
 Fig. 5 General Form of Parameter Transformations</center><br>
+
+
+### A simple parameter transformation: weight sharing
+
+A Weight Sharing Transformation means $H(u)$ just replicates one component of $u$ into multiple components of $w$. $H(u)$ is like a **Y** branch to copy $u_1$ to $w_1$, $w_2$. This can be expressed as,
+
+$$
+w_1 = w_2 = u_1, w_3 = w_4 = u_2
+$$
+
+We force shared parameters to be equal, so the gradient w.r.t. to shared parameters will be summed in the backprop. For example the gradient of the cost function $C(y, \bar y)$ with respect to $u_1$ will be the sum of the gradient of the cost function $C(y, \bar y)$ with respect to $w_1$ and the gradient of the cost function $C(y, \bar y)$ with respect to $w_2$.
+
+### Hypernetwork
+
+A hypernetwork is a network where the weights of one network is the output of another network. Figure 6 shows the computation graph of a "hypernetwork". Here the function $H$ is a network with parameter vector $u$ and input $x$. As a result, the weights of $G(x,w)$ are dynamically configured by the network $H(x,u)$. Although this is an old idea, it remains very powerful.
+
+<br><center><img src="{{site.baseurl}}/images/week03/03-1/HyperNetwork.png" alt="Network" style="zoom:35%;" /><br>
+Fig. 6 "Hypernetwork"</center><br>
+
+### Motif detection in sequential data
+
+Weight sharing transformation can be applied to motif detection. Motif detection means to find some motifs in sequential data like keywords in speech or text. One way to achieve this, as shown in Figure 7, is to use a sliding window on data, which moves the weight-sharing function to detect a particular motif (i.e. a particular sound in speech signal), and the outputs (i.e. a score) goes into a maximum function.
+
+<br><center><img src="{{site.baseurl}}/images/week03/03-1/Motif.png" alt="Network" style="zoom:30%;" /><br>
+Fig. 7 Motif Detection for Sequential Data</center><br>
+
+In this example we have 5 of those functions. As a result of this solution, we sum up five gradients and backpropagate the error to update the parameter $w$. When implementing this in PyTorch, we want to prevent the implicit accumulation of these gradients, so we need to use `zero_grad()` to initialize the gradient.
+
+### Motif detection in images
+
+The other useful application is motif detection in images. We usually swipe our "templates" over images to detect the shapes independent of position and distortion of the shapes. A simple example is to distinguish between "C" and "D", as Figure 8 shows. The difference between "C" and "D" is that "C" has two endpoints and "D" has two corners. So we can design "endpoint templates" and "corner templates". If the shape is similar to the "templates", it will have thresholded outputs. Then we can distinguish letters from these outputs by summing them up. In Figure 8, the network detects two endpoints and zero corners, so it activates "C".
+
+<br><center><img src="{{site.baseurl}}/images/week03/03-1/MotifImage.png" alt="Network" style="zoom:35%;" /><br>
+Fig. 8 Motif Detection for Images</center><br>
+
+It is also important that our "template matching" should be shift-invariant - when we shift the input, the output (i.e. the letter detected) shouldn't change. This can be solved with weight sharing transformation. As Figure 9 shows, when we change the location of "D", we can still detect the corner motifs even though they are shifted. When we sum up the motifs, it will activate the "D" detection.
+
+<br><center><img src="{{site.baseurl}}/images/week03/03-1/ShiftInvariance.png" alt="Network" style="zoom:35%;" /><br>
+Fig. 9 Shift Invariance</center><br>
+
+This hand-crafted method of using local detectors and summation to for digit-recognition was used for many years. But it presents us with the following problem: How can we design these "templates" automatically? Can we use neural networks to learn these "templates"? Next, We will introduce the concept of **convolutions** , that is, the operation we use to match images with "templates".
