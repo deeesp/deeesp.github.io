@@ -81,7 +81,7 @@ These formulas are applied in a matrix form. Note that the dimensions of the ter
 그림. 5 일반적인 매개변수 변환 형태</center><br>
 
 
-### 간단한 매개변수 변환법: 가중치 공유<sup>weight sharing</sup>
+### 간단한 매개변수 변환법: 가중치 공유
 
 <!--
 A Weight Sharing Transformation means $H(u)$ just replicates one component of $u$ into multiple components of $w$. $H(u)$ is like a **Y** branch to copy $u_1$ to $w_1$, $w_2$. This can be expressed as,
