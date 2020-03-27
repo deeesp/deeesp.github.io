@@ -48,7 +48,7 @@ In this section we will visualise the inner workings of a neural network.
 | <img src="{{site.baseurl}}/images/week03/03-1/Visual2a.png" alt="Network" style="zoom:45%;" /> | <img src="{{site.baseurl}}/images/week03/03-1/Visual2b.png" alt="Network" style="zoom:45%;" /> |
 |(a)|(b)|</center>
 
-<center그림. 3 ReLU 연산 시각화</center>
+<center>그림. 3 ReLU 연산 시각화</center>
    
    
 <!--
