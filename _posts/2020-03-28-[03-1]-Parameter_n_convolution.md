@@ -39,23 +39,9 @@ In this section we will visualise the inner workings of a neural network.
 -->
 각 층의 변환은 그림 2에서 보여지는 것처럼 특정 지역에서 평면을 접는 것과 같다. 2차원의 계층에서 모든 변환이 이루어지기 때문에, 매우 갑작스럽게 접히게 된다. 우리는 실험을 통해 만약 2개의 뉴런만 각 은닉층에 있다면 최적화가 더 오래 걸리고, 은닉층에 더 많은 뉴런이 있을 수록 최적화가 더 쉬워진다는 것을 발견하였다. 여기서 우리는 "왜 더 적은 뉴런으로 신경망을 학습시키는 것이 더 어려울까?"라는 의문점을 남기게 될 것이다. 이러한 질문에 우리는 스스로 생각해 보아야 하며, $\texttt{ReLU}$를 시각화 해본 뒤에 다시 돌아와 볼 것이다.  
   
-  
-<center>
-    <table>
-        <tr>
-            <td><img src="{{site.baseurl}}/images/week03/03-1/Visual2a.png" alt="Network" style="zoom:45%;" /></td>
-            <td><img src="{{site.baseurl}}/images/week03/03-1/Visual2b.png" alt="Network" style="zoom:45%;" /></td>
-        </tr>
-      <tr>
-        <td>(a)</td>
-        <td>(b)</td>
-      </tr>
-    </table>
-</center>
-<!--
+
 | <img src="{{site.baseurl}}/images/week03/03-1/Visual2a.png" alt="Network" style="zoom:45%;" /> | <img src="{{site.baseurl}}/images/week03/03-1/Visual2b.png" alt="Network" style="zoom:45%;" /> |
 |(a)|(b)|
--->
 <center>그림. 3 ReLU 연산</center><br>
    
    
