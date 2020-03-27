@@ -24,7 +24,7 @@ In this section we will visualise the inner workings of a neural network.
 이번 절에서는 신경망이 어떻게 동작하는지 내부를 시각화 해볼 것이다.
 
 <center><img src="{{site.baseurl}}/images/week03/03-1/Network.png" alt="Network" style="zoom:35%;" /><br>
-그림. 1 신경망 구조</center>  
+그림. 1 신경망 구조</center><br>  
   
   
 <!--Figure 1 depicts the structure of the neural network we would like to visualise. Typically, when we draw the structure of a neural network, the input appears on the bottom or on the left, and the output appears on the top side or on the right. In Figure 1, the pink neurons represent the inputs, and the blue neurons represent the outputs. In this network, we have 4 hidden layers (in green), which means we have 6 layers in total (4 hidden layers + 1 input layer + 1 output layer). In this case, we have 2 neurons per hidden layer, and hence the dimension of the weight matrix ($W$) for each layer is 2-by-2. This is because we want to transform our input plane into another plane that we can visualize.
@@ -33,7 +33,7 @@ In this section we will visualise the inner workings of a neural network.
   
   
 <center><img src="{{site.baseurl}}/images/week03/03-1/Visual1.png" alt="Network" style="zoom:35%;" /><br>
-그림. 2 접힘 평면<sup>Folding space</sup></center>  
+그림. 2 접힘 평면<sup>Folding space</sup></center><br>  
   
 <!-- The transformation of each layer is like folding our plane in some specific regions as shown in Figure 2. This folding is very abrupt, this is because all the transformations are performed in the 2D layer. In the experiment, we find that if we have only 2 neurons in each hidden layer, the optimization will take longer; the optimization is easier if we have more neurons in the hidden layers. This leaves us with an important question to consider: Why is it harder to train the network with fewer neurons in the hidden layers? You should consider this question yourself and we will return to it after the visualization of $\texttt{ReLU}$.
 -->
@@ -44,7 +44,7 @@ In this section we will visualise the inner workings of a neural network.
 | <img src="{{site.baseurl}}/images/week03/03-1/Visual2a.png" alt="Network" style="zoom:45%;" /> | <img src="{{site.baseurl}}/images/week03/03-1/Visual2b.png" alt="Network" style="zoom:45%;" /> |
 |(a)|(b)|
 </center>
-<center>그림. 3 ReLU 연산 시각화</center><br>
+<center>그림. 3 ReLU 연산</center><br>
    
    
 <!--
@@ -53,7 +53,7 @@ When we step through the network one hidden layer at a time, we see that with ea
 신경망의 은닉층을 하나씩 살펴보면, 각 계층마다 어떤 아핀 변환<sup>Affine Transformation</sup>을 수행한 다음, 비선형 ReLU 연산을 하여 음수 값을 모두 제거하는 것을 볼 수 있다. 그림 3(a)와 (b)는 ReLU 연산을 시각화한 것이다. ReLU 연산은 비선형 변환하는 데에 쓰인다. ReLU 연산 후 아핀 변환을 수행하는 과정을 여러번 거친 후, 그림 4에서 볼 수 있듯이 데이터를 선형적으로 분리할 수 있다.  
   
 <center><img src="{{site.baseurl}}/images/week03/03-1/Visual3.png" alt="Network" style="zoom:30%;" /><br>
-그림. 4 출력 시각화</center>  
+그림. 4 출력 시각화</center><br>  
   
   
 <!--
