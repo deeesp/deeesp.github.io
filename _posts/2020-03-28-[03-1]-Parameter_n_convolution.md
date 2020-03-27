@@ -80,19 +80,24 @@ These formulas are applied in a matrix form. Note that the dimensions of the ter
 이 공식들은 행렬 형태로 적용된다. Terms의 차원은 일정해야 한다는 것을 꼭 명심해야 한다. $u$,$w$,$\frac{\partial H}{\partial u}^\top$,$\frac{\partial C}{\partial w}^\top$의 차원은 각각 $[N_u \times 1]$,$[N_w \times 1]$,$[N_u \times N_w]$,$[N_w \times 1]$이다. 따라서 역전파 공식의 차원은 consistent 하다.  
   
   
-<br><center><img src="{{site.baseurl}}/images/week03/03-1/PT.png" alt="Network" style="zoom:35%;" /><br>
-Fig. 5 General Form of Parameter Transformations</center><br>
+<center><img src="{{site.baseurl}}/images/week03/03-1/PT.png" alt="Network" style="zoom:35%;" /><br>
+그림. 5 일반적인 매개변수 변환 형태</center><br>
 
 
-### A simple parameter transformation: weight sharing
+### 간단한 매개변수 변환법: 가중치 공유<sup>weight sharing</sup>
 
+<!--
 A Weight Sharing Transformation means $H(u)$ just replicates one component of $u$ into multiple components of $w$. $H(u)$ is like a **Y** branch to copy $u_1$ to $w_1$, $w_2$. This can be expressed as,
+-->
+가중치 공유 변환법은 $H(u)$가 $u$의 한 구성 요소를 여러 개의 $w$ 구성 요소로 복제하는 것을 의미한다. $H(u)$는 $u_1$를 $w_1$, $w_2$에 복사하는 **Y** branch와 같다. 이는 다음과 같이 표현 될 수 있다.
 
 $$
 w_1 = w_2 = u_1, w_3 = w_4 = u_2
 $$
 
 We force shared parameters to be equal, so the gradient w.r.t. to shared parameters will be summed in the backprop. For example the gradient of the cost function $C(y, \bar y)$ with respect to $u_1$ will be the sum of the gradient of the cost function $C(y, \bar y)$ with respect to $w_1$ and the gradient of the cost function $C(y, \bar y)$ with respect to $w_2$.
+
+
 
 ### Hypernetwork
 
