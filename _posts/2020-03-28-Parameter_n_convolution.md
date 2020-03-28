@@ -260,7 +260,7 @@ So why should Deep Learning be rooted in the idea that our world is comprehensib
 
 <center><img src="{{site.baseurl}}/images/week03/03-1/Simon_Thorpe.png" alt="Simon_Thorpe" style="zoom:55%;" /></center>
 
-<div align="center">Figure 11. Simon Thorpe's model of visual information flow in the brain <div>
+<div align="center">Figure 11. Simon Thorpe's model of visual information flow in the brain </div>
 
 Signals pass from the retina to the LGN (helps with contrast enhancement, gate control, etc.), then to the V1 primary visual cortex, V2, V4, then to the inferotemporal cortex (PIT), which is the part of the brain where categories are defined. Observations from open-brain surgery showed that if you show a human a film, neurons in the PIT will fire only when they detect certain images -- such as Jennifer Aniston or a person's grandmother -- and nothing else. The neural firings are invariant to things such as position, size, illumination, your grandmother's orientation, what she's wearing, etc.
 
