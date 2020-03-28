@@ -228,19 +228,28 @@ Example: Suppose the input $x$ is one dimensional and has size of 100 and $w$ ha
 1. **스트라이드**<sup>Striding</sup>: $x$에서 윈도우를 한 번만 이동시키는 것 대신에, 한 번에 두 세번씩 더 큰 스텝을 진행할 수 있다.
 예시: 입력 $x$가 1차원이고 크기가 100이며, $w$의 크기가 5라고 가정하자. 위 표는 스텝이 1 또는 2인 출력 크기를 보여주고 있다.
 
-2. **패딩**<sup></sup>: 보통 깊은 신경망<sup>Deep Neural Networks</sup> 아키텍처를 설계할 때, 입력의 양 끝단에 0으로 채워주는(일반적으로 0, 0이 아닐 수도 있음) 패딩을 해줌으로써 합성곱의 출력을 입력과 같은 크기로 만들어준다.
+2. **패딩**<sup></sup>: 보통 심층 신경망<sup>Deep Neural Networks</sup> 아키텍처를 설계할 때, 입력의 양 끝단에 0으로 채워주는(일반적으로 0, 0이 아닐 수도 있음) 패딩을 해줌으로써 합성곱의 출력을 입력과 같은 크기로 만들어준다.
 
 > 주로 패딩은 우리가 편하기 위해서 사용하는 것이며, 때로는 성능에 영향을 주고, 이상한 Border Effect를 가져올 수 있다. 즉, ReLU 비선형성을 사용할 때에는 제로 패딩<sup>Zero padding</sup>을 사용하는 것은 별로 좋지 않다.
 ** 해석 이상..**
 
 ## Deep Convolution Neural Networks (DCNNs)
 
+<!--
 As previously described, deep neural networks are typically organized as repeated alternation between linear operators and point-wise nonlinearity layers. In convolutional neural networks, the linear operator will be the convolution operator described above. There is also an optional third type of layer called the pooling layer.
 
 The reason for stacking multiple such layers is that we want to build a hierarchical representation of the data. CNNs do not have to be limited to processing images, they have also been successfully applied to speech and language. Technically they can be applied to any type of data that comes in the form of arrays, although we also these arrays to satisfy certain properties.
 
 Why would we want to capture the hierarchical representation of the world? Because the world we live in is compositional. This point is alluded to in previous sections. Such hierarchical nature can be observed from the fact that local pixels assemble to form simple motifs such as oriented edges. These edges in turn are assembled to form local features such as corners, T-junctions, etc. These edges are assembled to form motifs that are even more abstract. We can keep building on these hierarchical representation to eventually form the objects we observe in the real world.
+-->
 
+앞서 기술한 바와 같이, 심층 신경망은 일반적으로 선형 연산자와 점의 비선형성 계층 사이의 반복적인 교대로 구성된다. 경골신경망에서 선형 연산자는 위에서 설명한 경골 연산자가 될 것이다. 풀링 레이어라고 하는 선택적 제3의 레이어도 있다.  
+  
+그러한 계층을 여러 개 쌓는 이유는 데이터의 계층적 표현을 구축하고자 하기 때문이다. CNN은 영상 처리에만 국한할 필요는 없으며, 언어와 언어에도 성공적으로 적용되었다. 기술적으로 그것들은 어레이의 형태로 제공되는 어떤 유형의 데이터에도 적용될 수 있지만, 우리는 또한 특정 속성을 만족시키기 위해 이러한 어레이를 사용할 수 있다.  
+  
+왜 우리가 세계의 위계적 표현을 잡으려 하는가? 왜냐하면 우리가 살고 있는 세계는 구성적이기 때문이다. 이 점은 이전 절에서 언급하고 있다. 이러한 계층적 성격은 로컬 픽셀이 모여 지향적인 가장자리 같은 단순한 모티브를 형성한다는 사실에서 관찰될 수 있다. 이들 가장자리는 차례로 조립되어 코너, T-점 등과 같은 국부적 특징을 형성한다. 이 가장자리들은 훨씬 추상적인 모티브를 형성하기 위해 조립되었다. 우리는 이러한 계층적 표현을 계속하여 현실 세계에서 우리가 관찰하는 대상을 형성할 수 있다.  
+  
+  
 <center><img src="{{site.baseurl}}/images/week03/03-1/cnn_features.png" alt="CNN Features" style="zoom:35%;" /><br>
 Figure 10. Feature visualization of convolutional net trained on ImageNet from [Zeiler & Fergus 2013]</center>
 
