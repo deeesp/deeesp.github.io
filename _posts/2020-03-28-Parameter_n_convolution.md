@@ -213,7 +213,7 @@ This definition can easily be extended beyond two dimensions to three or four di
 위 정의는 2차원을 넘어 3차원 또는 4차원으로 쉽게 확장할 수 있다. 여기서 $w$는 *합성곱 커널*<sup>Convolution Kernel</sup>이다.
 
 
-### Regular twists that can be made with the convolutional operator in DCNNs
+### DCNN에서 합성곱 연산과 함께 쓰는 Regular twists
 ---
 
 | 스트라이드 | 1 | 2 |
@@ -243,12 +243,15 @@ The reason for stacking multiple such layers is that we want to build a hierarch
 Why would we want to capture the hierarchical representation of the world? Because the world we live in is compositional. This point is alluded to in previous sections. Such hierarchical nature can be observed from the fact that local pixels assemble to form simple motifs such as oriented edges. These edges in turn are assembled to form local features such as corners, T-junctions, etc. These edges are assembled to form motifs that are even more abstract. We can keep building on these hierarchical representation to eventually form the objects we observe in the real world.
 -->
 
-앞서 기술한 바와 같이, 심층 신경망은 일반적으로 선형 연산자와 점의 비선형성 계층 사이의 반복적인 교대로 구성된다. 경골신경망에서 선형 연산자는 위에서 설명한 경골 연산자가 될 것이다. 풀링 레이어라고 하는 선택적 제3의 레이어도 있다.  
+~파파고 발번역 시작~  
   
-그러한 계층을 여러 개 쌓는 이유는 데이터의 계층적 표현을 구축하고자 하기 때문이다. CNN은 영상 처리에만 국한할 필요는 없으며, 언어와 언어에도 성공적으로 적용되었다. 기술적으로 그것들은 어레이의 형태로 제공되는 어떤 유형의 데이터에도 적용될 수 있지만, 우리는 또한 특정 속성을 만족시키기 위해 이러한 어레이를 사용할 수 있다.  
+앞서 기술한 바와 같이, 심층 신경망은 일반적으로 선형 연산자와 점의 비선형성 계층 사이의 반복적인 교대로 구성된다. 합성곱 신경망에서 선형 연산자는 위에서 설명한 합성곱 연산자가 될 것이다. 풀링<sup>Pooling</sup> 계층라고 불리는 세 번째 옵션도 있다.  
+  
+그러한 계층을 여러 겹 쌓는 이유는 데이터의 계층적 표현을 구축하고자 하기 때문이다. CNN은 영상 처리에만 국한할 필요는 없으며, 언어와 언어에도 성공적으로 적용되었다. 기술적으로 그것들은 어레이의 형태로 제공되는 어떤 유형의 데이터에도 적용될 수 있지만, 우리는 또한 특정 속성을 만족시키기 위해 이러한 어레이를 사용할 수 있다.  
   
 왜 우리가 세계의 위계적 표현을 잡으려 하는가? 왜냐하면 우리가 살고 있는 세계는 구성적이기 때문이다. 이 점은 이전 절에서 언급하고 있다. 이러한 계층적 성격은 로컬 픽셀이 모여 지향적인 가장자리 같은 단순한 모티브를 형성한다는 사실에서 관찰될 수 있다. 이들 가장자리는 차례로 조립되어 코너, T-점 등과 같은 국부적 특징을 형성한다. 이 가장자리들은 훨씬 추상적인 모티브를 형성하기 위해 조립되었다. 우리는 이러한 계층적 표현을 계속하여 현실 세계에서 우리가 관찰하는 대상을 형성할 수 있다.  
   
+~파파고 발번역 끝~  
   
 <center><img src="{{site.baseurl}}/images/week03/03-1/cnn_features.png" alt="CNN Features" style="zoom:35%;" /><br>
 Figure 10. Feature visualization of convolutional net trained on ImageNet from [Zeiler & Fergus 2013]</center>
