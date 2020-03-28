@@ -147,8 +147,12 @@ It is also important that our "template matching" should be shift-invariant - wh
 This can be solved with weight sharing transformation.
 As Figure 9 shows, when we change the location of "D", we can still detect the corner motifs even though they are shifted. When we sum up the motifs, it will activate the "D" detection.
 -->
+"템플릿 일치"는 입력의 위치가 바뀌었을 때 출력(i.e. 문자 검출)은 바뀌지 않는 이동 불변한<sup>Shift-invariant</sup> 특성이 있는데, 이 또한 중요하다. 가중치 공유 변환으로 이를 해결할 수 있다. 그림 9에서 보듯이, "D"의 위치가 바뀌어도 여전히 모서리 모티프를 검출할 수 있다. 이러한 모티프들을 종합하면 "D" 검출이 활성화 된다.
 
 <br><center><img src="{{site.baseurl}}/images/week03/03-1/ShiftInvariance.png" alt="Network" style="zoom:35%;" /><br>
 Fig. 9 Shift Invariance</center><br>
 
+<!--
 This hand-crafted method of using local detectors and summation to for digit-recognition was used for many years. But it presents us with the following problem: How can we design these "templates" automatically? Can we use neural networks to learn these "templates"? Next, We will introduce the concept of **convolutions** , that is, the operation we use to match images with "templates".
+-->
+이러한 국소 검출기<sup>Local detector</sup>를 사용하여 합산하는 고지식한 방법은 수 년간 숫자를 인식하는 데에 많이 사용되어 왔다. 하지만 이러한 방법을 통해 "어떻게 이 **템플릿**을 자동적으로 설계할 수 있을까?", "신경망을 **템플릿**을 학습하는 용도로 사용할 수 있을까?" 하는 생각하게 되었다. 다음으로, 이미지를 **템플릿**과 일치시키기 위해 사용하는 연산인 **합성곱**<sup>Convolutions</sup>의 개념을 소개할 것이다.
