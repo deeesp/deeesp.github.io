@@ -1,5 +1,5 @@
 ---
-title:  "Visualization of neural networks parameter transformation and fundamental concepts of convolution"
+title:  "[03-1] Visualization of neural networks parameter transformation and fundamental concepts of convolution"
 excerpt: "CNN 개념잡기"
 categories:
   - Deep Learning
