@@ -15,7 +15,7 @@ toc: true
 toc_sticky: true
 ---
 
-# Yann LeCun 교수님의 NYU Deep Learning 강의
+# Yann LeCun 교수님의 NYU Deep Learning 강의 03-1
 [DS-GA 1008 · SPRING 2020] (https://atcold.github.io/pytorch-Deep-Learning/)
 
 ## [신경망 (Visualization of neural networks)](https://youtu.be/FW5gFiJb-ig)
@@ -228,7 +228,10 @@ Example: Suppose the input $x$ is one dimensional and has size of 100 and $w$ ha
 <!--
 2. **Padding**: Very often in designing Deep Neural Networks architectures, we want the output of convolution to be of the same size as the input. This can be achieved by padding the input ends with a number of (typically) zero entries, usually on both sides. Padding is done mostly for convenience. It can sometimes impact performance and result in strange border effects, that said, when using a ReLU non-linearity, zero padding is not unreasonable.
 -->
-2. **패딩**<sup></sup>: 깊은 신경망<sup>Deep Neural Networks</sup> 아키텍처를 설계할 때,
+2. **패딩**<sup></sup>: 보통 깊은 신경망<sup>Deep Neural Networks</sup> 아키텍처를 설계할 때, 입력의 양 끝단에 0으로 채워주는(일반적으로 0, 0이 아닐 수도 있음) 패딩을 해줌으로써 합성곱의 출력을 입력과 같은 크기로 만들어준다.
+
+> 주로 패딩은 우리가 편하기 위해서 사용하는 것이며, 때로는 성능에 영향을 주고, 이상한 Border Effect를 가져올 수 있다. 즉, ReLU 비선형성을 사용할 때에는 제로 패딩<sup>Zero padding</sup>을 사용하는 것은 별로 좋지 않다.
+** 해석 이상..**
 
 ## Deep Convolution Neural Networks (DCNNs)
 
@@ -251,3 +254,54 @@ The compositional nature of the world might be the answer to Einstein's rhetoric
 The fact that humans understand the world thanks to this compositional nature still seems like a conspiracy to Yann. It is, however, argued that without compositionality, it will take even more magic for humans to comprehend the world they live in. Quoting the great mathematician Stuart Geman:
 
 > The world is compositional or God exists.
+
+
+## [Inspirations from Biology](https://www.youtube.com/watch?v=FW5gFiJb-ig&t=2254s)
+
+So why should Deep Learning be rooted in the idea that our world is comprehensible and has a compositional nature? Research conducted by Simon Thorpe helped motivate this further. He showed that the way we recognize everyday objects is extremely fast. His experiments involved flashing a set of images every 100ms, and then asking users to identify these images, which they were able to do successfully. This demonstrated that it takes about 100ms for humans to detect objects. Furthermore, consider the diagram below, illustrating parts of the brain annotated with the time it takes for neurons to propagate from one area to the next:
+
+<center><img src="{{site.baseurl}}/images/week03/03-1/Simon_Thorpe.png" alt="Simon_Thorpe" style="zoom:55%;" /></center>
+
+<div align="center">Figure 11. Simon Thorpe's model of visual information flow in the brain <div>
+
+Signals pass from the retina to the LGN (helps with contrast enhancement, gate control, etc.), then to the V1 primary visual cortex, V2, V4, then to the inferotemporal cortex (PIT), which is the part of the brain where categories are defined. Observations from open-brain surgery showed that if you show a human a film, neurons in the PIT will fire only when they detect certain images -- such as Jennifer Aniston or a person's grandmother -- and nothing else. The neural firings are invariant to things such as position, size, illumination, your grandmother's orientation, what she's wearing, etc.
+
+Furthermore, the fast reaction times with which humans were able to categorize these items -- barely enough time for a few spikes to get through -- demonstrates that it's possible to do this without additional time spent on complex recurrent computations. Rather, this is a single feed-forward process.
+
+These insights suggested that we could develop a neural network architecture which is completely feed-forward, yet still able to solve the problem of recognition, in a way that is invariant to irrelevant transformations of the input.
+
+One further insight from the human brain comes from Gallant & Van Essen, whose model of the human brain illustrates two distinct pathways:
+
+<center><img src="{{site.baseurl}}/images/week03/03-1/Gallant_and_Van_Essen.png" alt="Gallant_and_Van_Essen" style="zoom:55%;" /></center>
+
+<div align="center">Figure 12. Gallen & Van Essen's model of dorsal & ventral pathways in the brain <div>
+
+The right side shows the ventral pathway, which tells you what you're looking at, while the left side shows the dorsal pathway, which identifies locations, geometry, and motion. They seem fairly separate in the human (and primate) visual cortex (with a few interactions between them of course).
+
+
+### Hubel & Weisel's contributions (1962)
+
+<center><img src="{{site.baseurl}}/images/week03/03-1/Hubel_and_Weisel.png" alt="Hubel_and_Weisel" style="zoom:55%;" /></center>
+
+<div align="center">Figure 13. Hubel & Weisel's experiments with visual stimuli in cat brains <div>
+
+Hubel and Weisel experiments used electrodes to measure neural firings in cat brains in response to visual stimuli. They discovered that neurons in the V1 region are only sensitive to certain areas of a visual field (called "receptive fields"), and detect oriented edges in that area. For example, they demonstrated that if you showed the cat a vertical bar and start rotating it, at a particular angle the neuron will fire. Similarly, as the bar moves away from that angle, the activation of the neuron diminishes. These activation-selective neurons Hubel & Weisel named "simple cells", for their ability to detect local features.
+
+They also discovered that if you move the bar out of the receptive field, that particular neuron doesn't fire any more, but another neuron will. There are local feature detectors corresponding to all areas of the visual field, hence the idea that the human brain processes visual information as a collection of "convolutions".
+
+Another type of neuron, which they named "complex cells", aggregate the output of multiple simple cells within a certain area. We can think of these as computing an aggregate of the activations using a function such as maximum, sum, sum of squares, or any other function not depending on the order. These complex cells detect edges and orientations in a region, regardless of where those stimuli lie specifically within the region. In other words, they are shift-invariant with respect to small variations in positions of the input.
+
+
+### Fukushima's contributions (1982)
+
+<center><img src="{{site.baseurl}}/images/week03/03-1/Fukushima.png" alt="Fukushima" style="zoom:55%;" /></center>
+
+<div align="center">Figure 14. Fukushima's CNN model <div>
+
+Fukushima was the first to implement the idea of multiple layers of simple cells and complex cells with computer models, using a dataset of handwritten digits. Some of these feature detectors were hand-crafted or learned, though the learning used unsupervised clustering algorithms, trained separately for each layer, as backpropagation was not yet in use.
+
+Yann LeCun came in a few years later (1989, 1998) and implemented the same architecture, but this time trained them in a supervised setting using backpropagation. This is widely regarded as the genesis of modern convolutional neural networks. (Note: Riesenhuber at MIT in 1999 also re-discovered this architecture, though he didn't use backpropagation.)
+
+
+
+
