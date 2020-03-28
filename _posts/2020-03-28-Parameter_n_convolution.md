@@ -133,13 +133,20 @@ In this example we have 5 of those functions. As a result of this solution, we s
 
 ### Motif detection in images
 ---
-
+<!--
 The other useful application is motif detection in images. We usually swipe our "templates" over images to detect the shapes independent of position and distortion of the shapes. A simple example is to distinguish between "C" and "D", as Figure 8 shows. The difference between "C" and "D" is that "C" has two endpoints and "D" has two corners. So we can design "endpoint templates" and "corner templates". If the shape is similar to the "templates", it will have thresholded outputs. Then we can distinguish letters from these outputs by summing them up. In Figure 8, the network detects two endpoints and zero corners, so it activates "C".
+-->
+모티프 검출은 이미지에서도 유용하게 쓰인다. 일반적으로 이미지 위에 "템플릿"을 움직여가며 형상의 위치나 왜곡과 무관하게 검출한다. 간단히 예를 들자면, 그림 8과 같이 "C"와 "D"를 구별하는 것이다. "C"에는 두 개의 끝점<sup>End point</sup>이 있고 "D"에 두 개의 모서리<sup>Corner</sup>가 있다는 것이 "C"와 "D"의 차이점이다. 따라서 "끝점 템플릿"과 "모서리 템플릿"을 설계한다. 형상이 이 "템플릿"과 유사하면 출력이 임계 값<sup>Threshold</sup>을 가지고, 이들을 합산하여 출력의 글자를 구별 할 수 있다. 그림 8에서 네트워크는 두 개의 끝점과 모서리를 감지하여 "C"를 활성화한다.
+
 
 <br><center><img src="{{site.baseurl}}/images/week03/03-1/MotifImage.png" alt="Network" style="zoom:35%;" /><br>
 Fig. 8 이미지에서의 모티프 검출</center><br>
 
-It is also important that our "template matching" should be shift-invariant - when we shift the input, the output (i.e. the letter detected) shouldn't change. This can be solved with weight sharing transformation. As Figure 9 shows, when we change the location of "D", we can still detect the corner motifs even though they are shifted. When we sum up the motifs, it will activate the "D" detection.
+<!--
+It is also important that our "template matching" should be shift-invariant - when we shift the input, the output (i.e. the letter detected) shouldn't change. 
+This can be solved with weight sharing transformation.
+As Figure 9 shows, when we change the location of "D", we can still detect the corner motifs even though they are shifted. When we sum up the motifs, it will activate the "D" detection.
+-->
 
 <br><center><img src="{{site.baseurl}}/images/week03/03-1/ShiftInvariance.png" alt="Network" style="zoom:35%;" /><br>
 Fig. 9 Shift Invariance</center><br>
