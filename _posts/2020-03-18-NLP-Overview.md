@@ -32,7 +32,8 @@ toc_sticky: true
 > 컴퓨터는 '계산기'에 불과하다. 컴퓨터는 사람의 말, 즉 자연어<sup>Natural Language</sup>를 바로 이해할 수 없다.
 > 자연어를 100% 이해하는 인공지능이 등장하더라도 그 이해<sup>Understanding</sup>의 본질은 연산이나 처리이다.
 > 컴퓨터가 자연어를 계산 가능한형식으로 바꾸어 주어야 한다.
-<right>이기창님의 [<한국어 임베딩>](https://ratsgo.github.io/natural%20language%20processing/2019/09/12/embedding/) 중</right>
+
+<div style="text-align: right"> 이기창님의 [<한국어 임베딩>](https://ratsgo.github.io/natural%20language%20processing/2019/09/12/embedding/) 중 </div>
 
 ### Natural Language Processing(NLP) 이란?
 
