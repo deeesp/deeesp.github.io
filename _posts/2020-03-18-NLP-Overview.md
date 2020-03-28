@@ -46,8 +46,7 @@ e.g. Understanding(가장 기본), Translation, Question Answering, Paraphrasing
 
 ## 2. Academic position
 
-
-![NLP%20Overview/Screen_Shot_2020-03-18_at_2.54.03_PM.png](/images/NLP_Overview/Screen_Shot_2020-03-18_at_2.54.03_PM.png)
+![NLP%20Overview/Screen_Shot_2020-03-18_at_2.54.03_PM.png](/images/NLP Overview/Screen_Shot_2020-03-18_at_2.54.03_PM.png)
 
 - NLP는 다양한 분야가 합쳐진 연구분야이다.
 - AI는 Computer Science와 Statistics를 기반으로 한다.
@@ -55,7 +54,7 @@ e.g. Understanding(가장 기본), Translation, Question Answering, Paraphrasing
 
 ## 3. AI methods applied to NLP
 
-![NLP%20Overview/Screen_Shot_2020-03-19_at_8.06.33_PM.png](/images/NLP_Overview/Screen_Shot_2020-03-19_at_8.06.33_PM.png)
+![NLP%20Overview/Screen_Shot_2020-03-19_at_8.06.33_PM.png](/images/NLP Overview/Screen_Shot_2020-03-19_at_8.06.33_PM.png)
 
 ### Three Major Approaches
 
@@ -65,8 +64,6 @@ e.g. Understanding(가장 기본), Translation, Question Answering, Paraphrasing
 
 ### Genetic programming
 
----
-
 - Search Algorithm, Optimization Algorithm에 유용하다.
 - High computational cost 를 요구하므로, 금수저라면 시도해도 좋다.
 - Google도 이 방법으로 NN을 찾는데 접근하였다.
@@ -74,8 +71,6 @@ e.g. Understanding(가장 기본), Translation, Question Answering, Paraphrasing
 - 대부분 집단에서는 impractical하다고 생각한다.
 
 ## 4. A summary of NLP
-
----
 
 ![NLP%20Overview/Untitled.png](/images/NLP Overview/Untitled.png)
 
@@ -115,14 +110,11 @@ For understanding a single sentence
 
 ### Challenges
 
----
 
 - 이 중 1~3가지를 선정하여 performance를 향상시키는 것이 연구의 목표이다.
 - Pragmatics, Phonology, Lexicon, Semantics, Morphology, Syntactic, Discourse Analysis
 
 ## 5. Brief History
-
----
 
 - 전체 다 자세히 볼 필요는 없지만, NLP task에 예부터 어마어마한 노력을 했는지 볼 수 있다.
 - 이를 통해 Linguistics 종류와 features를 파악하고 더 나은 모델을 만드는데 집중하는 것이 더 중요하다.
@@ -135,8 +127,6 @@ For understanding a single sentence
 
 ## 6. Why NLP is important?
 
----
-
 - AI 관점으로 보면, NLP는 one of the largest research areas and practical area to use symbolic, discretized
 (continuous for vision / discrete or categorical for nlp / time-series values for acoustics)
 - NLP 분야에서 발견된 방법론들은 다른 discretized models를 사용하는 연구분야에도 응용될 수 있다.
@@ -148,10 +138,6 @@ For understanding a single sentence
 
 ## 7. Word
 
----
-
----
-
 - 자연어 처리의 시작은 word 분석에서 시작한다.
 - We should recognize that all the substrings are words which are divided by segmentations.
 - Segmentation is a starting point of NLP
@@ -160,8 +146,6 @@ For understanding a single sentence
 > This     is     a    simple    sentence
 
 ## 8. Morphological Analysis
-
----
 
 - **Morphology(형태론, 어형론)**: Linguistics 에서 배우기 때문에 친숙하지 않지만, NLP에서 주로 분석해야 하는 부분이기도 하다.
 - recognize the word and category
@@ -183,15 +167,11 @@ For understanding a single sentence
 
 ## 9. Part Of speech (품사)
 
----
-
 - Penn Tree Bank: 예시로 보여 준 표로, syntax, Morphological Anlaysis에 사용되는 유명한 Corpus(말뭉치)이다.
 - Gold standard Table 을 만들기 힘들고, 이 때문에 서로 다른 standard table을 기반으로 연구가 진행되어 서로 호환이 되지 않아 문제가 많다.
 - 하지만 End-to-End 모델인 NN이 해결해준다.
 
 ## 10. Syntax Analysis
-
----
 
 - Syntactic relation between words
 - part of speech analysis → normal syntax analysis
@@ -202,8 +182,6 @@ For understanding a single sentence
 
 ## 11. Semantics
 
----
-
 - with results of syntax analysis, we know the relation between words
 - Logic Representation: syntax를 기반으로 만들어진 semantic representation
 - 계층적 구조를 가지고 있다.
@@ -213,19 +191,13 @@ For understanding a single sentence
 
 ## 12. Discourse
 
----
-
 - 앞서 소개한 것들에 비해 다소 뒷단에 위치한 단계
 - Anaphora Detection: 누락된 것이 실제로 의미하는 것이 무엇인지
 - 문장에서 문단 분석으로 확장하는 데에 중요한 분석이다.
 
 ## 13. Why NLP is hard?
 
----
-
 ### 1. Ambiguity
-
----
 
 Bank : 이거 하나만 보면 뜻이 뭔지 몰라. finance or river
 
@@ -239,8 +211,6 @@ correct analysis 를 어떻게 선택하나? 다 맞아 ㅠ
 
 ### 2. Sparse Data
 
----
-
 - In AI perspective, sparse data 가 겁나 많다. 근데 Sparsity is strong in NLP research
 - Token: Basic Level of Morphological analysis, components smaller than words which make analysis easier sometimes equivalent to words
 - word frequency vs rank
@@ -253,8 +223,6 @@ correct analysis 를 어떻게 선택하나? 다 맞아 ㅠ
 ![NLP%20Overview/Screen_Shot_2020-03-19_at_8.55.48_PM.png](/images/NLP Overview/Screen_Shot_2020-03-19_at_8.55.48_PM.png)
 
 ### 3. Variation, Expressivity, Strong Context Dependency
-
----
 
 For Variation
 
@@ -272,8 +240,6 @@ For Strong Context Dependency
 
 ## 14. Academic Community
 
----
-
 1. The biggest society
 ACL: The association of computational Linguistics
 LDC: Linguistics Data Consortium → 데이터 만들고 업로드하고, 여기서 판다. 데이터와 아이디어가 여기서 많이 공유된다.
@@ -289,5 +255,4 @@ LDC: Linguistics Data Consortium → 데이터 만들고 업로드하고, 여기
 
 
 ## Reference
----
 - 본 포스트는 GIST 김강일 교수님의 Natural Language Processing 강의를 참조하였습니다.
