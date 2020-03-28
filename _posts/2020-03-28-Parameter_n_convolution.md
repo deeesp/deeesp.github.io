@@ -97,8 +97,9 @@ $$
 We force shared parameters to be equal, so the gradient w.r.t. to shared parameters will be summed in the backprop. For example the gradient of the cost function $C(y, \bar y)$ with respect to $u_1$ will be the sum of the gradient of the cost function $C(y, \bar y)$ with respect to $w_1$ and the gradient of the cost function $C(y, \bar y)$ with respect to $w_2$.
 -->
 >공유 매개 변수를 동일하게 해주면, 공유 매개 변수에 대한 기울기는 역전파되면서 합산된다.** 번역 애매모호쓰 **
-예를 들어, $u_1$에 대한 비용 함수 $C(y, \bar y)$의 기울기는 $w_1$에 대한 비용 함수 $C(y, \bar y)$의 기울기와 $w_2$에 대한 비용 함수 $C (y, \bar y)$의 기울기의 합이다.
 
+예를 들어, $u_1$에 대한 비용 함수 $C(y, \bar y)$의 기울기는 $w_1$에 대한 비용 함수 $C(y, \bar y)$의 기울기와 $w_2$에 대한 비용 함수 $C (y, \bar y)$의 기울기의 합이다.
+<br>
 
 ### 하이퍼넷 (Hypernetwork)
 ---
