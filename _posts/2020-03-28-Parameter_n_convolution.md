@@ -217,11 +217,9 @@ This definition can easily be extended beyond two dimensions to three or four di
 
 ### DCNN에서 합성곱 연산과 함께 쓰는 Regular twists
 ---
-<div align="center">
 | 스트라이드 | 1 | 2 |
 |: ------------ :|: -------------------------- :|: -------------------------- :|
 | 출력 크기: | $\frac{100 - (5-1)}{1}=96$ | $\frac{100 - (5-1)}{2}=48$ |
-</div>
 <!--
 1. **Striding**: instead of shifting the window in $x$ one entry at a time, one can do so with a larger step (for example two or three entries at a time).
 Example: Suppose the input $x$ is one dimensional and has size of 100 and $w$ has size 5. The output size with a stride of 1 or 2 is shown in the table below:
