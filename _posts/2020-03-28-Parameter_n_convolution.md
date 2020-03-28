@@ -154,3 +154,72 @@ Fig. 9 Shift Invariance</center><br>
 This hand-crafted method of using local detectors and summation to for digit-recognition was used for many years. But it presents us with the following problem: How can we design these "templates" automatically? Can we use neural networks to learn these "templates"? Next, We will introduce the concept of **convolutions** , that is, the operation we use to match images with "templates".
 -->
 이처럼 국소 검출기<sup>Local detector</sup>를 사용하여 합산하는 고지식한 방법은 수 년간 숫자를 인식하는 데에 많이 사용되어 왔다. 하지만 이러한 방법을 통해 우리는 "어떻게 이 **템플릿**을 자동적으로 설계할 수 있을까?", "신경망을 **템플릿**을 학습하는 용도로 사용할 수 있을까?" 하는 생각하게 되었다. 다음으로, 이미지를 **템플릿**과 일치시키기 위해 사용하는 연산인 **합성곱**<sup>Convolutions</sup>의 개념을 소개할 것이다.
+
+
+
+## Discrete convolution
+
+
+### Convolution
+---
+The precise mathematical definition of a convolution in the 1-dimensional case between input $x$ and $w$ is:
+
+$$y_i = \sum_j w_j x_{i-j}$$
+
+In words, the $i$-th output is computed as the dot product between the **reversed** $w$ and a window of the same size in $x$. To compute the full output, start the window at the beginning, shift this window by one entry each time and repeat until $x$ is exhausted.
+
+
+### Cross-correlation
+---
+In practice, the convention adopted in deep learning frameworks such as PyTorch is slightly different. Convolution in PyTorch is implemented where $w$ is **not reversed**:
+
+$$y_i = \sum_j w_j x_{i+j}$$
+
+Mathematicians call this formulation "cross-correlation". In our context, this difference is just a difference in convention. Practically, cross-correlation and convolution can be interchangeable if one reads the weights stored in memory forward or backward.
+
+Being aware of this difference is important, for example, when one want to make use of certain mathematical properties of convolution/correlation from mathematical texts.
+
+
+### Higher dimensional convolution
+---
+For two dimensional inputs such as images, we make use of the two dimensional version of convolution:
+
+$$y_{ij} = \sum_{kl} w_{kl} x_{i+k, j+l}$$
+
+This definition can easily be extended beyond two dimensions to three or four dimensions. Here $w$ is called the *convolution kernel*
+
+
+### Regular twists that can be made with the convolutional operator in DCNNs
+---
+1. **Striding**: instead of shifting the window in $x$ one entry at a time, one can do so with a larger step (for example two or three entries at a time).
+Example: Suppose the input $x$ is one dimensional and has size of 100 and $w$ has size 5. The output size with a stride of 1 or 2 is shown in the table below:
+
+| Stride       | 1                          | 2                          |
+| ------------ | -------------------------- | -------------------------- |
+| Output size: | $\frac{100 - (5-1)}{1}=96$ | $\frac{100 - (5-1)}{2}=48$ |
+
+
+2. **Padding**: Very often in designing Deep Neural Networks architectures, we want the output of convolution to be of the same size as the input. This can be achieved by padding the input ends with a number of (typically) zero entries, usually on both sides. Padding is done mostly for convenience. It can sometimes impact performance and result in strange border effects, that said, when using a ReLU non-linearity, zero padding is not unreasonable.
+
+
+## Deep Convolution Neural Networks (DCNNs)
+
+As previously described, deep neural networks are typically organized as repeated alternation between linear operators and point-wise nonlinearity layers. In convolutional neural networks, the linear operator will be the convolution operator described above. There is also an optional third type of layer called the pooling layer.
+
+The reason for stacking multiple such layers is that we want to build a hierarchical representation of the data. CNNs do not have to be limited to processing images, they have also been successfully applied to speech and language. Technically they can be applied to any type of data that comes in the form of arrays, although we also these arrays to satisfy certain properties.
+
+Why would we want to capture the hierarchical representation of the world? Because the world we live in is compositional. This point is alluded to in previous sections. Such hierarchical nature can be observed from the fact that local pixels assemble to form simple motifs such as oriented edges. These edges in turn are assembled to form local features such as corners, T-junctions, etc. These edges are assembled to form motifs that are even more abstract. We can keep building on these hierarchical representation to eventually form the objects we observe in the real world.
+
+<center><img src="{{site.baseurl}}/images/week03/03-1/cnn_features.png" alt="CNN Features" style="zoom:35%;" /><br>
+Figure 10. Feature visualization of convolutional net trained on ImageNet from [Zeiler & Fergus 2013]</center>
+
+
+This compositional, hierarchical nature we observe in the natural world is therefore not just the result of our visual perception, but also true at the physical level. At the lowest level of description, we have elementary particles, which assembled to form atoms, atoms together form molecules, we continue to build on this process to form materials, parts of objects and eventually full objects in the physical world.
+
+The compositional nature of the world might be the answer to Einstein's rhetorical question on how humans understand the world they live in:
+
+> The most incomprehensible thing about the universe is that it is comprehensible.
+
+The fact that humans understand the world thanks to this compositional nature still seems like a conspiracy to Yann. It is, however, argued that without compositionality, it will take even more magic for humans to comprehend the world they live in. Quoting the great mathematician Stuart Geman:
+
+> The world is compositional or God exists.
