@@ -15,7 +15,8 @@ toc: true
 toc_sticky: true
 ---
 
-# Yann LeCun, NYU Deep Learning Lecture [DS-GA 1008 SPRING 2020](https://atcold.github.io/pytorch-Deep-Learning/)
+# [DS-GA 1008 SPRING 2020](https://atcold.github.io/pytorch-Deep-Learning/)
+> Yann LeCun 교수님의 NYU Deep Learning 강의
 
 ## [신경망 (Visualization of neural networks)](https://youtu.be/FW5gFiJb-ig)
 
