@@ -34,7 +34,7 @@ toc_sticky: true
 > 컴퓨터가 자연어를 계산 가능한형식으로 바꾸어 주어야 한다.
 
 <div style="text-align: right">
-  이기창님의 서적 [한국어 임베딩](https://ratsgo.github.io/natural%20language%20processing/2019/09/12/embedding) 중 </div>
+  이기창님의 서적 [<한국어 임베딩>](https://ratsgo.github.io/natural%20language%20processing/2019/09/12/embedding) 중 </div>
 
 ### Natural Language Processing(NLP) 이란?
 
