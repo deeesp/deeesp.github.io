@@ -47,7 +47,7 @@ e.g. Understanding(가장 기본), Translation, Question Answering, Paraphrasing
 ## 2. Academic position
 
 
-![NLP%20Overview/Screen_Shot_2020-03-18_at_2.54.03_PM.png](/_posts/NLP Overview/Screen_Shot_2020-03-18_at_2.54.03_PM.png)
+![NLP%20Overview/Screen_Shot_2020-03-18_at_2.54.03_PM.png](/_posts/NLP_Overview/Screen_Shot_2020-03-18_at_2.54.03_PM.png)
 
 - NLP는 다양한 분야가 합쳐진 연구분야이다.
 - AI는 Computer Science와 Statistics를 기반으로 한다.
@@ -55,7 +55,7 @@ e.g. Understanding(가장 기본), Translation, Question Answering, Paraphrasing
 
 ## 3. AI methods applied to NLP
 
-![NLP%20Overview/Screen_Shot_2020-03-19_at_8.06.33_PM.png](/_posts/NLP Overview/Screen_Shot_2020-03-19_at_8.06.33_PM.png)
+![NLP%20Overview/Screen_Shot_2020-03-19_at_8.06.33_PM.png](/_posts/NLP_Overview/Screen_Shot_2020-03-19_at_8.06.33_PM.png)
 
 ### Three Major Approaches
 
