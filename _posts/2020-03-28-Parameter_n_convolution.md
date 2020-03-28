@@ -1,6 +1,6 @@
 ---
-title:  "[03-1] Visualization of neural networks parameter transformation and fundamental concepts of convolution"
-excerpt: "CNN 개념잡기"
+title:  "[03-1] 신경망 매개변수의 변환과 합성곱의 개념"
+excerpt: "Yann LeCun 교수님의 NYU Deep Learning 강의 - CNN 개념잡기"
 categories:
   - Deep Learning
   
@@ -15,6 +15,8 @@ toc: true
 toc_sticky: true
 ---
 
+# Yann LeCun 교수님의 NYU Deep Learning 강의
+[DS-GA 1008 · SPRING 2020] (https://atcold.github.io/pytorch-Deep-Learning/)
 
 ## [신경망 (Visualization of neural networks)](https://youtu.be/FW5gFiJb-ig)
 
@@ -148,7 +150,7 @@ It is also important that our "template matching" should be shift-invariant - wh
 **템플릿 일치**<sup>Template matching</sup>는 입력의 위치가 바뀌었을 때에도 출력(i.e. 문자 검출)은 바뀌지 않는 이동 불변한<sup>Shift-invariant</sup> 특성이 있는데, 이 또한 중요하다. 가중치 공유 변환으로 이를 해결할 수 있다. 그림 9에서, "D"의 위치가 바뀌어도 여전히 모서리 모티프를 검출한 것을 볼 수 있다. 이러한 모티프들을 종합하면 "D" 검출이 활성화 된다.
 
 <br><center><img src="{{site.baseurl}}/images/week03/03-1/ShiftInvariance.png" alt="Network" style="zoom:35%;" /><br>
-Fig. 9 Shift Invariance</center><br>
+그림. 9 이동 불변성</center><br>
 
 <!--
 This hand-crafted method of using local detectors and summation to for digit-recognition was used for many years. But it presents us with the following problem: How can we design these "templates" automatically? Can we use neural networks to learn these "templates"? Next, We will introduce the concept of **convolutions** , that is, the operation we use to match images with "templates".
@@ -211,16 +213,22 @@ This definition can easily be extended beyond two dimensions to three or four di
 
 ### Regular twists that can be made with the convolutional operator in DCNNs
 ---
+<!--
 1. **Striding**: instead of shifting the window in $x$ one entry at a time, one can do so with a larger step (for example two or three entries at a time).
 Example: Suppose the input $x$ is one dimensional and has size of 100 and $w$ has size 5. The output size with a stride of 1 or 2 is shown in the table below:
+-->
+1. **스트라이드**<sup>Striding</sup>: $x$에서 윈도우를 한 번만 이동시키는 것 대신에, 한 번에 두 세번씩 더 큰 스텝을 진행할 수 있다.
+예시: 입력 $x$가 1차원이고 크기가 100이며, $w$의 크기가 5라고 가정하자. 아래 표는 스텝이 1 또는 2인 출력 크기를 보여주고 있다.
 
-| Stride       | 1                          | 2                          |
-| ------------ | -------------------------- | -------------------------- |
-| Output size: | $\frac{100 - (5-1)}{1}=96$ | $\frac{100 - (5-1)}{2}=48$ |
+| 스트라이드 | 1 | 2 |
+|: ------------ :|: -------------------------- :|: -------------------------- :|
+| 출력 크기: | $\frac{100 - (5-1)}{1}=96$ | $\frac{100 - (5-1)}{2}=48$ |
 
 
+<!--
 2. **Padding**: Very often in designing Deep Neural Networks architectures, we want the output of convolution to be of the same size as the input. This can be achieved by padding the input ends with a number of (typically) zero entries, usually on both sides. Padding is done mostly for convenience. It can sometimes impact performance and result in strange border effects, that said, when using a ReLU non-linearity, zero padding is not unreasonable.
-
+-->
+2. **패딩**<sup></sup>: 깊은 신경망<sup>Deep Neural Networks</sup> 아키텍처를 설계할 때,
 
 ## Deep Convolution Neural Networks (DCNNs)
 
