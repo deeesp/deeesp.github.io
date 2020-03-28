@@ -16,7 +16,7 @@ toc_sticky: true
 ---
 
 
-## [신경망 시각화](https://youtu.be/FW5gFiJb-ig)
+## [신경망 (Visualization of neural networks)](https://youtu.be/FW5gFiJb-ig)
 
 <!--
 In this section we will visualise the inner workings of a neural network.
@@ -29,7 +29,7 @@ In this section we will visualise the inner workings of a neural network.
   
 <!--Figure 1 depicts the structure of the neural network we would like to visualise. Typically, when we draw the structure of a neural network, the input appears on the bottom or on the left, and the output appears on the top side or on the right. In Figure 1, the pink neurons represent the inputs, and the blue neurons represent the outputs. In this network, we have 4 hidden layers (in green), which means we have 6 layers in total (4 hidden layers + 1 input layer + 1 output layer). In this case, we have 2 neurons per hidden layer, and hence the dimension of the weight matrix ($W$) for each layer is 2-by-2. This is because we want to transform our input plane into another plane that we can visualize.
 -->
-그림 1 은 우리가 보고자 하는 신경망의 구조를 묘사한 것이다. 일반적으로 신경망의 구조를 그릴 때, 입력은 아래나 왼쪽에 나타나고, 출력은 위나 오른쪽에 나타난다. 그림 1을 보면, 분홍색 뉴런은 입력을 나타내고, 파란색 뉴런은 출력을 나타낸다. 이 신경망은 4개 층의 초록색 은닉층<sup>Hidden Layers</sup>을 가지고 있다. 즉, 총 6개(4개의 은닉 층과 1개의 입력 층, 1개의 출력 층) 계층을 가지고 있다. 여기서는, 각 은닉층마다 2개의 뉴런을 가지고 있으므로, 각 층별 가중치 행렬 ($W$)의 차원은 2X2가 된다. 이는 입력 평면을 시각화 하고자 하는 평면으로 변환하기 위함이다.  
+그림 1 은 신경망의 구조를 묘사한 것이다. 일반적으로 신경망의 구조를 그릴 때, 입력은 아래나 왼쪽에 나타나고, 출력은 위나 오른쪽에 나타난다. 그림 1을 보면, 분홍색 뉴런은 입력을 나타내고, 파란색 뉴런은 출력을 나타낸다. 이 신경망은 4개 층의 초록색 은닉층<sup>Hidden Layers</sup>을 가지고 있다. 즉, 총 6개(4개의 은닉 층과 1개의 입력 층, 1개의 출력 층) 계층을 가지고 있다. 여기서는, 각 은닉층마다 2개의 뉴런을 가지고 있으므로, 각 층별 가중치 행렬 ($W$)의 차원은 2X2가 된다. 이는 입력 평면을 시각화 하고자 하는 평면으로 변환하기 위함이다.  
   
   
 <center><img src="{{site.baseurl}}/images/week03/03-1/Visual1.png" alt="Network" style="zoom:35%;" /><br>
@@ -60,7 +60,7 @@ This provides us with some insight into why the 2-neuron hidden layers are harde
 이로부터 왜 2개 뉴런으로 이루어진 은닉층이 학습하기 어려운 지에 대해 감이 올 것이다. 6-계층 신경망에는 각 은닉층마다 하나의 편향<sup>Bias</sup>이 있다. 따라서, 이러한 편향 중 하나가 점을 우상단 사분면 밖으로 이동시켰을 때 ReLU 연산을 하면 그 점은 0으로 제거된다. 그 후, 나중에 각 층들이 어떻게 데이터를 변환하든지, 값은 0으로 유지된다. 은닉층에 뉴런을 추가하는 등 네트워크를 "더 무겁게" 만들어 신경망을 보다 더 쉽게 학습시킬 수 있다. 또는 은닉층을 더 추가하거나 앞의 두 방법을 조합하는 방법도 있다. 이러한 과정을 통해 우리는 주어진 문제에 가장 적합한 신경망 아키텍처를 결정하는 방법을 계속 탐구할 것이다.  
    
    
-## [매개변수 변환](https://www.youtube.com/watch?v=FW5gFiJb-ig&t=477s)
+## [매개변수 변환 (Parameter Transformations)](https://www.youtube.com/watch?v=FW5gFiJb-ig&t=477s)
 
 <!--
 General parameter transformation means that our parameter vector $w$ is the output of a function. By this transformation, we can map original parameter space into another space. In Figure 5, $w$ is actually the output of $H$ with the parameter $u$. $G(x,w)$ is a network and $C(y,\bar y)$ is a cost function. The backpropagation formula is also adapted as follows,
@@ -81,7 +81,7 @@ These formulas are applied in a matrix form. Note that the dimensions of the ter
 그림. 5 일반적인 매개변수 변환 형태</center><br>
 
 
-### 간단한 매개변수 변환법: 가중치 공유
+### 간단한 매개변수 변환법: 가중치 공유 (Weight Sharing)
 
 <!--
 A Weight Sharing Transformation means $H(u)$ just replicates one component of $u$ into multiple components of $w$. $H(u)$ is like a **Y** branch to copy $u_1$ to $w_1$, $w_2$. This can be expressed as,
@@ -92,25 +92,40 @@ $$
 w_1 = w_2 = u_1, w_3 = w_4 = u_2
 $$
 
+<!--
 We force shared parameters to be equal, so the gradient w.r.t. to shared parameters will be summed in the backprop. For example the gradient of the cost function $C(y, \bar y)$ with respect to $u_1$ will be the sum of the gradient of the cost function $C(y, \bar y)$ with respect to $w_1$ and the gradient of the cost function $C(y, \bar y)$ with respect to $w_2$.
+-->
+>공유 매개 변수를 동일하게 해주면, 공유 매개 변수에 대한 기울기는 역전파되면서 합산된다.** 번역 애매모호쓰 **
+예를 들어, $u_1$에 대한 비용 함수 $C(y, \bar y)$의 기울기는 $w_1$에 대한 비용 함수 $C(y, \bar y)$의 기울기와 $w_2$에 대한 비용 함수 $C (y, \bar y)$의 기울기의 합이다.
 
 
+### 하이퍼넷 (Hypernetwork)
 
-### Hypernetwork
-
+<!--
 A hypernetwork is a network where the weights of one network is the output of another network. Figure 6 shows the computation graph of a "hypernetwork". Here the function $H$ is a network with parameter vector $u$ and input $x$. As a result, the weights of $G(x,w)$ are dynamically configured by the network $H(x,u)$. Although this is an old idea, it remains very powerful.
+-->
+하이퍼넷은 한 네트워크의 가중치가 다른 네트워크의 출력으로 구성된 네트워크를 말한다. 그림 6은 하이퍼넷의 계산 그래프를 보여준다. 함수 $H$는 매개변수 벡터 $u$와 입력 $x$로 구성된 신경망이다. 결과적으로, $G(x,w)$의 가중치는 $H(x,u)$의 출력에 의해 동적으로 구성하게 된다. 이 아이디어는 오래전에 나왔지만 여전히 강력하다.
 
 <br><center><img src="{{site.baseurl}}/images/week03/03-1/HyperNetwork.png" alt="Network" style="zoom:35%;" /><br>
 Fig. 6 "Hypernetwork"</center><br>
 
-### Motif detection in sequential data
 
+### 순차 데이터에서 모티프 검출 (Motif detection in sequential data)
+
+<!--
 Weight sharing transformation can be applied to motif detection. Motif detection means to find some motifs in sequential data like keywords in speech or text. One way to achieve this, as shown in Figure 7, is to use a sliding window on data, which moves the weight-sharing function to detect a particular motif (i.e. a particular sound in speech signal), and the outputs (i.e. a score) goes into a maximum function.
+-->
+  우리는 모티프 검출<sup>Motif detection</sup>에 가중치 공유 변환을 응용할 수 있다. 모티프 검출이란 음성이나 글에 있는 "키워드"처럼 순차 데이터에 있는 모티프를 찾는 것을 말한다. 그림 7과 같이, 모티프 검출을 하기 위한 방법 중의 하나로 데이터에 슬라이딩 윈도우를 사용하는 것을 들 수 있다. 여기서, 특정 모티프(예를 들어, 음성 신호에서 특정 소리)를 검출하기 위해 가중치 공유 함수를 이동하고 출력(i.e. 점수<sup>Score</sup>)을 Maximum 함수로 넣어준다.
+
 
 <br><center><img src="{{site.baseurl}}/images/week03/03-1/Motif.png" alt="Network" style="zoom:30%;" /><br>
 Fig. 7 Motif Detection for Sequential Data</center><br>
 
+<!--
 In this example we have 5 of those functions. As a result of this solution, we sum up five gradients and backpropagate the error to update the parameter $w$. When implementing this in PyTorch, we want to prevent the implicit accumulation of these gradients, so we need to use `zero_grad()` to initialize the gradient.
+-->
+이 예제에는 5개의 함수가 있다. 결과적으로 보면, 기울기 5개를 더하고 오류<sup>Error</sup>를 역전파하여 $w$ 매개변수를 업데이트 한다. PyTorch에서 구현할 때에는, 이 기울기들이 안쪽에서 축적되는 것을 막아야 하는데, 기울기를 초기화하기 위해 `zero_grad ()`를 사용해야 한다.
+
 
 ### Motif detection in images
 
