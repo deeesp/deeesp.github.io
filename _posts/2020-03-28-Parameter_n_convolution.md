@@ -272,7 +272,7 @@ One further insight from the human brain comes from Gallant & Van Essen, whose m
 
 <center><img src="{{site.baseurl}}/images/week03/03-1/Gallant_and_Van_Essen.png" alt="Gallant_and_Van_Essen" style="zoom:55%;" /></center>
 
-<div align="center">Figure 12. Gallen & Van Essen's model of dorsal & ventral pathways in the brain <div>
+<div align="center">Figure 12. Gallen & Van Essen's model of dorsal & ventral pathways in the brain </div>
 
 The right side shows the ventral pathway, which tells you what you're looking at, while the left side shows the dorsal pathway, which identifies locations, geometry, and motion. They seem fairly separate in the human (and primate) visual cortex (with a few interactions between them of course).
 
@@ -281,7 +281,7 @@ The right side shows the ventral pathway, which tells you what you're looking at
 
 <center><img src="{{site.baseurl}}/images/week03/03-1/Hubel_and_Weisel.png" alt="Hubel_and_Weisel" style="zoom:55%;" /></center>
 
-<div align="center">Figure 13. Hubel & Weisel's experiments with visual stimuli in cat brains <div>
+<div align="center">Figure 13. Hubel & Weisel's experiments with visual stimuli in cat brains </div>
 
 Hubel and Weisel experiments used electrodes to measure neural firings in cat brains in response to visual stimuli. They discovered that neurons in the V1 region are only sensitive to certain areas of a visual field (called "receptive fields"), and detect oriented edges in that area. For example, they demonstrated that if you showed the cat a vertical bar and start rotating it, at a particular angle the neuron will fire. Similarly, as the bar moves away from that angle, the activation of the neuron diminishes. These activation-selective neurons Hubel & Weisel named "simple cells", for their ability to detect local features.
 
@@ -294,12 +294,9 @@ Another type of neuron, which they named "complex cells", aggregate the output o
 
 <center><img src="{{site.baseurl}}/images/week03/03-1/Fukushima.png" alt="Fukushima" style="zoom:55%;" /></center>
 
-<div align="center">Figure 14. Fukushima's CNN model <div>
+<div align="center">Figure 14. Fukushima's CNN model </div>
 
 Fukushima was the first to implement the idea of multiple layers of simple cells and complex cells with computer models, using a dataset of handwritten digits. Some of these feature detectors were hand-crafted or learned, though the learning used unsupervised clustering algorithms, trained separately for each layer, as backpropagation was not yet in use.
 
 Yann LeCun came in a few years later (1989, 1998) and implemented the same architecture, but this time trained them in a supervised setting using backpropagation. This is widely regarded as the genesis of modern convolutional neural networks. (Note: Riesenhuber at MIT in 1999 also re-discovered this architecture, though he didn't use backpropagation.)
-
-
-
 
