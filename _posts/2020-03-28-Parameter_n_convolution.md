@@ -81,7 +81,8 @@ These formulas are applied in a matrix form. Note that the dimensions of the ter
 그림. 5 일반적인 매개변수 변환 형태</center><br>
 
 
-### 간단한 매개변수 변환법: 가중치 공유 (Weight-Sharing)
+### 간단한 매개변수 변환법: 가중치 공유 (Weight Sharing)
+---
 
 <!--
 A Weight Sharing Transformation means $H(u)$ just replicates one component of $u$ into multiple components of $w$. $H(u)$ is like a **Y** branch to copy $u_1$ to $w_1$, $w_2$. This can be expressed as,
@@ -100,6 +101,7 @@ We force shared parameters to be equal, so the gradient w.r.t. to shared paramet
 
 
 ### 하이퍼넷 (Hypernetwork)
+---
 
 <!--
 A hypernetwork is a network where the weights of one network is the output of another network. Figure 6 shows the computation graph of a "hypernetwork". Here the function $H$ is a network with parameter vector $u$ and input $x$. As a result, the weights of $G(x,w)$ are dynamically configured by the network $H(x,u)$. Although this is an old idea, it remains very powerful.
@@ -107,10 +109,11 @@ A hypernetwork is a network where the weights of one network is the output of an
 하이퍼넷은 한 네트워크의 가중치가 다른 네트워크의 출력으로 구성된 네트워크를 말한다. 그림 6은 하이퍼넷의 계산 그래프를 보여준다. 함수 $H$는 매개변수 벡터 $u$와 입력 $x$로 구성된 신경망이다. 결과적으로, $G(x,w)$의 가중치는 $H(x,u)$의 출력에 의해 동적으로 구성하게 된다. 이 아이디어는 오래전에 나왔지만 여전히 강력하다.
 
 <br><center><img src="{{site.baseurl}}/images/week03/03-1/HyperNetwork.png" alt="Network" style="zoom:35%;" /><br>
-Fig. 6 "Hypernetwork"</center><br>
+그림. 6 "하이퍼넷"</center><br>
 
 
 ### 순차 데이터에서 모티프 검출 (Motif detection in sequential data)
+---
 
 <!--
 Weight sharing transformation can be applied to motif detection. Motif detection means to find some motifs in sequential data like keywords in speech or text. One way to achieve this, as shown in Figure 7, is to use a sliding window on data, which moves the weight-sharing function to detect a particular motif (i.e. a particular sound in speech signal), and the outputs (i.e. a score) goes into a maximum function.
@@ -119,7 +122,7 @@ Weight sharing transformation can be applied to motif detection. Motif detection
 
 
 <br><center><img src="{{site.baseurl}}/images/week03/03-1/Motif.png" alt="Network" style="zoom:30%;" /><br>
-Fig. 7 Motif Detection for Sequential Data</center><br>
+Fig. 7 순차 데이터에서 모티프 검출</center><br>
 
 <!--
 In this example we have 5 of those functions. As a result of this solution, we sum up five gradients and backpropagate the error to update the parameter $w$. When implementing this in PyTorch, we want to prevent the implicit accumulation of these gradients, so we need to use `zero_grad()` to initialize the gradient.
@@ -128,11 +131,12 @@ In this example we have 5 of those functions. As a result of this solution, we s
 
 
 ### Motif detection in images
+---
 
 The other useful application is motif detection in images. We usually swipe our "templates" over images to detect the shapes independent of position and distortion of the shapes. A simple example is to distinguish between "C" and "D", as Figure 8 shows. The difference between "C" and "D" is that "C" has two endpoints and "D" has two corners. So we can design "endpoint templates" and "corner templates". If the shape is similar to the "templates", it will have thresholded outputs. Then we can distinguish letters from these outputs by summing them up. In Figure 8, the network detects two endpoints and zero corners, so it activates "C".
 
 <br><center><img src="{{site.baseurl}}/images/week03/03-1/MotifImage.png" alt="Network" style="zoom:35%;" /><br>
-Fig. 8 Motif Detection for Images</center><br>
+Fig. 8 이미지에서의 모티프 검출</center><br>
 
 It is also important that our "template matching" should be shift-invariant - when we shift the input, the output (i.e. the letter detected) shouldn't change. This can be solved with weight sharing transformation. As Figure 9 shows, when we change the location of "D", we can still detect the corner motifs even though they are shifted. When we sum up the motifs, it will activate the "D" detection.
 
