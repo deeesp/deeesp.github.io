@@ -113,7 +113,7 @@ A hypernetwork is a network where the weights of one network is the output of an
 그림. 6 "하이퍼넷"</center><br>
 
 
-### 순차 데이터에서 모티프 검출 (Motif detection in sequential data)
+### 순차 데이터에서의 모티프 검출 (Motif detection in sequential data)
 ---
 
 <!--
@@ -131,7 +131,7 @@ In this example we have 5 of those functions. As a result of this solution, we s
 이 예제에는 5개의 함수가 있다. 결과적으로 보면, 기울기 5개를 더하고 오류<sup>Error</sup>를 역전파하여 $w$ 매개변수를 업데이트 한다. PyTorch에서 구현할 때에는, 이 기울기들이 안쪽에서 축적되는 것을 막아야 하는데, 기울기를 초기화하기 위해 `zero_grad ()`를 사용해야 한다.
 
 
-### Motif detection in images
+### 이미지에서의 모티프 검출 (Motif detection in images)
 ---
 <!--
 The other useful application is motif detection in images. We usually swipe our "templates" over images to detect the shapes independent of position and distortion of the shapes. A simple example is to distinguish between "C" and "D", as Figure 8 shows. The difference between "C" and "D" is that "C" has two endpoints and "D" has two corners. So we can design "endpoint templates" and "corner templates". If the shape is similar to the "templates", it will have thresholded outputs. Then we can distinguish letters from these outputs by summing them up. In Figure 8, the network detects two endpoints and zero corners, so it activates "C".
@@ -157,36 +157,56 @@ This hand-crafted method of using local detectors and summation to for digit-rec
 
 
 
-## Discrete convolution
+## 이산 합성곱 (Discrete convolution)
 
 
-### Convolution
+### 합성곱(Convolution)
 ---
+<!--
 The precise mathematical definition of a convolution in the 1-dimensional case between input $x$ and $w$ is:
+-->
+입력 $x$와 $w$의 1차원 합성곱에 대한 정확한 수학적 정의는 다음과 같다.
 
 $$y_i = \sum_j w_j x_{i-j}$$
 
+<!--
 In words, the $i$-th output is computed as the dot product between the **reversed** $w$ and a window of the same size in $x$. To compute the full output, start the window at the beginning, shift this window by one entry each time and repeat until $x$ is exhausted.
+-->
+즉, $i$번째 출력은 **수정된** $w$와 같은 사이즈의 $x$ 윈도우 간에 내적<sup>Dot product</sup>를 계산한 것이다. 전체 출력을 계산하기 위해서는, &x$의 처음부터 시작하여 끝까지 윈도우를 이동시켜가며 이 과정을 반복하는 것이다.
 
 
-### Cross-correlation
+### 교차 상관관계 (Cross-correlation)
 ---
+<!--
 In practice, the convention adopted in deep learning frameworks such as PyTorch is slightly different. Convolution in PyTorch is implemented where $w$ is **not reversed**:
+-->
+실제로는 PyTorch에서의 합성곱은 **반전되지 않은** $w$로 구현되어 조금 다른 관례<sup>Convention</sup>를 따랐다.
 
 $$y_i = \sum_j w_j x_{i+j}$$
-
+<!--
 Mathematicians call this formulation "cross-correlation". In our context, this difference is just a difference in convention. Practically, cross-correlation and convolution can be interchangeable if one reads the weights stored in memory forward or backward.
+-->
+수학자들은 이 공식을 "교차 관계"라고 부른다. 합성곱과의 차이점은 단지 "관례"의 차이만 있을 뿐이다. 실제로 메모리에 저장된 가중치를 앞으로 읽는지 뒤로 읽는지에 따라 교차상관과 합성곱을 서로 바꿔 쓸 수 있다.
 
+<!--
 Being aware of this difference is important, for example, when one want to make use of certain mathematical properties of convolution/correlation from mathematical texts.
+-->
+예를 들어, 합성곱과 교차상관의 수학적 성질을 사용하고자 할 때 이러한 차이점을 인식하는 것이 중요하다.
 
 
-### Higher dimensional convolution
+### 고차원 합성곱 (Higher dimensional convolution)
 ---
+<!--
 For two dimensional inputs such as images, we make use of the two dimensional version of convolution:
+-->
+이미지와 같이 2차원 입력의 경우에는 2차원 버전의 합성곱을 사용한다.
 
 $$y_{ij} = \sum_{kl} w_{kl} x_{i+k, j+l}$$
 
+<!--
 This definition can easily be extended beyond two dimensions to three or four dimensions. Here $w$ is called the *convolution kernel*
+-->
+위 정의는 2차원을 넘어 3차원 또는 4차원으로 쉽게 확장할 수 있다. 여기서 $w$는 *합성곱 커널*<sup>Convolution Kernel</sup>이다.
 
 
 ### Regular twists that can be made with the convolutional operator in DCNNs
