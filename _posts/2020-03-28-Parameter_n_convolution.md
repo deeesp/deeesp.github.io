@@ -153,4 +153,4 @@ Fig. 9 Shift Invariance</center><br>
 <!--
 This hand-crafted method of using local detectors and summation to for digit-recognition was used for many years. But it presents us with the following problem: How can we design these "templates" automatically? Can we use neural networks to learn these "templates"? Next, We will introduce the concept of **convolutions** , that is, the operation we use to match images with "templates".
 -->
-이러한 국소 검출기<sup>Local detector</sup>를 사용하여 합산하는 고지식한 방법은 수 년간 숫자를 인식하는 데에 많이 사용되어 왔다. 하지만 이러한 방법을 통해 "어떻게 이 **템플릿**을 자동적으로 설계할 수 있을까?", "신경망을 **템플릿**을 학습하는 용도로 사용할 수 있을까?" 하는 생각하게 되었다. 다음으로, 이미지를 **템플릿**과 일치시키기 위해 사용하는 연산인 **합성곱**<sup>Convolutions</sup>의 개념을 소개할 것이다.
+이처럼 국소 검출기<sup>Local detector</sup>를 사용하여 합산하는 고지식한 방법은 수 년간 숫자를 인식하는 데에 많이 사용되어 왔다. 하지만 이러한 방법을 통해 우리는 "어떻게 이 **템플릿**을 자동적으로 설계할 수 있을까?", "신경망을 **템플릿**을 학습하는 용도로 사용할 수 있을까?" 하는 생각하게 되었다. 다음으로, 이미지를 **템플릿**과 일치시키기 위해 사용하는 연산인 **합성곱**<sup>Convolutions</sup>의 개념을 소개할 것이다.
