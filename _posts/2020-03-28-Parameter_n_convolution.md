@@ -143,11 +143,9 @@ The other useful application is motif detection in images. We usually swipe our 
 Fig. 8 이미지에서의 모티프 검출</center><br>
 
 <!--
-It is also important that our "template matching" should be shift-invariant - when we shift the input, the output (i.e. the letter detected) shouldn't change. 
-This can be solved with weight sharing transformation.
-As Figure 9 shows, when we change the location of "D", we can still detect the corner motifs even though they are shifted. When we sum up the motifs, it will activate the "D" detection.
+It is also important that our "template matching" should be shift-invariant - when we shift the input, the output (i.e. the letter detected) shouldn't change. This can be solved with weight sharing transformation. As Figure 9 shows, when we change the location of "D", we can still detect the corner motifs even though they are shifted. When we sum up the motifs, it will activate the "D" detection.
 -->
-"템플릿 일치"는 입력의 위치가 바뀌었을 때 출력(i.e. 문자 검출)은 바뀌지 않는 이동 불변한<sup>Shift-invariant</sup> 특성이 있는데, 이 또한 중요하다. 가중치 공유 변환으로 이를 해결할 수 있다. 그림 9에서 보듯이, "D"의 위치가 바뀌어도 여전히 모서리 모티프를 검출할 수 있다. 이러한 모티프들을 종합하면 "D" 검출이 활성화 된다.
+**템플릿 일치**<sup>Template matching</sup>는 입력의 위치가 바뀌었을 때에도 출력(i.e. 문자 검출)은 바뀌지 않는 이동 불변한<sup>Shift-invariant</sup> 특성이 있는데, 이 또한 중요하다. 가중치 공유 변환으로 이를 해결할 수 있다. 그림 9에서, "D"의 위치가 바뀌어도 여전히 모서리 모티프를 검출한 것을 볼 수 있다. 이러한 모티프들을 종합하면 "D" 검출이 활성화 된다.
 
 <br><center><img src="{{site.baseurl}}/images/week03/03-1/ShiftInvariance.png" alt="Network" style="zoom:35%;" /><br>
 Fig. 9 Shift Invariance</center><br>
