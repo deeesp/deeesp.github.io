@@ -213,17 +213,17 @@ This definition can easily be extended beyond two dimensions to three or four di
 
 ### Regular twists that can be made with the convolutional operator in DCNNs
 ---
-<!--
-1. **Striding**: instead of shifting the window in $x$ one entry at a time, one can do so with a larger step (for example two or three entries at a time).
-Example: Suppose the input $x$ is one dimensional and has size of 100 and $w$ has size 5. The output size with a stride of 1 or 2 is shown in the table below:
--->
-1. **스트라이드**<sup>Striding</sup>: $x$에서 윈도우를 한 번만 이동시키는 것 대신에, 한 번에 두 세번씩 더 큰 스텝을 진행할 수 있다.
-예시: 입력 $x$가 1차원이고 크기가 100이며, $w$의 크기가 5라고 가정하자. 아래 표는 스텝이 1 또는 2인 출력 크기를 보여주고 있다.
 
 | 스트라이드 | 1 | 2 |
 |: ------------ :|: -------------------------- :|: -------------------------- :|
 | 출력 크기: | $\frac{100 - (5-1)}{1}=96$ | $\frac{100 - (5-1)}{2}=48$ |
 
+<!--
+1. **Striding**: instead of shifting the window in $x$ one entry at a time, one can do so with a larger step (for example two or three entries at a time).
+Example: Suppose the input $x$ is one dimensional and has size of 100 and $w$ has size 5. The output size with a stride of 1 or 2 is shown in the table below:
+-->
+1. **스트라이드**<sup>Striding</sup>: $x$에서 윈도우를 한 번만 이동시키는 것 대신에, 한 번에 두 세번씩 더 큰 스텝을 진행할 수 있다.
+예시: 입력 $x$가 1차원이고 크기가 100이며, $w$의 크기가 5라고 가정하자. 위 표는 스텝이 1 또는 2인 출력 크기를 보여주고 있다.
 
 <!--
 2. **Padding**: Very often in designing Deep Neural Networks architectures, we want the output of convolution to be of the same size as the input. This can be achieved by padding the input ends with a number of (typically) zero entries, usually on both sides. Padding is done mostly for convenience. It can sometimes impact performance and result in strange border effects, that said, when using a ReLU non-linearity, zero padding is not unreasonable.
