@@ -198,7 +198,7 @@ $$y_i = \sum_j w_j x_{i+j}$$
 <!--
 Mathematicians call this formulation "cross-correlation". In our context, this difference is just a difference in convention. Practically, cross-correlation and convolution can be interchangeable if one reads the weights stored in memory forward or backward.
 -->
-수학자들은 이 공식을 "교차 관계"라고 부른다. 합성곱과의 차이점은 단지 "관례"의 차이만 있을 뿐이다. 실제로 메모리에 저장된 가중치를 앞으로 읽는지 뒤로 읽는지에 따라 교차상관과 합성곱을 서로 바꿔 쓸 수 있다.
+수학자들은 이 공식을 "교차 상관관계"라고 부른다. 합성곱과의 차이점은 단지 "관례"의 차이만 있을 뿐이다. 실제로 메모리에 저장된 가중치를 앞으로 읽는지 뒤로 읽는지에 따라 교차상관과 합성곱을 서로 바꿔 쓸 수 있다.
 
 <!--
 Being aware of this difference is important, for example, when one want to make use of certain mathematical properties of convolution/correlation from mathematical texts.
