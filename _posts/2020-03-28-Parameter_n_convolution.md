@@ -32,10 +32,11 @@ In this section we will visualise the inner workings of a neural network.
 -->
 그림 1 은 신경망이 어떻게 동작하는지 내부 구조를 묘사한 것이다. 일반적으로 신경망의 구조를 그릴 때, 입력은 아래나 왼쪽에 나타나고 출력은 위나 오른쪽에 나타난다. 그림 1을 보면, 분홍색 뉴런은 입력을 나타내고 파란색 뉴런은 출력을 나타낸다. 이 신경망은 4개 층의 초록색 은닉층<sup>Hidden Layers</sup>을 가지고 있다. 즉, 총 6개 층으로, 4개의 은닉 층과 1개의 입력 층, 1개의 출력 층을 가지고 있다. 여기서는 각 은닉층마다 2개의 뉴런을 가지고 있으므로, 각 층별 가중치 행렬 ($W$)의 차원은 2X2가 된다.
 
-> This is because we want to transform our input plane into another plane that we can visualize.  
-> 이는 입력 평면을 시각화 할 수 있는 다른 평면으로 변환하기 때문이다.
+```
+This is because we want to transform our input plane into another plane that we can visualize.  
+이는 입력 평면을 시각화 할 수 있는 다른 평면으로 변환하기 때문이다.
 **해석오류**
-  
+```  
   
 <center><img src="{{site.baseurl}}/images/week03/03-1/Visual1.png" alt="Network" style="zoom:35%;" /><br>
 그림. 2 접힘 평면<sup>Folding space</sup></center><br>  
@@ -103,8 +104,10 @@ $$
 <!--
 We force shared parameters to be equal, so the gradient w.r.t. to shared parameters will be summed in the backprop. For example the gradient of the cost function $C(y, \bar y)$ with respect to $u_1$ will be the sum of the gradient of the cost function $C(y, \bar y)$ with respect to $w_1$ and the gradient of the cost function $C(y, \bar y)$ with respect to $w_2$.
 -->
->공유 매개 변수를 동일하게 해주면, 공유 매개 변수에 대한 기울기는 역전파되면서 합산된다.** 번역 애매모호쓰 **
-
+```
+We force shared parameters to be equal, so the gradient w.r.t. to shared parameters will be summed in the backprop.
+공유 매개 변수를 동일하게 해주면, 공유 매개 변수에 대한 기울기는 역전파되면서 합산된다.** 번역 애매모호쓰 **
+```  
 예를 들어, $u_1$에 대한 비용 함수 $C(y, \bar y)$의 기울기는 $w_1$에 대한 비용 함수 $C(y, \bar y)$의 기울기와 $w_2$에 대한 비용 함수 $C (y, \bar y)$의 기울기의 합이다.
 <br>
 
@@ -126,7 +129,7 @@ A hypernetwork is a network where the weights of one network is the output of an
 <!--
 Weight sharing transformation can be applied to motif detection. Motif detection means to find some motifs in sequential data like keywords in speech or text. One way to achieve this, as shown in Figure 7, is to use a sliding window on data, which moves the weight-sharing function to detect a particular motif (i.e. a particular sound in speech signal), and the outputs (i.e. a score) goes into a maximum function.
 -->
-  우리는 모티프 검출<sup>Motif detection</sup>에 가중치 공유 변환을 응용할 수 있다. 모티프 검출이란 음성이나 글에 있는 "키워드"처럼 순차 데이터에 있는 모티프를 찾는 것을 말한다. 그림 7과 같이, 모티프 검출을 하기 위한 방법 중의 하나로 데이터에 슬라이딩 윈도우를 사용하는 것을 들 수 있다. 여기서, 특정 모티프(예를 들어, 음성 신호에서 특정 소리)를 검출하기 위해 가중치 공유 함수를 이동하고 출력(i.e. 점수<sup>Score</sup>)을 Maximum 함수로 넣어준다.
+우리는 모티프 검출<sup>Motif detection</sup>에 가중치 공유 변환을 응용할 수 있다. 모티프 검출이란 음성이나 글에 있는 "키워드"처럼 순차 데이터에 있는 모티프를 찾는 것을 말한다. 그림 7과 같이, 모티프 검출을 하기 위한 방법 중의 하나로 데이터에 슬라이딩 윈도우를 사용하는 것을 들 수 있다. 여기서, 특정 모티프(예를 들어, 음성 신호에서 특정 소리)를 검출하기 위해 가중치 공유 함수를 이동하고 출력(i.e. 점수<sup>Score</sup>)을 Maximum 함수로 넣어준다.
 
 
 <br><center><img src="{{site.baseurl}}/images/week03/03-1/Motif.png" alt="Network" style="zoom:30%;" /><br>
@@ -231,9 +234,12 @@ Example: Suppose the input $x$ is one dimensional and has size of 100 and $w$ ha
 
 2. **패딩**<sup></sup>: 보통 심층 신경망<sup>Deep Neural Networks</sup> 아키텍처를 설계할 때, 입력의 양 끝단에 0으로 채워주는(일반적으로 0, 0이 아닐 수도 있음) 패딩을 해줌으로써 합성곱의 출력을 입력과 같은 크기로 만들어준다.
 
-> 주로 패딩은 우리가 편하기 위해서 사용하는 것이며, 때로는 성능에 영향을 주고, 이상한 Border Effect를 가져올 수 있다. 즉, ReLU 비선형성을 사용할 때에는 제로 패딩<sup>Zero padding</sup>을 사용하는 것은 별로 좋지 않다.
+```
+It can sometimes impact performance and result in strange border effects, that said, when using a ReLU non-linearity, zero padding is not unreasonable.
+주로 패딩은 우리의 편의를 위해 사용하는 것이며, 때로는 성능에 영향을 주고, 이상한 Border Effect를 가져올 수 있다. 즉, ReLU 비선형성을 사용할 때에는 제로 패딩<sup>Zero padding</sup>을 사용하는 것은 별로 좋지 않다.
 ** 해석 이상..**
-
+```  
+  
 ## Deep Convolution Neural Networks (DCNNs)
 
 <!--
@@ -248,9 +254,12 @@ The reason for stacking multiple such layers is that we want to build a hierarch
 -->
 이렇게 계층을 여러 겹 쌓는 이유는 데이터의 계층적 표현을 만들고자 하기 때문이다. CNN은 이미지 및 영상 처리에만 국한되지 않고, 음성와 언어 처리에도 성공적으로 응용되고 있다. 
 
-> 기술적으로 CNN은 배열의 형태를 가진 어떠한 유형의 데이터에도 적용될 수 있다. 우리는 또한 특정 속성을 만족시키기 위해 이러한 어레이를 사용할 수 있지만???  
-> **비문**  
-  
+```
+Technically they can be applied to any type of data that comes in the form of arrays, although we also these arrays to satisfy certain properties.
+기술적으로 CNN은 배열의 형태를 가진 어떠한 유형의 데이터에도 적용될 수 있다. 우리는 또한 특정 속성을 만족시키기 위해 이러한 어레이를 사용할 수 있지만???  
+**비문**  
+```  
+
 <!--
 Why would we want to capture the hierarchical representation of the world? Because the world we live in is compositional. This point is alluded to in previous sections. Such hierarchical nature can be observed from the fact that local pixels assemble to form simple motifs such as oriented edges. These edges in turn are assembled to form local features such as corners, T-junctions, etc. These edges are assembled to form motifs that are even more abstract. We can keep building on these hierarchical representation to eventually form the objects we observe in the real world.
 --> 
