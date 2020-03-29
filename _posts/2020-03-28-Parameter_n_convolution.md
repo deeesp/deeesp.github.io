@@ -248,8 +248,11 @@ It can sometimes impact performance and result in strange border effects, that s
 <!--
 As previously described, deep neural networks are typically organized as repeated alternation between linear operators and point-wise nonlinearity layers. In convolutional neural networks, the linear operator will be the convolution operator described above. There is also an optional third type of layer called the pooling layer.
 -->
-> 앞서 기술한 바와 같이, 일반적으로 심층 신경망은 선형 연산자와 점별수렴 비선형 계층 사이의 반복 교대로 구성된다.
-
+```
+As previously described, deep neural networks are typically organized as repeated alternation between linear operators and point-wise nonlinearity layers.
+앞서 기술한 바와 같이, 일반적으로 심층 신경망은 선형 연산자와 점별수렴 비선형 계층 사이의 반복 교대로 구성된다.
+** 해석 오류 ㅠㅠ**
+```
 합성곱 신경망에서 선형 연산자는 앞서 말한 합성곱 연산자가 될 것이다. 풀링<sup>Pooling</sup> 계층라고 불리는 세 번째 옵션도 있다. 
 
 <!--
