@@ -30,8 +30,9 @@ In this section we will visualise the inner workings of a neural network.
   
 <!--Figure 1 depicts the structure of the neural network we would like to visualise. Typically, when we draw the structure of a neural network, the input appears on the bottom or on the left, and the output appears on the top side or on the right. In Figure 1, the pink neurons represent the inputs, and the blue neurons represent the outputs. In this network, we have 4 hidden layers (in green), which means we have 6 layers in total (4 hidden layers + 1 input layer + 1 output layer). In this case, we have 2 neurons per hidden layer, and hence the dimension of the weight matrix ($W$) for each layer is 2-by-2. This is because we want to transform our input plane into another plane that we can visualize.
 -->
-그림 1 은 신경망이 어떻게 동작하는지 내부 구조를 묘사한 것이다. 일반적으로 신경망의 구조를 그릴 때, 입력은 아래나 왼쪽에 나타나고, 출력은 위나 오른쪽에 나타난다. 그림 1을 보면, 분홍색 뉴런은 입력을 나타내고, 파란색 뉴런은 출력을 나타낸다. 이 신경망은 4개 층의 초록색 은닉층<sup>Hidden Layers</sup>을 가지고 있다. 즉, 총 6개(4개의 은닉 층과 1개의 입력 층, 1개의 출력 층) 계층을 가지고 있다. 여기서는, 각 은닉층마다 2개의 뉴런을 가지고 있으므로, 각 층별 가중치 행렬 ($W$)의 차원은 2X2가 된다.
+그림 1 은 신경망이 어떻게 동작하는지 내부 구조를 묘사한 것이다. 일반적으로 신경망의 구조를 그릴 때, 입력은 아래나 왼쪽에 나타나고 출력은 위나 오른쪽에 나타난다. 그림 1을 보면, 분홍색 뉴런은 입력을 나타내고 파란색 뉴런은 출력을 나타낸다. 이 신경망은 4개 층의 초록색 은닉층<sup>Hidden Layers</sup>을 가지고 있다. 즉, 총 6개 층으로, 4개의 은닉 층과 1개의 입력 층, 1개의 출력 층을 가지고 있다. 여기서는 각 은닉층마다 2개의 뉴런을 가지고 있으므로, 각 층별 가중치 행렬 ($W$)의 차원은 2X2가 된다.
 
+> This is because we want to transform our input plane into another plane that we can visualize.  
 > 이는 입력 평면을 시각화 할 수 있는 다른 평면으로 변환하기 때문이다.
 **해석오류**
   
@@ -41,7 +42,7 @@ In this section we will visualise the inner workings of a neural network.
   
 <!-- The transformation of each layer is like folding our plane in some specific regions as shown in Figure 2. This folding is very abrupt, this is because all the transformations are performed in the 2D layer. In the experiment, we find that if we have only 2 neurons in each hidden layer, the optimization will take longer; the optimization is easier if we have more neurons in the hidden layers. This leaves us with an important question to consider: Why is it harder to train the network with fewer neurons in the hidden layers? You should consider this question yourself and we will return to it after the visualization of $\texttt{ReLU}$.
 -->
-각 층의 변환은 그림 2에서 보여지는 것처럼 특정 지역에서 평면을 접는 것과 같다. 2차원의 계층에서 모든 변환이 이루어지기 때문에, 매우 갑작스럽게 접히게 된다. 우리는 실험을 통해 만약 2개의 뉴런만 각 은닉층에 있다면 최적화가 더 오래 걸리고, 은닉층에 더 많은 뉴런이 있을 수록 최적화가 더 쉬워진다는 것을 발견하였다. 여기서 우리는 "왜 더 적은 뉴런으로 신경망을 학습시키는 것이 더 어려울까?"라는 의문점을 남기게 될 것이다. 이러한 질문에 우리는 스스로 생각해 보아야 하며, $\texttt{ReLU}$를 시각화 해본 뒤에 다시 돌아와 볼 것이다.  
+각 층의 변환은 그림 2에서 보여지는 것처럼 특정 지역에서 평면을 접는 것과 같다. 2차원 계층에서 모든 변환이 이루어지기 때문에, 매우 갑작스럽게 접히게 된다. 우리는 실험을 통해서 각 은닉층에 2개의 뉴런만 있다면 최적화가 더 오래 걸리고, 은닉층에 많은 뉴런이 있을수록 최적화가 더 쉬워진다는 것을 발견하였다. 여기서 "왜 더 적은 뉴런으로 신경망을 학습시키는 것이 더 어려울까?"라는 의문점을 남기게 될 것이고, 우리는 이러한 질문에 스스로 생각해 보아야 한다. $\texttt{ReLU}$를 시각화 해본 뒤에 다시 돌아와 생각해 보자.
   
 <div align="center">
 | <img src="{{site.baseurl}}/images/week03/03-1/Visual2a.png" alt="Network" style="zoom:45%;" /> | <img src="{{site.baseurl}}/images/week03/03-1/Visual2b.png" alt="Network" style="zoom:45%;" /> |
@@ -54,7 +55,7 @@ In this section we will visualise the inner workings of a neural network.
 <!--
 When we step through the network one hidden layer at a time, we see that with each layer we perform some affine transformation followed by applying the non-linear ReLU operation, which eliminates any negative values. In Figures 3(a) and (b), we can see the visualisation of ReLU operator. The ReLU operator helps us to do non-linear transformations. After mutliple steps of performing an affine transformation followed by the ReLU operator, we are eventually able to linearly separate the data as can be seen in Figure 4.
 -->
-신경망의 은닉층을 하나씩 살펴보면, 각 계층마다 어떤 아핀 변환<sup>Affine Transformation</sup>을 수행한 다음, 비선형 ReLU 연산을 하여 음수 값을 모두 제거하는 것을 볼 수 있다. 그림 3(a)와 (b)는 ReLU 연산을 시각화한 것이다. ReLU 연산은 비선형 변환하는 데에 쓰인다. ReLU 연산 후 아핀 변환을 수행하는 과정을 여러번 거친 후, 그림 4에서 볼 수 있듯이 데이터를 선형적으로 분리할 수 있다.  
+신경망의 은닉층을 하나씩 살펴보면, 각 계층마다 아핀 변환<sup>Affine Transformation</sup>을 일부 수행한 다음, 비선형 ReLU 연산을 하여 음수 값을 모두 제거하는 것을 볼 수 있다. ReLU 연산은 **비선형 변환**하는 데에 쓰이며, 그림 3(a)와 (b)는 이 ReLU 연산을 시각화한 것이다. ReLU 연산 후 아핀 변환을 수행하는 과정을 여러번 거친 후, 그림 4에서 볼 수 있듯이 데이터를 선형적으로 분리할 수 있다.  
   
 <br><center><img src="{{site.baseurl}}/images/week03/03-1/Visual3.png" alt="Network" style="zoom:30%;" /><br>
 그림. 4 출력 시각화</center><br>  
@@ -159,7 +160,7 @@ It is also important that our "template matching" should be shift-invariant - wh
 <!--
 This hand-crafted method of using local detectors and summation to for digit-recognition was used for many years. But it presents us with the following problem: How can we design these "templates" automatically? Can we use neural networks to learn these "templates"? Next, We will introduce the concept of **convolutions** , that is, the operation we use to match images with "templates".
 -->
-이처럼 국소 검출기<sup>Local detector</sup>를 사용하여 합산하는 고지식한 방법은 수 년간 숫자를 인식하는 데에 많이 사용되어 왔다. 하지만 이러한 방법을 통해 우리는 "어떻게 이 **템플릿**을 자동적으로 설계할 수 있을까?", "신경망을 **템플릿**을 학습하는 용도로 사용할 수 있을까?" 하는 생각하게 되었다. 다음으로, 이미지를 **템플릿**과 일치시키기 위해 사용하는 연산인 **합성곱**<sup>Convolutions</sup>의 개념을 소개할 것이다.
+이처럼 국부 검출기<sup>Local detector</sup>를 사용하여 합산하는 고지식한 방법은 수 년간 숫자를 인식하는 데에 많이 사용되어 왔다. 하지만 이러한 방법을 통해 우리는 "어떻게 이 **템플릿**을 자동적으로 설계할 수 있을까?", "신경망을 **템플릿**을 학습하는 용도로 사용할 수 있을까?" 하는 생각하게 되었다. 다음으로, 이미지를 **템플릿**과 일치시키기 위해 사용하는 연산인 **합성곱**<sup>Convolutions</sup>의 개념을 소개할 것이다.
 
 
 
@@ -237,35 +238,51 @@ Example: Suppose the input $x$ is one dimensional and has size of 100 and $w$ ha
 
 <!--
 As previously described, deep neural networks are typically organized as repeated alternation between linear operators and point-wise nonlinearity layers. In convolutional neural networks, the linear operator will be the convolution operator described above. There is also an optional third type of layer called the pooling layer.
-
-The reason for stacking multiple such layers is that we want to build a hierarchical representation of the data. CNNs do not have to be limited to processing images, they have also been successfully applied to speech and language. Technically they can be applied to any type of data that comes in the form of arrays, although we also these arrays to satisfy certain properties.
-
-Why would we want to capture the hierarchical representation of the world? Because the world we live in is compositional. This point is alluded to in previous sections. Such hierarchical nature can be observed from the fact that local pixels assemble to form simple motifs such as oriented edges. These edges in turn are assembled to form local features such as corners, T-junctions, etc. These edges are assembled to form motifs that are even more abstract. We can keep building on these hierarchical representation to eventually form the objects we observe in the real world.
 -->
+> 앞서 기술한 바와 같이, 일반적으로 심층 신경망은 선형 연산자와 점별수렴 비선형 계층 사이의 반복 교대로 구성된다.
 
-~파파고 발번역 시작~  
+합성곱 신경망에서 선형 연산자는 앞서 말한 합성곱 연산자가 될 것이다. 풀링<sup>Pooling</sup> 계층라고 불리는 세 번째 옵션도 있다. 
+
+<!--
+The reason for stacking multiple such layers is that we want to build a hierarchical representation of the data. CNNs do not have to be limited to processing images, they have also been successfully applied to speech and language. Technically they can be applied to any type of data that comes in the form of arrays, although we also these arrays to satisfy certain properties.
+-->
+이렇게 계층을 여러 겹 쌓는 이유는 데이터의 계층적 표현을 만들고자 하기 때문이다. CNN은 이미지 및 영상 처리에만 국한되지 않고, 음성와 언어 처리에도 성공적으로 응용되고 있다. 
+
+> 기술적으로 CNN은 배열의 형태를 가진 어떠한 유형의 데이터에도 적용될 수 있다. 우리는 또한 특정 속성을 만족시키기 위해 이러한 어레이를 사용할 수 있지만???  
+> **비문**  
   
-앞서 기술한 바와 같이, 심층 신경망은 일반적으로 선형 연산자와 점의 비선형성 계층 사이의 반복적인 교대로 구성된다. 합성곱 신경망에서 선형 연산자는 위에서 설명한 합성곱 연산자가 될 것이다. 풀링<sup>Pooling</sup> 계층라고 불리는 세 번째 옵션도 있다.  
+<!--
+Why would we want to capture the hierarchical representation of the world? Because the world we live in is compositional. This point is alluded to in previous sections. Such hierarchical nature can be observed from the fact that local pixels assemble to form simple motifs such as oriented edges. These edges in turn are assembled to form local features such as corners, T-junctions, etc. These edges are assembled to form motifs that are even more abstract. We can keep building on these hierarchical representation to eventually form the objects we observe in the real world.
+--> 
+왜 우리는 이 세계를 위계적, 계층적으로 표현<sup>Hierarchical representation</sup>하려 하는가? 그 이유는 우리가 살고 있는 세계가 구성적이기 때문이라는 것을 이전 절에서 언급한 바가 있다. 국소 픽셀이 모여 지향적인 윤곽선<sup>Edge, 또는 경계선</sup> 같은 단순한 모티브를 만들어 낸다는 점에서 이러한 계층적 성질을 관찰할 수 있다. 이 윤곽선들은 훨씬 추상적인 모티브를 형성하기 위해 차례로 모여, 모서리나 T-교차점 등과 같은 국부적 특징을 형성한다. 이러한 계층적 표현을 계속해서 구축하며, 실제 우리가 현실 세계에서 관찰하는 대상을 만들어 낼 수 있다.  
   
-그러한 계층을 여러 겹 쌓는 이유는 데이터의 계층적 표현을 구축하고자 하기 때문이다. CNN은 영상 처리에만 국한할 필요는 없으며, 언어와 언어에도 성공적으로 적용되었다. 기술적으로 그것들은 어레이의 형태로 제공되는 어떤 유형의 데이터에도 적용될 수 있지만, 우리는 또한 특정 속성을 만족시키기 위해 이러한 어레이를 사용할 수 있다.  
-  
-왜 우리가 세계의 위계적 표현을 잡으려 하는가? 왜냐하면 우리가 살고 있는 세계는 구성적이기 때문이다. 이 점은 이전 절에서 언급하고 있다. 이러한 계층적 성격은 로컬 픽셀이 모여 지향적인 가장자리 같은 단순한 모티브를 형성한다는 사실에서 관찰될 수 있다. 이들 가장자리는 차례로 조립되어 코너, T-점 등과 같은 국부적 특징을 형성한다. 이 가장자리들은 훨씬 추상적인 모티브를 형성하기 위해 조립되었다. 우리는 이러한 계층적 표현을 계속하여 현실 세계에서 우리가 관찰하는 대상을 형성할 수 있다.  
-  
-~파파고 발번역 끝~  
   
 <center><img src="{{site.baseurl}}/images/week03/03-1/cnn_features.png" alt="CNN Features" style="zoom:35%;" /><br>
-Figure 10. Feature visualization of convolutional net trained on ImageNet from [Zeiler & Fergus 2013]</center>
+그림 10. ImageNet에 학습된 합성곱 신경망의 특징<sup>Feature</sup> from [Zeiler & Fergus 2013]</center>
+  
+<!--
+This compositional, hierarchical nature we observe in the natural world is therefore not just the result of our visual perception, but also true at the physical level.
+At the lowest level of description, we have elementary particles, which assembled to form atoms, atoms together form molecules, we continue to build on this process to form materials, parts of objects and eventually full objects in the physical world.
+-->
+자연 세계에서 관찰할 수 있는 이러한 구성적이고 계층적인 성질은, 시각적인 인식의 결과 뿐만 아니라 물리적 수준에서도 마찬가지로 적용된다. 가장 저수준으로 보면, 소입자가 모여 원자를 형성하고, 원자는 분자를 형성한다. 또한, 물리적으로 물질 및 물체의 일부, 완전한 물체를 형성하기 위해서는 이러한 과정을 계속 수행해야 한다.
 
-
-This compositional, hierarchical nature we observe in the natural world is therefore not just the result of our visual perception, but also true at the physical level. At the lowest level of description, we have elementary particles, which assembled to form atoms, atoms together form molecules, we continue to build on this process to form materials, parts of objects and eventually full objects in the physical world.
-
+<!--
 The compositional nature of the world might be the answer to Einstein's rhetorical question on how humans understand the world they live in:
+-->
+이 세상의 구성적인 성질은 인간이 살고 있는 세계를 어떻게 이해하고 있는 지에 대한 아래의 아인슈타인의 수사적인 질문에 대한 답이 될 수 있을 것이다.
 
-> The most incomprehensible thing about the universe is that it is comprehensible.
-
+> The most incomprehensible thing about the universe is that it is comprehensible.  
+> "우주에 관해서 가장 이해할 수 없는 것은 그것이 이해 가능하다는 사실이다."  
+> - 아인슈타인 (A. Einstein)  
+  
+<!--
 The fact that humans understand the world thanks to this compositional nature still seems like a conspiracy to Yann. It is, however, argued that without compositionality, it will take even more magic for humans to comprehend the world they live in. Quoting the great mathematician Stuart Geman:
-
-> The world is compositional or God exists.
+-->
+얀 르쿤 교수님에게는 인간이 구성적인 성질로써 이 세상을 이해한다는 건 여전히 일종의 음모처럼 보인다. 그러나 얀 교수님은 저명한 미국의 수학자 Stuart Geman의 말을 인용하면서 구성성이 없다면 인간이 이 세계를 이해하는 데 어마어마한 마술이 필요할 것이라고 주장한다. 
+  
+> The world is compositional or God exists.  
+> 이 세상은 구성적이거나, 신이 존재한다.  
+> - 미국의 수학자 스튜어트 게먼 (Stuart Geman)  
 
 
 ## [Inspirations from Biology](https://www.youtube.com/watch?v=FW5gFiJb-ig&t=2254s)
