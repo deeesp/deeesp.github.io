@@ -271,7 +271,7 @@ Why would we want to capture the hierarchical representation of the world? Becau
   
   
 <center><img src="{{site.baseurl}}/images/week03/03-1/cnn_features.png" alt="CNN Features" style="zoom:35%;" /><br>
-그림 10. ImageNet에 학습된 합성곱 신경망의 특징<sup>Feature</sup> from [Zeiler & Fergus 2013]</center>
+그림 10. ImageNet에 학습된 합성곱 신경망의 특징<sup>Feature</sup> from [Zeiler & Fergus 2013]</center><br>
   
 <!--
 This compositional, hierarchical nature we observe in the natural world is therefore not just the result of our visual perception, but also true at the physical level.
