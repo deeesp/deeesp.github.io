@@ -270,11 +270,11 @@ Technically they can be applied to any type of data that comes in the form of ar
 <!--
 Why would we want to capture the hierarchical representation of the world? Because the world we live in is compositional. This point is alluded to in previous sections. Such hierarchical nature can be observed from the fact that local pixels assemble to form simple motifs such as oriented edges. These edges in turn are assembled to form local features such as corners, T-junctions, etc. These edges are assembled to form motifs that are even more abstract. We can keep building on these hierarchical representation to eventually form the objects we observe in the real world.
 --> 
-왜 우리는 이 세상을 위계적, 계층적으로 표현<sup>Hierarchical representation</sup>하려 하는가? 그 이유는 우리가 살고 있는 세상이 구성적이기 때문이라는 것을 이전 절에서 언급한 바가 있다. 국소 픽셀이 모여 지향적인 윤곽선<sup>Edge, 또는 경계선</sup> 같은 단순한 모티브를 만들어 낸다는 점에서 이러한 계층적 성질을 관찰할 수 있다. 이 윤곽선들은 훨씬 추상적인 모티브를 형성하기 위해 차례로 모여, 모서리나 T-교차점 등과 같은 국부적 특징을 형성한다. 이러한 계층적 표현을 계속해서 구축하며, 실제 우리가 현실 세계에서 관찰하는 대상을 만들어 낼 수 있다.  
+왜 우리는 이 세상을 위계적, 계층적으로 표현<sup>Hierarchical representation</sup>하려 하는가? 그 이유는 우리가 살고 있는 세상이 구성적<sup>Compositional</sup>이기 때문이라는 것을 이전 절에서 언급한 바가 있다. 국소 픽셀이 모여 지향적인 윤곽선<sup>Edge, 또는 경계선</sup> 같은 단순한 모티브를 만들어 낸다는 점에서 이러한 계층적 성질을 관찰할 수 있다. 이 윤곽선들은 훨씬 추상적인 모티브를 형성하기 위해 차례로 모여, 모서리나 T-교차점 등과 같은 국부적 특징을 형성한다. 이러한 계층적 표현을 계속해서 구축하며, 실제 우리가 현실 세계에서 관찰하는 대상을 만들어 낼 수 있다.  
   
   
 <center><img src="{{site.baseurl}}/images/week03/03-1/cnn_features.png" alt="CNN Features" style="zoom:35%;" /><br>
-그림 10. ImageNet에 학습된 합성곱 신경망의 특징<sup>Feature</sup> from [Zeiler & Fergus 2013]</center><br>
+그림 10. ImageNet에 학습된 합성곱 신경망의 특징<sup>Feature</sup> [Zeiler & Fergus 2013]</center><br>
   
 <!--
 This compositional, hierarchical nature we observe in the natural world is therefore not just the result of our visual perception, but also true at the physical level.
