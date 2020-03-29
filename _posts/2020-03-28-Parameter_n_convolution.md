@@ -184,7 +184,7 @@ $$y_i = \sum_j w_j x_{i-j}$$
 <!--
 In words, the $i$-th output is computed as the dot product between the **reversed** $w$ and a window of the same size in $x$. To compute the full output, start the window at the beginning, shift this window by one entry each time and repeat until $x$ is exhausted.
 -->
-즉, $i$번째 출력은 **수정된** $w$와 같은 사이즈의 $x$ 윈도우 간에 내적<sup>Dot product</sup>를 계산한 것이다. 전체 출력을 계산하기 위해서는, &x$의 처음부터 시작하여 끝까지 윈도우를 이동시켜가며 이 과정을 반복하는 것이다.
+즉, $i$번째 출력은 **수정된** $w$와 같은 사이즈의 $x$ 윈도우 간에 내적<sup>Dot product</sup>를 계산한 것이다. 전체 출력을 계산하기 위해서는, $x$를 처음부터 시작하여 끝까지 윈도우를 이동시켜가며 이 과정을 반복하는 것이다.
 
 
 ### 교차 상관관계 (Cross-correlation)
