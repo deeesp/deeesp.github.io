@@ -286,7 +286,7 @@ The compositional nature of the world might be the answer to Einstein's rhetoric
 
 > The most incomprehensible thing about the universe is that it is comprehensible.  
 > "우주에 관해서 가장 이해할 수 없는 것은 그것이 이해 가능하다는 사실이다."  
-> - 아인슈타인 (A. Einstein)  
+> 아인슈타인 (A. Einstein)  
   
 <!--
 The fact that humans understand the world thanks to this compositional nature still seems like a conspiracy to Yann. It is, however, argued that without compositionality, it will take even more magic for humans to comprehend the world they live in. Quoting the great mathematician Stuart Geman:
@@ -295,7 +295,7 @@ The fact that humans understand the world thanks to this compositional nature st
   
 > The world is compositional or God exists.  
 > 이 세상은 구성적이거나, 신이 존재한다.  
-> - 미국의 수학자 스튜어트 게먼 (Stuart Geman)  
+> 미국의 수학자 스튜어트 게먼 (Stuart Geman)  
 
 
 ## [Inspirations from Biology](https://www.youtube.com/watch?v=FW5gFiJb-ig&t=2254s)
