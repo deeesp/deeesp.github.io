@@ -344,6 +344,7 @@ The right side shows the ventral pathway, which tells you what you're looking at
 
 
 ### Hubel과 Weisel의 공헌 (1962)
+---
 
 <center><img src="{{site.baseurl}}/images/week03/03-1/Hubel_and_Weisel.png" alt="Hubel_and_Weisel" style="zoom:55%;" /></center>
 
@@ -365,6 +366,7 @@ Another type of neuron, which they named "complex cells", aggregate the output o
 "복합 세포"<sup>Complex cells</sup>라고 불리는 또 다른 타입의 뉴런은 특정 영역 내에 여러 단순한 세포들의 출력을 종합하는 역할을 한다. 우리는 이러한 복합세포들이 최대값<sup>Maximum</sup>, 합산<sup>Sum</sup>, 제곱합<sup>Sum of squares</sup>과 같은 순서에 구애받지 않는 함수들을 사용하여 값을 집계하고 활성화 해주는 역할을 해낸다고 생각할 수 있다. 이런 복합 세포들은 자극이 영역 내에 어디에 위치하는 지에 상관 없이 그 영역의 엣지와 방향을 검출해낸다. 다시 말해, 입력의 위치가 조그만 변화에 대해서 이동불변<sup>Shift-invariant</sup>하다고 한다.
 
 ### 후쿠시마 박사의 공헌 (1982)
+---
 
 <center><img src="{{site.baseurl}}/images/week03/03-1/Fukushima.png" alt="Fukushima" style="zoom:55%;" /></center>
 
