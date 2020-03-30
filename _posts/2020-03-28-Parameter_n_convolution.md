@@ -302,7 +302,7 @@ The fact that humans understand the world thanks to this compositional nature st
 > 미국의 수학자 스튜어트 게먼 (Stuart Geman)  
 
 
-## [Inspirations from Biology](https://www.youtube.com/watch?v=FW5gFiJb-ig&t=2254s)
+## [생물학에서의 영감](https://www.youtube.com/watch?v=FW5gFiJb-ig&t=2254s)
 <!--
 So why should Deep Learning be rooted in the idea that our world is comprehensible and has a compositional nature? Research conducted by Simon Thorpe helped motivate this further. He showed that the way we recognize everyday objects is extremely fast. His experiments involved flashing a set of images every 100ms, and then asking users to identify these images, which they were able to do successfully. This demonstrated that it takes about 100ms for humans to detect objects. Furthermore, consider the diagram below, illustrating parts of the brain annotated with the time it takes for neurons to propagate from one area to the next:
 -->
@@ -310,7 +310,7 @@ So why should Deep Learning be rooted in the idea that our world is comprehensib
 
 <center><img src="{{site.baseurl}}/images/week03/03-1/Simon_Thorpe.png" alt="Simon_Thorpe" style="zoom:55%;" /></center>
 
-<div align="center">Figure 11. Simon Thorpe's model of visual information flow in the brain </div>
+<div align="center">그림 11. Simon Thorpe의 모델: 두뇌에서의 시각 정보 </div><br>
 
 <!--
 Signals pass from the retina to the LGN (helps with contrast enhancement, gate control, etc.), then to the V1 primary visual cortex, V2, V4, then to the inferotemporal cortex (PIT), which is the part of the brain where categories are defined. Observations from open-brain surgery showed that if you show a human a film, neurons in the PIT will fire only when they detect certain images -- such as Jennifer Aniston or a person's grandmother -- and nothing else. The neural firings are invariant to things such as position, size, illumination, your grandmother's orientation, what she's wearing, etc.
@@ -335,7 +335,7 @@ Gallant와 Van Essen은 다음과 그림과 같이 사람의 두뇌는 두 가�
 
 <center><img src="{{site.baseurl}}/images/week03/03-1/Gallant_and_Van_Essen.png" alt="Gallant_and_Van_Essen" style="zoom:55%;" /></center>
 
-<div align="center">그림 12. Gallant와 Van Essen의 모델 : 등쪽경로, 배쪽경로</div>
+<div align="center">그림 12. Gallant와 Van Essen의 모델 : 등쪽경로, 배쪽경로</div><br>
 
 <!--
 The right side shows the ventral pathway, which tells you what you're looking at, while the left side shows the dorsal pathway, which identifies locations, geometry, and motion. They seem fairly separate in the human (and primate) visual cortex (with a few interactions between them of course).
@@ -343,11 +343,11 @@ The right side shows the ventral pathway, which tells you what you're looking at
 오른쪽은 배쪽경로<sup>Vental pathway</sup>로, 우리가 무엇을 보고 있는 지를 알려주고, 왼쪽은 등쪽경로<sup>Dorsal pathway</sup>로, 위치와 기하적인 구조, 동작을 식별한다. 이는 인간의 시각 피질<sup>Visual cortex </sup>에서 완전히 분리되는 것처럼 보이지만 약간의 상호작용이 있긴 하다.
 
 
-### Hubel & Weisel's contributions (1962)
+### Hubel과 Weisel의 공헌 (1962)
 
 <center><img src="{{site.baseurl}}/images/week03/03-1/Hubel_and_Weisel.png" alt="Hubel_and_Weisel" style="zoom:55%;" /></center>
 
-<div align="center">그림 13. Hubel과 Weisel의 시각적 자극을 통한 고양이 두뇌 실험</div>
+<div align="center">그림 13. Hubel과 Weisel의 시각적 자극을 통한 고양이 두뇌 실험</div><br>
 
 <!--
 Hubel and Weisel experiments used electrodes to measure neural firings in cat brains in response to visual stimuli. They discovered that neurons in the V1 region are only sensitive to certain areas of a visual field (called "receptive fields"), and detect oriented edges in that area. For example, they demonstrated that if you showed the cat a vertical bar and start rotating it, at a particular angle the neuron will fire. Similarly, as the bar moves away from that angle, the activation of the neuron diminishes. These activation-selective neurons Hubel & Weisel named "simple cells", for their ability to detect local features.
@@ -368,7 +368,7 @@ Another type of neuron, which they named "complex cells", aggregate the output o
 
 <center><img src="{{site.baseurl}}/images/week03/03-1/Fukushima.png" alt="Fukushima" style="zoom:55%;" /></center>
 
-<div align="center">그림 14. 후쿠시마 박사의 CNN 모델 </div>
+<div align="center">그림 14. 후쿠시마 박사의 CNN 모델 </div><br>
 <!--
 Fukushima was the first to implement the idea of multiple layers of simple cells and complex cells with computer models, using a dataset of handwritten digits. Some of these feature detectors were hand-crafted or learned, though the learning used unsupervised clustering algorithms, trained separately for each layer, as backpropagation was not yet in use.
 -->
