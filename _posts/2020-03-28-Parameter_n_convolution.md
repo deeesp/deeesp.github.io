@@ -303,26 +303,44 @@ The fact that humans understand the world thanks to this compositional nature st
 
 
 ## [Inspirations from Biology](https://www.youtube.com/watch?v=FW5gFiJb-ig&t=2254s)
-
+<!--
 So why should Deep Learning be rooted in the idea that our world is comprehensible and has a compositional nature? Research conducted by Simon Thorpe helped motivate this further. He showed that the way we recognize everyday objects is extremely fast. His experiments involved flashing a set of images every 100ms, and then asking users to identify these images, which they were able to do successfully. This demonstrated that it takes about 100ms for humans to detect objects. Furthermore, consider the diagram below, illustrating parts of the brain annotated with the time it takes for neurons to propagate from one area to the next:
+-->
+그렇다면 왜 딥러닝을 연구함에 있어서 '이 세상은 이해할 수 있고, **구성적인** 성질을 가지고 있다.'는 아이디어에 기반을 두어야 하는가? Simon Thorpe이 수행했던 연구로부터 이런 아이디어가 나왔다. 매 100ms마다 이미지 한 세트에 불빛을 비추고 피실험자들에게 이 이미지가 무엇인지 식별하라고 하였더니 알아 맞춘 실험으로, 우리가 일상에서 사물을 매우 빠르게 인식한다는 것을 보였다. 이 말은 즉슨, 사람이 물체를 감지하는 데 약 100ms 정도가 걸린다는 것이다. 아래 표는 뉴런이 한 영역에서 다음 영역으로 전파되는 데 걸리는 시간을 뇌 그림에 표기한 것이다.
 
 <center><img src="{{site.baseurl}}/images/week03/03-1/Simon_Thorpe.png" alt="Simon_Thorpe" style="zoom:55%;" /></center>
 
 <div align="center">Figure 11. Simon Thorpe's model of visual information flow in the brain </div>
 
+<!--
 Signals pass from the retina to the LGN (helps with contrast enhancement, gate control, etc.), then to the V1 primary visual cortex, V2, V4, then to the inferotemporal cortex (PIT), which is the part of the brain where categories are defined. Observations from open-brain surgery showed that if you show a human a film, neurons in the PIT will fire only when they detect certain images -- such as Jennifer Aniston or a person's grandmother -- and nothing else. The neural firings are invariant to things such as position, size, illumination, your grandmother's orientation, what she's wearing, etc.
+-->
+신호는 망막에서부터 대비향상<sup>Contrast Enhancement</sup>과 관문 조절<sup>Gate Control을 돕는 </sup>외측슬상핵(LGN)<sup>Lateral Geniculate Nucleus</sup>까지 전달되며, 그다음 일차시각피질<sup>V1 primary visual cortex</sup>, V2, V4, 그리고 뇌의 일부인 하측두 피질(PIT)<sup>Inferotemporal cortex</sup>로 전달된다. Open-brain 수술에서 관찰한 바에 따르면, 영화에서 어떤 배우를 보았을 때 하측두 피질에 있는 뉴런은 배우의 같이 특정 이미지를 감지할 때만 활동한다고 한다. 뉴런 활동은 위치, 크기, 조명, 배우가 서 있는 방향, 입고 있는 옷 등의 요소에 영향을 받지 않는다<sup>Invariant</sup>.
 
+<!--
 Furthermore, the fast reaction times with which humans were able to categorize these items -- barely enough time for a few spikes to get through -- demonstrates that it's possible to do this without additional time spent on complex recurrent computations. Rather, this is a single feed-forward process.
+-->
+그러므로 인간이 사물을 인지하는 데에 걸리는 시간은 복잡하고 반복적인 계산에 시간을 쏟지 않고도 가능할 정도로 빠른 시간이라는 뜻이다. 정확히 말하자면, 이것은 하나의 피드포워드<sup>Feed-forward</sup> 과정이다.
 
+<!--
 These insights suggested that we could develop a neural network architecture which is completely feed-forward, yet still able to solve the problem of recognition, in a way that is invariant to irrelevant transformations of the input.
+-->
+이러한 발상은 입력의 변화에 무관하게 인지하지는 못하지만, 완전히 피드포워드로 구성되어 있는 신경망 아키텍처를 개발해 낼 수 있다는 것을 말해주었다.
 
+
+<!--
 One further insight from the human brain comes from Gallant & Van Essen, whose model of the human brain illustrates two distinct pathways:
+-->
+Gallant와 Van Essen은 다음과 그림과 같이 사람의 두뇌는 두 가지 경로가 있다는 또 다른 발상을 해내었다.
 
 <center><img src="{{site.baseurl}}/images/week03/03-1/Gallant_and_Van_Essen.png" alt="Gallant_and_Van_Essen" style="zoom:55%;" /></center>
 
-<div align="center">Figure 12. Gallen & Van Essen's model of dorsal & ventral pathways in the brain </div>
+<div align="center">그림 12. Gallant와 Van Essen의 모델 : 등쪽경로, 배쪽경로</div>
 
+<!--
 The right side shows the ventral pathway, which tells you what you're looking at, while the left side shows the dorsal pathway, which identifies locations, geometry, and motion. They seem fairly separate in the human (and primate) visual cortex (with a few interactions between them of course).
+-->
+오른쪽은 배쪽경로<sup>Vental pathway</sup>로, 우리가 무엇을 보고 있는 지를 알려주고, 왼쪽은 등쪽경로<sup>Dorsal pathway</sup>로, 위치와 기하적인 구조, 동작을 식별한다. 이는 인간의 시각 피질<sup>Visual cortex </sup>에서 완전히 분리되는 것처럼 보이지만 약간의 상호작용이 있긴 하다.
 
 
 ### Hubel & Weisel's contributions (1962)
@@ -331,12 +349,20 @@ The right side shows the ventral pathway, which tells you what you're looking at
 
 <div align="center">Figure 13. Hubel & Weisel's experiments with visual stimuli in cat brains </div>
 
+<!--
 Hubel and Weisel experiments used electrodes to measure neural firings in cat brains in response to visual stimuli. They discovered that neurons in the V1 region are only sensitive to certain areas of a visual field (called "receptive fields"), and detect oriented edges in that area. For example, they demonstrated that if you showed the cat a vertical bar and start rotating it, at a particular angle the neuron will fire. Similarly, as the bar moves away from that angle, the activation of the neuron diminishes. These activation-selective neurons Hubel & Weisel named "simple cells", for their ability to detect local features.
+-->
+Hubel과 Weisel은 전극을 사용하여 시각적 자극에 대한 반응으로 고양이 두뇌에서의 뉴런 활동을 측정하는 실험을 하였다. 이 실험에서 V1 영역의 뉴런이 수용영역<sup>Receptive fields</sup>이라고 불리는 시야에서 특정 지역에서 민감하다는 것을 발견했다. 예를 들어, 고양이에게 세로 막대기를 보여주고 그 막대기를 회전시키면, 특정 각도에서 뉴런이 활동한다는 것을 증명했다. 비슷하게, 막대기가 그 각도에서 멀어질 수록 뉴런의 활성화 수치가 줄어들었다.
 
+<!--
 They also discovered that if you move the bar out of the receptive field, that particular neuron doesn't fire any more, but another neuron will. There are local feature detectors corresponding to all areas of the visual field, hence the idea that the human brain processes visual information as a collection of "convolutions".
+-->
+또한 만약 그 막대기를 시야 바깥으로 움직였을 때, 특정 뉴런이 활동을 멈추고 다른 뉴런이 활동하는 것을 발견하였다. 모든 시야에 상응하는 국부 피쳐 검출기<sup>Local feature detector</sup>가 존재하고, 인간의 두뇌가 여러 **"합성곱"** 으로 시각정 정보를 처리한다는 생각을 하게 되었다.
 
+<!--
 Another type of neuron, which they named "complex cells", aggregate the output of multiple simple cells within a certain area. We can think of these as computing an aggregate of the activations using a function such as maximum, sum, sum of squares, or any other function not depending on the order. These complex cells detect edges and orientations in a region, regardless of where those stimuli lie specifically within the region. In other words, they are shift-invariant with respect to small variations in positions of the input.
-
+-->
+"복합 세포"<sup>Complex cells</sup>라고 불리는 또 다른 타입의 뉴런은 특정 영역 내에 여러 단순한 세포들의 출력을 종합하는 역할을 한다. 우리는 이들을 순서에 구애받지 않는 최대값<sup>Maximum</sup>, 합산<sup>Sum</sup>, 제곱합<sup>Sum of squares</sup>과 같은 함수들을 사용하여 값을 집계하고 활성화 해주는 것이라고 생각할 수 있다. 이런 복합 세포들은 자극이 영역 내에 어디에 위치하는 지에 상관 없이 그 영역의 엣지와 방향을 검출해낸다. 다시 말해, 입력의 위치가 조그만 변화에 대해서 이동불변<sup>Shift-invariant</sup>하다고 한다.
 
 ### Fukushima's contributions (1982)
 
