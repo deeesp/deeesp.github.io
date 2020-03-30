@@ -31,7 +31,7 @@ In this section we will visualise the inner workings of a neural network.
   
 <!--Figure 1 depicts the structure of the neural network we would like to visualise. Typically, when we draw the structure of a neural network, the input appears on the bottom or on the left, and the output appears on the top side or on the right. In Figure 1, the pink neurons represent the inputs, and the blue neurons represent the outputs. In this network, we have 4 hidden layers (in green), which means we have 6 layers in total (4 hidden layers + 1 input layer + 1 output layer). In this case, we have 2 neurons per hidden layer, and hence the dimension of the weight matrix ($W$) for each layer is 2-by-2. This is because we want to transform our input plane into another plane that we can visualize.
 -->
-일반적으로 신경망의 구조를 그릴 때, 입력은 아래나 왼쪽에 나타나고 출력은 위나 오른쪽에 나타난다. 그림 1을 보면, 분홍색 뉴런은 입력을 나타내고 파란색 뉴런은 출력을 나타낸다. 이 신경망은 4개 층의 초록색 은닉층<sup>Hidden Layers</sup>을 가지고 있다. 즉, 총 6개 층으로, 4개의 은닉 층과 1개의 입력 층, 1개의 출력 층을 가지고 있다. 여기서는 각 은닉층마다 2개의 뉴런을 가지고 있으므로, 각 층별 가중치 행렬 ($W$)의 차원은 2X2가 된다.
+일반적으로 신경망의 구조를 그릴 때, 입력은 아래나 왼쪽에 나타나고 출력은 위나 오른쪽에 나타난다. 그림 1을 보면, 분홍색 뉴런은 입력을 나타내고 파란색 뉴런은 출력을 나타낸다. 이 신경망은 4개 층의 초록색 은닉층<sup>Hidden Layers</sup>을 가지고 있다. 즉, 총 6개 층으로, 4개의 은닉층과 1개의 입력 층, 1개의 출력 층을 가지고 있다. 여기서는 각 은닉층마다 2개의 뉴런을 가지고 있으므로, 각 층별 가중치 행렬 ($W$)의 차원은 2X2가 된다.
 
 ```
 This is because we want to transform our input plane into another plane that we can visualize.  
@@ -347,7 +347,7 @@ The right side shows the ventral pathway, which tells you what you're looking at
 
 <center><img src="{{site.baseurl}}/images/week03/03-1/Hubel_and_Weisel.png" alt="Hubel_and_Weisel" style="zoom:55%;" /></center>
 
-<div align="center">Figure 13. Hubel & Weisel's experiments with visual stimuli in cat brains </div>
+<div align="center">그림 13. Hubel과 Weisel의 시각적 자극을 통한 고양이 두뇌 실험</div>
 
 <!--
 Hubel and Weisel experiments used electrodes to measure neural firings in cat brains in response to visual stimuli. They discovered that neurons in the V1 region are only sensitive to certain areas of a visual field (called "receptive fields"), and detect oriented edges in that area. For example, they demonstrated that if you showed the cat a vertical bar and start rotating it, at a particular angle the neuron will fire. Similarly, as the bar moves away from that angle, the activation of the neuron diminishes. These activation-selective neurons Hubel & Weisel named "simple cells", for their ability to detect local features.
@@ -362,15 +362,19 @@ They also discovered that if you move the bar out of the receptive field, that p
 <!--
 Another type of neuron, which they named "complex cells", aggregate the output of multiple simple cells within a certain area. We can think of these as computing an aggregate of the activations using a function such as maximum, sum, sum of squares, or any other function not depending on the order. These complex cells detect edges and orientations in a region, regardless of where those stimuli lie specifically within the region. In other words, they are shift-invariant with respect to small variations in positions of the input.
 -->
-"복합 세포"<sup>Complex cells</sup>라고 불리는 또 다른 타입의 뉴런은 특정 영역 내에 여러 단순한 세포들의 출력을 종합하는 역할을 한다. 우리는 이들을 순서에 구애받지 않는 최대값<sup>Maximum</sup>, 합산<sup>Sum</sup>, 제곱합<sup>Sum of squares</sup>과 같은 함수들을 사용하여 값을 집계하고 활성화 해주는 것이라고 생각할 수 있다. 이런 복합 세포들은 자극이 영역 내에 어디에 위치하는 지에 상관 없이 그 영역의 엣지와 방향을 검출해낸다. 다시 말해, 입력의 위치가 조그만 변화에 대해서 이동불변<sup>Shift-invariant</sup>하다고 한다.
+"복합 세포"<sup>Complex cells</sup>라고 불리는 또 다른 타입의 뉴런은 특정 영역 내에 여러 단순한 세포들의 출력을 종합하는 역할을 한다. 우리는 이러한 복합세포들이 최대값<sup>Maximum</sup>, 합산<sup>Sum</sup>, 제곱합<sup>Sum of squares</sup>과 같은 순서에 구애받지 않는 함수들을 사용하여 값을 집계하고 활성화 해주는 역할을 해낸다고 생각할 수 있다. 이런 복합 세포들은 자극이 영역 내에 어디에 위치하는 지에 상관 없이 그 영역의 엣지와 방향을 검출해낸다. 다시 말해, 입력의 위치가 조그만 변화에 대해서 이동불변<sup>Shift-invariant</sup>하다고 한다.
 
-### Fukushima's contributions (1982)
+### 후쿠시마 박사의 공헌 (1982)
 
 <center><img src="{{site.baseurl}}/images/week03/03-1/Fukushima.png" alt="Fukushima" style="zoom:55%;" /></center>
 
-<div align="center">Figure 14. Fukushima's CNN model </div>
-
+<div align="center">그림 14. 후쿠시마 박사의 CNN 모델 </div>
+<!--
 Fukushima was the first to implement the idea of multiple layers of simple cells and complex cells with computer models, using a dataset of handwritten digits. Some of these feature detectors were hand-crafted or learned, though the learning used unsupervised clustering algorithms, trained separately for each layer, as backpropagation was not yet in use.
+-->
+후쿠시마 박사는 수기로 작성한 숫자 데이터 셋으로 여러 레이어의 단일 세포와 복합 세포 모델을 컴퓨터로 처음 구현한 사람이다. 몇몇 피쳐 검출기들은 수작업으로 만들어지거나, 비지도 군집화<sup>Unsupervised clustering</sup> 알고리즘을 사용하여 학습되었다. 물론 역전파는 아직 사용되지 않았기 때문에 각 레이어마다 따로 학습되었다.
 
+<!--
 Yann LeCun came in a few years later (1989, 1998) and implemented the same architecture, but this time trained them in a supervised setting using backpropagation. This is widely regarded as the genesis of modern convolutional neural networks. (Note: Riesenhuber at MIT in 1999 also re-discovered this architecture, though he didn't use backpropagation.)
-
+-->
+얀 르쿤 교수님은 몇 년 뒤에(1989, 1998) 같은 아키텍쳐를 구현하였지만 역전파를 이용한 지도학습으로 학습시켰고, 이 방식이 현대 합성곱 신경망의 기원으로 널리 알려지게 되었다. (MIT의 Riesenhuber 역시도 1999년에 이 아키텍쳐를 다시 고안해내었지만, 역전파를 사용하지는 않았다.)
