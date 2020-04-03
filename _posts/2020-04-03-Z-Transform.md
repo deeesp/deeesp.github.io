@@ -1,6 +1,5 @@
 ---
 title:  "Z-변환과 & 이산시간 LTI 시스템"
-excerpt: "Yann LeCun 교수님의 NYU Deep Learning 강의 - CNN 개념잡기"
 categories:
   - Signal_Processing
   
