@@ -72,8 +72,8 @@ $$X(e^{j\omega})=X(z)|_{z=e^{j\omega}} = \sum_{n=-\infty }^{\infty}x[n]e^{-j\ome
     $$X(e^{j\omega})=\sum_{n=-\infty }^{\infty}x[n](re^{j\omega})^{-n}=\sum_{n=-\infty }^{\infty}x[n]r^{-n}e^{-j\omega n}$$
 
     $$Z\{x[n]\} = DTFT\{x[n]r^{-n}\}$$
-
-- 여기서 $r=1$이면(i.e. $|z|=1$), z-변환은 $x[n]$의 DTFT가 된다.
+    
+- 여기서 $r=1$ 이면 (i.e. $\left| z \right| =1$), z-변환은 $x[n]$의 DTFT가 된다.
 - 다시 말해, DTFT는 단위 원(Unit circle) $r = 1$ 에서의 z-변환이 된다.
 
     $$z = re^{j\omega}\ (r=1, \ 0 \le \omega \le 2\pi)$$
@@ -83,7 +83,7 @@ $$X(e^{j\omega})=X(z)|_{z=e^{j\omega}} = \sum_{n=-\infty }^{\infty}x[n]e^{-j\ome
 - 만약에, $x[n]$가 Absolutely summable하지도, Square-summable하지도 않으면, DTFT는 존재하는지 안하는지 모른다. 하지만 z-변환은 존재한다!
 - **절대가합(Absolutely summable) - Stable**
 - 절대가합(Absolute summability)은 DTFT가 존재하기 위한 충분조건이다.
-- DTFT가 존재하기 위해선 $|X(e^{jω})|$가 존재해야 한다.
+- DTFT가 존재하기 위해선 $\left| X(e^{jω}) \right|$가 존재해야 한다.
 
 $$|X(e^{jw})|= \left| \sum_{n=-\infty }^{\infty}x[n]e^{-jwn}\right|\le \sum_{n=-\infty }^{\infty}|x[n]||e^{-jwn}| \le\sum_{n=-\infty }^{\infty}|x[n]| < \infty$$
 
@@ -100,14 +100,14 @@ $$\sum_{n=-\infty }^{\infty}|x[n]|^2 < \infty$$
 
 ### Definition
 
-- z-변환이 수렴할 때, 복소 값 $z$의 집합(또는 값들의 범위), $|z|$ 에 의해 결정된다.
+- z-변환이 수렴할 때, 복소 값 $z$의 집합(또는 값들의 범위), $\left| z \right|$ 에 의해 결정된다.
 - DTFT에서 부터 일반화, z-변환의 정의인 멱급수의 수렴 범위
 
     $$|X(z)|= \left| \sum_{n=-\infty }^{\infty}x[n]z^{-n}\right|\le \sum_{n=-\infty }^{\infty}|x[n]||z^{-n}| \le\sum_{n=-\infty }^{\infty}|x[n]| < \infty$$
 
 - e.g. $x[n] = u[n]$
 - u[n]은 absolutely summable하지 않아 DTFT가 존재하지 않는다.
-- 하지만 $r^{-n}u[n]$은 $r>1$이면 absolutely summable 하여 u[n]에 대한 z-변환은 $r = |z| > 1$일 때 존재한다.
+- 하지만 $r^{-n}u[n]$은 $r>1$이면 absolutely summable 하여 u[n]에 대한 z-변환은 $r = \left| z \right| > 1$일 때 존재한다.
 
 ## Reference
 
