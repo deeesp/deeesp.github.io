@@ -122,7 +122,7 @@ $$\sum_{n=-\infty }^{\infty}|x[n]|^2 < \infty$$
 | 1. $\delta [n]$     | $1$                 |All $z$|
 | 2. $u[n]$           | $1\over{1-z^{-1}}$|$\| z \| > 1$|
 | 3. $-u[-n-1]$       | $1\over{1-z^{-1}}$|$\| z \| < 1$|
-| 4. $\delta [n-m]$   | $z^{-m}$                 |All $z$ except 0 (if m>0) or $\infty$ (if m<0)|
+| 4. $\delta [n-m]$   | $z^{-m}$                 |All $z$ except $0$ (if $m>0$) or $\infty$ (if $m<0$)|
 | 5. $a^{n}u[n]$      | $1\over{1-az^{-1}}$|$\| z \| > \| a \| $|
 | 6. $-a^{n}u[-n-1]$  | $1\over{1-az^{-1}}$|$\| z \| < \| a \| $|
 | 7. $na^{n}u[n]$     | ${az^{-1}}\over{(1-az^{-1})^2}$|$\| z \| > \| a \| $|
