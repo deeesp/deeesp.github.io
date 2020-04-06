@@ -49,12 +49,13 @@ $$z \in C$$
 - 이 때, $z$는 극좌표<sup>Polar form</sup>에서 복소 값을 가진<sup>Complex-valued</sup> 연속 변수이다.
 
     ![극좌표](/images/polar form.png)  
-
+  
+<center>
 $$z = re^{j\omega} = Re(z) + jIm(z)$$
 $$= r \cos (\omega) + j\sin (\omega)$$  
   
-<center>$r$: $z$의 진폭<sup>Magnitude</sup><br>
-$ω$: $z$의 각도<sup>Anlge</sup> </center> <br>
+$r$: $z$의 진폭<sup>Magnitude</sup><br>
+$ω$: $z$의 각도<sup>Angle</sup> </center> <br>
 
 - 즉, z-변환은 복소함수 이므로, 복소 z-평면을 사용하여 표현하고 해석하기 쉽다.
 - 이러한 시퀀스와 z-변환 관계는 다음 처럼 표기한다.
@@ -73,7 +74,7 @@ $$X(e^{j\omega})=X(z)|_{z=e^{j\omega}} = \sum_{n=-\infty }^{\infty}x[n]e^{-j\ome
 
     $$Z\{x[n]\} = DTFT\{x[n]r^{-n}\}$$
     
-- 여기서 $r=1$ 이면 (i.e. |$z$|$=1$), z-변환은 $x[n]$의 DTFT가 된다.
+- 여기서 $r=1$ 이면 (i.e. $\| z \| =1$), z-변환은 $x[n]$의 DTFT가 된다.
 - 다시 말해, DTFT는 단위 원(Unit circle) $r = 1$ 에서의 z-변환이 된다.
 
     $$z = re^{j\omega}\ (r=1, \ 0 \le \omega \le 2\pi)$$
@@ -84,7 +85,7 @@ $$X(e^{j\omega})=X(z)|_{z=e^{j\omega}} = \sum_{n=-\infty }^{\infty}x[n]e^{-j\ome
 
 - **Absolutely summable - Stable**
     - Absolute summability는 DTFT가 존재하기 위한 충분조건이다.
-    - DTFT가 존재하기 위해선 |$X(e^{jω})$|가 존재해야 한다.
+    - DTFT가 존재하기 위해선 | $X(e^{jω})$ |가 존재해야 한다.
 
 $$|X(e^{jw})|= \left| \sum_{n=-\infty }^{\infty}x[n]e^{-jwn}\right|\le \sum_{n=-\infty }^{\infty}|x[n]||e^{-jwn}| \le\sum_{n=-\infty }^{\infty}|x[n]| < \infty$$
 
@@ -110,6 +111,20 @@ $$\sum_{n=-\infty }^{\infty}|x[n]|^2 < \infty$$
 - u[n]은 absolutely summable하지 않아 DTFT가 존재하지 않는다.
 - 하지만 $r^{-n}u[n]$은 $r>1$이면 absolutely summable 하여 u[n]에 대한 z-변환은 $r =$|$z$|$> 1$일 때 존재한다.
 
+
+## [5] ROC 특징
+
+## [6] z-Transform Pairs
+
+| Sequence      | Transform        | ROC |
+|:--------------|:-----------------| :--------- |
+|1. $\delta [n]$|1                 |All $z$|
+|2. $u[n]$      |$1\over{1-z^{-1}}$|$\| z \| > 1$|
+|3. $-u[-n-1]$  |$1\over{1-z^{-1}}$|$\| z \| < 1$|
+
+
+
+---
 ## Reference
 
 1. Alan V. Oppenheim, Discrete-time Signal Processing, Pearson Education
