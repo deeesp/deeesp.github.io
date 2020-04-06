@@ -85,7 +85,7 @@ $$X(e^{j\omega})=X(z)|_{z=e^{j\omega}} = \sum_{n=-\infty }^{\infty}x[n]e^{-j\ome
 
 - **Absolutely summable - Stable**
     - Absolute summability는 DTFT가 존재하기 위한 충분조건이다.
-    - DTFT가 존재하기 위해선 | $X(e^{jω})$ |가 존재해야 한다.
+    - DTFT가 존재하기 위해선 $\| X(e^{jω})\| $가 존재해야 한다.
 
 $$|X(e^{jw})|= \left| \sum_{n=-\infty }^{\infty}x[n]e^{-jwn}\right|\le \sum_{n=-\infty }^{\infty}|x[n]||e^{-jwn}| \le\sum_{n=-\infty }^{\infty}|x[n]| < \infty$$
 
@@ -102,26 +102,30 @@ $$\sum_{n=-\infty }^{\infty}|x[n]|^2 < \infty$$
 
 ### Definition
 
-- z-변환이 수렴할 때, 복소 값 $z$의 집합(또는 값들의 범위), |$z$| 에 의해 결정된다.
+- z-변환이 수렴할 때, 복소 값 $z$의 집합(또는 값들의 범위), $\| z\| $에 의해 결정된다.
 - DTFT에서 부터 일반화, z-변환의 정의인 멱급수의 수렴 범위
 
     $$|X(z)|= \left| \sum_{n=-\infty }^{\infty}x[n]z^{-n}\right|\le \sum_{n=-\infty }^{\infty}|x[n]||z^{-n}| \le\sum_{n=-\infty }^{\infty}|x[n]| < \infty$$
 
 - e.g. $x[n] = u[n]$
 - u[n]은 absolutely summable하지 않아 DTFT가 존재하지 않는다.
-- 하지만 $r^{-n}u[n]$은 $r>1$이면 absolutely summable 하여 u[n]에 대한 z-변환은 $r =$|$z$|$> 1$일 때 존재한다.
+- 하지만 $r^{-n}u[n]$은 $r>1$이면 absolutely summable 하여 u[n]에 대한 z-변환은 $r =\| z \| > 1$일 때 존재한다.
 
 
 ## [5] ROC 특징
 
-## [6] z-Transform Pairs
+## [6] 주요 z-변환 쌍
+<center>
 
 | Sequence      | Transform        | ROC |
 |:--------------|:-----------------| :--------- |
-|1. $\delta [n]$|1                 |All $z$|
+|1. $\delta [n]$|$1$                 |All $z$|
 |2. $u[n]$      |$1\over{1-z^{-1}}$|$\| z \| > 1$|
 |3. $-u[-n-1]$  |$1\over{1-z^{-1}}$|$\| z \| < 1$|
-
+|4. $\delta [n-m]$|$z^{-m}$                 |All $z$ except 0 (if m>0) or $\infty$ (if m<0)|
+|5. $a^{n}u[n]$      |$1\over{1-az^{-1}}$|$\| z \| > \| a \| $|
+|6. $-a^{n}u[-n-1]$  |$1\over{1-az^{-1}}$|$\| z \| < \| a \| $|
+</center>
 
 
 ---
