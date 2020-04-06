@@ -20,7 +20,7 @@ toc: true
 toc_sticky: true
 ---
 
-# Z-변환과 & 이산시간 LTI 시스템
+# Z-변환과 이산시간 시불변-선형 시스템
 
 ## [1] Introduction
 
