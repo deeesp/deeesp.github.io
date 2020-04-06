@@ -43,7 +43,8 @@ $$z \in C$$
 
     $$\mathcal{X}(z) = X_I(z)=\sum_{n=0}^{\infty}x[n]z^{-n}$$
 
-    - $n<0$에서 $x[n] = 0$ (즉, Causal sequence)이면, 단방향과 양방향 변환이 같다.
+    - $n<0$에서 $x[n] = 0$ (즉, Causal sequence)이면, 단방향과 양방향 변환이 같다.  
+    
     $$x[n] = 0\ \ for\ n<0\ \rightarrow X(z) = X_I(z)$$
 
     - 이 때, $z$는 극좌표<sup>Polar form</sup>에서 복소 값을 가진<sup>Complex-valued</sup> 연속 변수이다.
@@ -68,11 +69,11 @@ $ω$: $z$의 각도<sup>Angle</sup> </center> <br>
 
 $$X(e^{j\omega})=X(z)|_{z=e^{j\omega}} = \sum_{n=-\infty }^{\infty}x[n]e^{-j\omega n}$$
 
-- z-변환은 $x[n]r^{-n}$의 DTFT이다.
+### z-변환은 $x[n]r^{-n}$의 DTFT이다.
 
-    $$X(e^{j\omega})=\sum_{n=-\infty }^{\infty}x[n](re^{j\omega})^{-n}=\sum_{n=-\infty }^{\infty}x[n]r^{-n}e^{-j\omega n}$$
+$$X(z)=\sum_{n=-\infty }^{\infty}x[n](re^{j\omega})^{-n}=\sum_{n=-\infty }^{\infty}x[n]r^{-n}e^{-j\omega n}$$
 
-    $$Z\{x[n]\} = DTFT\{x[n]r^{-n}\}$$
+$$Z\{x[n]\} = DTFT\{x[n]r^{-n}\}$$
     
 - 여기서 $r=1$ 이면 (i.e. $\| z \| =1$), z-변환은 $x[n]$의 DTFT가 된다.
 - 다시 말해, DTFT는 단위 원(Unit circle) $r = 1$ 에서의 z-변환이 된다.
