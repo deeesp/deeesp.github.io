@@ -1,5 +1,5 @@
 ---
-title:  "[DSP] LTI System"
+title:  "[DSP 01] LTI System"
 excerpt: "신호처리의 기초 LTI system"
 
 categories:
