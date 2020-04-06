@@ -65,7 +65,7 @@ $ω$: $z$의 각도<sup>Angle</sup> </center> <br>
 
 ## [3] DTFT와 Z-변환의 관계
 
-### DTFT는 $z=1$일 때 z-변환이다.
+### DTFT는 $r=1$일 때 z-변환이다.
 
 $$X(e^{j\omega})=X(z)|_{z=1\cdot e^{j\omega}} = \sum_{n=-\infty }^{\infty}x[n]e^{-j\omega n}$$  
 
@@ -127,7 +127,7 @@ $$\sum_{n=-\infty }^{\infty}|x[n]|^2 < \infty$$
 | 1. $\delta [n]$     | $1$                 |All $z$|
 | 2. $u[n]$           | $1\over{1-z^{-1}}$|$\| z \| > 1$|
 | 3. $-u[-n-1]$       | $1\over{1-z^{-1}}$|$\| z \| < 1$|
-| 4. $\delta [n-m]$   | $z^{-m}$ |All $z$ except $\begin{cases} 0, & \mbox{if } m>0 \\ \\ \infty & \mbox{if } m<0 \end{cases}$ |
+| 4. $\delta [n-m]$   | $z^{-m}$ | All $z$ except $\begin{cases} 0, & \mbox{if } m>0 \\ \\ \infty & \mbox{if } m<0 \end{cases}$ |
 | 5. $a^{n}u[n]$      | $1\over{1-az^{-1}}$|$\| z \| > \| a \| $|
 | 6. $-a^{n}u[-n-1]$  | $1\over{1-az^{-1}}$|$\| z \| < \| a \| $|
 | 7. $na^{n}u[n]$     | ${az^{-1}}\over{(1-az^{-1})^2}$|$\| z \| > \| a \| $|
@@ -138,6 +138,11 @@ $$\sum_{n=-\infty }^{\infty}|x[n]|^2 < \infty$$
 |12. $r^n\sin{(\omega_0 n)}u[n]$ | $r\sin{(\omega_0)}z^{-1}\over{1-2r\cos(\omega_0)}z^{-1}+r^2z^{-2}$ | $\| z\| >r$|
 |13. $\begin{cases} a^n, & 0\le n\le N-1 \\ \\ 0, & \mbox{ otherwise} \end{cases}$ | $1-a^Nz^{-N}\over{1-az^{-1}}$ | $\| z\| >0$ |
 
+All $z$ except
+$\begin{cases}
+0, & \mbox{if } m>0 \\
+\infty & \mbox{if } m<0 
+\end{cases}$
 
 ## Reference
 
