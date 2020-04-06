@@ -69,7 +69,7 @@ $ω$: $z$의 각도<sup>Angle</sup> </center> <br>
 
 $$X(e^{j\omega})=X(z)|_{z=1\cdot e^{j\omega}} = \sum_{n=-\infty }^{\infty}x[n]e^{-j\omega n}$$  
 
-$$DTFT\{x[n]} = Z\{x[n]\} |_{z=1}$$
+$$DTFT\{x[n]\} = Z\{x[n]\} |_{z=1}$$
 
 ### z-변환은 $x[n]r^{-n}$의 DTFT이다.
 
@@ -82,17 +82,17 @@ $$Z\{x[n]\} = DTFT\{x[n]r^{-n}\}$$
 
     $$z = re^{j\omega}\ (r=1, \ 0 \le \omega \le 2\pi)$$
 
-### Existence
+### 존재여부 (Existence)
 
-- 만약에, $x[n]$가 Absolutely summable하지도, Square-summable하지도 않으면, DTFT는 존재하는지 안하는지 모른다. 하지만 z-변환은 존재한다!
+- (1) $x[n]$가 Absolutely summable하지도 (2) Square-summable하지도 않으면, DTFT는 존재하는지 안하는지 모른다. 하지만 z-변환은 존재한다!
 
-- **Absolutely summable - Stable**
+- **(1) Absolutely summable - Stable**
     - Absolute summability는 DTFT가 존재하기 위한 충분조건이다.
     - DTFT가 존재하기 위해선 $\| X(e^{jω})\| $가 존재해야 한다.
 
 $$|X(e^{jw})|= \left| \sum_{n=-\infty }^{\infty}x[n]e^{-jwn}\right|\le \sum_{n=-\infty }^{\infty}|x[n]||e^{-jwn}| \le\sum_{n=-\infty }^{\infty}|x[n]| < \infty$$
 
-- **Square-summable - Finite Energy**
+- **(2) Square-summable - Finite Energy**
     - Absolutely summable 하지 않아도, Square-summable 하면 DTFT가 존재한다.
 
 $$\sum_{n=-\infty }^{\infty}|x[n]|^2 < \infty$$
