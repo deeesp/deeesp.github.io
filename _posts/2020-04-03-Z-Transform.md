@@ -133,7 +133,7 @@ $$\sum_{n=-\infty }^{\infty}|x[n]|^2 < \infty$$
 |12. $r^n\sin{(\omega_0 n)}u[n]$ | $r\sin{(\omega_0)}z^{-1}\over{1-2r\cos(\omega_0)}z^{-1}+r^2z^{-2}$ | $\| z\| >r$|
 |13. $a^n, 0\le n\le N-1 $| $1-a^Nz^{-N}\over{1-az^{-1}}$ | $\| z\| >0$ |
 
----
+
 ## Reference
 
 1. Alan V. Oppenheim, Discrete-time Signal Processing, Pearson Education
