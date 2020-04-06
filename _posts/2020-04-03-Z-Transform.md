@@ -115,7 +115,6 @@ $$\sum_{n=-\infty }^{\infty}|x[n]|^2 < \infty$$
 ## [5] ROC 특징
 
 ## [6] 주요 z-변환 쌍
-<center>
 
 | Sequence      | Transform        | ROC |
 |:--------------|:-----------------| :--------- |
@@ -125,7 +124,6 @@ $$\sum_{n=-\infty }^{\infty}|x[n]|^2 < \infty$$
 |4. $\delta [n-m]$|$z^{-m}$                 |All $z$ except 0 (if m>0) or $\infty$ (if m<0)|
 |5. $a^{n}u[n]$      |$1\over{1-az^{-1}}$|$\| z \| > \| a \| $|
 |6. $-a^{n}u[-n-1]$  |$1\over{1-az^{-1}}$|$\| z \| < \| a \| $|
-</center>
 
 
 ---
