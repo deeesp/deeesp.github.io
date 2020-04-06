@@ -125,7 +125,7 @@ $$\sum_{n=-\infty }^{\infty}|x[n]|^2 < \infty$$
 | 1. $\delta [n]$     | $1$                 |All $z$|
 | 2. $u[n]$           | $1\over{1-z^{-1}}$|$\| z \| > 1$|
 | 3. $-u[-n-1]$       | $1\over{1-z^{-1}}$|$\| z \| < 1$|
-| 4. $\delta [n-m]$   | $z^{-m}$                 |All $z$ except $0$ (if $m>0$) or $\infty$ (if $m<0$)|
+| 4. $\delta [n-m]$   | $z^{-m}$                 |All $z$ except $\begin{cases}0 (if m>0) \\ $\infty$ (if m<0)\end{cases}$|
 | 5. $a^{n}u[n]$      | $1\over{1-az^{-1}}$|$\| z \| > \| a \| $|
 | 6. $-a^{n}u[-n-1]$  | $1\over{1-az^{-1}}$|$\| z \| < \| a \| $|
 | 7. $na^{n}u[n]$     | ${az^{-1}}\over{(1-az^{-1})^2}$|$\| z \| > \| a \| $|
@@ -134,7 +134,7 @@ $$\sum_{n=-\infty }^{\infty}|x[n]|^2 < \infty$$
 |10. $\sin{(\omega_0 n)}u[n]$    | $\sin{(\omega_0)}z^{-1}\over{1-2\cos(\omega_0)}z^{-1}+z^{-2}$ | $\| z\| <1$|
 |11. $r^n\cos{(\omega_0 n)}u[n]$ | $1-r\cos{(\omega_0)}z^{-1}\over{1-2r\cos(\omega_0)}z^{-1}+r^2z^{-2}$ | $\| z\| >r$|
 |12. $r^n\sin{(\omega_0 n)}u[n]$ | $r\sin{(\omega_0)}z^{-1}\over{1-2r\cos(\omega_0)}z^{-1}+r^2z^{-2}$ | $\| z\| >r$|
-|13. $a^n, 0\le n\le N-1 $| $1-a^Nz^{-N}\over{1-az^{-1}}$ | $\| z\| >0$ |
+|13. $\begin{cases} a^n,\ 0\le n\le N-1\\0,\ otherwise \end{cases}$| $1-a^Nz^{-N}\over{1-az^{-1}}$ | $\| z\| >0$ |
 
 
 ## Reference
