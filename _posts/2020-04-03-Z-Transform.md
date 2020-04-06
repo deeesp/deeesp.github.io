@@ -65,9 +65,10 @@ $ω$: $z$의 각도<sup>Angle</sup> </center> <br>
 
 ## [3] DTFT와 Z-변환의 관계
 
-### DTFT
+### DTFT는 $z=1$일 때 z-변환이다.
 
-$$X(e^{j\omega})=X(z)|_{z=e^{j\omega}} = \sum_{n=-\infty }^{\infty}x[n]e^{-j\omega n}$$
+$$X(e^{j\omega})=X(z)|_{z=1\cdot e^{j\omega}} = \sum_{n=-\infty }^{\infty}x[n]e^{-j\omega n}$$
+$$DTFT\{x[n]} = Z\{x[n]\}|_{z=1}$$
 
 ### z-변환은 $x[n]r^{-n}$의 DTFT이다.
 
