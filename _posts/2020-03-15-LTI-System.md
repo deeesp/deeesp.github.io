@@ -19,7 +19,7 @@ toc_sticky: true
 
 ## LTI system 이란?
 Linear Time-Invariant System, 즉 *선형 시불변* 시스템이다.
-~~라고 말하면 면접에서 떨어진다.~~
+~~라고 말하면 면접에서 광탈이다.~~
 
 각각의 개념을 먼저 이해해야 한다. ★ 알고넘어가자 ★
 
