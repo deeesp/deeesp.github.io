@@ -127,10 +127,10 @@ $$\sum_{n=-\infty }^{\infty}|x[n]|^2 < \infty$$
 | 6. $-a^{n}u[-n-1]$  | $1\over{1-az^{-1}}$|$\| z \| < \| a \| $|
 | 7. $na^{n}u[n]$     | ${az^{-1}}\over{(1-az^{-1})^2}$|$\| z \| > \| a \| $|
 | 8. $-na^{n}u[-n-1]$ | ${az^{-1}}\over{(1-az^{-1})^2}$|$\| z \| < \| a \| $|
-| 9. $\cos{(\omega_0 n)}u[n]$    | $1-\cos{\omega_0}z^{-1}\over{1-2\cos(\omega_0)}z^{-1}+z^{-2}$ | $\| z\| >1$|
-|10. $\sin{(\omega_0 n)}u[n]$    | $\sin{\omega_0}z^{-1}\over{1-2\cos(\omega_0)}z^{-1}+z^{-2}$ | $\| z\| <1$|
-|11. $r^n\cos{(\omega_0 n)}u[n]$ | $1-r\cos{\omega_0}z^{-1}\over{1-2r\cos(\omega_0)}z^{-1}+r^2z^{-2}$ | $\| z\| >r$|
-|12. $r^n\sin{(\omega_0 n)}u[n]$ | $r\sin{\omega_0}z^{-1}\over{1-2r\cos(\omega_0)}z^{-1}+r^2z^{-2}$ | $\| z\| >r$|
+| 9. $\cos{(\omega_0 n)}u[n]$    | $1-\cos{(\omega_0)}z^{-1}\over{1-2\cos(\omega_0)}z^{-1}+z^{-2}$ | $\| z\| >1$|
+|10. $\sin{(\omega_0 n)}u[n]$    | $\sin{(\omega_0)}z^{-1}\over{1-2\cos(\omega_0)}z^{-1}+z^{-2}$ | $\| z\| <1$|
+|11. $r^n\cos{(\omega_0 n)}u[n]$ | $1-r\cos{(\omega_0)}z^{-1}\over{1-2r\cos(\omega_0)}z^{-1}+r^2z^{-2}$ | $\| z\| >r$|
+|12. $r^n\sin{(\omega_0 n)}u[n]$ | $r\sin{(\omega_0)}z^{-1}\over{1-2r\cos(\omega_0)}z^{-1}+r^2z^{-2}$ | $\| z\| >r$|
 |13. $a^n, 0\le n\le N-1 $| $1-a^Nz^-N\over{1-az^{-1}}$ | $\| z\| >0$ |
 
 ---
