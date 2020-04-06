@@ -25,10 +25,12 @@ toc_sticky: true
 ## [1] Introduction
 
 - Z-변환<sup>Z-Transform</sup>은 이산시간<sup>Discrete-time</sup>(t-domain)의 신호<sup>Signals</sup>나 시퀀스<sup>Sequences</sup>, 시스템을 z-domain에 나타내어 분석하는 데에 쓴다.
-    $$z \in C$$
+
+$$z \in C$$
+
 - 차분 방정식<sup>Difference equations</sup>을 대수식<sup>Algebraic equations</sup>으로 변환해주는 이산시간에서의 라플라스 변환<sup>Laplace Transform</sup>이라고 생각하면 된다.
-- 정확하게 말하자면, LCCDE<sup>Linear Constant-Coefficient Difference Equation</sup>를 풀기 위한 것이다.
-- 푸리에 변환<sup>Fourier Transform</sup>은 모든 시퀀스를 수렴시키지는 않는다. 따라서 푸리에 변환을 일반화 하고, 신호 및 시스템을 더 표기가 편한 z-변환의 형태로 바꾸어 분석하기 위해 쓰인다.
+    - 정확하게 말하자면, LCCDE<sup>Linear Constant-Coefficient Difference Equation</sup>를 풀기 위한 것이다.
+- 푸리에 변환<sup>Fourier Transform</sup>은 모든 시퀀스를 수렴시키지는 않는다. 따라서 푸리에 변환을 일반화하고, 신호 및 시스템을 더 표기가 편한 z-변환의 형태로 바꾸어 분석하기 위해 쓰인다.
 
 
 ## [2] Definition
@@ -48,10 +50,11 @@ toc_sticky: true
 
     ![극좌표](/images/polar form.png)  
 
-$$z = re^{j\omega} = Re(z) + jIm(z) = r \cos (\omega) + j\sin (\omega)$$  
+$$z = re^{j\omega} = Re(z) + jIm(z)$$
+$$= r \cos (\omega) + j\sin (\omega)$$  
   
 <center>$r$: $z$의 진폭<sup>Magnitude</sup><br>
-$ω$: $z$의 각도<sup>Anlge</sup> <center> 
+$ω$: $z$의 각도<sup>Anlge</sup> </center> <br>
 
 - 즉, z-변환은 복소함수 이므로, 복소 z-평면을 사용하여 표현하고 해석하기 쉽다.
 - 이러한 시퀀스와 z-변환 관계는 다음 처럼 표기한다.
