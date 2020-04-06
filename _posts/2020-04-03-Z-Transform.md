@@ -40,13 +40,13 @@ $$z \in C$$
     $$X(z)= Z\{ x[n]\} = \sum_{n=-\infty }^{\infty}x[n]z^{-n}$$
 
     - 엄밀히 말하자면, 위 표현은 양방향<sup>Bilateral or Two-sided</sup> z-변환으로, 단방향<sup>Unilateral 0r Single-sided, one-sided</sup> z-변환은 다음과 같다.
-    - $n<0$에서 $x[n] = 0$ (즉, Causal sequence)이면, 단방향과 양방향 변환이 같다.
 
     $$\mathcal{X}(z) = X_I(z)=\sum_{n=0}^{\infty}x[n]z^{-n}$$
 
+    - $n<0$에서 $x[n] = 0$ (즉, Causal sequence)이면, 단방향과 양방향 변환이 같다.
     $$x[n] = 0\ \ for\ n<0\ \rightarrow X(z) = X_I(z)$$
 
-- 이 때, $z$는 극좌표<sup>Polar form</sup>에서 복소 값을 가진<sup>Complex-valued</sup> 연속 변수이다.
+    - 이 때, $z$는 극좌표<sup>Polar form</sup>에서 복소 값을 가진<sup>Complex-valued</sup> 연속 변수이다.
 
     ![극좌표](/images/polar form.png)  
   
