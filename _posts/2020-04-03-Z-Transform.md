@@ -118,7 +118,7 @@ $$\sum_{n=-\infty }^{\infty}|x[n]|^2 < \infty$$
 
 
 | Sequence            | Transform        | ROC |
-|:--------------------|:-----------------| :--------- |
+|:--------------------|:-----------------:|:---------:|
 | 1. $\delta [n]$     | $1$                 |All $z$|
 | 2. $u[n]$           | $1\over{1-z^{-1}}$|$\| z \| > 1$|
 | 3. $-u[-n-1]$       | $1\over{1-z^{-1}}$|$\| z \| < 1$|
@@ -131,7 +131,7 @@ $$\sum_{n=-\infty }^{\infty}|x[n]|^2 < \infty$$
 |10. $\sin{(\omega_0 n)}u[n]$    | $\sin{(\omega_0)}z^{-1}\over{1-2\cos(\omega_0)}z^{-1}+z^{-2}$ | $\| z\| <1$|
 |11. $r^n\cos{(\omega_0 n)}u[n]$ | $1-r\cos{(\omega_0)}z^{-1}\over{1-2r\cos(\omega_0)}z^{-1}+r^2z^{-2}$ | $\| z\| >r$|
 |12. $r^n\sin{(\omega_0 n)}u[n]$ | $r\sin{(\omega_0)}z^{-1}\over{1-2r\cos(\omega_0)}z^{-1}+r^2z^{-2}$ | $\| z\| >r$|
-|13. $a^n, 0\le n\le N-1 $| $1-a^Nz^-N\over{1-az^{-1}}$ | $\| z\| >0$ |
+|13. $a^n, 0\le n\le N-1 $| $1-a^Nz^{-N}\over{1-az^{-1}}$ | $\| z\| >0$ |
 
 ---
 ## Reference
