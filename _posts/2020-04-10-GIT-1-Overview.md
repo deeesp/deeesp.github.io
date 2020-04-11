@@ -1,5 +1,5 @@
 ---
-title:  "[Dev 01] Git 1 Overview"
+title:  "[Dev 01] Git1 - Overview"
 excerpt: "분산형 버전 관리 시스템(DVCS) Git에 대한 고찰"
 categories:
   - git
