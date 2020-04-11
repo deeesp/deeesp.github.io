@@ -1,5 +1,5 @@
 ---
-title:  "[Dev 02] git2 CLI 기반 버전관리"
+title:  "[Dev 02] Git2 - CLI 기반 버전관리"
 excerpt: "CLI를 이용한 git 설치부터 버전관리까지"
 categories:
   - git
@@ -18,7 +18,7 @@ toc: true
 toc_sticky: true
 ---
 
-- 다양한 git 실행방법 중에, Command line을 이용하여 사용해보자.
+- 다양한 git 실행방법 중에, Command line을 이용하여 버전관리를 해보자.
 
 
 ## Why CLI for GIT rather than other GUI programs
