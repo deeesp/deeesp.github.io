@@ -29,7 +29,7 @@ toc_sticky: true
 > 2000만 줄의 코드를 12,000명의 개발자가 26년 동안 오픈소스 방법으로 프로그램을 제작하였다고 생각해보자.  
 > 그것은 이른바 **'지옥'** 이다. 이러한 지옥에서 태어난 소프트웨어가 리눅스(LINUX) OS이다.  
 
-![linux](/images/linux.png){: width="50%" height="50%"}
+![linux](/images/linux.png){: width="20%" height="20%"}
 
 - 리눅스의 창시자 [리누스 토발즈](https://ko.wikipedia.org/wiki/%EB%A6%AC%EB%88%84%EC%8A%A4_%ED%86%A0%EB%A5%B4%EB%B0%9C%EC%8A%A4)<sup>Linus Torvalds</sup>는 리눅스를 제작하는 과정에서 겪게 된 우리가 상상하기 힘든 복잡한 코드지옥에서 벗어나기 위해서 '분산형 버전관리 시스템(DVCS)'인 **git**을 만들었다.
 
@@ -46,7 +46,7 @@ toc_sticky: true
 
 ## [2] git의 3대 목적
 
-![Why git?](/images/why-git.png){: width="20%" height="20%"}
+![Why git?](/images/why-git.png){: width="50%" height="50%"}
 - 간단하게 세가지를 먼저 기억하면 된다. `버전관리`, `백업`, `협업` (이 순서대로 차례대로 이해해야 한다.)
 - 앞에 있을수록 쉽고, 그것만으로도 할 수 있는 일이 많다. 뒤로 갈수록 기하급수적으로 어려워진다.
 
