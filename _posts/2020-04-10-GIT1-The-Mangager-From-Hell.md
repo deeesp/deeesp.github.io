@@ -29,11 +29,12 @@ toc_sticky: true
 > 2000만 줄의 코드를 12,000명의 개발자가 26년 동안 오픈소스 방법으로 프로그램을 제작하였다고 생각해보자.  
 > 그것은 이른바 **'지옥'** 이다. 이러한 지옥에서 태어난 소프트웨어가 리눅스(LINUX) OS이다.  
 
-![linux](/images/linux.png){: width="20%" height="20%"}
-
+![linux](/images/linux.png){: width="10%" height="10%"}  
+  
+  
 - 리눅스의 창시자 [리누스 토발즈](https://ko.wikipedia.org/wiki/%EB%A6%AC%EB%88%84%EC%8A%A4_%ED%86%A0%EB%A5%B4%EB%B0%9C%EC%8A%A4)<sup>Linus Torvalds</sup>는 리눅스를 제작하는 과정에서 겪게 된 우리가 상상하기 힘든 복잡한 코드지옥에서 벗어나기 위해서 '분산형 버전관리 시스템(DVCS)'인 **git**을 만들었다.
 
-![git](/images/git.png){: width="30%" height="30%"}
+     ![git](/images/git.png){: width="30%" height="30%"}
 
 - 오늘날 **git**에서는 리눅스 뿐만 아니라 수많은 소스코드가 관리되고 있어, 다채로운 '지옥'과 함께하게 되었다.
 - 소스코드도 결국에는 '문서'이다. **git**은 소스코드 관리 뿐만 아니라 모든 종류의 문서를 관리하는 데에 사용된다. 즉, 소프트웨어 엔지니어만을 위한 툴은 아니다.
@@ -69,7 +70,8 @@ toc_sticky: true
 2. **git**을 데리고 오면??
 
     ![versions](/images/versions.png){: width="50%" height="50%"}
-        - `.git` 이라는 버전들을 저장하는 숨김 디렉토리가 생긴다.
+    
+        - `.git` 이라고 불리는 버전들을 저장하는 숨김 디렉토리가 생긴다.
         - `commit`을 통해 버전을 생성해준다. (퇴근), (다음날 출근) 작업 후에 `commit`한다. (퇴근) ... 반복...
     - 이처럼 **git**은 버전 사이에 변경사항을 History에 잘 보여주기 때문에, 굳이 파일 이름명을 바꿔가며 버전관리를 할 필요가 없어졌을 뿐만 아니라 무엇이 바뀌었는지 비교까지 해준다.
 
@@ -91,18 +93,32 @@ toc_sticky: true
 - 정보를 잃지 않기 위해 다른 저장소에 복제하는 것이 **백업**이다.
 - 이러한 백업을 '원격으로' 지원해주는 사업자들이 있다. 가장 대표적인 서비스가 **github**이다.  
 
-![깃헙](/images/github.png){: width="50%" height="50%"}  
+    ![깃헙](/images/github.png){: width="50%" height="50%"}  
   
 - 내 컴퓨터에 있는 로컬 저장소가 모든 디렉토리 및 파일, 구조가 동일하게 **github**에 생기게 된다.
 - 로컬에서 작업 후 `commit`을 한 후에 `push`를 하면 **github**과 같은 원격 저장소에 push(저장)되어, 구글 드라이브나 드랍박스와 같은 동기화 서비스와 동일한 효과를 낼 수 있다.  
-
-![repo](/images/gitrepos.gif){: width="50%" height="50%"}  
+    ![backup](/images/backup.png){: width="30%" height="30%"} 
 
 - 다른 컴퓨터에서 작업을 하려면 **github**에서 `pull`로 프로젝트를 당겨 다운로드를 하여 작업한다. 그리고 다시 원격저장소에 **push** 해주어 동기화해준다.
 - 즉, 백업은 다른 사람과 협업을 하기 위한 징검다리 역할을 한다.
 
 
 ### (3) 협업 (Collaboration)
+- 백업을 하면 협업을 할 준비가 다 되어 있다는 것이다.
+    - my 를 partner로 바꿔주면 똑같다! 서로가 주고 받으면서 일을 하는 것이다.
+    ![repo](/images/gitrepos.gif){: width="50%" height="50%"}
+- 하지만, 동료와 같은 파일의 같은 부분을 수정을 했으면 어떻게 될까?
+    - 나중에 업로드하는 사람에게 다시 처리하라고 교통정리를 해주는 역할을 하는 것이 **git**이다.
+    - 덮어쓰지 않도록 교통경찰 역할을 해준다.
+    
+## [3] git의 종류
+- **자동차**에는 세단, suv, 트럭 등 여러가지 종류의 자동차가 있는 것처럼 **자동차**는 '제품'이 아니라 '제품군'의 개념을 가지고 있다.
+- 이처럼, **git**도 제품군으로, 여러가지 종류의 git 프로그램을 가지고 있다.
+    - e.g. 
+    - github.com에서 만든 `github desktop` (Simple)
+    - windows 탐색기 기반의 `TortoiseGit` (윈도우 전용)
+    - Atlassian 사의 `Sourcetree`(Advanced)
+    - 원조 프로그램인 CLI<sup>Command line interface</sup> 기반의 `git` (Addddddddvanced)
 
 
 ## Reference
