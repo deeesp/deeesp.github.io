@@ -1,6 +1,6 @@
 ---
-title:  "[Dev 01] 지옥에서 온 정보 관리자 git"
-excerpt: "분산형 버전 관리 시스템(DVCS) git에 대한 고찰"
+title:  "[Dev 01] Git 1 Overview"
+excerpt: "분산형 버전 관리 시스템(DVCS) Git에 대한 고찰"
 categories:
   - git
   
@@ -16,6 +16,8 @@ last_modified_at: 2020-04-10
 toc: true
 toc_sticky: true
 ---
+
+# 지옥에서 온 정보 관리자 Git
 
 - 최근 **git** 을 사용해야 하는 일이 많이 있는 것을 보고 공부해야겠다는 생각이 들었다.
 - 중요성을 알면서도 미뤘다가 머리아파졌다 ㅎㅎ 하지만 늦었다고 생각했을 때가 가장 빠른 때이다.
