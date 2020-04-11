@@ -44,7 +44,7 @@ toc_sticky: true
 
 ## [2] git의 3대 목적
 
-![Why git?](/images/why-git.png){: width="50%" height="50%"}
+![Why git?](/images/why-git.png){: width="70%" height="70%"}
 - 간단하게 세가지를 먼저 기억하면 된다. `버전관리`, `백업`, `협업` (이 순서대로 차례대로 이해해야 한다.)
 - 앞에 있을수록 쉽고, 그것만으로도 할 수 있는 일이 많다. 뒤로 갈수록 기하급수적으로 어려워진다.
 
@@ -66,7 +66,7 @@ toc_sticky: true
   
 2. **git**을 데리고 오면??
 
-    ![versions](/images/versions.png){: width="50%" height="50%"}  
+    ![versions](/images/versions.png)  
         - `.git` 이라고 불리는 버전들을 저장하는 숨김 디렉토리가 생긴다.  
         - `commit`을 통해 버전을 생성해준다. (퇴근), (다음날 출근) 작업 후에 `commit`한다. (퇴근) ... 반복...  
   
@@ -90,7 +90,7 @@ toc_sticky: true
 - 정보를 잃지 않기 위해 다른 저장소에 복제하는 것이 **백업**이다.
 - 이러한 백업을 '원격으로' 지원해주는 사업자들이 있다. 가장 대표적인 서비스가 **github**이다.  
 
-    ![깃헙](/images/github.png){: width="50%" height="50%"}  
+    ![깃헙](/images/github.png)
   
 - 내 컴퓨터에 있는 로컬 저장소가 모든 디렉토리 및 파일, 구조가 동일하게 **github**에 생기게 된다.
 - 로컬에서 작업 후 `commit`을 한 후에 `push`를 하면 **github**과 같은 원격 저장소에 push(저장)되어, 구글 드라이브나 드랍박스와 같은 동기화 서비스와 동일한 효과를 낼 수 있다.  
