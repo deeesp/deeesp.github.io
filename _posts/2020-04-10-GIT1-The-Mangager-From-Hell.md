@@ -101,12 +101,11 @@ toc_sticky: true
 
 
 ### [2]-3 협업 (Collaboration)
-- 백업을 하면 협업을 할 준비가 다 되어 있다는 것이다.
-    - my 를 partner로 바꿔주면 똑같다! 서로가 주고 받으면서 일을 하는 것이다.
+- 앞서 보았듯이, 백업을 하면 협업을 할 준비가 다 되어 있다는 것이다.
+    - my 를 partner로 바꿔주면 똑같다! 동료와 서로 주고 받으면서 일을 하는 것이다.
     ![repo](/images/gitrepos.gif)
 - 하지만, 동료와 같은 파일의 같은 부분을 수정을 했으면 어떻게 될까?
-    - 나중에 업로드하는 사람에게 다시 처리하라고 교통정리를 해주는 역할을 하는 것이 **git**이다.
-    - 덮어쓰지 않도록 교통경찰 역할을 해준다.
+    - 나중에 업로드하는 사람에게 다시 처리하라고 경고를 주어, 덮어쓰지 않도록 교통정리를 해주는 역할을 하는 것이 **git**이다.
   
   
 ## [3] git의 종류
@@ -115,7 +114,7 @@ toc_sticky: true
     - Github.com에서 만든 [Github desktop](https://desktop.github.com/) (Simple)
     - Windows 탐색기 기반의 [TortoiseGit](https://tortoisegit.org/) (Windows only)
     - Atlassian 사의 [Sourcetree](https://www.sourcetreeapp.com/)(Advanced)
-    - 원조 프로그램인 CLI<sup>Command line interface</sup> 기반의 `git` (Addddddddvanced)
+    - 원조 git 프로그램 CLI<sup>Command line interface</sup> 기반의 [git](https://git-scm.com/) (Addddddddvanced)
 - 수준에 맞는 프로그램을 선택하여 버전관리를 해보자!
  
 
