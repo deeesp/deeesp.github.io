@@ -17,7 +17,6 @@ toc: true
 toc_sticky: true
 ---
 
-# 지옥에서 온 정보 관리자 git
 - 최근 **git** 을 사용해야 하는 일이 많이 있는 것을 보고 공부해야겠다는 생각이 들었다.
 - 중요성을 알면서도 미뤘다가 머리아파졌다 ㅎㅎ 하지만 늦었다고 생각했을 때가 가장 빠른 때이다.
 - `Let's git it!!!!`
@@ -95,7 +94,7 @@ toc_sticky: true
   
 - 내 컴퓨터에 있는 로컬 저장소가 모든 디렉토리 및 파일, 구조가 동일하게 **github**에 생기게 된다.
 - 로컬에서 작업 후 `commit`을 한 후에 `push`를 하면 **github**과 같은 원격 저장소에 push(저장)되어, 구글 드라이브나 드랍박스와 같은 동기화 서비스와 동일한 효과를 낼 수 있다.  
-    ![backup](/images/backup.png){: width="60%" height="60%"} 
+    ![backup](/images/backup.png)
 
 - 다른 컴퓨터에서 작업을 하려면 **github**에서 `pull`로 프로젝트를 당겨 다운로드를 하여 작업한다. 그리고 다시 원격저장소에 **push** 해주어 동기화해준다.
 - 즉, 백업은 다른 사람과 협업을 하기 위한 징검다리 역할을 한다.
@@ -104,7 +103,7 @@ toc_sticky: true
 ### [2]-3 협업 (Collaboration)
 - 백업을 하면 협업을 할 준비가 다 되어 있다는 것이다.
     - my 를 partner로 바꿔주면 똑같다! 서로가 주고 받으면서 일을 하는 것이다.
-    ![repo](/images/gitrepos.gif){: width="70%" height="70%"}
+    ![repo](/images/gitrepos.gif)
 - 하지만, 동료와 같은 파일의 같은 부분을 수정을 했으면 어떻게 될까?
     - 나중에 업로드하는 사람에게 다시 처리하라고 교통정리를 해주는 역할을 하는 것이 **git**이다.
     - 덮어쓰지 않도록 교통경찰 역할을 해준다.
@@ -113,7 +112,7 @@ toc_sticky: true
 ## [3] git의 종류
 - **자동차**에는 세단, suv, 트럭, 버스 등 여러가지 종류의 자동차가 있는 것처럼 **자동차**는 '제품'이 아니라 '제품군'의 개념을 가지고 있다.
 - 이처럼, **git**도 제품군으로, 여러가지 종류의 git 프로그램을 가지고 있다.
-    - Github.com에서 만든 [github desktop](https://desktop.github.com/) (Simple)
+    - Github.com에서 만든 [Github desktop](https://desktop.github.com/) (Simple)
     - Windows 탐색기 기반의 [TortoiseGit](https://tortoisegit.org/) (Windows only)
     - Atlassian 사의 [Sourcetree](https://www.sourcetreeapp.com/)(Advanced)
     - 원조 프로그램인 CLI<sup>Command line interface</sup> 기반의 `git` (Addddddddvanced)
