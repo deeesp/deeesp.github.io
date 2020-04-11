@@ -1,5 +1,5 @@
 ---
-title:  "[Dev 02] CLI 기반 git 버전관리"
+title:  "[Dev 02] git2 CLI 기반 버전관리"
 excerpt: "CLI를 이용한 git 설치부터 버전관리까지"
 categories:
   - git
