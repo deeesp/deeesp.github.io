@@ -77,9 +77,9 @@ toc_sticky: true
     - **No commits yet**: `commit` == 버전, 아직 버전이 없는 상태이다.
     - **Untracked files**: `hello1.txt`가 추적되지 않고 있음을 보여주고 있다. git은 특정 파일을 버전관리 하겠다고 명시적으로 한번 지정해주지 않으면 없는 셈 치기 때문에 `hello1.txt`가 버전관리 되고 있지 않다는 것이다.
 
-3. `git add xx.xx` 명령어로 **Working Tree**에 있는 수정사항을 **Staging area**에 올려 버전으로 만들어주자.
+3. `git add xx.xx` 명령어로 **Working Tree**에 있는 수정사항을 **Staging Area**에 올려 버전으로 만들어주자.
     - `git add`: add to staging area
-    - `hello1.txt`를 버전으로 만들 것이니 `git add hello1.txt`명령어로 **Working Tree**에서 **Staging area**로 올리자.
+    - `hello1.txt`를 버전으로 만들 것이니 `git add hello1.txt`명령어로 **Working Tree**에서 **Staging Area**로 올리자.
     - 다시 `git status`로 확인해보면, **Untracked files**에서 **Changes to be commited**로 바뀌어 버전이 될 파일을 보여준다.
     
 4. `git commit`으로 버전을 만들어보자.
@@ -97,6 +97,34 @@ toc_sticky: true
 
 6. 위의 과정을 다시 한번 반복해서 버전이 바뀌는지 해보자.
     ![commit2](/images/git-commit-2.png)
+    
+    
+## [5] 여러 개 파일을 하나의 버전으로 만들기
+- 보통 하나의 작업에는 앞서 봤던 하나의 버전에 하나의 파일의 수정이 있는 것보단, 여러 개의 파일의 수정사항을 담고 있는 경우가 많다.
+- [4]를 응용하여 여러 개의 파일의 수정사항을 하나의 버전으로 만들어 보자.
+
+### 실습해보기
+1. `nano hello1.txt`에 세 번째 내용을 추가한다.
+2. `nano hello2.txt`로 새로운 파일을 추가한다.
+3. `git status`를 해보면, 두 파일 모두 **Staging Area**에 있지 않고, **Working Tree**에 있을 것이다.  
+    ![multiple-file](/images/git-multiple-status.png)
+    - 하지만, `hello1.txt`는 이미 1회 이상 버전관리를 해왔기 때문에 git은 이를 기억하고 관리하고 있다.
+    - `hello2.txt`은 버전관리를 한 적이 없기 때문에 git은 이를 없는 셈 친다.
+    - 이 상태로 백업을 한다면, `hello2.txt`는 백업과 협업을 할 수 가 없다. 자동으로 tracking해주지 않기 때문이다.
+4. `git add hello1.txt`, `git add hello2.txt`로 **Staging Area**에 올려준다.  
+    ![multiple-add](/images/git-multiple-add.png)
+    - 또는 **Working Tree**에 있는 모든 파일을 올리고 싶으면 `git add *`명령어를 사용할 수 있다.
+    - 하지만 `git add *` 명령어는 **.gitignore** 문제가 있어 `git add .`을 사용해 주자.
+5. `git commit -m`으로 버전을 생성해준다.
+    - `git commit -am` 명령어도 있지만, 나중에 다뤄보자.
+6. `git log`로 생성된 버전들을 살펴보자.
+    - 어떤 버전이 생성되어 있는 지는 나와있지만, 세부적으로 어떤 파일들이 연루되어 있는지에 대한 내용이 없다. 아래 Stackoverflow에서 참조한 `git log --stat`명령어로 확인해보자.
+    ![log-detail](/images/git-log-detail.png)
+    
+### Optional
+- `add`와 `commit`을 동시에 해주고 싶을 때는?
+    - `git commit -am` 명령어를 사용해 준다.  
+    ![add-commit](/images/git-add-commit.png)
 
 ## Reference
 - [생활코딩 지옥에서 온 GIT 2](https://opentutorials.org/module/3762)
