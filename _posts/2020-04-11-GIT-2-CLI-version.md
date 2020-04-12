@@ -111,14 +111,17 @@ toc_sticky: true
     - 하지만, `hello1.txt`는 이미 1회 이상 버전관리를 해왔기 때문에 git은 이를 기억하고 관리하고 있다.
     - `hello2.txt`은 버전관리를 한 적이 없기 때문에 git은 이를 없는 셈 친다.
     - 이 상태로 백업을 한다면, `hello2.txt`는 백업과 협업을 할 수 가 없다. 자동으로 tracking해주지 않기 때문이다.
+    
 4. `git add hello1.txt`, `git add hello2.txt`로 **Staging Area**에 올려준다.  
     ![multiple-add](/images/git-multiple-add.png)
     - 또는 **Working Tree**에 있는 모든 파일을 올리고 싶으면 `git add *`명령어를 사용할 수 있다.
     - 하지만 `git add *` 명령어는 **.gitignore** 문제가 있어 `git add .`을 사용해 주자.
+    
 5. `git commit -m`으로 버전을 생성해준다.
-    - `git commit -am` 명령어도 있지만, 나중에 다뤄보자.
+    ![multiple-add](/images/git-multiple-commit.png)
+    
 6. `git log`로 생성된 버전들을 살펴보자.
-    - 어떤 버전이 생성되어 있는 지는 나와있지만, 세부적으로 어떤 파일들이 연루되어 있는지에 대한 내용이 없다. 아래 Stackoverflow에서 참조한 `git log --stat`명령어로 확인해보자.
+    - 어떤 버전이 생성되어 있는 지는 나와있지만, 세부적으로 어떤 파일들이 연루되어 있는지에 대한 내용이 없다. 아래 [Stackoverflow](https://stackoverflow.com/questions/1230084/how-to-have-git-log-show-filenames-like-svn-log-v)에서 참조한 `git log --stat`명령어로 확인해보자.  
     ![log-detail](/images/git-log-detail.png)
     
 ### Optional
