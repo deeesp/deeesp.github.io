@@ -136,7 +136,8 @@ toc_sticky: true
 - `add`와 `commit`을 동시에 해주고 싶을 때는?
     - `git commit -am` 명령어를 사용해 준다.  
     ![add-commit](/images/git-add-commit.png)  
-- 만약에 지금까지 작업한 내용을 버리고 과거로 돌아가야 한다면? `git reset --hard`명령어를 사용한다. (뒤에 자세히 다뤄봅시다.)
+- 만약에 지금까지 작업한 내용을 버리고 과거로 돌아가야 한다면?
+    - `git reset --hard`명령어를 사용한다. (뒤에 자세히 다뤄봅시다.)
 - `git log -p`로 어떤 것이 패치되었는지 볼 수 있어, 어디서 문제가 생겼는지 추적할 수 있다. p는 patch의 약자이다.
 
 
