@@ -117,7 +117,7 @@ toc_sticky: true
     - 또는 **Working Tree**에 있는 모든 파일을 올리고 싶으면 `git add *`명령어를 사용할 수 있다.
     - 하지만 `git add *` 명령어는 **.gitignore** 문제가 있어 `git add .`을 사용해 주자.
     
-5. `git commit -m`으로 버전을 생성해준다.
+5. `git commit -m`으로 버전을 생성해준다.  
     ![multiple-add](/images/git-multiple-commit.png)
     
 6. `git log`로 생성된 버전들을 살펴보자.
