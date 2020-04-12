@@ -1,5 +1,5 @@
 ---
-title:  "[Dev 03] 가장 위험한 git 실수 6가지와 빠른 수습 방법"
+title:  "[Git 03] 가장 위험한 git 실수 6가지와 빠른 수습 방법"
 excerpt: "기사 그대로이지만 너무 컨텐츠가 좋아서 일단 저장"
 categories:
   - git
