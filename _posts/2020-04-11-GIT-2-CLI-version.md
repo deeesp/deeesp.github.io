@@ -123,11 +123,22 @@ toc_sticky: true
 6. `git log`로 생성된 버전들을 살펴보자.
     - 어떤 버전이 생성되어 있는 지는 나와있지만, 세부적으로 어떤 파일들이 연루되어 있는지에 대한 내용이 없다. 아래 [Stackoverflow](https://stackoverflow.com/questions/1230084/how-to-have-git-log-show-filenames-like-svn-log-v)에서 참조한 `git log --stat`명령어로 확인해보자.  
     ![log-detail](/images/git-log-detail.png)
+
+
+## [6] 버전 간 차이점 비교하기  
+- 수천만줄 짜리 코드라고 생각한다면, 이전에 작업했던 내용을 파악하는 것이 정말 힘들 것이다.  
+- 따라서, **Working Tree**와 마지막 버전 사이의 차이점 비교를 통해 버전을 만들기 전에 내가 무슨 작업을 했는지 최종 검토를 하는 단계이다.  
+![git-diff](/images/git-diff.png)  
+- `git diff` 로 이전 버전과의 차이를 알 수 있다.  
+
     
-### Optional
+## Optional
 - `add`와 `commit`을 동시에 해주고 싶을 때는?
     - `git commit -am` 명령어를 사용해 준다.  
-    ![add-commit](/images/git-add-commit.png)
+    ![add-commit](/images/git-add-commit.png)  
+- 만약에 지금까지 작업한 내용을 버리고 과거로 돌아가야 한다면? `git reset --hard`명령어를 사용한다. (뒤에 자세히 다뤄봅시다.)
+- `git log -p`로 어떤 것이 패치되었는지 볼 수 있어, 어디서 문제가 생겼는지 추적할 수 있다. p는 patch의 약자이다.
+
 
 ## Reference
 - [생활코딩 지옥에서 온 GIT 2](https://opentutorials.org/module/3762)
