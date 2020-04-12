@@ -75,7 +75,7 @@ toc_sticky: true
     ![status](/images/git-status.png)
     - `git status`: working tree status - git의 상태를 보기 위해 사용하는 명령어로 자주 사용하게 된다.
     - **No commits yet**: `commit` == 버전, 아직 버전이 없는 상태이다.
-    - **Untracked files** : `hello1.txt`가 추적되지 않고 있음을 보여주고 있다. git은 특정 파일을 버전관리 하겠다고 명시적으로 한번 지정해주지 않으면 없는 셈 치기 때문에 `hello1.txt`가 버전관리 되고 있지 않다는 것이다.
+    - **Untracked files**: `hello1.txt`가 추적되지 않고 있음을 보여주고 있다. git은 특정 파일을 버전관리 하겠다고 명시적으로 한번 지정해주지 않으면 없는 셈 치기 때문에 `hello1.txt`가 버전관리 되고 있지 않다는 것이다.
 
 3. `git add xx.xx` 명령어로 **Working Tree**에 있는 수정사항을 **Staging area**에 올려 버전으로 만들어주자.
     - `git add`: add to staging area
@@ -89,8 +89,8 @@ toc_sticky: true
     - 하지만 이 과정이 귀찮으므로, `-m`을 통해 한꺼번에 메시지를 작성해줄 수 있다. `git commit -m "message"`
         ![git-commit](/images/git-commit-m.png)
     - `git status`로 다시 현재 상태를 관찰해보자.
-        - 'nothing to commit': 버전으로 만들 것이 없다.
-        - 'working tree clean': 버전이 되지 않은 수정사항이 없다.
+        - **nothing to commit**: 버전으로 만들 것이 없다.
+        - **working tree clean**: 버전이 되지 않은 수정사항이 없다.
 5. `git log`를 통해 버전이 잘 만들어 졌는지 확인해 보자.
     - `git log`: show version - 일종의 버전의 역사를 볼 수 있는 명령어이다.
     - 나갈 때는 `q`를 누르면 된다.
