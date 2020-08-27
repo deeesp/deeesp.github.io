@@ -328,10 +328,9 @@ LogSoft(arg)max 또한 활성화 함수에는 잘 안쓰이고 주로 손실함�
 ### `nn.PReLU()` 관련된 질문들
 
 <!--
+- Why would we want the same value of $a$ for all channels?
 
-- Why would we want the same value of $a$ for all channels?-->
-
-    > Different channels could have different $a$. You could use $a$ as a parameter of every unit. It could be shared as a feature map as well.
+- Different channels could have different $a$. You could use $a$ as a parameter of every unit. It could be shared as a feature map as well.
 
 -->
 
