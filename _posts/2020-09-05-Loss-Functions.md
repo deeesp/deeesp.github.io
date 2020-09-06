@@ -23,12 +23,12 @@ toc_sticky: true
 ---
 
 
-## [손실함수 <sup>Loss functions</sup>](https://www.youtube.com/watch?v=bj1fh3BvqSU&t=1990s)
+# [손실함수 <sup>Loss functions</sup>](https://www.youtube.com/watch?v=bj1fh3BvqSU&t=1990s)
 
 <!--PyTorch also has a lot of loss functions implemented. Here we will go through some of them.-->
 파이토치에는 다양한 손실함수가 구현되어 있다. 그 중 일부를 여기서 다루어 볼 것이다.
 
-### `nn.MSELoss()`
+## [1] `nn.MSELoss()`
 
 <!--This function gives the mean squared error (squared L2 norm) between each element in the input $x$ and target $y$. It is also called L2 loss.-->
 이 함수는 입력 $x$와 타겟<sup>Target</sup> $y$의 원소들 사이에 평균제곱오차<sup>Mean Squared Error (MSE, Squared L2 Norm)</sup>를 계산한다.
@@ -59,7 +59,7 @@ The division by $n$ can be avoided if one sets ``reduction = 'sum'``.-->
 모든 원소에 대해 Sum 연산을 하고, $n$ 으로 나눈다.
 
 
-### `nn.L1Loss()`
+## [2] `nn.L1Loss()`
 
 <!--This measures the mean absolute error (MAE) between each element in the input $x$ and target $y$ (or the actual output and desired output).
 
@@ -84,15 +84,16 @@ $$l(x,y) = L = \{l_1, \dots, l_N\}^\top, l_n = \vert x_n - y_n\vert$$
 
 **사용 사례:** L1 loss는 L2 loss에 비하여 이상치와 잡음 <sup>Outliers and Noise</sup>에 상대적으로 견고<sup>Robust</sup>하다. L2는 이상치와 잡음이 있는 점들에 대해 제곱을 하여, 비용함수가 이상치에 대해 아주 민감하게 된다.
 
-**문제점: ** L1 loss는 0의 값을 갖는 바닥 지점<sup>Bottom</sup>에서 미분이 불가능하기 때문에 경사를 다룰 때 주의를 기울여야 한다. (Softshrink라고 불린다.) 여기서 영감을 받은 것이 앞으로 나올 SmoothL1Loss이다.
+**문제점:**  L1 loss는 0의 값을 갖는 바닥 지점<sup>Bottom</sup>에서 미분이 불가능하기 때문에 경사를 다룰 때 주의를 기울여야 한다. (Softshrink라고 불린다.) 여기서 영감을 받은 것이 앞으로 나올 SmoothL1Loss이다.
 
 
-### `nn.SmoothL1Loss()`
+## [3] `nn.SmoothL1Loss()`
 
 <!--This function uses L2 loss if the absolute element-wise error falls below 1 and L1 loss otherwise.-->
 이 함수는 요소별<sup>Element-wise</sup> 절대오차가 1 아래로 떨어질 때 L2 loss를 이용하고 나머지는 L1 loss를 사용한다.
 
 $$\text{loss}(x, y) = \frac{1}{n} \sum_i z_i$$
+
 <!--, where $z_i$ is given by-->
 여기서 $z_i$는 다음과 같이 주어진다.
 
@@ -113,15 +114,15 @@ SmoothL1Loss는 Ross Girshick의 [Fast R-CNN](https://arxiv.org/abs/1504.08083)�
 
 **사용 사례:** `MSELoss` 보다는 이상치에 대해 덜 민감하고, 0인 지점에서 부드럽다. 이 함수는 주로 컴퓨터 비전 분야에서 이상치로부터 보호하기 위해 주로 쓰인다.
 
-**문제점: ** 이 함수는 위 함수에서 보이는 처럼 $0.5$의 스케일을 가지고 있다.
+**문제점:** 이 함수는 위 함수에서 보이는 처럼 $0.5$의 스케일을 가지고 있다.
 
 
-### L1 *vs.* L2 for Computer Vision
+## [4] 컴퓨터 비전에서의 L1 *vs.* L2
 
 <!--In making predictions when we have a lot of different $y$'s: -->
 예측하는 과정에서, 다음과 같이 다양한 $y$를 가질 수 있다.
-<!--* If we use MSE (L2 Loss), it results in an average of all $y$, which in CV it means we will have a blurry image.
-* If we use L1 loss, the value $y$ that minimize the L1 distance is the medium, which is not blurry, but note that medium is difficult to define in multiple dimensions.-->
+<!-- * If we use MSE (L2 Loss), it results in an average of all $y$, which in CV it means we will have a blurry image. -->
+<!-- * If we use L1 loss, the value $y$ that minimize the L1 distance is the medium, which is not blurry, but note that medium is difficult to define in multiple dimensions. -->
 * MSE(L2 Loss)를 사용한다면, 모든 $y$에 대해서 평균이 나온다. 컴퓨터 비전에서는 blurry 이미지를 얻게 된다는 뜻이다.
 * L1 loss를 사용한다면, L1 거리를 최소화 하는 $y$ 값은 중간값<sup>Medium</sup>이다. Blurry하진 않지만, 다차원에서는 중간값을 정의하기 힘들다.
 
@@ -129,7 +130,7 @@ SmoothL1Loss는 Ross Girshick의 [Fast R-CNN](https://arxiv.org/abs/1504.08083)�
 L1을 사용하면 더 날카로운 이미지를 예측해낸다.
 
 
-### `nn.NLLLoss()`
+## [5] `nn.NLLLoss()`
 
 <!--It is the negative log likelihood loss used when training a classification problem with C classes.-->
 음의 로그우도<sup>Negative Log Likelihood</sup> loss는 C개의 클래스를 가진 분류 문제를 학습시킬 때 사용된다.
@@ -161,7 +162,7 @@ $$\ell(x, y) = \begin{cases}
 이 손실함수는 각 클래스에 가중치를 할당하는 optional 인자인 `weight`을 가지고 있다. 이는 1D 텐서를 사용하여 전달할 수 있으며, 불균형한 훈련 세트를 다룰 때 유용하다. 
 
 
-#### Weights & Imbalanced Classes:
+### 가중치와 불균형한<sup>Imbalanced</sup> 클래스
 
 <!--Weight vector is useful if the frequency is different for each category/class. For example, the frequency of the common flu is much higher than the lung cancer. We can simply increase the weight for categories that has small number of samples.-->
 가중치 벡터는 각 범주 또는 클래스의 빈도가 다를 때 유용하다. 예를 들어, 일반 독감의 빈도는 폐암보다 훨씬 높다. 간단하게 적은 샘플을 가진 범주에 가중치를 늘려줄 수 있다.
@@ -178,7 +179,7 @@ $$\ell(x, y) = \begin{cases}
 <!--To get an intuition of this scheme, let's go back to the medical school example: students spend just as much time on rare disease as they do on frequent diseases (or maybe even more time, since the rare diseases are often the more complex ones). They learn to adapt to the features of all of them, then correct it to know which are rare.-->
 이 방법에 대한 직관을 얻기 위해, 의과 대학의 예시로 돌아가 보자. 학생들은 자주 접하는 질병에 투자하는 시간 만큼 희귀 질병에  많은 시간을 할애한다. (혹은 희귀 질병이 보통 더 복잡하기 때문에 더 많은 시간을 투자한다.) 학생들은 모든 질병의 특징에 적응하기 위해 공부를 하고나서, 어떤 질병이 희귀한지 수정한다.
 
-### `nn.CrossEntropyLoss()`
+## [6] `nn.CrossEntropyLoss()`
 
 <!--This function combines `nn.LogSoftmax` and `nn.NLLLoss` in one single class. The combination of the two makes the score of the correct class as large as possible.-->
 이 함수는 `nn.LogSoftmax`와  `nn.NLLLoss`가 하나의 클래스로 구성되어 있다. 이 둘의 조합은 정확한 크래스에 대해서 더 큰 점수를 부여한다.
@@ -210,17 +211,22 @@ Mathematically,-->
 크로스 엔트로피<sup>Cross Entropy</sup> Loss에 대한 물리적 해석은 두 분포 사이의 차이<sup>Divergence</sup>를 측정하는 쿨백-라이블러 발산<sup>KL divergence (Kullback–Leibler divergence )</sup>와 연관이 있다.
 
 수학적으로는, 다음과 같다.
+
 $$H(p,q) = H(p) + \mathcal{D}_{KL} (p \mid\mid q)$$
 
 $$H(p,q) = - \sum_i p(x_i) \log (q(x_i))$$
+
 이는 (두 분포 사이의) 크로스 엔트로피이다.
 
-$$H(p) = - \sum_i p(x_i) \log (p(x_i))$$ 는 엔트로피이고, $$\mathcal{D}_{KL} (p \mid\mid q) = \sum_i p(x_i) \log \frac{p(x_i)}{q(x_i)}$$는 KL divergence이다.
+$$H(p) = - \sum_i p(x_i) \log (p(x_i))$$ 는 엔트로피이고,
 
-### `nn.AdaptiveLogSoftmaxWithLoss()`
+$$\mathcal{D}_{KL} (p \mid\mid q) = \sum_i p(x_i) \log \frac{p(x_i)}{q(x_i)}$$는 KL divergence이다.
+
+
+## [7] `nn.AdaptiveLogSoftmaxWithLoss()`
 
 <!--This is an efficient softmax approximation of softmax for large number of classes (for example, millions of classes). It implements tricks to improve the speed of the computation.-->
 이는 아주 많은(ex, 백만개) 클래스에 대한 소프트맥스의 Efficient softmax approximation이다. 이는 연산 속도를 향상시키기 위해서 몇가지 트릭을 이용해 구현한다.
 
-<!--Details of the method is described in [Efficient softmax approximation for GPUs](https://arxiv.org/abs/1609.04309) by Edouard Grave, Armand Joulin, Moustapha Cissé, David Grangier, Hervé Jégou.-->
+<!-- Details of the method is described in [Efficient softmax approximation for GPUs](https://arxiv.org/abs/1609.04309) by Edouard Grave, Armand Joulin, Moustapha Cissé, David Grangier, Hervé Jégou. -->
 자세한 방법은 Edouard Grave, Armand Joulin, Moustapha Cissé, David Grangier, Hervé Jégou의 [Efficient softmax approximation for GPUs](https://arxiv.org/abs/1609.04309)에 기술되어있다.
