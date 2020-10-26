@@ -2,7 +2,7 @@
 title:  "[통계] Sample Variance를 구할 때 n-1을 나누어주는 이유"
 excerpt: "베셀의 보정과 그 이유에 대해 알아보자"
 categories:
-  - 통계
+  - Statistics
   
 tags:
   - 통계
