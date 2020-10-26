@@ -97,7 +97,7 @@ $$p(\textbf{x}, \theta)= p(\textbf{x}| \theta)p(\theta)$$
 - Hypotheses와 Parameters는 *a priori* distributions를 가정한, 확률변수<sup>random variable</sup>로 다뤄진다.
 - $p(x;\theta)$에서 $\theta$ 가 우리가 estimation 하고자 하는 parameter로, random variable 이라는 것을 명심해야 한다.
 - $p(\theta)$는 사전에 관측된 어떤 데이터로부터 $\theta$에 대한 우리의 knowledge를 요약하는 **prior PDF** 이다.
-- $p(\textbf{x}| \theta)$는 $\theta$를 알고 있다는 조건 하에 주어진 데이터
+- $p(\textbf{x} \| \theta)$는 $\theta$를 알고 있다는 조건 하에 주어진 데이터
 - $\textbf{x}$에서 우리의 knowledge를 요약하는 conditional PDF이다.
 
 
@@ -129,11 +129,9 @@ $$\text{MSE}(\hat{\theta}) = E\left[ \left(\hat{\theta} - \theta \right)^2 \righ
 
  MSE<sup></sup>는 위 식과 같이 실제 값으로부터 estimator의 편차 제곱의 평균 값을 측정한다.
 
- 하지만, 많은 경우에 MMSE(Minimum MSE) criterion은 데이터에 대한 함수만으로 나타낼 수 없는 실현 불가능한<sup>Unrealizable</sup> estimator를 만들어 낸다.
+ 하지만, MMSE(Minimum MSE) criterion은 많은 경우에 데이터에 대한 함수만으로 나타낼 수 없는 실현 불가능한<sup>Unrealizable</sup> estimator를 만들어 낸다.
  
- 즉, Optimal parameter를 나타낼 때 unknown parameter $\theta$로 모델링해야 하기 때문에, unrealizable하다.
- 
- 아래 수식 처럼, criterion의 bias에 unknown parameter $\theta$를 가져 unrealizable하기 때문에, 따라서 현실적으로 MMSE를 estimator로 고려하면 안된다.
+ 아래 수식 처럼, Optimal parameter 찾기 위한 criterion을 모델링 할 때, bias에 unknown parameter $\theta$를 가져 unrealizable하기 때문에, 현실적으로 MMSE를 estimator로 고려하면 안된다.
  
 $E\left[ \left(\hat{\theta} - \theta \right)^2 \right]$
 
