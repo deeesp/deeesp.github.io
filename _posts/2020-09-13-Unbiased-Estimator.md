@@ -95,14 +95,12 @@ $$p(\textbf{x}; \bf{\theta})$$
 	- 우리가 관심있는 unknown parameters가 random하지 않고 deterministic하다고 가정한다. 즉, 고정되어 있는 unknown parameter를 estimation 하는 방법이다.
 	
 2. *Bayesian* Estimation
-
-$$p(\textbf{x}, \theta)= p(\textbf{x}| \theta)p(\theta)$$
-
-- Hypotheses와 Parameters는 *a priori* distributions를 가정한, 확률변수<sup>random variable</sup>로 다뤄진다.
-- $p(x;\theta)$에서 $\theta$ 가 우리가 estimation 하고자 하는 parameter로, random variable 이라는 것을 명심해야 한다.
-- $p(\theta)$는 사전에 관측된 어떤 데이터로부터 $\theta$에 대한 우리의 knowledge를 요약하는 **prior PDF** 이다.
-- $p(\textbf{x} \| \theta)$는 $\theta$를 알고 있다는 조건 하에 주어진 데이터 $\textbf{x}$에서 우리의 knowledge를 요약하는 conditional PDF이다.
-
+	- Hypotheses와 Parameters는 *a priori* distributions를 가정한, 확률변수<sup>random variable</sup>로 다뤄진다.
+	- $p(x;\theta)$에서 $\theta$ 가 우리가 estimation 하고자 하는 parameter로, random variable 이라는 것을 명심해야 한다.
+	- $p(\theta)$는 사전에 관측된 어떤 데이터로부터 $\theta$에 대한 우리의 knowledge를 요약하는 **prior PDF** 이다.
+	- $p(\textbf{x} \| \theta)$는 $\theta$를 알고 있다는 조건 하에 주어진 데이터 $\textbf{x}$에서 우리의 knowledge를 요약하는 conditional PDF이다.
+	
+$$p(\textbf{x}, \theta)= p(\textbf{x} \| \theta)p(\theta)$$
 
 
 ## [5] Unbiased Estimator
