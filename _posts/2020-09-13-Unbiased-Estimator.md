@@ -5,16 +5,20 @@ categories:
   - 통계
   
 tags:
-  - 통계
-  - 신호처리
   - Statistics
   - Signal Processing
-  - Detection
-  - Estimation
+  - Machine Learning
+  - Detection and Estimation
+  - Unbiased Estimator
+  - MVUE
+  - 통계
+  - 신호처리
   - 검출 및 추정
-  - 
+  - 불편 추정기
+  - 불편 추정량
+
   
-last_modified_at: 2020-09-13-17:00:00
+last_modified_at: 2020-10-26-17:00:00
 
 toc: true
 toc_sticky: true
@@ -97,8 +101,7 @@ $$p(\textbf{x}, \theta)= p(\textbf{x}| \theta)p(\theta)$$
 - Hypotheses와 Parameters는 *a priori* distributions를 가정한, 확률변수<sup>random variable</sup>로 다뤄진다.
 - $p(x;\theta)$에서 $\theta$ 가 우리가 estimation 하고자 하는 parameter로, random variable 이라는 것을 명심해야 한다.
 - $p(\theta)$는 사전에 관측된 어떤 데이터로부터 $\theta$에 대한 우리의 knowledge를 요약하는 **prior PDF** 이다.
-- $p(\textbf{x} \| \theta)$는 $\theta$를 알고 있다는 조건 하에 주어진 데이터
-- $\textbf{x}$에서 우리의 knowledge를 요약하는 conditional PDF이다.
+- $p(\textbf{x} \| \theta)$는 $\theta$를 알고 있다는 조건 하에 주어진 데이터 $\textbf{x}$에서 우리의 knowledge를 요약하는 conditional PDF이다.
 
 
 
@@ -107,7 +110,7 @@ $$p(\textbf{x}, \theta)= p(\textbf{x}| \theta)p(\theta)$$
 ### 정의
  Estimator가 *On the average <sup>평균적으로</sup>* unknown parameter의 실제 값을 산출해내면 **Unbiased** 하다.
  
- $$s.t. \text{if}\ E(\hat{\theta}) = \theta, \quad a< \theta <b \quad \text{for} \forall \theta \quad \text{then, estimator} \hat{\theta} \text{is } \textbf{unbiased}$$
+ $$s.t. \text{if}\ E(\hat{\theta}) = \theta, \quad a< \theta <b \quad \text{for } \forall \theta \quad \text{, then estimator } \hat{\theta} \text{ is } \textbf{unbiased}$$
  
 - $(a,b)$ 범위로 인해, estimator가 on the average $\theta$를 산출해낼 것이다.
 - $\hat{\theta}=g(\textbf{x})$라 하면, $E(\hat{\theta}) =\int{g(\textbf{x})p(\textbf{x};\theta)d\textbf{x}}= \theta$
@@ -144,5 +147,5 @@ $= \text{var}(\hat{\theta}) +b^2(\theta)$
 이에 대한 대안으로 bias가 0인 값을 갖고, 분산<sup>variance</sup>을 최소화 하도록 제한을 주는 *Minimum Variance Unbiased Estimator* (**MVUE**)가 쓰인다. MVUE는 다음 글에서 자세히 다루어보겠다.
 
 ## Reference
-- [1] S. Kay. Fundament& of Statistical Signal Processing: Estimation Theory, Prentice-Hall International Editions, Englewood Cliffs, NJ, 1993.
+- [1] S. Kay. Fundamentals of Statistical Signal Processing: Estimation Theory, Prentice-Hall International Editions, Englewood Cliffs, NJ, 1993.
 - [2] GIST EC7204 Detection and Estimation Lecture from Prof. 황의석
