@@ -105,7 +105,9 @@ $$p(\textbf{x}, \theta)= p(\textbf{x}| \theta)p(\theta)$$
 
 ### 정의
  Estimator가 *On the average <sup>평균적으로</sup>* unknown parameter의 실제 값을 산출해내면 **Unbiased** 하다.
- $$s.t. \text{if} E(\hat{\theta})=\theta , a< \theta <b \ \forall \theta$$
+ 
+ $s.t. \text{if}\ E(\hat{\theta})=\theta , \quad a< \theta <b \quad \forall \theta$
+ 
  Then, Estimator $\hat{\theta}$ is **Unbiased**
  
 - $(a,b)$ 범위로 인해, estimator가 on the average $\theta$를 산출해낼 것이다.
