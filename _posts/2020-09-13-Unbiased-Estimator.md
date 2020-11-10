@@ -100,7 +100,7 @@ $$p(\textbf{x}; \bf{\theta})$$
 	- $p(\theta)$는 사전에 관측된 어떤 데이터로부터 $\theta$에 대한 우리의 knowledge를 요약하는 **prior PDF** 이다.
 	- $p(\textbf{x} \| \theta)$는 $\theta$를 알고 있다는 조건 하에 주어진 데이터 $\textbf{x}$에서 우리의 knowledge를 요약하는 conditional PDF이다.
 	
-$$p(\textbf{x}, \theta)= p(\textbf{x} \| \theta)p(\theta)$$
+$$p(\textbf{x}, \theta)= p(\textbf{x} \mid \theta)p(\theta)$$
 
 
 ## [5] Unbiased Estimator
