@@ -38,13 +38,13 @@ $$(\forall i,j,k)\ P(X=x_i \mid Y=y_j, Z=z_k) = P(X=x_i \mid Z=z_k)$$
 
 - It means $X$ is possible to be dependent on $Y$ without $Z$
 
-- **따름 정리**
+### 따름 정리
 
 - $P(X \mid Y)\ = \ P(X_1,X_2 \mid Y) = P(X_1,X_2,Y)/P(Y)$
                     $=\ P(X_1 \mid X_2,Y)P(X_2 \mid Y)= P(X_1,X_2,Y)/P(X_2,Y)*P(X_2,Y)/P(Y)$
                     $=\ P(X_1 \mid Y)P(X_2 \mid Y)$
 
-    $$⁍$$
+$$P(X_1...X_n \mid Y) = \prod_{i=1}^nP(X_i \mid Y)$$
 
 - $X_i$ is conditionally independent of each of the other $X_k$s given $Y$
 - Dramatic reduction of the number of parameters from $2(2^n-1)$ to $2n$
