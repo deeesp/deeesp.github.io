@@ -1,5 +1,5 @@
 ---
-title:  "[통계] Estimation (1) - 불편 추정기 (Unbiased Estimator)"
+title:  "[통계] Estimation (1) - Unbiased Estimator (불편 추정기)"
 excerpt: "Detection and Estimation Series - Detection & Estimation의 개념과 Unbiased Estimator"
 categories:
   - Statistics
