@@ -19,7 +19,8 @@ toc_sticky: true
 
 ## LTI system 이란?
 Linear Time-Invariant System, 즉 *선형 시불변* 시스템이다.
-~~라고만 해석만 하면 면접에서 광탈이다.~~
+
+~~라고 해석만 하면 면접에서 광탈이다.~~
 
 각각의 개념을 먼저 이해해야 한다. ★ 알고 넘어가자 ★
 
@@ -28,7 +29,7 @@ Linear Time-Invariant System, 즉 *선형 시불변* 시스템이다.
 - 즉, 어떤 입력 신호가 Time-shift (시간 지연) 되어 시스템에 입력되었을 때, 원래 출력 신호(지연되지 않은 입력에 대한 출력)가 입력 신호가 지연된 시간만큼 time-shift 된 결과를 출력해낸다면, 그 시스템은 Time-Invariant system 이다. 종종 Shift-Invariant system 이라고도 불린다.
 
 $$ \text{s.t. Input } x_1[n] = x[n-n_0] → y_1[n] = y[n-n_0] $$
-$$ \text{where a system transforms the input } x[n] \text{ into the output } y[n]$$
+    $$ \text{where a system transforms the input } x[n] \text{ into the output } y[n]$$
 
 - 예시
   
@@ -38,10 +39,10 @@ $$ \text{where a system transforms the input } x[n] \text{ into the output } y[n
   
   3) 따라서, 시스템 $$y(t)$$ 는 time-invariant 하다.
   
-  - 이 외 $$y = tx(t)$$ 시스템과, Accumulator 시스템
+- 이 외 $$y = tx(t)$$ 시스템과, Accumulator 시스템
   
-    ($$\text{s.t. }$$ $$y[n-n_0] = \sum^{n-n_0}_{k=-\infty} x[k] $$ )도 time-invariant 하다.
-  - Not time-invarinat 한 시스템으로는 Compressor system이 있는데 $$M$$ 이 양의 정수,  $$-\infty < n < \infty$$일 때 $$y[n] = x[Mn] $$ 인 시스템을 말한다.
+  ($$\text{s.t. }$$ $$y[n-n_0] = \sum^{n-n_0}_{k=-\infty} x[k] $$ )도 time-invariant 하다.
+- Not time-invarinat 한 시스템으로는 Compressor system이 있는데 $$M$$ 이 양의 정수,  $$-\infty < n < \infty$$일 때 $$y[n] = x[Mn] $$ 인 시스템을 말한다.
 
 
 ### Linear System (선형 시스템)
