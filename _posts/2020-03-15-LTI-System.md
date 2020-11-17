@@ -23,18 +23,18 @@ Linear Time-Invariant System, 즉 *선형 시불변* 시스템이다.
 
 각각의 개념을 먼저 이해해야 한다. ★ 알고 넘어가자 ★
 
-### Time-Invariant system (시불변 시스템)
+### Time-Invariant System (시불변 시스템)
 - 정의 :  시스템의 특성이 시간에 지남에 따라 변하지 않는 시스템
 - 즉, 어떤 입력 신호가 Time-shift (시간 지연) 되어 시스템에 입력되었을 때, 원래 출력 신호(지연되지 않은 입력에 대한 출력)가 입력 신호가 지연된 시간만큼 time-shift 된 결과를 출력해낸다면, 그 시스템은 Time-Invariant system 이다. 종종 Shift-Invariant system 이라고도 불린다.
 $$ \text{s.t. Input } x_1[n] = x[n-n_0] → y_1[n] = y[n-n_0] $$
 $$ \text{where a system transforms the input } x[n] \text{ into the output } y[n]$$
 
 
-### 선형 시스템
+### Linear System (선형 시스템)
 - 입력 신호의 변화에 따라 출력 신호에서도 비례적으로 입력 변화량을 반영하는 시스템
-- Superposition Principle(중첩의 원리 - Additivity, Homogeneity)를 만족하는 시스템
-1. **Additivity(가산성)** : 두 연속시간 신호가 더해져서 시스템에 입력되고 이를 통해 얻어진 출력 신호가 두 연속시간 신호를 분리해서 각각 시스템에 입력하고 얻어진 출력 신호를 합친 것과 동일하다. 즉, 더해서 넣어서 뺀 거랑, 뺀 거를 더한 거랑 같다는 뜻..--;
-2. **Homogeneity(Scaling - 균일성)** : 연속시간 신호에 임의의 상수 a를 곱합 입력을 시스템에 입력하여 얻어진 출력 신호는 연속시간 신호를 입력하고 출력 신호에 상수 a를 곱한 것과 같다.
+- Superposition Principle (중첩의 원리 - Additivity + Homogeneity)를 만족하는 시스템
+1. **Additivity (가산성)** : 두 연속시간 신호가 더해져서 시스템에 입력되고 이를 통해 얻어진 출력 신호가 두 연속시간 신호를 분리해서 각각 시스템에 입력하고 얻어진 출력 신호를 합친 것과 동일하다. 즉, 더해서 넣어서 뺀 거랑, 뺀 거를 더한 거랑 같다는 뜻..--;
+2. **Homogeneity (Scaling - 균일성)** : 연속시간 신호에 임의의 상수 a를 곱합 입력을 시스템에 입력하여 얻어진 출력 신호는 연속시간 신호를 입력하고 출력 신호에 상수 a를 곱한 것과 같다.
 
 
 ### LTI 시스템이 중요한 역할을 하는 이유
