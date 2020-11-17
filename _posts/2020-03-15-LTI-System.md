@@ -1,6 +1,6 @@
 ---
 title:  "[DSP 01] LTI System"
-excerpt: "신호처리의 기초 LTI system"
+excerpt: "신호처리의 기초 LTI system 의 정의와 왜 사용하는지"
 
 categories:
   - Signal_Processing
@@ -31,34 +31,37 @@ $$ \text{s.t. Input } x_1[n] = x[n-n_0] → y_1[n] = y[n-n_0] $$
 $$ \text{where a system transforms the input } x[n] \text{ into the output } y[n]$$
 
 - 예시
-  - $$y(t) = \sin x(t)$$ 인 시스템에
-  - $$x_1(t)$$ 입력을 넣어주면, $$ y_1(t) = \sin [x_1(t)]$$ 가 나오게 된다.
-  - 그럼, 입력 $$x_2(t) = x_1(t-t_0) $$ 를 넣어준다면,
-  - $$y_2(t) = \sin[x_2(t)] = \sin [x_1 (t-t_0)] = y_1(t-t_0)$$
-  - 따라서, 시스템 y(t) 는 time-invariant 하다.
-  - 이 외에 $$y = tx(t)$$, Accumulator $$y[n-n_0] = \sum^{n-n_0}_{k=-\infty} x[k] $$ 도 time-invariant 하다.
-  - Not time-invarinat 한 시스템으로는 Compressor system이 있는데
-  - $$M$$ 이 양의 정수일 때 $$y[n] = x[Mn] $$ 인 시스템을 말한다. $$-\infty < n < \infty$$
+  1) $$y(t) = \sin x(t)$$ 인 시스템에 $$x_1(t)$$ 입력을 넣어주면, $$ y_1(t) = \sin [x_1(t)]$$ 가 나오게 된다.
+  2) 그럼, 입력 $$x_2(t) = x_1(t-t_0) $$ 를 넣어준다면, $$y_2(t) = \sin[x_2(t)] $$ $$= \sin [x_1 (t-t_0)] = y_1(t-t_0)$$ 을 만족한다.
+  3) 따라서, 시스템 $$y(t)$$ 는 time-invariant 하다.
+  
+  - 이 외 $$y = tx(t)$$ 시스템과, Accumulator 시스템 ($$\text{s.t. } y[n-n_0] = \sum^{n-n_0}_{k=-\infty} x[k] $$ )도 time-invariant 하다.
+  - Not time-invarinat 한 시스템으로는 Compressor system이 있는데 $$M$$ 이 양의 정수일 때 $$y[n] = x[Mn] $$ 인 시스템을 말한다. $$-\infty < n < \infty$$
 
 
 ### Linear System (선형 시스템)
 - 입력 신호의 변화에 따라 출력 신호에서도 비례적으로 입력 변화량을 반영하는 시스템
 - Superposition Principle (중첩의 원리 - Additivity + Homogeneity)를 만족하는 시스템
-1. **Additivity (가산성)** : 두 연속시간 신호가 더해져서 시스템에 입력되고 이를 통해 얻어진 출력 신호가 두 연속시간 신호를 분리해서 각각 시스템에 입력하고 얻어진 출력 신호를 합친 것과 동일하다. 즉, 더해서 넣어서 뺀 거랑, 뺀 거를 더한 거랑 같다는 뜻..--;
-2. **Homogeneity (Scaling - 균일성)** : 연속시간 신호에 임의의 상수 a를 곱합 입력을 시스템에 입력하여 얻어진 출력 신호는 연속시간 신호를 입력하고 출력 신호에 상수 a를 곱한 것과 같다.
 
+1. **Additivity (가산성)**
+  - 두 연속시간 신호가 더해져서 시스템에 입력되고 이를 통해 얻어진 출력 신호가 두 연속시간 신호를 분리해서 각각 시스템에 입력하고 얻어진 출력 신호를 합친 것과 동일하다.
+  - 즉, 더해서 넣어서 뺀 거랑, 뺀 거를 더한 거랑 같다는 뜻..--;
+2. **Homogeneity (Scaling - 균일성)**
+  - 연속시간 신호에 임의의 상수 a를 곱합 입력을 시스템에 입력하여 얻어진 출력 신호는 연속시간 신호를 입력하고 출력 신호에 상수 a를 곱한 것과 같다.
 
+??? Why LTI?
 ### LTI 시스템이 중요한 역할을 하는 이유
-1. Many physical processes posses Linearity and Time Invariance properties thus can be modeled as LTI systems
-2. LTI systems can be analyzed in considerable detail, providing both insight into their properties and a set of powerful tools that form the core of signal and system analysis.
+1. 물리적 프로세스들은 LTI 성질을 가지고 있는 경우가 많아서, LTI system 으로 모델링 되는 경우가 많다.
+2. LTI system 으로 신호 및 시스템 분석에 있어 핵심 요소인 LTI properties 와 a set of powerful tools 를 통해 상당히 상세하게 분석할 수 있다.
 
-A LTI system is a linear operator defined on a function space that commutes with every time shift operator on that function space. It is particularly easy to calculate the output of a system when an eigenfunction is the input as the output is simply the eigenfunction scaled by the associated eigenvalue.
+ A LTI system is a linear operator defined on a function space that commutes with every time shift operator on that function space. It is particularly easy to calculate the output of a system when an eigenfunction is the input as the output is simply the eigenfunction scaled by the associated eigenvalue.
 
-### 그럼 어떻게 혀?
-1. Represent the input to an LTI system in terms of a linear combination of a set of basic signals
-2. Use superposition to compute the output of the system in terms of its responses to these basic signals
 
-- Unit impulse → very general signals can be represented  as linear combinations of delayed impulses.
+### 그럼 어떻게 쓰는가?
+1. LTI system 에 대한 입력을 basic signal 들의 linear combination의 형태로 나타내준다.
+2. Superposition 를 이용해서 시스템의 출력을 basic signals 에 대한 response 형태로 계산한다.
+
+- Unit impulse → very general signals can be represented as linear combinations of delayed impulses.
 - superposition + time invariance → characterization of any LTI systems in terms of its response to a unit impulse with convolution sum(integral).
 
 
@@ -123,8 +126,6 @@ Reference: [https://trip2ee.tistory.com/101](https://trip2ee.tistory.com/101)
 
 
 ??? 컨벌루션 연산이 왜 나왔고, 어디서부터 유래가 되었는지?
-
-??? Why LTI?
 
 → 수학적 도구를 이용하여 해석하고 설계하기 용이하기 때문에, 즉! 컴퓨터를 이용하여 처리하기 쉽다.
 
