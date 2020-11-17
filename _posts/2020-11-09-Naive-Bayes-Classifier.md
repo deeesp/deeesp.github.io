@@ -11,7 +11,7 @@ tags:
   - Naive Bayes Classifier
   - 나이브 베이즈 분류
   
-last_modified_at: 2020-11-10-22:00:00
+last_modified_at: 2020-11-09-22:00:00
 
 toc: true
 toc_sticky: true
