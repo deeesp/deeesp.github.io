@@ -31,12 +31,17 @@ $$ \text{s.t. Input } x_1[n] = x[n-n_0] → y_1[n] = y[n-n_0] $$
 $$ \text{where a system transforms the input } x[n] \text{ into the output } y[n]$$
 
 - 예시
+  
   1) $$y(t) = \sin x(t)$$ 인 시스템에 $$x_1(t)$$ 입력을 넣어주면, $$ y_1(t) = \sin [x_1(t)]$$ 가 나오게 된다.
+  
   2) 그럼, 입력 $$x_2(t) = x_1(t-t_0) $$ 를 넣어준다면, $$y_2(t) = \sin[x_2(t)] $$ $$= \sin [x_1 (t-t_0)] = y_1(t-t_0)$$ 을 만족한다.
+  
   3) 따라서, 시스템 $$y(t)$$ 는 time-invariant 하다.
   
-  - 이 외 $$y = tx(t)$$ 시스템과, Accumulator 시스템 ($$\text{s.t. } y[n-n_0] = \sum^{n-n_0}_{k=-\infty} x[k] $$ )도 time-invariant 하다.
-  - Not time-invarinat 한 시스템으로는 Compressor system이 있는데 $$M$$ 이 양의 정수일 때 $$y[n] = x[Mn] $$ 인 시스템을 말한다. $$-\infty < n < \infty$$
+  - 이 외 $$y = tx(t)$$ 시스템과, Accumulator 시스템
+  
+    ($$\text{s.t. }$$ $$y[n-n_0] = \sum^{n-n_0}_{k=-\infty} x[k] $$ )도 time-invariant 하다.
+  - Not time-invarinat 한 시스템으로는 Compressor system이 있는데 $$M$$ 이 양의 정수,  $$-\infty < n < \infty$$일 때 $$y[n] = x[Mn] $$ 인 시스템을 말한다.
 
 
 ### Linear System (선형 시스템)
@@ -49,10 +54,11 @@ $$ \text{where a system transforms the input } x[n] \text{ into the output } y[n
 2. **Homogeneity (Scaling - 균일성)**
   - 연속시간 신호에 임의의 상수 a를 곱합 입력을 시스템에 입력하여 얻어진 출력 신호는 연속시간 신호를 입력하고 출력 신호에 상수 a를 곱한 것과 같다.
 
-??? Why LTI?
+
 ### LTI 시스템이 중요한 역할을 하는 이유
+??? Why LTI?
 1. 물리적 프로세스들은 LTI 성질을 가지고 있는 경우가 많아서, LTI system 으로 모델링 되는 경우가 많다.
-2. LTI system 으로 신호 및 시스템 분석에 있어 핵심 요소인 LTI properties 와 a set of powerful tools 를 통해 상당히 상세하게 분석할 수 있다.
+2. LTI system 을 통해 신호 및 시스템 분석에 있어 핵심 요소인 LTI properties 와 a set of powerful tools 를 이해할 수 있기 때문에 신호 및 시스템을 상당히 상세하게 분석할 수 있다.
 
  A LTI system is a linear operator defined on a function space that commutes with every time shift operator on that function space. It is particularly easy to calculate the output of a system when an eigenfunction is the input as the output is simply the eigenfunction scaled by the associated eigenvalue.
 
