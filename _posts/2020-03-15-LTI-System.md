@@ -30,6 +30,16 @@ Linear Time-Invariant System, 즉 *선형 시불변* 시스템이다.
 $$ \text{s.t. Input } x_1[n] = x[n-n_0] → y_1[n] = y[n-n_0] $$
 $$ \text{where a system transforms the input } x[n] \text{ into the output } y[n]$$
 
+- 예시
+  - $$y(t) = \sin x(t)$$ 인 시스템에
+  - $$x_1(t)$$ 입력을 넣어주면, $$ y_1(t) = \sin [x_1(t)]$$ 가 나오게 된다.
+  - 그럼, 입력 $$x_2(t) = x_1(t-t_0) $$ 를 넣어준다면,
+  - $$y_2(t) = \sin[x_2(t)] = \sin [x_1 (t-t_0)] = y_1(t-t_0)$$
+  - 따라서, 시스템 y(t) 는 time-invariant 하다.
+  - 이 외에 $$y = tx(t)$$, Accumulator $$y[n-n_0] = \sum^{n-n_0}_{k=-\infty} x[k] $$ 도 time-invariant 하다.
+  - Not time-invarinat 한 시스템으로는 Compressor system이 있는데
+  - $$M$$ 이 양의 정수일 때 $$y[n] = x[Mn] $$ 인 시스템을 말한다. $$-\infty < n < \infty$$
+
 
 ### Linear System (선형 시스템)
 - 입력 신호의 변화에 따라 출력 신호에서도 비례적으로 입력 변화량을 반영하는 시스템
