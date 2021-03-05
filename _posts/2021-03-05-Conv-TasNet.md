@@ -1,4 +1,3 @@
-
 ---
 title:  "[Speech] Conv-TasNet 톺아보기"
 excerpt: "Time-domain single-channel speech separation, Conv-TasNet 분석"
@@ -23,6 +22,7 @@ last_modified_at: 2021-03-05-14:00:00
 toc: true
 toc_sticky: true
 ---
+
 
 
 Speech separation 분야의 발전에 한획을 그은 [Conv-TasNet](https://ieeexplore.ieee.org/abstract/document/8707065)은 2019년도 IEEE/ACM TASLP (Transactions on Audio, speech, and language processing) 저널에 출판된 논문으로, 최근에도 separation 분야에서 baseline이 되고 있어 읽고 분석한 내용을 정리해 보았습니다.
@@ -77,5 +77,56 @@ $$x(t) = \sum^C_{i=1}s_i(t)$$
 > ★ 기본적으로 frame단위의 mixture에 대한 latent represenatation에 각 source에 해당하는 mask들을 씌워 separation한다.
 
 
+### [1]-2. Input
 
+1.  $x(t) \in \mathbb{R}^{1\times T}$를 길이가 $L$인 $\hat{T}$개의 overlaaping segment $\mathbf{x}_k \in \mathbb{R}^{1\times L}$로 나누어 준다. (단, $k=1,...,\hat{T}$)
+2.  $\hat{T}$개의 waveform segment $\mathbf{x}_k$ 들을 각각 encoder 단으로 넣어준다.
+
+사실상 $X\in\mathbb{R}^{\hat{T}\times L}$이 한꺼번에 encoder로 들어가는 것이지만, 아래 설명은 각 segment (또는 frame) 별로 다뤄지고 있다. $L$은 frame 개수를 결정하는 아주 중요한 hyperparameter로, 뒤에 설명하겠지만 작을수록 성능이 좋아졌다. 물론 $L$이 작아지면 $\hat{T}$는 커진다.
+
+
+### [1]-3. Convolutional Autoencoder
+
+Mixture signal에 대한 STFT representation을 convolutional encoder/decoder로 대체하게 된 배경은 speech separation에 optimized된 audio representation을 만들어주기 위한 것
+
+**Encoder**
+
+Encoder는 waveform mixture에 대한 segment $\mathbf{x}_k \in \mathbb{R}^{1\times L}$를 speech separation에 optimal하게 길이 $N$인 latent represenation $\mathbf{w} \in \mathbb{R}^{1 \times N}$로 encoding해준다. 
+-   Encoder를 matrix multiplication 형태로 써주면 다음과 같다.
+    $$\mathbf{w}=\mathcal{H}(\mathbf{x}\mathbf{U})$$
+    
+-   $\mathbf{U}\in \mathbb{R}^{L\times N}$ : Encoder basis function 역할을 하는 $N$개의 길이가 $L$인 vector로 구성된 matrix (논문에는 $N\times L$로 잘못 나와있음)
+
+-   $\mathcal{H}(\cdot)$ : Optional nonlinear function
+	- 이전 다른 모델들은 nonlinear activation function인 ReLU (Rectified Linear Unit)을 써서 encoded represenation의 non-negativity를 보장해주었다.
+    - Conv-TasNet에서는 여러 조건에서의 실험을 통해 linear encoder와 decoder에 non-negative constraint을 주는 것보다 sigmoid activation을 써주는 것이 더 좋은 성능을 낸다는 것을 밝혀냈다.
+
+**Decoder**
+
+Decoder를 거치면 mask가 씌워진 각 estimated source에 대한 latent representation $\mathbf{d}_i\in1\times L$를 길이 $L$인 waveform source $\hat{\mathbf{s}}_i,\ i=1,2,...,C$를 reconstruction하게 된다.
+
+$$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
+
+- $\mathbf{d}_i\in\mathbb{R}^{1\times L}$ : Separator에서 생성한 mask로 추정된 $i$ 번째 source에 대한 latent representation
+- $\mathbf{V}\in \mathbb{R}^{N\times L}$ : Decoder basis function matrix
+
+**Implementation**
+- 실제 모델 구현에선, encoder와 decoder에 각각 convolutional layer와 transposed convolutional layer를 쓰는데, 각 segment들을 overlapping 하기 쉬워 빠르게 training할 수 있고, 모델이 더 잘 수렴한다. (PyTorch 1-D transposed convolutional layers)
+- Encoder/decoder representation에 대해선 뒤에서 상세하게 다룰 예정.
+    
+
+### 1.4. Separator part
+
+1.  $C$개의 vector (또는 mask) $\mathbf{m}_i \in \mathbb{R}^{1 \times N}, i=1,2,...,C$를 추정해낸다.
+
+	(단, $\sum^{C}_{i=1} \mathbf{m}_i = \mathbf{1}$)
+	
+	→ Mask를 추정하는 방법은 잠시 후 자세히..
+    
+2.  Mixture representation $\mathbf{w} \in \mathbb{R}^{1 \times N}$에 각 $\mathbf{m}_i$를 element-wise multiplication을 하게 되면, 각 source의 encoded representation $\mathbf{d}_i \in \mathbb{R}^{1 \times N}$ 이 나온다. 간단히 말해, mixture에 weighting function (mask)를 씌워 source separation을 한다.
+    
+    $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
+    
+
+---
 
