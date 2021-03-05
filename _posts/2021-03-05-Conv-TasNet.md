@@ -112,7 +112,9 @@ $$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
 
 ### (3) Separator part
 
-1.  $C$개의 vector (또는 mask) $\mathbf{m}_i$를 추정해낸다.
+1.  $C$개의 vector (또는 mask) $\mathbf{m}_i \in \mathbb{R}^{1 \times N}, i=1,2,...,C를 추정해낸다.
+
+	(단, $\sum^{C}_{i=1} \mathbf{m}_i = \mathbf{1}$ )
 	→ Mask를 추정하는 방법은 잠시 후 자세히..
     
 2.  Mixture representation $\mathbf{w} \in \mathbb{R}^{1 \times N}$에 각 $\mathbf{m}_i$를 element-wise multiplication을 하게 되면, 각 source의 encoded representation $\mathbf{d}_i \in \mathbb{R}^{1 \times N}$ 이 나온다. 간단히 말해, mixture에 weighting function (mask)를 씌워 source separation을 한다.
@@ -120,7 +122,8 @@ $$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
     $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
     
 
+---
+**Footnote**
 
-
-<p id="section1"> : **Single-channel** : 인간으로 비유를 하자면 한 쪽 귀로만 들어<sup>Monaural</sup> 공간 정보가 없는 조건으로, MIC 개수를 언급할 때에는 channel로 표기함 (e.g., signle-channel, multi-channel etc.)
+<p id="section1"> [1] **Single-channel** : 인간으로 비유를 하자면 한 쪽 귀로만 들어<sup>Monaural</sup> 공간 정보가 없는 조건으로, MIC 개수를 언급할 때에는 channel로 표기함 (e.g., signle-channel, multi-channel etc.)
 
