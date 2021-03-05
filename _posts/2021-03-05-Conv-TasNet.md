@@ -24,6 +24,7 @@ toc: true
 toc_sticky: true
 ---
 
+
 Speech separation 분야의 발전에 한획을 그은 [Conv-TasNet](https://ieeexplore.ieee.org/abstract/document/8707065)은 2019년도 IEEE/ACM TASLP (Transactions on Audio, speech, and language processing) 저널에 출판된 논문으로, 최근에도 separation 분야에서 baseline이 되고 있어 읽고 분석한 내용을 정리해 보았습니다.
 
 
@@ -58,7 +59,7 @@ Microphone (이하 MIC)이 하나인 조건<sup>*</sup>에서 각기 다른 spee
 * Single-channel : 인간으로 비유를 하자면 한 쪽 귀로만 들어<sup>Monaural</sup> 공간 정보가 없는 조건으로, MIC 개수를 언급할 때에는 channel로 표기함 (e.g., signle-channel, multi-channel etc.)
 
 
-### Problem Statement
+### [1]-1. Problem Statement
 
 길이가 $T$이고, $C$개의 speech source가 섞여 있는 discrete-time waveform input mixture인 $x(t) \in \mathbb{R}^{1\times T}$ 가 주어졌다고 하자. 이 때, $C$개의 source들은 각 $s_1(t), s_2(t), ...,s_C(t) \in \mathbb{R}^{1\times T}$로 표기하며, 이 source들을 time-domain에서 직접 estimation 해내는 것을 목표로 한다.
     
@@ -76,7 +77,7 @@ $$x(t) = \sum^C_{i=1}s_i(t)$$
 > ★ 기본적으로 frame단위의 mixture에 대한 latent represenatation에 각 source에 해당하는 mask들을 씌워 separation한다.
 
 
-### [2]-1. Input
+### [1]-2. Input
 
 1.  $x(t) \in \mathbb{R}^{1\times T}$를 길이가 $L$인 $\hat{T}$개의 overlaaping segment $\mathbf{x}_k \in \mathbb{R}^{1\times L}$로 나누어 준다. (단, $k=1,...,\hat{T}$)
 2.  $\hat{T}$개의 waveform segment $\mathbf{x}_k$ 들을 각각 encoder 단으로 넣어준다.
@@ -84,7 +85,7 @@ $$x(t) = \sum^C_{i=1}s_i(t)$$
 사실상 $X\in\mathbb{R}^{\hat{T}\times L}$이 한꺼번에 encoder로 들어가는 것이지만, 아래 설명은 각 segment (또는 frame) 별로 다뤄지고 있다. $L$은 frame 개수를 결정하는 아주 중요한 hyperparameter로, 뒤에 설명하겠지만 작을수록 성능이 좋아졌다. 물론 $L$이 작아지면 $\hat{T}$는 커진다.
 
 
-### [2]-2. Convolutional Autoencoder
+### [1]-3. Convolutional Autoencoder
 
 Mixture signal에 대한 STFT representation을 convolutional encoder/decoder로 대체하게 된 배경은 speech separation에 optimized된 audio representation을 만들어주기 위한 것
 
@@ -114,7 +115,7 @@ $$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
 - Encoder/decoder representation에 대해선 뒤에서 상세하게 다룰 예정.
     
 
-### [2]-3 Separator part
+### 1.4. Separator part
 
 1.  $C$개의 vector (또는 mask) $\mathbf{m}_i \in \mathbb{R}^{1 \times N}, i=1,2,...,C$를 추정해낸다.
 
