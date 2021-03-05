@@ -52,9 +52,9 @@ Speech separation 분야의 발전에 한획을 그은 [Conv-TasNet](https://iee
 	- Real-world에서 회의 상황과 같은 continuous speech spearation 문제는 풀기 힘들다.
 
 ## [1] Time-domain Speech Separation
-Microphone (이하 MIC)이 하나인 조건<a href="#section1">*</a>에서 각기 다른 speech source를 분리하는 single-channel speech separation에 대한 문제를 먼저 정의해보자.
+Microphone (이하 MIC)이 하나인 조건<sup>*</sup>에서 각기 다른 speech source를 분리하는 single-channel speech separation에 대한 문제를 먼저 정의해보자.
 
-<p id="section1"> * Single-channel : 인간으로 비유를 하자면 한 쪽 귀로만 들어<sup>Monaural</sup> 공간 정보가 없는 조건으로, MIC 개수를 언급할 때에는 channel로 표기함 (e.g., signle-channel, multi-channel etc.)
+* Single-channel : 인간으로 비유를 하자면 한 쪽 귀로만 들어<sup>Monaural</sup> 공간 정보가 없는 조건으로, MIC 개수를 언급할 때에는 channel로 표기함 (e.g., signle-channel, multi-channel etc.)
 
 
 ### Problem Statement
