@@ -29,11 +29,13 @@ Speech separation 분야의 발전에 한획을 그은 [Conv-TasNet](https://iee
 ## TL;DR
 
 <center>
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c7ae61e5-958f-403b-85e1-84b16c282861/speech_separation_on_wsj0-2mix.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210305%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210305T031636Z&X-Amz-Expires=86400&X-Amz-Signature=e6d0a19fff2e5255bcfda31f10033c63cee0cf33631f611dd62045b7ebb2c957&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22speech_separation_on_wsj0-2mix.jpeg%22" height="300px" /><br>
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c7ae61e5-958f-403b-85e1-84b16c282861/speech_separation_on_wsj0-2mix.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210305%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210305T031636Z&X-Amz-Expires=86400&X-Amz-Signature=e6d0a19fff2e5255bcfda31f10033c63cee0cf33631f611dd62045b7ebb2c957&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22speech_separation_on_wsj0-2mix.jpeg%22" height="200px" /><br>
 <b>Fig. 1</b>: Speech separation SOTA performance on wsj0-2mix (출처 : Papers with code)
 </center>
 
-1.  Conv-TasNet은 각 speech source에 대한 mask를 time-domain에서 직접 estimation하는 speech seaparation<sub>음원 분리</sub> 모델로, 성능적으로 상당한 breakthrough를 이뤄낸 모델이다. 이후에도 이 분야에서 baseline이 되고 있고, [DPRNN](https://ieeexplore.ieee.org/abstract/document/9054266) (ICASSP 2020), [DPTNet](https://www.isca-speech.org/archive/Interspeech_2020/pdfs/2205.pdf) (Interspeech 2020), [SepFormer](https://arxiv.org/abs/2010.13154) (ICASSP 2021) 등 변형 모델로 성능향상을 보이고 있다.
+ 
+
+1.  Conv-TasNet은 각 speech source에 대한 mask를 time-domain에서 직접 estimation하는 speech seaparation<sup>음원 분리</sup> 모델로, 성능적으로 상당한 breakthrough를 이뤄낸 모델이다. 이후에도 이 분야에서 baseline이 되고 있고, [DPRNN](https://ieeexplore.ieee.org/abstract/document/9054266) (ICASSP 2020), [DPTNet](https://www.isca-speech.org/archive/Interspeech_2020/pdfs/2205.pdf) (Interspeech 2020), [SepFormer](https://arxiv.org/abs/2010.13154) (ICASSP 2021) 등 변형 모델로 성능향상을 보이고 있다.
 	- wsj0-2mix dataset 기준 SI-SNRi 15.3dB, 기존 state-of-the-art 모델에서 4dB에 가까운 성능 향상
 
 2. Speech separation task에서는 기존 접근 방법처럼 mixture signal을 time-frequency representation (즉, STFT를 통한 spectrogram representation)에서 처리하면 다음과 같은 이유로 suboptimal하기 때문에, time-domain approach로 다음 문제를 해결하였다.
@@ -51,7 +53,7 @@ Speech separation 분야의 발전에 한획을 그은 [Conv-TasNet](https://iee
 
 ## [1] Time-domain Speech Separation
 Microphone (이하 MIC)이 하나인 조건[^MIC] 에서 각기 다른 speech source를 분리하는 single-channel speech separation에 대한 문제를 먼저 정의해보자.
-[^MIC]: **Single-channel** : 인간으로 비유를 하자면 한 쪽 귀로만 들어<sub>Monaural</sub> 공간 정보가 없는 조건으로, MIC 개수를 언급할 때에는 channel로 표기함 (e.g., signle-channel, multi-channel etc.)
+[^MIC]: **Single-channel** : 인간으로 비유를 하자면 한 쪽 귀로만 들어<sup>Monaural</sup> 공간 정보가 없는 조건으로, MIC 개수를 언급할 때에는 channel로 표기함 (e.g., signle-channel, multi-channel etc.)
 
 ### Problem Statement
 
@@ -65,7 +67,7 @@ $$x(t) = \sum^C_{i=1}s_i(t)$$
 
 <center>
 <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b6b5c339-f2e4-44eb-8701-212894b7ac98/Screen_Shot_2021-01-12_at_4.26.19_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210305%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210305T032604Z&X-Amz-Expires=86400&X-Amz-Signature=2bc4ac6cca186499f691d192a4020c5c7ff8c57c8f33a48f306596a82176a19b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screen_Shot_2021-01-12_at_4.26.19_PM.png%22" height="150px" /><br>
-<b>Fig. 2</b>: Time-domain speech separation block diagram
+<b>Fig. 2</b>: Time-domain audio separation network block diagram
 </center>
 
 > ★ 기본적으로 frame단위의 mixture에 대한 latent represenatation에 각 source에 해당하는 mask들을 씌워 separation한다.
@@ -111,8 +113,8 @@ $$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
 
 ### (3) Separator part
 
-1.  $C$개의 vector (또는 mask) $\mathbf{m}_i \in \mathbb{R}^{1\times N}$ $,\ i=1,2,...,C$ 를 추정해낸다.
-	(단, $\sum^{C}_{i=1}\mathbf{m}_i=\mathbf{1}$)
+1.  $C$개의 vector (또는 mask) $\mathbf{m}_i \in \mathbb{R}^{1 \times N}$ 를 추정해낸다.
+	(단, $\sum^{C}_{i=1} \mathbf{m}_i = \mathbf{1}$ )
 	→ Mask를 추정하는 방법은 잠시 후 [2]에서 자세히..
     
 2.  Mixture representation $\mathbf{w} \in \mathbb{R}^{1 \times N}$에 각 $\mathbf{m}_i$를 element-wise multiplication을 하게 되면, 각 source의 encoded representation $\mathbf{d}_i \in \mathbb{R}^{1 \times N}$ 이 나온다. 간단히 말해, mixture에 weighting function (mask)를 씌워 source separation을 한다.
