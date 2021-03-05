@@ -1,6 +1,6 @@
 ---
 title:  "[Speech] Conv-TasNet 톺아보기"
-excerpt: "Time-domain single-channel speech separation"
+excerpt: "Time-domain single-channel speech separation, Conv-TasNet 분석"
 categories:
   - Speech
   
@@ -52,8 +52,7 @@ Speech separation 분야의 발전에 한획을 그은 [Conv-TasNet](https://iee
 	- Real-world에서 회의 상황과 같은 continuous speech spearation 문제는 풀기 힘들다.
 
 ## [1] Time-domain Speech Separation
-Microphone (이하 MIC)이 하나인 조건[^MIC] 에서 각기 다른 speech source를 분리하는 single-channel speech separation에 대한 문제를 먼저 정의해보자.
-[^MIC]: **Single-channel** : 인간으로 비유를 하자면 한 쪽 귀로만 들어<sup>Monaural</sup> 공간 정보가 없는 조건으로, MIC 개수를 언급할 때에는 channel로 표기함 (e.g., signle-channel, multi-channel etc.)
+Microphone (이하 MIC)이 하나인 조건<a href="#section1">[1]</a>에서 각기 다른 speech source를 분리하는 single-channel speech separation에 대한 문제를 먼저 정의해보자.
 
 ### Problem Statement
 
@@ -113,10 +112,15 @@ $$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
 
 ### (3) Separator part
 
-1.  $C$개의 vector (또는 mask) $\mathbf{m}_i \in \mathbb{R}^{1 \times N}$ 를 추정해낸다.
-	(단, $\sum^{C}_{i=1} \mathbf{m}_i = \mathbf{1}$ )
+1.  $C$개의 vector (또는 mask) $\mathbf{m}_i$를 추정해낸다. (단, $\sum^{C}_{i=1}$ $\mathbf{m}_i = \mathbf{1}$ )
 	→ Mask를 추정하는 방법은 잠시 후 [2]에서 자세히..
     
 2.  Mixture representation $\mathbf{w} \in \mathbb{R}^{1 \times N}$에 각 $\mathbf{m}_i$를 element-wise multiplication을 하게 되면, 각 source의 encoded representation $\mathbf{d}_i \in \mathbb{R}^{1 \times N}$ 이 나온다. 간단히 말해, mixture에 weighting function (mask)를 씌워 source separation을 한다.
     
     $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
+    
+
+
+
+<p id="section1"> : **Single-channel** : 인간으로 비유를 하자면 한 쪽 귀로만 들어<sup>Monaural</sup> 공간 정보가 없는 조건으로, MIC 개수를 언급할 때에는 channel로 표기함 (e.g., signle-channel, multi-channel etc.)
+
