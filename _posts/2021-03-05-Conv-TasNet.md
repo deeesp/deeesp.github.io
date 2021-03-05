@@ -52,8 +52,9 @@ Speech separation 분야의 발전에 한획을 그은 [Conv-TasNet](https://iee
 	- Real-world에서 회의 상황과 같은 continuous speech spearation 문제는 풀기 힘들다.
 
 ## [1] Time-domain Speech Separation
-Microphone (이하 MIC)이 하나인 조건<a href="#section1">[1]</a>에서 각기 다른 speech source를 분리하는 single-channel speech separation에 대한 문제를 먼저 정의해보자.
+Microphone (이하 MIC)이 하나인 조건<a href="#section1">*</a>에서 각기 다른 speech source를 분리하는 single-channel speech separation에 대한 문제를 먼저 정의해보자.
 
+<p id="section1"> * Single-channel : 인간으로 비유를 하자면 한 쪽 귀로만 들어<sup>Monaural</sup> 공간 정보가 없는 조건으로, MIC 개수를 언급할 때에는 channel로 표기함 (e.g., signle-channel, multi-channel etc.)
 ### Problem Statement
 
 길이가 $T$이고, $C$개의 speech source가 섞여 있는 discrete-time waveform input mixture인 $x(t) \in \mathbb{R}^{1\times T}$ 가 주어졌다고 하자. 이 때, $C$개의 source들은 각 $s_1(t), s_2(t), ...,s_C(t) \in \mathbb{R}^{1\times T}$로 표기하며, 이 source들을 time-domain에서 직접 estimation 해내는 것을 목표로 한다.
@@ -112,9 +113,9 @@ $$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
 
 ### (3) Separator part
 
-1.  $C$개의 vector (또는 mask) $\mathbf{m}_i \in \mathbb{R}^{1 \times N}, i=1,2,...,C를 추정해낸다.
+1.  $C$개의 vector (또는 mask) $\mathbf{m}_i \in \mathbb{R}^{1 \times N}, i=1,2,...,C$를 추정해낸다.
 
-	(단, $\sum^{C}_{i=1} \mathbf{m}_i = \mathbf{1}$ )
+	(단, $\sum^{C}_{i=1} \mathbf{m}_i = \mathbf{1}$)
 	
 	→ Mask를 추정하는 방법은 잠시 후 자세히..
     
@@ -124,7 +125,4 @@ $$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
     
 
 ---
-**Footnote**
-
-<p id="section1"> [1] **Single-channel** : 인간으로 비유를 하자면 한 쪽 귀로만 들어<sup>Monaural</sup> 공간 정보가 없는 조건으로, MIC 개수를 언급할 때에는 channel로 표기함 (e.g., signle-channel, multi-channel etc.)
 
