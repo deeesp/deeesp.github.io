@@ -111,8 +111,9 @@ $$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
 
 ### (3) Separator part
 
-1.  $C$개의 vector (또는 mask) $\mathbf{m}_i$ $\in \mathbb{R}^{1\times N},\ i=1,2,...,C$ 를 추정해낸다. (단, $\sum^{C}_{i=1}\mathbf{m}_i=\mathbf{1}$)
-	 → Mask를 추정하는 방법은 잠시 후 [2]에서 자세히..
+1.  $C$개의 vector (또는 mask) $\mathbf{m}_i \in \mathbb{R}^{1\times N}$ $,\ i=1,2,...,C$ 를 추정해낸다.
+	(단, $\sum^{C}_{i=1}\mathbf{m}_i=\mathbf{1}$)
+	→ Mask를 추정하는 방법은 잠시 후 [2]에서 자세히..
     
 2.  Mixture representation $\mathbf{w} \in \mathbb{R}^{1 \times N}$에 각 $\mathbf{m}_i$를 element-wise multiplication을 하게 되면, 각 source의 encoded representation $\mathbf{d}_i \in \mathbb{R}^{1 \times N}$ 이 나온다. 간단히 말해, mixture에 weighting function (mask)를 씌워 source separation을 한다.
     
