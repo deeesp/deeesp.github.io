@@ -8,58 +8,60 @@ tags:
   - Conv-TasNet
   - Speech
   - Speech separation
+  - Source separation
   - 컨브테스넷
   - 음성신호처리
-  - 음성
+  - 음성분리
   - 음원분리
-  - 디지털신호처리
-  - DSP
+  - Speech Processing
   - Deep Learning
   - 딥러닝
 
-last_modified_at: 2021-03-05-14:00:00
+last_modified_at: 2021-03-06-14:00:00
 
 toc: true
 toc_sticky: true
 
 ---
 
-
+## 서론
 
 Speech separation 분야의 역사에 한 획을 그은 [Conv-TasNet](https://ieeexplore.ieee.org/abstract/document/8707065)은 2019년도 IEEE/ACM TASLP (Transactions on Audio, speech, and language processing) 저널에 출판된 논문으로, 여전히 separation과 enhancement 분야에서 base-line이 되고 있습니다. Conv-TasNet을 읽고, 분석 및 정리해 보았습니다.
 
+<br><br>
 
 ## TL;DR
 
 <center>
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c7ae61e5-958f-403b-85e1-84b16c282861/speech_separation_on_wsj0-2mix.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210305%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210305T031636Z&X-Amz-Expires=86400&X-Amz-Signature=e6d0a19fff2e5255bcfda31f10033c63cee0cf33631f611dd62045b7ebb2c957&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22speech_separation_on_wsj0-2mix.jpeg%22" height="150px" /><br>
-<b>Fig. 1</b>: Speech separation SOTA performance on wsj0-2mix <br> (출처 : Papers with code)
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c7ae61e5-958f-403b-85e1-84b16c282861/speech_separation_on_wsj0-2mix.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210305%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210305T031636Z&X-Amz-Expires=86400&X-Amz-Signature=e6d0a19fff2e5255bcfda31f10033c63cee0cf33631f611dd62045b7ebb2c957&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22speech_separation_on_wsj0-2mix.jpeg%22" height="100px" /><br>
+<b>Fig. 1</b>: Speech separation SOTA performance on wsj0-2mix <br> (출처 : <a href="https://paperswithcode.com/sota/speech-separation-on-wsj0-2mix">Papers with code</a>)
 </center>
  <br>
- 
-1.  Conv-TasNet은 각 speech source에 대한 mask를 time-domain에서 직접 estimation하는 speech seaparation<sup>음원 분리</sup> 모델로, 성능적으로 상당한 breakthrough를 이뤄낸 모델이다. 이후에도 이 분야에서 baseline이 되고 있고, [DPRNN](https://ieeexplore.ieee.org/abstract/document/9054266) (ICASSP 2020), [DPTNet](https://www.isca-speech.org/archive/Interspeech_2020/pdfs/2205.pdf) (Interspeech 2020), [SepFormer](https://arxiv.org/abs/2010.13154) (ICASSP 2021) 등 변형 모델로 성능향상을 보이고 있다.
+  
+1.  Conv-TasNet은 각 speech source에 대한 mask를 time-domain에서 직접 estimation하는 speech seaparation<sup>음원 분리</sup> 모델로, 성능적으로 상당한 breakthrough를 이뤄낸 모델이다. 현재까지도 Conv-TasNet을 기반으로 한 다양한 변형 모델이 나오며 성능향상을 보이고 있다. (e.g., [DPRNN](https://ieeexplore.ieee.org/abstract/document/9054266) (ICASSP 2020), [DPTNet](https://www.isca-speech.org/archive/Interspeech_2020/pdfs/2205.pdf) (Interspeech 2020), [SepFormer](https://arxiv.org/abs/2010.13154) (ICASSP 2021) 등)
 	- wsj0-2mix dataset 기준 SI-SNRi 15.3dB, 기존 state-of-the-art 모델에서 4dB에 가까운 성능 향상
  <br><br>
-2. Speech separation task에서는 기존 접근 방법처럼 mixture signal을 time-frequency representation (즉, STFT를 통한 spectrogram representation)에서 처리하면 다음과 같은 이유로 suboptimal하기 때문에, time-domain approach로 다음 문제를 해결하였다.
+3. Speech separation task에서는 기존 접근 방법처럼 mixture signal을 time-frequency representation (즉, STFT를 통한 spectrogram representation)에서 처리하면 다음과 같은 이유로 suboptimal하기 때문에, time-domain approach로 다음 문제를 해결하였다.
 	- Spectrogram 계산 시 high-resolution frequency를 필요로 하기 때문에, 긴 temporal window를 이용해 STFT를 하게 되고, long latency를 야기한다.
 	- 또한, signal의 phase와 magnitude가 decoupling되기 때문에, clean source들의 phase reconstruction 시 정확도에 upper bound를 야기한다.
  <br><br>
-3. Speech waveform을 speech separation task에 optimal한 latent represenatation으로 만들어 End-to-End deep learning framework을 구축하였다.
+4. Speech waveform을 speech separation task에 optimal한 latent represenatation으로 만들어 End-to-End deep learning framework을 구축하였다.
 	- Latent representation을 만들어 주는 linear autoencoder는 SI-SNR loss를 최소화 해주도록 separator와 jointly training하였고, 실제 구현 시에는 1-D convolution과 1-D transposed convolution을 이용해 구현하였다.
  <br><br>
-4. 물론, 다음과 같은 제약이 상당히 들어가 있어 추가 연구가 필요하다.
+5. 물론, 다음과 같은 제약이 상당히 들어가 있어 추가 연구가 필요하다.
 	- Microphone이 하나인 single-channel 모델이다.
 	- Clean speech 환경이다. (noisy하고 reverbrant한 환경에서는 성능 안좋음)
 	- 겹치는 source의 수를 알고 있어야 한다. (Unknown number of speakers)
 	- Real-world에서 회의 상황과 같은 continuous speech spearation 문제는 풀기 힘들다.
 
-
+<br><br>
 
 ## [1] Time-domain Speech Separation
-Microphone (이하 MIC)이 하나인 조건인 single-channel<sup>*</sup>에서 각기 다른 speech source를 분리하는 single-channel speech separation에 대한 문제를 먼저 정의해보자.
+<br>
+Single-channel<sup>*</sup>에서 각기 다른 speech source를 분리하는 single-channel speech separation에 대한 문제를 먼저 정의해보자.
 
-* Single-channel : 인간으로 비유를 하자면 한 쪽 귀로만 들어<sup>Monaural</sup> 공간 정보가 없는 조건을 말하며, MIC 개수를 언급할 때에는 channel로 표기함 (e.g., signle-channel, multi-channel etc.)
-
+* **Single-channel** : Microphone (이하 MIC)이 하나인 조건으로, 인간으로 비유를 하자면 한 쪽 귀로만 들어<sup>Monaural</sup> 공간 정보가 없는 조건을 말하며, MIC 개수를 언급할 때에는 channel로 표기함 (e.g., signle-channel, multi-channel etc.)
+<br>
 
 ### [1]-1. Problem Statement
 
@@ -77,7 +79,7 @@ $$x(t) = \sum^C_{i=1}s_i(t)$$
 </center>
 
 > ★ 기본적으로 frame단위의 mixture에 대한 latent represenatation에 각 source에 해당하는 mask들을 씌워 separation한다.
-
+<br>
 
 ### [1]-2. Input
 
@@ -86,6 +88,7 @@ $$x(t) = \sum^C_{i=1}s_i(t)$$
 
 사실상 $X\in\mathbb{R}^{\hat{T}\times L}$이 한꺼번에 encoder로 들어가는 것이지만, 아래 설명은 각 segment (또는 frame) 별로 다뤄지고 있다. $L$은 frame 개수를 결정하는 아주 중요한 hyperparameter로, 뒤에 설명하겠지만 작을수록 성능이 좋아졌다. 물론 $L$이 작아지면 $\hat{T}$는 커진다.
 
+<br>
 
 ### [1]-3. Convolutional Autoencoder
 
@@ -115,7 +118,7 @@ $$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
 **Implementation**
 - 실제 모델 구현에선, encoder와 decoder에 각각 convolutional layer와 transposed convolutional layer를 쓰는데, 각 segment들을 overlapping 하기 쉬워 빠르게 training할 수 있고, 모델이 더 잘 수렴한다. (PyTorch 1-D transposed convolutional layers)
 - Encoder/decoder representation에 대해선 뒤에서 상세하게 다룰 예정.
-    
+<br>    
 
 ### [1]-4. Separator part
 
@@ -127,10 +130,11 @@ $$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
     
 2.  Mixture representation $\mathbf{w} \in \mathbb{R}^{1 \times N}$에 각 $\mathbf{m}_i$를 element-wise multiplication을 하게 되면, 각 source의 encoded representation $\mathbf{d}_i \in \mathbb{R}^{1 \times N}$ 이 나온다. 간단히 말해, mixture에 weighting function (mask)를 씌워 source separation을 한다.
     
-    $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
-    
+    $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$    
+<br><br>
 
 ## [2] Convolutional Separation Module
+<br>
 
 ### [2]-1. 특징
 
@@ -139,6 +143,7 @@ $$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
     -   Sequence modeling에 쓰이는 RNN 계열 모델은 Long-term dependency를 보는 데에 유용하게 쓰이지만, recurrent connection 때문에 parallel processing에 제한이 있어 느리다.
     -   따라서, RNN 계열 모델을 대체하여 Long-term dependency를 볼 수 있고, Parallel processing이 가능한 TCN을 사용한 것이다.
 3.  Standard convolution 대신에 쓰인 depth-wise convolution은 parameter 수와 compuational cost를 줄여주었다.
+<br>
 
 ### [2]-2. Temporal convolutional Network (TCN)
 이 모델에서 쓰인 TCN 구조는 [WaveNet](https://arxiv.org/abs/1609.03499)에서 쓰인 dilated convolution과 residual path, skip-connection path 구조를 가져와 응용한 것이다. Dilation을 주면 큰 temporal context window를 만들어 줄 수 있어 speech signal의 long-range dependency를 잡아내는 데에 좋다.
@@ -160,7 +165,7 @@ $$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
 -   각 Layer는 $X$개의 각 convolutional block들로 이루어져 있고, 각 block의 dilation factor는 $1, 2, 4, ..., 2^{X-1}$ 로 증가하는 형태를 띈다. 또한, 이 layer는 $R$ 번 반복된다.
 
 -   TCN의 출력은 Kernel size가 1인 $1\times 1$ convolution (a.k.a Point-wise convolution)을 통과하게 되고, Non-linear activation function인 Sigmoid를 지나 $C$ 개의 Mask vector를 추정한다.
-
+<br>
 
 ### [2]-3. 1-D convolutional block
 
@@ -200,9 +205,9 @@ TCN에서 반복적으로 쓰인 1-D convolutional block을 자세히 알아보�
 </center>
 
 -   Kernel size $\mathbf{\hat{K}} \in \mathbb{R}^{G\times H \times P}$의 standard convolution과 비교하여, depthwise separable convolution은 $G\times P+G\times H$개의 parameter로 모델 사이즈를 대략 $P$만큼 줄였다.
+<br>
 
-
-### Bottleneck layer
+### [2]-4. Bottleneck layer
 
 - Figure 4를 보면, separation module의 앞 부분에는 linear $1\times 1\text{-}conv(\cdot)$ block 하나가 bottleneck layer로 존재한다. 이는 Input channel의 수와 convolutional block들의 residual path channel의 수를 뜻하는 $B$를 결정하는 역할을 한다.
 
@@ -213,7 +218,7 @@ TCN에서 반복적으로 쓰인 1-D convolutional block을 자세히 알아보�
 -   Depthwise separable convolution의 뒷부분에 있는 $1\times1\text{-}conv(\cdot)$에 의해 Skip connection 및 Output의 Channel을 다시 $B$ 및 $Sc$로 변환해준다. 가장 높은 성능을 보이는 Hyperparameter 설정은 $B = Sc$이기 때문에 같은 Channel로 바꿔주는 것을 볼 수 있다.
 
 ???
-
+<br><br>
 
 
 
@@ -240,11 +245,8 @@ Source separation의 Evaluation metric으로 쓰이는 Scale-Invariant Source-to
 -   Adam optimizer 씀
 -   Training할 때 maximum $\text{L2-norm of 5}$이 Gradient clipping으로 적용됨
 
-## 결과
 
-----------
-
-### Encoder 이부분 추가적인 이해 필요
+## Non-negativity of Encoder (이부분 추가적인 이해 필요)
 
 -   ReLU fucntion으로 encoder ouput에 non-negativity를 강제하는 constraint는 다음 가정을 기반으로 한다.
     
@@ -270,12 +272,15 @@ Source separation의 Evaluation metric으로 쓰이는 Scale-Invariant Source-to
     
 
 그래서 여러가지 encoder/decoder 설정으로 비교하며 실험해봄
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/072364d2-95a7-472e-84e1-8753d41ab467/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/072364d2-95a7-472e-84e1-8753d41ab467/Untitled.png)
+<center>
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/072364d2-95a7-472e-84e1-8753d41ab467/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210306%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210306T043309Z&X-Amz-Expires=86400&X-Amz-Signature=1e02f44a06f78627d2408e80988d5e9e26bef69ebe7ea2083b8f86206982a066&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22"/><br>
+<b>Table 1.</b> Encoder/decoder configurations<br>
+</center>
+<br>
 
 Separation 정확도는 Pseudo-inverse autoencoder가 가장 안좋은 성능을 보였는데, 이 framework에서는 explicit autoencoder configuration이 반드시 좋은 separation 성능 향상을 보여주는 것은 아니라는 것을 보여주었다. 다른 설정은 비슷한 결과를 보여주었는데, Sigmoid를 이용한 linear encoder와 decoder가 조금 더 나은 성능을 보여주었다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5ff10021-23f0-4f43-9453-1cf9c18e2238/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5ff10021-23f0-4f43-9453-1cf9c18e2238/Untitled.png)
+<br><br>
 
 ## Properties of the basis functions
 
@@ -283,32 +288,45 @@ Separation 정확도는 Pseudo-inverse autoencoder가 가장 안좋은 성능을
     
 -   Encoder와 decoder의 basis function들을 각각 행렬 $\mathbf{U}$, $\mathbf{V}$의 row들이라고 하면, basis function들을 UPGMA method를 이용해 Euclidean distance의 similarity를 기준으로 정렬하여 그리면 다음과 같다.
     
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f266077f-7f0a-49f4-857f-a68f2df54dc6/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f266077f-7f0a-49f4-857f-a68f2df54dc6/Untitled.png)
+<center>
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f266077f-7f0a-49f4-857f-a68f2df54dc6/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210306%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210306T043532Z&X-Amz-Expires=86400&X-Amz-Signature=19d68673680e112b012e4dcca27ed7be3d7d663875f6d15fc190ddb8c34b6ce6&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22"/><br>
+<b>Figure.</b> Encoder/decoder Basis Functions<br>
+</center>
+<br>
 
 -   각 시점에서 각 speaker에 상응하는 basis ouput의 power에 따라 encoder의 representation에 빨간색과 파란색으로 색을 칠하였는데, 이는 encoder representation의 sparsity를 설명해주고 있다.
 -   또한 각 그림의 오른쪽에는 각 filter들에 대한 FFT의 magnitude를 그린 것이고, Basis function들의 다양한 frequency와 phase tuning을 보여준다. 다수의 필터들이 저역대의 frequency에 튜닝되어 있다.
 -   같은 주파수로 튜닝된 필터들이 다양한 phase value로 표현되는 것을 볼 수 있는데, low-frequency basis function들의 circular shift가 관찰되는 것으로 볼 수 있다.
 -   이 말은 즉슨, 더 우수한 speech separation 성능을 내기 위해서는 speech에서 phase information의 explicit encoding 뿐만 아니라 pitch와 같은 low-frequency feature들이 중요한 역할을 한다는 것을 말해주고 있다.
 
-### Hyperparameter Tuning
+<br><br>
 
-Version 2
+## Hyperparameter Tuning
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6247899f-9034-44c4-80d2-7fa8f6a56f7a/KakaoTalk_Photo_2021-03-04-00-25-06.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6247899f-9034-44c4-80d2-7fa8f6a56f7a/KakaoTalk_Photo_2021-03-04-00-25-06.png)
+### Conv-TasNet Version 2
+<center>
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6247899f-9034-44c4-80d2-7fa8f6a56f7a/KakaoTalk_Photo_2021-03-04-00-25-06.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210306%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210306T043738Z&X-Amz-Expires=86400&X-Amz-Signature=2452c1e1d9b4793061bbd7ebd5faa94e0aad6f26a138085f6dfde69efd2782b3&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22KakaoTalk_Photo_2021-03-04-00-25-06.png%22"/><br>
+<b>Table.</b> Conv-TasNet v2 Hypterparameter Table w/o Skip-connections<br>
+</center>
+<br>
 
-Version 3
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4b2a284e-964e-4aca-be19-55e209699fd3/KakaoTalk_Photo_2021-03-04-00-25-48.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4b2a284e-964e-4aca-be19-55e209699fd3/KakaoTalk_Photo_2021-03-04-00-25-48.png)
+
+### Conv-TasNet Version 3
+<center>
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4b2a284e-964e-4aca-be19-55e209699fd3/KakaoTalk_Photo_2021-03-04-00-25-48.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210306%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210306T043740Z&X-Amz-Expires=86400&X-Amz-Signature=b58bd72093c8622ca0d5a4725890ae001a3635b11c9f57f9ea12c2aa1bb98702&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22KakaoTalk_Photo_2021-03-04-00-25-48.png%22"/><br>
+<b>Table.</b> Conv-TasNet v3 Hypterparameter Table w/ Skip-connections<br>
+</center>
+<br>
 
 1.  $N$ : # of filters in autoencoder Encoder와 decoder의 basis signal 개수가 커질수록 basis signal의 overcompleteness가 증가하고, 성능향상을 보였다.
     
 2.  $L$ : Length of the filters in samples Segment 길이가 작을수록 좋은 성능을 보였다. $2ms$가 best performance 였는데($L/fs = 16/8000=0.002s$), encoder ouput의 time step이 커지면 같은 크기의 $L$에도 Deep LSTM network를 training시키기가 힘들었다.
     
 
-더 작을 때는?? Pattern 을 파악할 때, 조금씩 보고 파악하는 게 좋은듯? 정보를 놓치는게 적을 것이다. Window length 작아 → Time resolution 좋아 → performance 좋아 → 커널이 확실히 잡힌다. 길면 0으로 깔려버리고.. 흠... Pitch나 formant 를 잘 캐치하길 바라는것??? Receptive field랑 연관...?
+	- 더 작을 때는?? Pattern 을 파악할 때, 조금씩 보고 파악하는 게 좋은듯? 정보를 놓치는게 적을 것이다. Window length 작아 → Time resolution 좋아 → performance 좋아 → 커널이 확실히 잡힌다. 길면 0으로 깔려버리고.. 흠... Pitch나 formant 를 잘 캐치하길 바라는것??? Receptive field랑 연관...?
 
-SI-SNR과 PESQ를 동시에 살리기 위해 다양한 length를 가진 encoder 를 concat해서 써봄 → Spex : 각각의 장점을 살리기 위해서 Multi-resolution Dimension mis-match → zero-padding
+	- SI-SNR과 PESQ를 동시에 살리기 위해 다양한 length를 가진 encoder 를 concat해서 써봄 → Spex : 각각의 장점을 살리기 위해서 Multi-resolution Dimension mis-match → zero-padding
 
 3.  $B$ : # of channels in bottleneck & the residual paths' 1x1-conv blocks
     
@@ -322,7 +340,7 @@ SI-SNR과 PESQ를 동시에 살리기 위해 다양한 length를 가진 encoder 
     
 8.  $R$ : # of repeats
     
-9.  Receptive field Receptive field 크기가 커질수록 speech signal의 temporal dependency를 모델링하는데 중요한 역할을 하기 때문에 좋은 성능을 보였다. (표에서는 명확히 비교가 안된거같은데..)
+9.  Receptive field Receptive field 크기가 커질수록 speech signal의 temporal dependency를 모델링하는데 중요한 역할을 하기 때문에 좋은 성능을 보였다. (표에서는 명확히 비교가 안된거같은데..) 의미가 있는 hyperparameter인가 싶기도 하고../
     
 
 $$\text{Receptive Field} = (2^X\times R\times (P-1)\times L)/ f_s$$
