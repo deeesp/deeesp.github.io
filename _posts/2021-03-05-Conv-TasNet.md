@@ -64,12 +64,12 @@ toc_sticky: true
 
 ### [1]-(1) Problem Statement
 
-- 길이가 $T$이고, $C$개의 speech source가 섞여 있는 discrete-time waveform input mixture인 $x(t) \in \mathbb{R}^{1\times T}$ 가 주어졌다고 하자. 이 때, $C$개의 source들은 각 $s_1(t), s_2(t), ...,s_C(t) \in \mathbb{R}^{1\times T}$로 표기하며, 이 source들을 time-domain에서 직접 estimation 해내는 것을 목표로 한다.
+ 길이가 $T$이고, $C$개의 speech source가 섞여 있는 discrete-time waveform input mixture인 $x(t) \in \mathbb{R}^{1\times T}$ 가 주어졌다고 하자. 이 때, $C$개의 source들은 각 $s_1(t), s_2(t), ...,s_C(t) \in \mathbb{R}^{1\times T}$로 표기하며, 이 source들을 time-domain에서 직접 estimation 해내는 것을 목표로 한다.
     
 $$x(t) = \sum^C_{i=1}s_i(t)$$
 
 
-- 전반적으로, 다음 block diagram을 따라 separation이 진행된다.
+ 전반적으로, 다음 block diagram을 따라 separation이 진행된다.
 
 <br>
 <center>
@@ -82,15 +82,15 @@ $$x(t) = \sum^C_{i=1}s_i(t)$$
 
 ### [1]-(2) Input
 
-1. $x(t) \in \mathbb{R}^{1\times T}$를 길이가 $L$인 $\hat{T}$개의 overlaaping segment $\mathbf{x}_k \in \mathbb{R}^{1\times L}$로 나누어 준다. (단, $k=1,...,\hat{T}$)
+1. $x(t) \in \mathbb{R}^{1\times T}$를 길이가 $L$인 $\hat{T}$개의 overlaaping segment $\mathbf{x}_k \in \mathbb{R}^{1\times L}$로 나누어 준다. (단, $k=1,...,\hat{T}$)<br><br>
 2. $\hat{T}$개의 waveform segment $\mathbf{x}_k$ 들을 각각 encoder 단으로 넣어준다.
-<br>
+<br><br>
+
 사실상 $X\in\mathbb{R}^{\hat{T}\times L}$이 한꺼번에 encoder로 들어가는 것이지만, 아래 설명은 각 segment (또는 frame) 별로 다뤄지고 있다. $L$은 frame 개수를 결정하는 아주 중요한 hyperparameter로, 뒤에 설명하겠지만 작을수록 성능이 좋아졌다. 물론 $L$이 작아지면 $\hat{T}$는 커진다.
 <br><br>
 
 
 ### [1]-(3) Convolutional Autoencoder
-<br>
 
  Mixture signal에 대한 STFT representation을 convolutional encoder/decoder로 대체하게 된 배경은 speech separation에 optimized된 audio representation을 만들어주기 위한 것
 <br><br>
@@ -123,15 +123,18 @@ $$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
 
 
 **Implementation**
-- 실제 모델 구현에선, encoder와 decoder에 각각 convolutional layer와 transposed convolutional layer를 쓰는데, 각 segment들을 overlapping 하기 쉬워 빠르게 training할 수 있고, 모델이 더 잘 수렴한다. (PyTorch 1-D transposed convolutional layers)
-- Encoder/decoder representation에 대해선 다음 글에서 상세하게 다룰 예정.
+
+ 실제 모델 구현에선, encoder와 decoder에 각각 convolutional layer와 transposed convolutional layer를 쓰는데, 각 segment들을 overlapping 하기 쉬워 빠르게 training할 수 있고, 모델이 더 잘 수렴한다. (PyTorch 1-D transposed convolutional layers)
+Encoder/decoder representation의 특징에 대해선 다음 글에서 상세하게 다룰 예정.
 <br> <br>
+
 
 ### [1]-(4) Separator part
 
 1.  $C$개의 vector (또는 mask) $\mathbf{m}_i \in \mathbb{R}^{1 \times N}, i=1,2,...,C$를 추정해낸다.
+
     (단, $\sum^{C}_{i=1} \mathbf{m}_i = \mathbf{1}$)
-	→ Mask를 추정하는 방법은 [잠시 후](https://deeesp.github.io/speech/Conv-TasNet/#2-convolutional-separation-module)에서 자세히..
+    → Mask를 추정하는 방법은 [잠시 후](https://deeesp.github.io/speech/Conv-TasNet/#2-convolutional-separation-module)에서 자세히..
     
 2.  Mixture representation $\mathbf{w} \in \mathbb{R}^{1 \times N}$에 각 $\mathbf{m}_i$를 element-wise multiplication을 하게 되면, 각 source의 encoded representation $\mathbf{d}_i \in \mathbb{R}^{1 \times N}$ 이 나온다. 간단히 말해, mixture에 weighting function (mask)를 씌워 source separation을 한다.
     
@@ -144,7 +147,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 
 ### [2]-(1) 특징
 
-1.  Mixture $\mathbf{x}$에서 각 Source $s_i$를 separation하기 위한 mask $\mathbf{m}_i$를 추정하는 module
+1.  Mixture $\mathbf{x}$에서 각 Source $s_i$를 separation하기 위한 mask $\mathbf{m}_i$를 추정하는 module이다.
 	<br><br>
 
 2.  Temporal Convolutional Network (TCN)에서 영감을 받아, 1-D dilated convolutional block을 여러 층 쌓아 fully-convolution 구조로 구성되어 있다.
@@ -156,11 +159,10 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 <br><br>
 
 ### [2]-(2) Temporal convolutional Network (TCN)
-<br>
 
  이 모델에서 쓰인 TCN 구조는 [WaveNet](https://arxiv.org/abs/1609.03499){:target="_blank"}에서 쓰인 dilated convolution과 residual path, skip-connection path 구조를 가져와 응용한 것이다. Dilation을 주면 큰 temporal context window를 만들어 줄 수 있어 speech signal의 long-range dependency를 잡아내는 데에 좋다.
 
-아래 Figure 3는 WaveNet에서 쓰인 구조인데, $X=4$인 한 layer를 표현한 것이라고 볼 수 있다.
+아래 Figure 3는 WaveNet에서 쓰인 dilated convolution block 구조인데, $X=4$인 한 layer들을 표현한 것이다.
 
 <br><br>
 <center>
@@ -179,9 +181,9 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 </center>
 <br>
 
-- 각 dilated convolution block은 $X$개의 각 1-D convolutional block들로 이루어져 있고, 각 block의 dilation factor는 $1, 2, 4, ..., 2^{X-1}$ 로 증가하는 형태를 띈다. 또한, 이 block는 $R$ 번 반복된다.
+ 각 dilated convolution block은 $X$개의 각 1-D convolutional block들로 이루어져 있고, 각 block의 dilation factor는 $1, 2, 4, ..., 2^{X-1}$ 로 증가하는 형태를 띈다. 또한, 이 block는 $R$ 번 반복된다.
 
-- 최종 TCN의 출력은 Kernel size가 1인 $1\times 1$ convolution (a.k.a point-wise convolution)을 통과하게 되고, non-linear activation function인 sigmoid function를 지나 $C$ 개의 Mask vector를 추정한다.
+ 최종 TCN의 출력은 Kernel size가 1인 $1\times 1$ convolution (a.k.a point-wise convolution)을 통과하게 되고, non-linear activation function인 sigmoid function를 지나 $C$ 개의 Mask vector를 추정한다.
 <br><br>
 
 
@@ -204,7 +206,8 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 
 
 **Depthwise separable convolution**
-$S\text{-}conv(\cdot)$는 Figure 5 처럼 차례로 depthwise convolution $D\text{-}conv(\cdot)$와 pointwise convolution $1\times 1\text{-}conv(\cdot)$으로 구성되어 있다. (처음에 보이는  $1\times 1\text{-}conv(\cdot)$는 Bottleneck)
+
+ $S\text{-}conv(\cdot)$는 Figure 5 처럼 차례로 depthwise convolution $D\text{-}conv(\cdot)$와 pointwise convolution $1\times 1\text{-}conv(\cdot)$으로 구성되어 있다. (처음에 보이는  $1\times 1\text{-}conv(\cdot)$는 Bottleneck)
 - $\mathbf{Y}\in\mathbb{R}^{G\times M}$: $S\text{-}conv(\cdot)$의 입력
 - $\mathbf{K}\in\mathbb{R}^{G\times P}$ : Size $P$의 Convolutional kernel
 - $\mathbf{y}_j\in\mathbb{R}^{1\times M}$ : 행렬 $\mathbf{Y}$의 $j$ 번째 row 
@@ -227,6 +230,7 @@ $S\text{-}conv(\cdot)$는 Figure 5 처럼 차례로 depthwise convolution $D\tex
 (출처 : <a href="https://medium.com/@zurister/depth-wise-convolution-and-depth-wise-separable-convolution-37346565d4ec">Medium blog</a> )
 </center>
 
+<br><br>
 Kernel size $\mathbf{\hat{K}} \in \mathbb{R}^{G\times H \times P}$의 standard convolution과 비교하여, depthwise separable convolution은 $G\times P+G\times H$개의 parameter로 모델 사이즈를 대략 $P$만큼 줄였다.
 <br><br>
 
