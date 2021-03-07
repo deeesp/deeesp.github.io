@@ -130,9 +130,9 @@ $$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
 
 ### [1]-(4) Separator part
 
-1.  $C$개의 vector (또는 mask) $\mathbf{m}_i \in \mathbb{R}^{1 \times N}, i=1,2,...,C$를 추정해낸다. (단, $\sum^{C}_{i=1} \mathbf{m}_i = \mathbf{1}$)
-	
-	→ Mask를 추정하는 방법은 [잠시 후 [2]](https://deeesp.github.io/speech/Conv-TasNet/#2-convolutional-separation-module)에서 자세히..
+1.  $C$개의 vector (또는 mask) $\mathbf{m}_i \in \mathbb{R}^{1 \times N}, i=1,2,...,C$를 추정해낸다.
+    (단, $\sum^{C}_{i=1} \mathbf{m}_i = \mathbf{1}$)
+	→ Mask를 추정하는 방법은 [잠시 후](https://deeesp.github.io/speech/Conv-TasNet/#2-convolutional-separation-module)에서 자세히..
     
 2.  Mixture representation $\mathbf{w} \in \mathbb{R}^{1 \times N}$에 각 $\mathbf{m}_i$를 element-wise multiplication을 하게 되면, 각 source의 encoded representation $\mathbf{d}_i \in \mathbb{R}^{1 \times N}$ 이 나온다. 간단히 말해, mixture에 weighting function (mask)를 씌워 source separation을 한다.
     
@@ -232,8 +232,8 @@ $$S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})=D\text{-}conv(\mathbf{Y},\math
     
     $$\text{PReLU}(x) = \begin{cases} x, & \text{if $x \geq 0$}\\ ax, & \text{otherwise} \end{cases}$$
     
-  - $a$는 학습 가능한 parameter이다.
-  - Activation function의 역할로, 음의 영역에서도 0이 아닌 gradient $a$를 갖는 non-linearity를 보장해주기 위해 PReLU가 사용되었다.
+    - $a$는 학습 가능한 parameter이다.
+    - Activation function의 역할로, 음의 영역에서도 0이 아닌 gradient $a$를 갖는 non-linearity를 보장해주기 위해 PReLU가 사용되었다.
   <br><br>
 
 2.  [Global Layer Normalization (gLN)](https://arxiv.org/abs/1607.06450){:target="_blank"}
