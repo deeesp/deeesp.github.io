@@ -71,15 +71,14 @@ $$x(t) = \sum^C_{i=1}s_i(t)$$
 
 - 전반적으로, 다음 block diagram을 따라 separation이 진행된다.
 
-
+<br>
 <center>
 <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5ac87a4b-9aa5-43b9-9878-108c97db0477/Time-domain_audio_separation_network_block_diagram.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T110239Z&X-Amz-Expires=86400&X-Amz-Signature=aec8b12bfc739e85aec2b931391b69860cf9ff8d2be8de560f9dcdad0cfdeb3e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Time-domain_audio_separation_network_block_diagram.png%22" height="150px" /><br>
 <b>Figure. 2</b> Time-domain audio separation network block diagram
 </center>
-
+<br>
 > ★ 기본적으로 frame단위의 mixture에 대한 latent represenatation에 각 source에 해당하는 mask들을 씌워 separation한다.
 
-<br>
 
 ### [1]-(2) Input
 
@@ -162,7 +161,8 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
  이 모델에서 쓰인 TCN 구조는 [WaveNet](https://arxiv.org/abs/1609.03499){:target="_blank"}에서 쓰인 dilated convolution과 residual path, skip-connection path 구조를 가져와 응용한 것이다. Dilation을 주면 큰 temporal context window를 만들어 줄 수 있어 speech signal의 long-range dependency를 잡아내는 데에 좋다.
 
 아래 Figure 3는 WaveNet에서 쓰인 구조인데, $X=4$인 한 layer를 표현한 것이라고 볼 수 있다.
-<br>
+
+<br><br>
 <center>
 <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1b19ec4c-e265-4f17-8e39-840e2b7a8442/unnamed.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T141240Z&X-Amz-Expires=86400&X-Amz-Signature=fc7cf91b8913ca4bc2555f74ed25d9e6f28393d38c630268ee2d8ecf83fe7258&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22unnamed.gif%22"/><br><br>
 <b>Figure 3.</b> Visualization of a stack of dilated causal convolutional layers<br>
@@ -170,7 +170,8 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 <br><br>
 
 이러한 dilated convolution block을 포함한 TCN 구조의 Conv-TasNet 전체 block diagram을 보면 다음과 같다.
-<br>
+
+<br><br>
 <center>
 <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c03c8b0c-e549-4be0-b0b5-a49c0ba08ff6/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T114753Z&X-Amz-Expires=86400&X-Amz-Signature=74528d11d152159fff3f441991f76e5dd0c1d3dccee804eea0499b0562f11406&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22"/><br><br>
 <b>Figure 4.</b> Conv-TasNet Block Diagram<br>
@@ -203,30 +204,30 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 
 
 **Depthwise separable convolution**
-- $S\text{-}conv(\cdot)$는 Figure 5 처럼 차례로 depthwise convolution $D\text{-}conv(\cdot)$와 pointwise convolution $1\times 1\text{-}conv(\cdot)$으로 구성되어 있다. (처음에 보이는  $1\times 1\text{-}conv(\cdot)$는 Bottleneck)
-    - $\mathbf{Y}\in\mathbb{R}^{G\times M}$: $S\text{-}conv(\cdot)$의 입력
-    - $\mathbf{K}\in\mathbb{R}^{G\times P}$ : Size $P$의 Convolutional kernel
-    - $\mathbf{y}_j\in\mathbb{R}^{1\times M}$ : 행렬 $\mathbf{Y}$의 $j$ 번째 row 
-    - $\mathbf{k}_j\in\mathbb{R}^{1\times P}$ : 행렬 $\mathbf{K}$의 $j$ 번째 row
+$S\text{-}conv(\cdot)$는 Figure 5 처럼 차례로 depthwise convolution $D\text{-}conv(\cdot)$와 pointwise convolution $1\times 1\text{-}conv(\cdot)$으로 구성되어 있다. (처음에 보이는  $1\times 1\text{-}conv(\cdot)$는 Bottleneck)
+- $\mathbf{Y}\in\mathbb{R}^{G\times M}$: $S\text{-}conv(\cdot)$의 입력
+- $\mathbf{K}\in\mathbb{R}^{G\times P}$ : Size $P$의 Convolutional kernel
+- $\mathbf{y}_j\in\mathbb{R}^{1\times M}$ : 행렬 $\mathbf{Y}$의 $j$ 번째 row 
+- $\mathbf{k}_j\in\mathbb{R}^{1\times P}$ : 행렬 $\mathbf{K}$의 $j$ 번째 row
 
-  1. $D\text{-}conv(\mathbf{Y},\mathbf{K})$ 는 입력 $\mathbf{Y}$의 각 row와 상응하는 행렬 $\mathbf{K}$의 row에 대해 convolution 연산을 한다.
+1. $D\text{-}conv(\mathbf{Y},\mathbf{K})$ 는 입력 $\mathbf{Y}$의 각 row와 상응하는 행렬 $\mathbf{K}$의 row에 대해 convolution 연산을 한다.
 
     $$D\text{-}conv(\mathbf{Y},\mathbf{K}) = \text{concat}(\mathbf{y}_j\circledast \mathbf{k}_j),\ j=1,...,N$$
     
-  2. $S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})$는 $D\text{-}conv(\mathbf{Y},\mathbf{K})$ 와 Convolutional kernel $L$의 Convolution으로, $1\times 1\text{-}conv(\cdot)$를 통해 Linear하게 Feature space로 변환해준다. $L \in \mathbb{R}^{G\times H\times 1}$ : Size 1의 Convolutional kernel
+2. $S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})$는 $D\text{-}conv(\mathbf{Y},\mathbf{K})$ 와 Convolutional kernel $L$의 Convolution으로, $1\times 1\text{-}conv(\cdot)$를 통해 Linear하게 Feature space로 변환해준다. $L \in \mathbb{R}^{G\times H\times 1}$ : Size 1의 Convolutional kernel
 	    
     $$S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})=D\text{-}conv(\mathbf{Y},\mathbf{K}) \circledast \mathbf{L}\\$$
 <br>
 	    
 
-
+<br>
 <center>
 <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d53467e1-9b71-4c98-a264-b5c1e49c64f1/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T122138Z&X-Amz-Expires=86400&X-Amz-Signature=af696fadd00140240fe3fc65c9b681c963dc099eef31f3ffb9dfd69b061e4739&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width="300px"/><br>
 <b>Figure 6.</b> Depthwise Separable Convolution<br>
 (출처 : <a href="https://medium.com/@zurister/depth-wise-convolution-and-depth-wise-separable-convolution-37346565d4ec">Medium blog</a> )
 </center>
 
--   Kernel size $\mathbf{\hat{K}} \in \mathbb{R}^{G\times H \times P}$의 standard convolution과 비교하여, depthwise separable convolution은 $G\times P+G\times H$개의 parameter로 모델 사이즈를 대략 $P$만큼 줄였다.
+Kernel size $\mathbf{\hat{K}} \in \mathbb{R}^{G\times H \times P}$의 standard convolution과 비교하여, depthwise separable convolution은 $G\times P+G\times H$개의 parameter로 모델 사이즈를 대략 $P$만큼 줄였다.
 <br><br>
 
 
