@@ -63,6 +63,7 @@ toc_sticky: true
 <br><br>
 
 ### [1]-(1) Problem Statement
+---
 
  길이가 $T$이고, $C$개의 speech source가 섞여 있는 discrete-time waveform input mixture인 $x(t) \in \mathbb{R}^{1\times T}$ 가 주어졌다고 하자. 이 때, $C$개의 source들은 각 $s_1(t), s_2(t), ...,s_C(t) \in \mathbb{R}^{1\times T}$로 표기하며, 이 source들을 time-domain에서 직접 estimation 해내는 것을 목표로 한다.
     
@@ -81,7 +82,7 @@ $$x(t) = \sum^C_{i=1}s_i(t)$$
 
 
 ### [1]-(2) Input
-
+---
 1. $x(t) \in \mathbb{R}^{1\times T}$를 길이가 $L$인 $\hat{T}$개의 overlaaping segment $\mathbf{x}_k \in \mathbb{R}^{1\times L}$로 나누어 준다. (단, $k=1,...,\hat{T}$)<br><br>
 2. $\hat{T}$개의 waveform segment $\mathbf{x}_k$ 들을 각각 encoder 단으로 넣어준다.
 <br><br>
@@ -91,7 +92,7 @@ $$x(t) = \sum^C_{i=1}s_i(t)$$
 
 
 ### [1]-(3) Convolutional Autoencoder
-
+---
  Mixture signal에 대한 STFT representation을 convolutional encoder/decoder로 대체하게 된 배경은 speech separation에 optimized된 audio representation을 만들어주기 위한 것
 <br><br>
 
@@ -130,7 +131,7 @@ Encoder/decoder representation의 특징에 대해선 다음 글에서 상세하
 
 
 ### [1]-(4) Separator part
-
+---
 1.  $C$개의 vector (또는 mask) $\mathbf{m}_i \in \mathbb{R}^{1 \times N}, i=1,2,...,C$를 추정해낸다.
 
     (단, $\sum^{C}_{i=1} \mathbf{m}_i = \mathbf{1}$)
@@ -146,7 +147,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 ## [2] Convolutional Separation Module
 
 ### [2]-(1) 특징
-
+---
 1.  Mixture $\mathbf{x}$에서 각 Source $s_i$를 separation하기 위한 mask $\mathbf{m}_i$를 추정하는 module이다.
 	<br><br>
 
@@ -159,7 +160,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 <br><br>
 
 ### [2]-(2) Temporal convolutional Network (TCN)
-
+---
  이 모델에서 쓰인 TCN 구조는 [WaveNet](https://arxiv.org/abs/1609.03499){:target="_blank"}에서 쓰인 dilated convolution과 residual path, skip-connection path 구조를 가져와 응용한 것이다. Dilation을 주면 큰 temporal context window를 만들어 줄 수 있어 speech signal의 long-range dependency를 잡아내는 데에 좋다.
 
 아래 Figure 3는 WaveNet에서 쓰인 dilated convolution block 구조인데, $X=4$인 한 layer들을 표현한 것이다.
@@ -188,7 +189,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 
 
 ### [2]-(3) 1-D convolutional block
-<br>
+---
 
  TCN의 dilated convolution block에서 반복적으로 쓰인 1-D convolutional block을 자세히 알아보자.
 -   각 block의 입력은 출력과 길이를 같게 해주기 위해, zero-padding 해준다.
@@ -255,7 +256,7 @@ $$\text{gLN}(\mathbf{F}) = \frac{\mathbf{F}-\text{E}[\mathbf{F}]}{\sqrt{\text{Va
 <br><br>
 
 ### [2]-(4) Bottleneck layer
-
+---
 - Figure 4를 보면, separation module의 앞 부분에는 linear $1\times 1\text{-}conv(\cdot)$ block 하나가 bottleneck layer로 존재한다. 이는 input channel의 수와 convolutional block들의 residual path channel의 수를 뜻하는 $B$를 결정하는 역할을 한다.
 
 -   Figure 5를 보면, 1-D conv block의 앞 부분에도 bottleneck layer가 존재하는데, 이 $1\times1\text{-}conv(\cdot)$에 의해 feature dimension 즉, input과 residual path의 channel 개수를 결정해준다.
