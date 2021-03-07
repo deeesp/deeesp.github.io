@@ -52,7 +52,8 @@ toc_sticky: true
 	- Clean speech 환경이다. (noisy하고 reverbrant한 환경에서는 성능 안좋음)
 	- 겹치는 source의 수를 알고 있어야 한다. (The unknown number of speakers)
 	- Real-world에서 회의 상황과 같은 continuous speech spearation 문제는 풀기 힘들다.
-<br>
+<br><br>
+
 
 ## [1] Time-domain Speech Separation
 <br>
@@ -78,7 +79,7 @@ $$x(t) = \sum^C_{i=1}s_i(t)$$
 
 > ★ 기본적으로 frame단위의 mixture에 대한 latent represenatation에 각 source에 해당하는 mask들을 씌워 separation한다.
 
-<br><br>
+<br>
 
 ### [1]-(2) Input
 
@@ -86,12 +87,15 @@ $$x(t) = \sum^C_{i=1}s_i(t)$$
 2. $\hat{T}$개의 waveform segment $\mathbf{x}_k$ 들을 각각 encoder 단으로 넣어준다.
 <br>
 사실상 $X\in\mathbb{R}^{\hat{T}\times L}$이 한꺼번에 encoder로 들어가는 것이지만, 아래 설명은 각 segment (또는 frame) 별로 다뤄지고 있다. $L$은 frame 개수를 결정하는 아주 중요한 hyperparameter로, 뒤에 설명하겠지만 작을수록 성능이 좋아졌다. 물론 $L$이 작아지면 $\hat{T}$는 커진다.
-<br>
+<br><br>
 
-### [1]-3. Convolutional Autoencoder
+
+### [1]-(3) Convolutional Autoencoder
+<br>
 
  Mixture signal에 대한 STFT representation을 convolutional encoder/decoder로 대체하게 된 배경은 speech separation에 optimized된 audio representation을 만들어주기 위한 것
-<br>
+<br><br>
+
 
 **Encoder**
 
@@ -105,7 +109,8 @@ $$\mathbf{w}=\mathcal{H}(\mathbf{x}\mathbf{U})$$
 -   $\mathcal{H}(\cdot)$ : Optional nonlinear function
 	- 이전 다른 모델들은 nonlinear activation function인 ReLU (Rectified Linear Unit)을 써서 encoded represenation의 non-negativity를 보장해주었다.
     - Conv-TasNet에서는 여러 조건에서의 실험을 통해 linear encoder와 decoder에 non-negative constraint을 주는 것보다 sigmoid activation을 써주는 것이 더 좋은 성능을 낸다는 것을 밝혀냈다.
-<br>
+<br><br>
+
 
 **Decoder**
 
@@ -115,7 +120,8 @@ $$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
 
 - $\mathbf{d}_i\in\mathbb{R}^{1\times L}$ : Separator에서 생성한 mask로 추정된 $i$ 번째 source에 대한 latent representation
 - $\mathbf{V}\in \mathbb{R}^{N\times L}$ : Decoder basis function matrix
-<br>
+<br><br>
+
 
 **Implementation**
 - 실제 모델 구현에선, encoder와 decoder에 각각 convolutional layer와 transposed convolutional layer를 쓰는데, 각 segment들을 overlapping 하기 쉬워 빠르게 training할 수 있고, 모델이 더 잘 수렴한다. (PyTorch 1-D transposed convolutional layers)
@@ -130,23 +136,29 @@ $$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
     
 2.  Mixture representation $\mathbf{w} \in \mathbb{R}^{1 \times N}$에 각 $\mathbf{m}_i$를 element-wise multiplication을 하게 되면, 각 source의 encoded representation $\mathbf{d}_i \in \mathbb{R}^{1 \times N}$ 이 나온다. 간단히 말해, mixture에 weighting function (mask)를 씌워 source separation을 한다.
     
-$$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$    
+$$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
+
 <br>
+
 
 ## [2] Convolutional Separation Module
 
 ### [2]-(1) 특징
 
 1.  Mixture $\mathbf{x}$에서 각 Source $s_i$를 separation하기 위한 mask $\mathbf{m}_i$를 추정하는 module
-	<br>
+	<br><br>
+
 2.  Temporal Convolutional Network (TCN)에서 영감을 받아, 1-D dilated convolutional block을 여러 층 쌓아 fully-convolution 구조로 구성되어 있다.
     -   Sequence modeling에 쓰이는 RNN 계열 모델은 Long-term dependency를 보는 데에 유용하게 쓰이지만, recurrent connection 때문에 parallel processing에 제한이 있어 느리다.
     -   따라서, RNN 계열 모델을 대체하여 Long-term dependency를 볼 수 있고, Parallel processing이 가능한 TCN을 사용한 것이다.
-    <br>
+    <br><br>
+
 3.  Standard convolution 대신에 쓰인 depth-wise convolution은 parameter 수와 compuational cost를 줄여주었다.
 <br><br>
 
 ### [2]-2. Temporal convolutional Network (TCN)
+<br>
+
  이 모델에서 쓰인 TCN 구조는 [WaveNet](https://arxiv.org/abs/1609.03499)에서 쓰인 dilated convolution과 residual path, skip-connection path 구조를 가져와 응용한 것이다. Dilation을 주면 큰 temporal context window를 만들어 줄 수 있어 speech signal의 long-range dependency를 잡아내는 데에 좋다.
 
 아래 Figure 3는 WaveNet에서 쓰인 구조인데, $X=4$인 한 layer를 표현한 것이라고 볼 수 있다.
@@ -171,6 +183,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 <br><br>
 
 ### [2]-(3) 1-D convolutional block
+<br>
 
  TCN의 dilated convolution block에서 반복적으로 쓰인 1-D convolutional block을 자세히 알아보자.
 -   각 block의 입력은 출력과 길이를 같게 해주기 위해, zero-padding 해준다.
@@ -180,10 +193,11 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 
 <br>
 <center>
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8748f7be-c33a-4942-85d0-99f548440c06/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T121113Z&X-Amz-Expires=86400&X-Amz-Signature=68f6ebcdfc0c7f269f3aa89a0a9477104e2b42fa24ec1d38846b84a05b9bba59&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width="50px/><br>
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8748f7be-c33a-4942-85d0-99f548440c06/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T121113Z&X-Amz-Expires=86400&X-Amz-Signature=68f6ebcdfc0c7f269f3aa89a0a9477104e2b42fa24ec1d38846b84a05b9bba59&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width="100px"/><br>
 <b>Figure 5.</b> 1-D Convolutional Block
 </center>
-<br>
+<br><br>
+
 
 
 **Depthwise separable convolution**
@@ -194,7 +208,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
     
 	2)  $S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})$는 $D\text{-}conv(\mathbf{Y},\mathbf{K})$ 와 Convolutional kernel $L$의 Convolution으로, $1\times 1\text{-}conv(\cdot)$를 통해 Linear하게 Feature space로 변환해준다. $L \in \mathbb{R}^{G\times H\times 1}$ : Size 1의 Convolutional kernel
 	    
-	    $$S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})=D\text{-}conv(\mathbf{Y},\mathbf{K}) \circledast \mathbf{L}\\ $$
+$$S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})=D\text{-}conv(\mathbf{Y},\mathbf{K}) \circledast \mathbf{L}\\ $$
 	    
 	- $\mathbf{Y}\in\mathbb{R}^{G\times M}$: $S\text{-}conv(\cdot)$의 입력
 	- $\mathbf{K}\in\mathbb{R}^{G\times P}$ : Size $P$의 Convolutional kernel
@@ -209,7 +223,8 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 </center>
 
 -   Kernel size $\mathbf{\hat{K}} \in \mathbb{R}^{G\times H \times P}$의 standard convolution과 비교하여, depthwise separable convolution은 $G\times P+G\times H$개의 parameter로 모델 사이즈를 대략 $P$만큼 줄였다.
-<br>
+<br><br>
+
 
 
 **PReLU & gLN**
@@ -219,6 +234,8 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
     
   -   $a$는 학습 가능한 parameter이다.
   -   Activation function의 역할로, 음의 영역에서도 0이 아닌 gradient $a$를 갖는 non-linearity를 보장해주기 위해 PReLU가 사용되었다.
+  <br><br>
+
 2.  [Global Layer Normalization (gLN)](https://arxiv.org/abs/1607.06450)
     
   -   Feature $\mathbf{F}\in\mathbb{R}^{N\times T}$가 channel과 time dimension에 대해서 normalization된다.<br>
