@@ -80,6 +80,7 @@ $$x(t) = \sum^C_{i=1}s_i(t)$$
 <br>
 > ★ 기본적으로 frame단위의 mixture에 대한 latent represenatation에 각 source에 해당하는 mask들을 씌워 separation한다.
 
+<br>
 
 ### [1]-(2) Input
 ---
@@ -199,7 +200,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 
 <br>
 <center>
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8748f7be-c33a-4942-85d0-99f548440c06/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T121113Z&X-Amz-Expires=86400&X-Amz-Signature=68f6ebcdfc0c7f269f3aa89a0a9477104e2b42fa24ec1d38846b84a05b9bba59&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width="150px"/><br>
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8748f7be-c33a-4942-85d0-99f548440c06/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T121113Z&X-Amz-Expires=86400&X-Amz-Signature=68f6ebcdfc0c7f269f3aa89a0a9477104e2b42fa24ec1d38846b84a05b9bba59&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width="200px"/><br>
 <b>Figure 5.</b> 1-D Convolutional Block
 </center>
 <br><br>
