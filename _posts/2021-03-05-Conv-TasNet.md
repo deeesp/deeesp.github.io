@@ -37,7 +37,7 @@ toc_sticky: true
 
 ## TL;DR
   
-1.  Conv-TasNet은 여러 트렌디한 deep learning 테크닉들을 가져와 잘 조화시킨 End-to-End deep learning framework로, 각 speech source에 대한 mask를 time-domain에서 직접 estimation하는 speech seaparation<sup>음원 분리</sup> 모델이다. 성능적으로도 상당한 breakthrough를 이뤄내었다.
+1.  Conv-TasNet은 여러 트렌디한 deep learning 테크닉들을 가져와 잘 조화시킨 End-to-End framework로, 각 speech source에 대한 mask를 time-domain에서 직접 estimation하는 speech seaparation<sup>음원 분리</sup> 모델이다. 성능적으로도 상당한 breakthrough를 이뤄내었다.
 	- wsj0-2mix dataset 기준 SI-SNRi 15.3dB, 기존 state-of-the-art 모델에서 4dB에 가까운 성능 향상
  <br><br>
 2. Speech separation task에서는 기존 접근 방법처럼 mixture signal을 time-frequency representation (즉, STFT를 통한 spectrogram representation)에서 처리하면 다음과 같은 이유로 suboptimal하기 때문에, time-domain approach로 문제를 해결하였다.
