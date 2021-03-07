@@ -164,7 +164,8 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 아래 Figure 3는 WaveNet에서 쓰인 구조인데, $X=4$인 한 layer를 표현한 것이라고 볼 수 있다.
 
 <center>
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a869fd9f-8ace-4261-a356-7c9fa7e52661/Screen_Shot_2021-01-12_at_8.28.36_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T114823Z&X-Amz-Expires=86400&X-Amz-Signature=13dd69d51972a250b7e022a1bc7a0f0067da388ad980a7c115f7ba94a2186d22&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screen_Shot_2021-01-12_at_8.28.36_PM.png%22"/><br>
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1b19ec4c-e265-4f17-8e39-840e2b7a8442/unnamed.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T141240Z&X-Amz-Expires=86400&X-Amz-Signature=fc7cf91b8913ca4bc2555f74ed25d9e6f28393d38c630268ee2d8ecf83fe7258&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22unnamed.gif%22"/><br>
+<b>Figure 3.</b> Visualization of a stack of dilated causal convolutional layers<br>
 </center>
 <br><br>
 
@@ -202,18 +203,20 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 
 **Depthwise separable convolution**
 - $S\text{-}conv(\cdot)$는 Figure 5 처럼 차례로 depthwise convolution $D\text{-}conv(\cdot)$와 pointwise convolution $1\times 1\text{-}conv(\cdot)$으로 구성되어 있다. (처음에 보이는  $1\times 1\text{-}conv(\cdot)$는 Bottleneck)
+    - $\mathbf{Y}\in\mathbb{R}^{G\times M}$: $S\text{-}conv(\cdot)$의 입력
+    - $\mathbf{K}\in\mathbb{R}^{G\times P}$ : Size $P$의 Convolutional kernel
+    - $\mathbf{y}_j\in\mathbb{R}^{1\times M}$ : 행렬 $\mathbf{Y}$의 $j$ 번째 row 
+    - $\mathbf{k}_j\in\mathbb{R}^{1\times P}$ : 행렬 $\mathbf{K}$의 $j$ 번째 row
 
-	1. $D\text{-}conv(\mathbf{Y},\mathbf{K})$ 는 입력 $\mathbf{Y}$의 각 row와 상응하는 행렬 $\mathbf{K}$의 row에 대해 convolution 연산을 한다.
-        $$D\text{-}conv(\mathbf{Y},\mathbf{K}) = \text{concat}(\mathbf{y}_j\circledast \mathbf{k}_j),\ j=1,...,N$$
+  1. $D\text{-}conv(\mathbf{Y},\mathbf{K})$ 는 입력 $\mathbf{Y}$의 각 row와 상응하는 행렬 $\mathbf{K}$의 row에 대해 convolution 연산을 한다.
+
+    $$D\text{-}conv(\mathbf{Y},\mathbf{K}) = \text{concat}(\mathbf{y}_j\circledast \mathbf{k}_j),\ j=1,...,N$$
     
-	2. $S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})$는 $D\text{-}conv(\mathbf{Y},\mathbf{K})$ 와 Convolutional kernel $L$의 Convolution으로, $1\times 1\text{-}conv(\cdot)$를 통해 Linear하게 Feature space로 변환해준다. $L \in \mathbb{R}^{G\times H\times 1}$ : Size 1의 Convolutional kernel
+  2. $S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})$는 $D\text{-}conv(\mathbf{Y},\mathbf{K})$ 와 Convolutional kernel $L$의 Convolution으로, $1\times 1\text{-}conv(\cdot)$를 통해 Linear하게 Feature space로 변환해준다. $L \in \mathbb{R}^{G\times H\times 1}$ : Size 1의 Convolutional kernel
 	    
-$$S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})=D\text{-}conv(\mathbf{Y},\mathbf{K}) \circledast \mathbf{L}\\$$
+    $$S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})=D\text{-}conv(\mathbf{Y},\mathbf{K}) \circledast \mathbf{L}\\$$
+<br>
 	    
-  - $\mathbf{Y}\in\mathbb{R}^{G\times M}$: $S\text{-}conv(\cdot)$의 입력
-  - $\mathbf{K}\in\mathbb{R}^{G\times P}$ : Size $P$의 Convolutional kernel
-  - $\mathbf{y}_j\in\mathbb{R}^{1\times M}$ : 행렬 $\mathbf{Y}$의 $j$ 번째 row 
-  - $\mathbf{k}_j\in\mathbb{R}^{1\times P}$ : 행렬 $\mathbf{K}$의 $j$ 번째 row
 
 
 <center>
@@ -238,11 +241,11 @@ $$S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})=D\text{-}conv(\mathbf{Y},\math
 
 2.  [Global Layer Normalization (gLN)](https://arxiv.org/abs/1607.06450){:target="_blank"}
     
-  - Feature $\mathbf{F}\in\mathbb{R}^{N\times T}$가 channel과 time dimension에 대해서 normalization된다.<br>
+    - Feature $\mathbf{F}\in\mathbb{R}^{N\times T}$가 channel과 time dimension에 대해서 normalization된다.<br>
+    - $\gamma,\beta\in\mathbb{R}^{N\times1}$은 learnable parameter들이며, $\epsilon$은 수치적 안정성을 위한 작은 상수이다.
         
 $$\text{gLN}(\mathbf{F}) = \frac{\mathbf{F}-\text{E}[\mathbf{F}]}{\sqrt{\text{Var}[\mathbf{F}]+\epsilon}}\odot\gamma+\beta\\ \text{E}[\mathbf{F}]=\frac1{NT}\sum_{NT}\mathbf{F}\\ \text{Var}[\mathbf{F}]=\frac1{NT}\sum_{NT}(\mathbf{F}-\text{E}[\mathbf{F}])^2$$
         
-  - $\gamma,\beta\in\mathbb{R}^{N\times1}$은 learnable parameter들이며, $\epsilon$은 수치적 안정성을 위한 작은 상수이다.
 <br><br>
 
 ### [2]-(4) Bottleneck layer
