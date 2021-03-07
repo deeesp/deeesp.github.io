@@ -1,6 +1,6 @@
 ---
 title:  "[Speech] Conv-TasNet 톺아보기"
-excerpt: "Time-domain single-channel speech separation, Conv-TasNet 분석, 정리"
+excerpt: "Time-domain single-channel speech separation, Conv-TasNet 분석 및 정리"
 categories:
   - Speech
   
@@ -179,7 +179,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 <center>
 <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c03c8b0c-e549-4be0-b0b5-a49c0ba08ff6/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T114753Z&X-Amz-Expires=86400&X-Amz-Signature=74528d11d152159fff3f441991f76e5dd0c1d3dccee804eea0499b0562f11406&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22"/><br><br>
 <b>Figure 4.</b> Conv-TasNet Block Diagram<br>
-(출처 : SAPL Seminar of Ph.D candidate 변재욱)
+(출처 : SAPL Seminar material by Ph.D candidate 변재욱)
 </center>
 <br>
 
@@ -229,7 +229,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 <center>
 <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d53467e1-9b71-4c98-a264-b5c1e49c64f1/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T122138Z&X-Amz-Expires=86400&X-Amz-Signature=af696fadd00140240fe3fc65c9b681c963dc099eef31f3ffb9dfd69b061e4739&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width="300px"/><br>
 <b>Figure 6.</b> Depthwise Separable Convolution<br>
-(출처 : <a href="https://medium.com/@zurister/depth-wise-convolution-and-depth-wise-separable-convolution-37346565d4ec">Medium blog</a> )
+(출처 : <a href="https://medium.com/@zurister/depth-wise-convolution-and-depth-wise-separable-convolution-37346565d4ec">Medium blog</a>)
 </center>
 
 <br><br>
@@ -258,14 +258,13 @@ $$\text{gLN}(\mathbf{F}) = \frac{\mathbf{F}-\text{E}[\mathbf{F}]}{\sqrt{\text{Va
 
 ### [2]-(4) Bottleneck layer
 ---
-- Figure 4를 보면, separation module의 앞 부분에는 linear $1\times 1\text{-}conv(\cdot)$ block 하나가 bottleneck layer로 존재한다. 이는 input channel의 수와 convolutional block들의 residual path channel의 수를 뜻하는 $B$를 결정하는 역할을 한다.
+1. Separation module의 앞 부분에는 [Figure 4](https://deeesp.github.io/speech/Conv-TasNet/#2-2-temporal-convolutional-network-tcn)에서 보이는 것처럼 linear $1\times 1\text{-}conv(\cdot)$ block 하나가 bottleneck layer로써 존재한다.
+	- 이는 feature dimension 즉, input channel과 convolutional block들 간의 residual path의 channel 수를 뜻하는 $B$를 결정하는 역할을 한다.
 
--   Figure 5를 보면, 1-D conv block의 앞 부분에도 bottleneck layer가 존재하는데, 이 $1\times1\text{-}conv(\cdot)$에 의해 feature dimension 즉, input과 residual path의 channel 개수를 결정해준다.
+2. [Figure 5](https://deeesp.github.io/speech/Conv-TasNet/#2-3-1-d-convolutional-block)를 보면, 1-D conv block의 앞,뒤 부분에도 $1\times1\text{-}conv(\cdot)$가 존재하는데, 이 또한 bottleneck layer로써 feature dimension을 결정해준다.
+	- 예를 들어, 1-D conv block의 input channel이 $B$라고 하면, 앞 부분의 $1\times1\text{-}conv(\cdot)$에 의해 $H$로 확장해준다. 또한, depthwise separable convolution을 거친 후 뒷부분에 있는 $1\times1\text{-}conv(\cdot)$에 의해 $H$를 skip connection 및 output의 channel은 각각 $B$ 및 $Sc$로 변환된다.
+	- Conv-TasNet에서 가장 높은 성능을 보이는 hyperparameter 설정은 $B = Sc$이기 때문에 skip-connection과 residual-path를 거칠 때에는 같은 channel 개수가 적용 되겠다.
 
-- 예를 들어, 1-D conv block의 Input channel이 $B$라고 하면, $1\times1\text{-}conv(\cdot)$에 의해 $H$로 확장해준다.
--   Depthwise separable convolution의 뒷부분에 있는 $1\times1\text{-}conv(\cdot)$에 의해 skip connection 및 output의 Channel을 다시 $B$ 및 $Sc$로 변환해준다. 가장 높은 성능을 보이는 Hyperparameter 설정은 $B = Sc$이기 때문에 같은 Channel로 바꿔주는 것을 볼 수 있다.
-
-???
 <br><br>
 
 ---
