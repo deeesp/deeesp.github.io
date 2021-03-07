@@ -26,12 +26,12 @@ toc_sticky: true
 
 ## 들어가며
 
- [Conv-TasNet](https://ieeexplore.ieee.org/abstract/document/8707065)은 2019년도 IEEE/ACM TASLP (Transactions on Audio, speech, and language processing) 저널에 출판된 논문으로, speech separation은 TasNet [이전](https://ieeexplore.ieee.org/document/8369155)과 이후로 나뉜다고 말할 수 있을 만큼 이 분야의 역사에 한 획을 그었습니다. 여전히 separation과 enhancement 분야에서 응용되고 있으며, 특히 Conv-TasNet을 기반으로 한 다양한 변형 모델이 나오며 성능향상 (e.g., [DPRNN](https://ieeexplore.ieee.org/abstract/document/9054266) (ICASSP 2020), [DPTNet](https://www.isca-speech.org/archive/Interspeech_2020/pdfs/2205.pdf) (Interspeech 2020), [SepFormer](https://arxiv.org/abs/2010.13154) (ICASSP 2021) 등)을 보이고 있어, Conv-TasNet을 읽고, 분석 및 정리해 보았습니다.
+ [Conv-TasNet](https://ieeexplore.ieee.org/abstract/document/8707065){:target="_blank"}은 2019년도 IEEE/ACM TASLP (Transactions on Audio, speech, and language processing) 저널에 출판된 논문으로, speech separation은 TasNet [이전](https://ieeexplore.ieee.org/document/8369155){:target="_blank"}과 이후로 나뉜다고 말할 수 있을 만큼 이 분야의 역사에 한 획을 그었습니다. 여전히 separation과 enhancement 분야에서 응용되고 있으며, 특히 Conv-TasNet을 기반으로 한 다양한 변형 모델이 나오며 성능향상 (e.g., [DPRNN](https://ieeexplore.ieee.org/abstract/document/9054266){:target="_blank"} (ICASSP 2020), [DPTNet](https://www.isca-speech.org/archive/Interspeech_2020/pdfs/2205.pdf){:target="_blank"} (Interspeech 2020), [SepFormer](https://arxiv.org/abs/2010.13154){:target="_blank"} (ICASSP 2021) 등)을 보이고 있어, Conv-TasNet을 읽고, 분석 및 정리해 보았습니다.
 <br>
 
 <center>
 <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c7ae61e5-958f-403b-85e1-84b16c282861/speech_separation_on_wsj0-2mix.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T095816Z&X-Amz-Expires=86400&X-Amz-Signature=f822eb5830d4fb24506b2e569bb2598235b2030be51d939de50b8b89b23fbe75&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22speech_separation_on_wsj0-2mix.jpeg%22"/><br>
-<b>Figure. 1</b> Speech separation SOTA performance on wsj0-2mix <br> (출처 : <a href="https://paperswithcode.com/sota/speech-separation-on-wsj0-2mix">Papers with code</a>)
+<b>Figure. 1</b> Speech separation SOTA performance on wsj0-2mix <br> (출처 : <a href="https://paperswithcode.com/sota/speech-separation-on-wsj0-2mix" target='_blank'>Papers with code</a>)
 </center>
  <br>
 
@@ -159,7 +159,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 ### [2]-(2) Temporal convolutional Network (TCN)
 <br>
 
- 이 모델에서 쓰인 TCN 구조는 [WaveNet](https://arxiv.org/abs/1609.03499)에서 쓰인 dilated convolution과 residual path, skip-connection path 구조를 가져와 응용한 것이다. Dilation을 주면 큰 temporal context window를 만들어 줄 수 있어 speech signal의 long-range dependency를 잡아내는 데에 좋다.
+ 이 모델에서 쓰인 TCN 구조는 [WaveNet](https://arxiv.org/abs/1609.03499){:target="_blank"}에서 쓰인 dilated convolution과 residual path, skip-connection path 구조를 가져와 응용한 것이다. Dilation을 주면 큰 temporal context window를 만들어 줄 수 있어 speech signal의 long-range dependency를 잡아내는 데에 좋다.
 
 아래 Figure 3는 WaveNet에서 쓰인 구조인데, $X=4$인 한 layer를 표현한 것이라고 볼 수 있다.
 
@@ -189,7 +189,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 -   각 block의 입력은 출력과 길이를 같게 해주기 위해, zero-padding 해준다.
 -   Residual path : 각 block의 input을 다음 block으로 넘겨준다.
 -   Skip-connection path : 각 block에서 나오는 output을 더해 최종 TCN의 출력으로 사용한다.
--   [MobileNet](https://openaccess.thecvf.com/content_cvpr_2018/html/Sandler_MobileNetV2_Inverted_Residuals_CVPR_2018_paper.html)에서 쓰였던 depthwise separable convolution $S\text{-}conv(\cdot)$ 테크닉을 가져와 standard convolution을 대체하여 Parameter 수를 줄여주었다. 
+-   [MobileNet](https://openaccess.thecvf.com/content_cvpr_2018/html/Sandler_MobileNetV2_Inverted_Residuals_CVPR_2018_paper.html){:target="_blank"}에서 쓰였던 depthwise separable convolution $S\text{-}conv(\cdot)$ 테크닉을 가져와 standard convolution을 대체하여 Parameter 수를 줄여주었다. 
 
 <br>
 <center>
@@ -228,7 +228,7 @@ $$S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})=D\text{-}conv(\mathbf{Y},\math
 
 
 **PReLU & gLN**
-1.  [Parametric Rectified Linear Unit (PReLU)](https://openaccess.thecvf.com/content_iccv_2015/html/He_Delving_Deep_into_ICCV_2015_paper.html)
+1.  [Parametric Rectified Linear Unit (PReLU)](https://openaccess.thecvf.com/content_iccv_2015/html/He_Delving_Deep_into_ICCV_2015_paper.html){:target="_blank"}
     
     $$\text{PReLU}(x) = \begin{cases} x, & \text{if $x \geq 0$}\\ ax, & \text{otherwise} \end{cases}$$
     
@@ -236,7 +236,7 @@ $$S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})=D\text{-}conv(\mathbf{Y},\math
   - Activation function의 역할로, 음의 영역에서도 0이 아닌 gradient $a$를 갖는 non-linearity를 보장해주기 위해 PReLU가 사용되었다.
   <br><br>
 
-2.  [Global Layer Normalization (gLN)](https://arxiv.org/abs/1607.06450)
+2.  [Global Layer Normalization (gLN)](https://arxiv.org/abs/1607.06450){:target="_blank"}
     
   - Feature $\mathbf{F}\in\mathbb{R}^{N\times T}$가 channel과 time dimension에 대해서 normalization된다.<br>
         
