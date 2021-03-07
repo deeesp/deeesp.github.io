@@ -162,26 +162,27 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
  이 모델에서 쓰인 TCN 구조는 [WaveNet](https://arxiv.org/abs/1609.03499){:target="_blank"}에서 쓰인 dilated convolution과 residual path, skip-connection path 구조를 가져와 응용한 것이다. Dilation을 주면 큰 temporal context window를 만들어 줄 수 있어 speech signal의 long-range dependency를 잡아내는 데에 좋다.
 
 아래 Figure 3는 WaveNet에서 쓰인 구조인데, $X=4$인 한 layer를 표현한 것이라고 볼 수 있다.
-
+<br>
 <center>
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1b19ec4c-e265-4f17-8e39-840e2b7a8442/unnamed.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T141240Z&X-Amz-Expires=86400&X-Amz-Signature=fc7cf91b8913ca4bc2555f74ed25d9e6f28393d38c630268ee2d8ecf83fe7258&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22unnamed.gif%22"/><br>
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1b19ec4c-e265-4f17-8e39-840e2b7a8442/unnamed.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T141240Z&X-Amz-Expires=86400&X-Amz-Signature=fc7cf91b8913ca4bc2555f74ed25d9e6f28393d38c630268ee2d8ecf83fe7258&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22unnamed.gif%22"/><br><br>
 <b>Figure 3.</b> Visualization of a stack of dilated causal convolutional layers<br>
 </center>
 <br><br>
 
 이러한 dilated convolution block을 포함한 TCN 구조의 Conv-TasNet 전체 block diagram을 보면 다음과 같다.
-
+<br>
 <center>
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c03c8b0c-e549-4be0-b0b5-a49c0ba08ff6/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T114753Z&X-Amz-Expires=86400&X-Amz-Signature=74528d11d152159fff3f441991f76e5dd0c1d3dccee804eea0499b0562f11406&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22"/><br>
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c03c8b0c-e549-4be0-b0b5-a49c0ba08ff6/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T114753Z&X-Amz-Expires=86400&X-Amz-Signature=74528d11d152159fff3f441991f76e5dd0c1d3dccee804eea0499b0562f11406&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22"/><br><br>
 <b>Figure 4.</b> Conv-TasNet Block Diagram<br>
 (출처 : SAPL Seminar of Ph.D candidate 변재욱)
 </center>
-<br><br>
+<br>
 
 - 각 dilated convolution block은 $X$개의 각 1-D convolutional block들로 이루어져 있고, 각 block의 dilation factor는 $1, 2, 4, ..., 2^{X-1}$ 로 증가하는 형태를 띈다. 또한, 이 block는 $R$ 번 반복된다.
 
 - 최종 TCN의 출력은 Kernel size가 1인 $1\times 1$ convolution (a.k.a point-wise convolution)을 통과하게 되고, non-linear activation function인 sigmoid function를 지나 $C$ 개의 Mask vector를 추정한다.
 <br><br>
+
 
 ### [2]-(3) 1-D convolutional block
 <br>
@@ -194,7 +195,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 
 <br>
 <center>
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8748f7be-c33a-4942-85d0-99f548440c06/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T121113Z&X-Amz-Expires=86400&X-Amz-Signature=68f6ebcdfc0c7f269f3aa89a0a9477104e2b42fa24ec1d38846b84a05b9bba59&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width="100px"/><br>
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8748f7be-c33a-4942-85d0-99f548440c06/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T121113Z&X-Amz-Expires=86400&X-Amz-Signature=68f6ebcdfc0c7f269f3aa89a0a9477104e2b42fa24ec1d38846b84a05b9bba59&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" width="150px"/><br>
 <b>Figure 5.</b> 1-D Convolutional Block
 </center>
 <br><br>
