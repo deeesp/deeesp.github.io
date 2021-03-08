@@ -31,7 +31,7 @@ toc_sticky: true
 
 <center>
 <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c7ae61e5-958f-403b-85e1-84b16c282861/speech_separation_on_wsj0-2mix.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T095816Z&X-Amz-Expires=86400&X-Amz-Signature=f822eb5830d4fb24506b2e569bb2598235b2030be51d939de50b8b89b23fbe75&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22speech_separation_on_wsj0-2mix.jpeg%22"/><br>
-<b>Figure. 1</b> Speech separation SOTA performance on wsj0-2mix <br> (출처 : <a href="https://paperswithcode.com/sota/speech-separation-on-wsj0-2mix" target='_blank'>Papers with code</a>)
+<b>Figure. 1</b> Speech Separation SOTA Performance on wsj0-2mix <br> (출처 : <a href="https://paperswithcode.com/sota/speech-separation-on-wsj0-2mix" target='_blank'>Papers with code</a>)
 </center>
  <br>
 
@@ -75,7 +75,7 @@ $$x(t) = \sum^C_{i=1}s_i(t)$$
 <br>
 <center>
 <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5ac87a4b-9aa5-43b9-9878-108c97db0477/Time-domain_audio_separation_network_block_diagram.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T110239Z&X-Amz-Expires=86400&X-Amz-Signature=aec8b12bfc739e85aec2b931391b69860cf9ff8d2be8de560f9dcdad0cfdeb3e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Time-domain_audio_separation_network_block_diagram.png%22" height="150px" /><br>
-<b>Figure. 2</b> Time-domain audio separation network block diagram
+<b>Figure. 2</b> Time-domain Audio Separation Network Block Diagram
 </center>
 <br>
 > ★ 기본적으로 frame단위의 mixture에 대한 latent represenatation에 각 source에 해당하는 mask들을 씌워 separation한다.
@@ -100,7 +100,7 @@ $$x(t) = \sum^C_{i=1}s_i(t)$$
 
 **Encoder**
 
- Encoder는 waveform mixture에 대한 segment $\mathbf{x}_k \in \mathbb{R}^{1\times L}$를 speech separation에 optimal하게 길이 $N$인 latent represenation $\mathbf{w} \in \mathbb{R}^{1 \times N}$로 encoding해준다. 
+ Encoder는 waveform mixture에 대한 segment $\mathbf{x}_k \in \mathbb{R}^{1\times L}$를 길이 $N$인 latent represenation $\mathbf{w} \in \mathbb{R}^{1 \times N}$로 **speech separation에 optimal하게** encoding해준다. 
 -   Encoder를 matrix multiplication 형태로 써주면 다음과 같다.
 
 $$\mathbf{w}=\mathcal{H}(\mathbf{x}\mathbf{U})$$
@@ -131,11 +131,12 @@ Encoder/decoder representation의 특징에 대해선 다음 글에서 상세하
 <br> <br>
 
 
-### [1]-(4) Separator part
+### [1]-(4) Separator Part
 ---
 1.  $C$개의 vector (또는 mask) $\mathbf{m}_i \in \mathbb{R}^{1 \times N}, i=1,2,...,C$를 추정해낸다.
 
     (단, $\sum^{C}_{i=1} \mathbf{m}_i = \mathbf{1}$)
+    
     → Mask를 추정하는 방법은 [잠시 후](https://deeesp.github.io/speech/Conv-TasNet/#2-convolutional-separation-module)에서 자세히..
     
 2.  Mixture representation $\mathbf{w} \in \mathbb{R}^{1 \times N}$에 각 $\mathbf{m}_i$를 element-wise multiplication을 하게 되면, 각 source의 encoded representation $\mathbf{d}_i \in \mathbb{R}^{1 \times N}$ 이 나온다. 간단히 말해, mixture에 weighting function (mask)를 씌워 source separation을 한다.
@@ -147,9 +148,9 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 
 ## [2] Convolutional Separation Module
 
-### [2]-(1) 특징
+### [2]-(1) Properties of Separator
 ---
-1.  Mixture $\mathbf{x}$에서 각 Source $s_i$를 separation하기 위한 mask $\mathbf{m}_i$를 추정하는 module이다.
+1.  Mixture $\mathbf{x}$에서 각 source $s_i$를 separation하기 위한 mask $\mathbf{m}_i$를 추정하는 module이다.
 	<br><br>
 
 2.  Temporal Convolutional Network (TCN)에서 영감을 받아, 1-D dilated convolutional block을 여러 층 쌓아 fully-convolution 구조로 구성되어 있다.
@@ -160,7 +161,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 3.  Standard convolution 대신에 쓰인 depth-wise convolution은 parameter 수와 compuational cost를 줄여주었다.
 <br><br>
 
-### [2]-(2) Temporal convolutional Network (TCN)
+### [2]-(2) Temporal Convolutional Network (TCN)
 ---
  이 모델에서 쓰인 TCN 구조는 [WaveNet](https://arxiv.org/abs/1609.03499){:target="_blank"}에서 쓰인 dilated convolution과 residual path, skip-connection path 구조를 가져와 응용한 것이다. Dilation을 주면 큰 temporal context window를 만들어 줄 수 있어 speech signal의 long-range dependency를 잡아내는 데에 좋다.
 
@@ -169,7 +170,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 <br><br>
 <center>
 <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1b19ec4c-e265-4f17-8e39-840e2b7a8442/unnamed.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210307%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210307T141240Z&X-Amz-Expires=86400&X-Amz-Signature=fc7cf91b8913ca4bc2555f74ed25d9e6f28393d38c630268ee2d8ecf83fe7258&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22unnamed.gif%22"/><br><br>
-<b>Figure 3.</b> Visualization of a stack of dilated causal convolutional layers<br>
+<b>Figure 3.</b> Visualization of a Stack of Dilated Causal Convolutional Layers<br>
 </center>
 <br><br>
 
@@ -185,11 +186,11 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 
  각 dilated convolution block은 $X$개의 각 1-D convolutional block들로 이루어져 있고, 각 block의 dilation factor는 $1, 2, 4, ..., 2^{X-1}$ 로 증가하는 형태를 띈다. 또한, 이 block는 $R$ 번 반복된다.
 
- 최종 TCN의 출력은 Kernel size가 1인 $1\times 1$ convolution (a.k.a point-wise convolution)을 통과하게 되고, non-linear activation function인 sigmoid function를 지나 $C$ 개의 Mask vector를 추정한다.
+ 최종 TCN의 출력은 kernel size가 1인 $1\times 1$ convolution (a.k.a point-wise convolution)을 통과하게 되고, non-linear activation function인 sigmoid function를 지나 $C$ 개의 mask vector를 추정한다.
 <br><br>
 
 
-### [2]-(3) 1-D convolutional block
+### [2]-(3) 1-D Convolutional Block
 ---
 
  TCN의 dilated convolution block에서 반복적으로 쓰인 1-D convolutional block을 자세히 알아보자.
@@ -209,9 +210,9 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 
 **Depthwise separable convolution**
 
- $S\text{-}conv(\cdot)$는 Figure 5 처럼 차례로 depthwise convolution $D\text{-}conv(\cdot)$와 pointwise convolution $1\times 1\text{-}conv(\cdot)$으로 구성되어 있다. (처음에 보이는  $1\times 1\text{-}conv(\cdot)$는 Bottleneck)
+ $S\text{-}conv(\cdot)$는 Figure 5 처럼 차례로 depthwise convolution $D\text{-}conv(\cdot)$와 pointwise convolution $1\times 1\text{-}conv(\cdot)$으로 구성되어 있다. (처음에 보이는  $1\times 1\text{-}conv(\cdot)$는 bottleneck)
 - $\mathbf{Y}\in\mathbb{R}^{G\times M}$: $S\text{-}conv(\cdot)$의 입력
-- $\mathbf{K}\in\mathbb{R}^{G\times P}$ : Size $P$의 Convolutional kernel
+- $\mathbf{K}\in\mathbb{R}^{G\times P}$ : Size $P$의 convolutional kernel
 - $\mathbf{y}_j\in\mathbb{R}^{1\times M}$ : 행렬 $\mathbf{Y}$의 $j$ 번째 row 
 - $\mathbf{k}_j\in\mathbb{R}^{1\times P}$ : 행렬 $\mathbf{K}$의 $j$ 번째 row
 
@@ -219,9 +220,11 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 
     $$D\text{-}conv(\mathbf{Y},\mathbf{K}) = \text{concat}(\mathbf{y}_j\circledast \mathbf{k}_j),\ j=1,...,N$$
     
-2. $S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})$는 $D\text{-}conv(\mathbf{Y},\mathbf{K})$ 와 Convolutional kernel $L$의 Convolution으로, $1\times 1\text{-}conv(\cdot)$를 통해 Linear하게 Feature space로 변환해준다. $L \in \mathbb{R}^{G\times H\times 1}$ : Size 1의 Convolutional kernel
-	    
-    $$S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})=D\text{-}conv(\mathbf{Y},\mathbf{K}) \circledast \mathbf{L}\\$$
+2. $S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})$는 $D\text{-}conv(\mathbf{Y},\mathbf{K})$ 와 Convolutional kernel $L$의 convolution으로, $1\times 1\text{-}conv(\cdot)$를 통해 linear하게 feature space로 변환해준다.
+  - $L \in \mathbb{R}^{G\times H\times 1}$ : Size 1의 Convolutional kernel
+
+$$S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})=D\text{-}conv(\mathbf{Y},\mathbf{K}) \circledast \mathbf{L}\\$$
+
 <br>
 	    
 
@@ -256,7 +259,7 @@ $$\text{gLN}(\mathbf{F}) = \frac{\mathbf{F}-\text{E}[\mathbf{F}]}{\sqrt{\text{Va
         
 <br><br>
 
-### [2]-(4) Bottleneck layer
+### [2]-(4) Bottleneck Layer
 ---
 1. Separation module의 앞 부분에는 [Figure 4](https://deeesp.github.io/speech/Conv-TasNet/#2-2-temporal-convolutional-network-tcn)에서 보이는 것처럼 linear $1\times 1\text{-}conv(\cdot)$ block 하나가 bottleneck layer로써 존재한다.
 	- 이는 feature dimension 즉, input channel과 convolutional block들 간의 residual path의 channel 수를 뜻하는 $B$를 결정하는 역할을 한다.
