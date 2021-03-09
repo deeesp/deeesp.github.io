@@ -167,7 +167,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 
 ### [2]-(2) Temporal Convolutional Network (TCN)
 ---
- 이 모델에서 쓰인 TCN 구조는 [WaveNet](https://arxiv.org/abs/1609.03499){:target="_blank"}에서 쓰인 dilated convolution과 residual path, skip-connection path 구조를 가져와 응용한 것이다. Dilation을 주면 큰 temporal context window를 만들어 줄 수 있어 speech signal의 long-range dependency를 잡아내는 데에 좋다.
+ 이 모델에서 쓰인 [TCN](https://openaccess.thecvf.com/content_cvpr_2017/papers/Lea_Temporal_Convolutional_Networks_CVPR_2017_paper.pdf){:target="_blank"} 구조는 [WaveNet](https://arxiv.org/abs/1609.03499){:target="_blank"}에서 쓰인 dilated convolution과 residual path, skip-connection path 구조를 가져와 응용한 구조이다. 각기 다른 dilation factor를 가진 dilated convolution block들을 이용해 큰 temporal context window를 만들어 줄 수 있어, speech signal의 long-range dependency를 잡아내는 역할을 한다.
 
 아래 Figure 3는 WaveNet에서 쓰인 dilated convolution block 구조인데, $X=4$인 한 layer들을 표현한 것이다.
 
@@ -179,7 +179,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 </center>
 <br><br>
 
-이러한 dilated convolution block을 포함한 TCN 구조의 Conv-TasNet 전체 block diagram을 보면 다음과 같다.
+이러한 dilated convolution block들을 포함한 TCN 구조의 Conv-TasNet 전체 block diagram을 보면 다음과 같다.
 
 <br><br>
 <center>
