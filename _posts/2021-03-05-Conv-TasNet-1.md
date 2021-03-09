@@ -28,7 +28,6 @@ toc_sticky: true
 
  [Conv-TasNet](https://ieeexplore.ieee.org/abstract/document/8707065){:target="_blank"}은 2019년도 IEEE/ACM TASLP (Transactions on Audio, speech, and language processing) 저널에 출판된 논문으로, speech separation은 TasNet [이전](https://ieeexplore.ieee.org/document/8369155){:target="_blank"}과 이후로 나뉜다고 말할 수 있을 만큼 이 분야의 역사에 한 획을 그었습니다. 여전히 separation과 enhancement 분야에서 응용되고 있으며, 특히 Conv-TasNet을 기반으로 한 다양한 변형 모델이 나오며 성능향상 (e.g., [DPRNN](https://ieeexplore.ieee.org/abstract/document/9054266){:target="_blank"} (ICASSP 2020), [DPTNet](https://www.isca-speech.org/archive/Interspeech_2020/pdfs/2205.pdf){:target="_blank"} (Interspeech 2020), [SepFormer](https://arxiv.org/abs/2010.13154){:target="_blank"} (ICASSP 2021) 등)을 보이고 있어, Conv-TasNet을 읽고, 분석 및 정리해 보았습니다.
 
-<br>
 
 <center>
 <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c7ae61e5-958f-403b-85e1-84b16c282861/speech_separation_on_wsj0-2mix.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210309%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210309T071557Z&X-Amz-Expires=86400&X-Amz-Signature=5013ece71fe1df4fb0bb040638d4414f0ad1bc6352c5a00afb3c35894ee66ec6&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22speech_separation_on_wsj0-2mix.jpeg%22"/><br>
@@ -37,6 +36,7 @@ toc_sticky: true
  <br>
  
  본 글에서는 Conv-TasNet의 전반적인 구조에 대해 다루어 볼 것이고, 다음 글에서는 모델의 encoder/decoder와 다양한 hyperparameter configuration을 통한 실험으로 도출된 insight에 대해 알아보겠습니다.
+ <br>
 
 ## TL;DR
   
