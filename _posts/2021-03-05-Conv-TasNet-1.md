@@ -1,6 +1,6 @@
 ---
-title:  "[Speech] Conv-TasNet 톺아보기"
-excerpt: "Time-domain single-channel speech separation, Conv-TasNet 분석 및 정리"
+title:  "[Speech] Conv-TasNet 톺아보기 (1)"
+excerpt: "Time-domain single-channel speech separation, Conv-TasNet 분석 및 정리 (1) : 전반적인 모델 구조 "
 categories:
   - Speech
   
@@ -27,6 +27,7 @@ toc_sticky: true
 ## 들어가며
 
  [Conv-TasNet](https://ieeexplore.ieee.org/abstract/document/8707065){:target="_blank"}은 2019년도 IEEE/ACM TASLP (Transactions on Audio, speech, and language processing) 저널에 출판된 논문으로, speech separation은 TasNet [이전](https://ieeexplore.ieee.org/document/8369155){:target="_blank"}과 이후로 나뉜다고 말할 수 있을 만큼 이 분야의 역사에 한 획을 그었습니다. 여전히 separation과 enhancement 분야에서 응용되고 있으며, 특히 Conv-TasNet을 기반으로 한 다양한 변형 모델이 나오며 성능향상 (e.g., [DPRNN](https://ieeexplore.ieee.org/abstract/document/9054266){:target="_blank"} (ICASSP 2020), [DPTNet](https://www.isca-speech.org/archive/Interspeech_2020/pdfs/2205.pdf){:target="_blank"} (Interspeech 2020), [SepFormer](https://arxiv.org/abs/2010.13154){:target="_blank"} (ICASSP 2021) 등)을 보이고 있어, Conv-TasNet을 읽고, 분석 및 정리해 보았습니다.
+
 <br>
 
 <center>
@@ -34,10 +35,12 @@ toc_sticky: true
 <b>Figure. 1</b> Speech Separation SOTA Performance on wsj0-2mix <br> (출처 : <a href="https://paperswithcode.com/sota/speech-separation-on-wsj0-2mix" target='_blank'>Papers with code</a>)
 </center>
  <br>
+ 
+ 본 글에서는 Conv-TasNet의 전반적인 구조에 대해 다루어 볼 것이고, 다음 글에서는 모델의 encoder/decoder와 다양한 hyperparameter configuration을 통한 실험으로 도출된 insight에 대해 알아보겠습니다.
 
 ## TL;DR
   
-1.  Conv-TasNet은 여러 트렌디한 deep learning 테크닉들을 가져와 잘 조화시킨 End-to-End framework로, 각 speech source에 대한 mask를 time-domain에서 직접 estimation하는 speech seaparation<sup>음원 분리</sup> 모델이다. 성능적으로도 상당한 breakthrough를 이뤄내었다.
+1.  Conv-TasNet은 여러 트렌디한 deep learning 테크닉들 ([TCN](https://openaccess.thecvf.com/content_cvpr_2017/papers/Lea_Temporal_Convolutional_Networks_CVPR_2017_paper.pdf){:target="_blank"}, [LN](https://arxiv.org/abs/1607.06450){:target="_blank"}, [MobileNet](https://openaccess.thecvf.com/content_cvpr_2018/html/Sandler_MobileNetV2_Inverted_Residuals_CVPR_2018_paper.html){:target="_blank"} 등)을 가져와 Audio 분야에 잘 조화시킨 End-to-End framework로, 각 speech source에 대한 mask를 time-domain에서 직접 estimation하는 speech seaparation<sup>음원 분리</sup> 모델이다. 성능적으로도 상당한 breakthrough를 이뤄내었다.
 	- wsj0-2mix dataset 기준 SI-SNRi 15.3dB, 기존 state-of-the-art 모델에서 4dB에 가까운 성능 향상
  <br><br>
 2. Speech separation task에서는 기존 접근 방법처럼 mixture signal을 time-frequency representation (즉, STFT를 통한 spectrogram representation)에서 처리하면 다음과 같은 이유로 suboptimal하기 때문에, time-domain approach로 문제를 해결하였다.
@@ -172,6 +175,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 <center>
 <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1b19ec4c-e265-4f17-8e39-840e2b7a8442/unnamed.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210309%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210309T074556Z&X-Amz-Expires=86400&X-Amz-Signature=ac81a180155f861b2cf003d82759940fdf627608a0bfbc97dadb21ff372b7397&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22unnamed.gif%22"/><br><br>
 <b>Figure 3.</b> Visualization of a Stack of Dilated Causal Convolutional Layers<br>
+(출처 : <a href="https://deepmind.com/blog/article/wavenet-generative-model-raw-audio">DeepMind log</a>)
 </center>
 <br><br>
 
@@ -270,5 +274,10 @@ $$\text{gLN}(\mathbf{F}) = \frac{\mathbf{F}-\text{E}[\mathbf{F}]}{\sqrt{\text{Va
 	- Conv-TasNet에서 가장 높은 성능을 보이는 hyperparameter 설정은 $B = Sc$이기 때문에 skip-connection과 residual-path를 거칠 때에는 같은 channel 개수가 적용 되겠다.
 
 <br><br>
+
+
+## Reference
+
+본 글에서 사용된 자료들 중, 따로 출처를 밝힌 자료를 제외한 모든 자료들은 [Conv-TasNet 논문](https://ieeexplore.ieee.org/abstract/document/8707065){:target="_blank"}에서 가져와 사용되었습니다.
 
 ---
