@@ -84,7 +84,7 @@ $$x(t) = \sum^C_{i=1}s_i(t)$$
 
 ### [1]-(2) Input
 ---
-1. $x(t) \in \mathbb{R}^{1\times T}$를 길이가 $L$인 $\hat{T}$개의 overlaaping segment $\mathbf{x}_k \in \mathbb{R}^{1\times L}$로 나누어 준다. (단, $k=1,...,\hat{T}$)<br><br>
+1. $x(t) \in \mathbb{R}^{1\times T}$를 길이가 $L$인 $\hat{T}$개의 overlapping segment $\mathbf{x}_k \in \mathbb{R}^{1\times L}$로 나누어 준다. (단, $k=1,...,\hat{T}$)<br><br>
 2. $\hat{T}$개의 waveform segment $\mathbf{x}_k$ 들을 각각 encoder 단으로 넣어준다.
 <br><br>
 
@@ -126,8 +126,9 @@ $$\hat{s}_i=\mathbf{d}_i\mathbf{V}$$
 
 **Implementation**
 
- 실제 모델 구현에선, encoder와 decoder에 각각 convolutional layer와 transposed convolutional layer를 쓰는데, 각 segment들을 overlapping 하기 쉬워 빠르게 training할 수 있고, 모델이 더 잘 수렴한다. (PyTorch 1-D transposed convolutional layers)
-Encoder/decoder representation의 특징에 대해선 다음 글에서 상세하게 다룰 예정.
+ 실제 모델 구현에선, encoder와 decoder에 각각 1-D convolutional layer와 1-D transposed convolutional layer를 쓰는데, 각 segment들을 overlapping 하기 쉬워 빠르게 training할 수 있고, 모델이 더 잘 수렴한다. (PyTorch 1-D transposed convolutional layers)
+ 
+ Encoder/decoder representation의 특징에 대해선 다음 글에서 상세하게 다룰 예정.
 <br> <br>
 
 
@@ -180,7 +181,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 <center>
 <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c03c8b0c-e549-4be0-b0b5-a49c0ba08ff6/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210309%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210309T074626Z&X-Amz-Expires=86400&X-Amz-Signature=34b0a79ba2a9eb9fa9c478751879c7460ec349121c354bbc7395d7de471c5ed1&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22"/><br><br>
 <b>Figure 4.</b> Conv-TasNet Block Diagram<br>
-(출처 : SAPL Seminar material by Ph.D candidate 변재욱)
+(출처 : SAPL Seminar Material by Ph.D candidate 변재욱)
 </center>
 <br>
 
