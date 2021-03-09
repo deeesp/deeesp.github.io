@@ -35,7 +35,7 @@ toc_sticky: true
 </center>
  <br>
  
- 본 글에서는 Conv-TasNet의 전반적인 구조에 대해 다루어 볼 것이고, 다음 글에서는 모델의 encoder/decoder와 다양한 hyperparameter configuration을 통한 실험으로 도출된 insight에 대해 알아보겠습니다.
+ 본 글에서는 Conv-TasNet의 전반적인 구조에 대해 다루어 볼 것이고, 다음 글에서는 모델의 encoder/decoder representation에 대한 고찰과 다양한 hyperparameter configuration을 통한 실험으로 도출된 insight에 대해 알아보겠습니다.
  <br>
 
 ## TL;DR
