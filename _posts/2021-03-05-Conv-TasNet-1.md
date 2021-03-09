@@ -280,4 +280,3 @@ $$\text{gLN}(\mathbf{F}) = \frac{\mathbf{F}-\text{E}[\mathbf{F}]}{\sqrt{\text{Va
 
 본 글에서 사용된 자료들 중, 따로 출처를 밝힌 자료를 제외한 모든 자료들은 [Conv-TasNet 논문](https://ieeexplore.ieee.org/abstract/document/8707065){:target="_blank"}에서 가져와 사용되었습니다.
 
----
