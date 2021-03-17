@@ -30,7 +30,7 @@ toc_sticky: true
 
 
 <center>
-<img src="../images/Conv-TasNet_fig01.jpeg"/><br>
+<img src="/images/Conv-TasNet_fig01.jpeg"/><br>
 <b>Figure. 1</b> Speech Separation SOTA Performance on wsj0-2mix <br> (출처 : <a href="https://paperswithcode.com/sota/speech-separation-on-wsj0-2mix" target='_blank'>Papers with code</a>)
 </center>
  <br>
@@ -77,7 +77,7 @@ $$x(t) = \sum^C_{i=1}s_i(t)$$
 
 <br>
 <center>
-<img src="../images/Conv-TasNet_fig02.png" height="150px" /><br>
+<img src="/images/Conv-TasNet_fig02.png" height="150px" /><br>
 <b>Figure. 2</b> Time-domain Audio Separation Network Block Diagram
 </center>
 <br>
@@ -173,7 +173,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 
 <br><br>
 <center>
-<img src="../images/Conv-TasNet_fig03.gif"/><br><br>
+<img src="/images/Conv-TasNet_fig03.gif"/><br><br>
 <b>Figure 3.</b> Visualization of a Stack of Dilated Causal Convolutional Layers<br>
 (출처 : <a href="https://deepmind.com/blog/article/wavenet-generative-model-raw-audio">DeepMind log</a>)
 </center>
@@ -183,7 +183,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 
 <br><br>
 <center>
-<img src="../images/Conv-TasNet_fig04.png"/><br><br>
+<img src="/images/Conv-TasNet_fig04.png"/><br><br>
 <b>Figure 4.</b> Conv-TasNet Block Diagram<br>
 (출처 : SAPL Seminar Material by Ph.D candidate 변재욱)
 </center>
@@ -206,7 +206,7 @@ $$\mathbf{d}_i = \mathbf{w}\odot\mathbf{m}_i$$
 
 <br>
 <center>
-<img src="../images/Conv-TasNet_fig05.png" width="200px"/><br>
+<img src="/images/Conv-TasNet_fig05.png" width="200px"/><br>
 <b>Figure 5.</b> 1-D Convolutional Block
 </center>
 <br><br>
@@ -266,10 +266,10 @@ $$\text{gLN}(\mathbf{F}) = \frac{\mathbf{F}-\text{E}[\mathbf{F}]}{\sqrt{\text{Va
 
 ### [2]-(4) Bottleneck Layer
 ---
-1. Separation module의 앞 부분에는 [Figure 4]("../images/Conv-TasNet_fig04.png"){:target="_blank"}에서 보이는 것처럼 linear $1\times 1\text{-}conv(\cdot)$ block 하나가 bottleneck layer로써 존재한다.
+1. Separation module의 앞 부분에는 [Figure 4]("/images/Conv-TasNet_fig04.png"){:target="_blank"}에서 보이는 것처럼 linear $1\times 1\text{-}conv(\cdot)$ block 하나가 bottleneck layer로써 존재한다.
 	- 이는 feature dimension 즉, input channel과 convolutional block들 간의 residual path의 channel 수를 뜻하는 $B$를 결정하는 역할을 한다.
 
-2. [Figure 5]("../images/Conv-TasNet_fig05.png"){:target="_blank"}를 보면, 1-D conv block의 앞,뒤 부분에도 $1\times1\text{-}conv(\cdot)$가 존재하는데, 이 또한 bottleneck layer로써 feature dimension을 결정해준다.
+2. [Figure 5]("/images/Conv-TasNet_fig05.png"){:target="_blank"}를 보면, 1-D conv block의 앞,뒤 부분에도 $1\times1\text{-}conv(\cdot)$가 존재하는데, 이 또한 bottleneck layer로써 feature dimension을 결정해준다.
 	- 예를 들어, 1-D conv block의 input channel이 $B$라고 하면, 앞 부분의 $1\times1\text{-}conv(\cdot)$에 의해 $H$로 확장해준다. 또한, depthwise separable convolution을 거친 후 뒷부분에 있는 $1\times1\text{-}conv(\cdot)$에 의해 $H$를 skip connection 및 output의 channel은 각각 $B$ 및 $Sc$로 변환된다.
 	- Conv-TasNet에서 가장 높은 성능을 보이는 hyperparameter 설정은 $B = Sc$이기 때문에 skip-connection과 residual-path를 거칠 때에는 같은 channel 개수가 적용 되겠다.
 
