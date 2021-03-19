@@ -235,7 +235,7 @@ $$S\text{-}conv(\mathbf{Y},\mathbf{K},\mathbf{L})=D\text{-}conv(\mathbf{Y},\math
 
 <br>
 <center>
-<img src="../images/Conv-TasNet_fig06.png" width="300px"/><br>
+<img src="/images/Conv-TasNet_fig06.png" width="300px"/><br>
 <b>Figure 6.</b> Depthwise Separable Convolution<br>
 (출처 : <a href="https://medium.com/@zurister/depth-wise-convolution-and-depth-wise-separable-convolution-37346565d4ec">Medium log</a>)
 </center>
